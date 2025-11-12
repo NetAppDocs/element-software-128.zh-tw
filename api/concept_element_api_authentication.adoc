@@ -1,0 +1,24 @@
+---
+permalink: api/concept_element_api_authentication.html 
+sidebar: sidebar 
+keywords: API,authentication,auth,SolidFire 
+summary: 使用 API 時，您可以透過在所有 API 請求中包含 HTTP 基本驗證標頭來對系統進行驗證。如果省略身份驗證訊息，系統將拒絕未經身份驗證的請求，並傳回 HTTP 401 回應。本系統支援基於TLS的HTTP基本驗證。 
+---
+= API 驗證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用 API 時，您可以透過在所有 API 請求中包含 HTTP 基本驗證標頭來對系統進行驗證。如果省略身份驗證訊息，系統將拒絕未經身份驗證的請求，並傳回 HTTP 401 回應。本系統支援基於TLS的HTTP基本驗證。
+
+使用叢集管理員帳戶進行 API 驗證。
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_getvolumestats.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,stats,measurements,activity,getvolumestats 
+summary: 您可以使用 GetVolumeStats 方法取得單一磁碟區的進階活動測量值。此數值自卷創建以來不斷累積。 
+---
+= 獲取成交量統計信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetVolumeStats`取得單一體積的高級活性測量值的方法。此數值自卷創建以來不斷累積。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+卷 ID
+ a| 
+指定要收集統計資料的磁碟區。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+銷量統計
+ a| 
+成交量活動資訊。
+ a| 
+xref:reference_element_api_volumestats.adoc[銷量統計]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetVolumeStats",
+   "params": {
+      "volumeID": 32
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeStats": [
+        {
+            "accountID": 1,
+            "actualIOPS": 4,
+            "asyncDelay": null,
+            "averageIOPSize": 5970,
+            "burstIOPSCredit": 0,
+            "clientQueueDepth": 0,
+            "desiredMetadataHosts": null,
+            "latencyUSec": 474,
+            "metadataHosts": {
+                "deadSecondaries": [],
+                "liveSecondaries": [
+                    13
+                ],
+                "primary": 25
+            },
+            "nonZeroBlocks": 34931222,
+            "normalizedIOPS": 4,
+            "readBytes": 1282491003392,
+            "readBytesLastSample": 0,
+            "readLatencyUSec": 0,
+            "readLatencyUSecTotal": 4581669750,
+            "readOps": 15592933,
+            "readOpsLastSample": 0,
+            "samplePeriodMSec": 500,
+            "sliceIopsStats": {
+                "largeStatistics": {
+                    "averageReadIops": 17,
+                    "averageTotalIops": 43,
+                    "averageWriteIops": 26,
+                    "nSamples": 24,
+                    "peakReadIops": 19,
+                    "peakTotalIops": 47,
+                    "peakWriteIops": 30,
+                    "sliceID": 1
+                },
+                "smallStatistics": {
+                    "averageReadIops": 17,
+                    "averageTotalIops": 42,
+                    "averageWriteIops": 25,
+                    "nSamples": 120,
+                    "peakReadIops": 173,
+                    "peakTotalIops": 249,
+                    "peakWriteIops": 77,
+                    "sliceID": 1
+            }
+        },
+        "throttle": 0,
+        "timestamp": "2025-02-03T21:18:38.880100Z",
+        "unalignedReads": 167319,
+        "unalignedWrites": 90836,
+        "volumeAccessGroups": [
+            1
+        ],
+        "volumeID": 1,
+        "volumeSize": 2147483648000,
+        "volumeUtilization": 0.0002666666666666667,
+        "writeBytes": 1385173585408,
+        "writeBytesLastSample": 12288,
+        "writeLatencyUSec": 474,
+        "writeLatencyUSecTotal": 11233350905,
+        "writeOps": 157060458,
+        "writeOpsLastSample": 2,
+        "zeroBlocks": 489356778
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_nodeprotectiondomains.html 
+sidebar: sidebar 
+keywords: object,objects,node,protection domains 
+summary: nodeProtectionDomains 物件包含節點標識和與該節點關聯的保護域的資訊。 
+---
+= 節點保護域
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+nodeProtectionDomains 物件包含節點標識和與該節點關聯的保護域的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+節點ID
+ a| 
+節點的唯一識別碼。
+ a| 
+整數
+
+
+
+ a| 
+保護域
+ a| 
+節點所屬的保護域清單。
+ a| 
+link:reference_element_api_protectiondomain.html["保護域"]
+
+|===

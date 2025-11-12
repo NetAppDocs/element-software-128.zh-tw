@@ -1,0 +1,47 @@
+---
+permalink: storage/task_replication_pair_clusters.html 
+sidebar: sidebar 
+keywords: pair clusters, replication, connect clusters, data protection 
+summary: '要使用即時複製功能，首先必須將兩個叢集配對。將兩個集群配對並連接後，您可以配置一個集群上的活動卷，使其持續複製到第二個集群，從而提供持續資料保護 (CDP)。' 
+---
+= 複製的成對集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+要使用即時複製功能，首先必須將兩個叢集配對。將兩個集群配對連接後，您可以配置一個集群上的活動卷，使其持續複製到第二個集群，從而提供持續資料保護 (CDP)。
+
+.你需要什麼
+* 您必須擁有配對集群中一個或兩個集群的集群管理員權限。
+* 所有節點的 MIP 和 SIP 都會互相路由。
+* 集群間往返延遲小於 2000 毫秒。
+* 兩個儲存叢集都應該具有唯一的叢集名稱、MVIP、SVIP 和所有節點 IP 位址。
+* 叢集上 Element 軟體版本之間的差異不超過一個主版本。如果差異較大，則必須升級其中一個叢集以執行資料複製。
+
+
+
+NOTE: 叢集配對需要管理網路上的節點之間完全連通。複製需要儲存叢集網路上各個節點之間的連接。
+
+您可以將一個集群與最多四個其他集群配對，以複製磁碟區。您也可以將集群組內的不同集群相互配對。
+
+
+
+== 使用 MVIP 或配對金鑰對叢集進行配對
+
+如果兩個叢集都有叢集管理員存取權限，則可以使用目標叢集的 MVIP 將來源叢集和目標叢集配對。如果叢集管理員存取權限僅在叢集對中的一個叢集上可用，則可以在目標叢集上使用配對金鑰來完成叢集配對。
+
+. 選擇以下方法之一進行聚類配對：
++
+** link:task_replication_pair_cluster_using_mvip.html["使用MVIP進行配對聚類"]如果兩個叢集都有叢集管理員存取權限，則使用此方法。此方法利用遠端叢集的 MVIP 來配對兩個叢集。
+** link:task_replication_pair_cluster_using_pairing_key.html["使用配對密鑰配對簇"]如果集群管理員只能存取其中一個集群，則可以使用此方法。此方法產生一個配對金鑰，該金鑰可用於目標叢集以完成叢集配對。
+
+
+
+
+
+
+== 查找更多信息
+
+xref:reference_prereq_network_port_requirements.adoc[網路連接埠要求]

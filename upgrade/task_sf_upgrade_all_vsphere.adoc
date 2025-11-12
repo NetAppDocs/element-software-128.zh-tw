@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_sf_upgrade_all_vsphere.html 
+summary: 您可以升級SolidFire儲存系統的 VMware 元件，並採取其他步驟重新安裝 vCenter 外掛程式。 
+keywords: netapp, solidfire, vsphere components, upgrade, vCenter, ESXi 
+---
+= 使用適用於 vCenter Server 的 Element 外掛程式升級您的 vSphere 元件，以支援NetApp SolidFire儲存系統。
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+升級 VMware vSphere 元件時，需要完成一些額外的步驟。對於安裝了 vCenter Server Element 插件的系統，這些步驟是必要的。
+
+.步驟
+. 對於 vCSA 升級， https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#clear-qossioc-settings["清除"^]插件中的 QoSSIOC 設定（* NetApp Element設定 > QoSSIOC 設定*）。  *QoSSIOC 狀態* 欄位顯示 `Not Configured`流程完成後。
+. 對於 vCSA 和 Windows 升級， https://docs.netapp.com/us-en/vcp/task_vcp_unregister.html["取消註冊"^]使用註冊實用程式將外掛程式與 vCenter Server 關聯起來。
+. https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-7AFB6672-0B0B-4902-B254-EE6AE81993B2.html["升級 vSphere，包括 vCenter Server、ESXi、虛擬機器和其他 VMware 元件"^]。
++
+[IMPORTANT]
+====
+您應該升級到NetApp Element Plug-in for vCenter Server 5.0 或更高版本，以便能夠將外掛程式與 VMware vCenter 7.0 Update 3 一起部署，而無需套用任何變通方法。
+
+升級至 VMware vCenter Server 7.0 Update 3 時，vCenter Server 4.x 的 Element 外掛程式無法部署。若要使用 Spring Framework 4 解決此問題，請參閱 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["這篇知識庫文章"^]。
+
+====
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#register-the-plug-in-with-vcenter["註冊使用"^]再次使用 vCenter Server 的 Element 插件。
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#add-storage-clusters-for-use-with-the-plug-in["新增集群"^]使用插件。
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#configure-qossioc-settings-using-the-plug-in["設定 QoSSIOC 設定"^]使用插件。
+. https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#enabling-qossioc-automation-on-datastores["啟用 QoSSIOC"^]適用於插件控制的所有資料儲存。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

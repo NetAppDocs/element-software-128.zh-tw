@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: 帳戶對象包含有關帳戶的資訊。此物件僅包含有關帳戶的「已配置」訊息，不包含任何執行時間或使用資訊。 
+---
+= 帳戶
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+這 `account`物件包含有關帳戶的資訊。此物件僅包含有關帳戶的「已配置」訊息，不包含任何執行時間或使用資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+`accountID`
+ a| 
+帳戶的唯一帳戶ID。
+ a| 
+整數
+
+
+
+ a| 
+`attributes`
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+
+
+
+ a| 
+`enableChap`
+ a| 
+指定發起方是否可以使用 CHAP 帳戶憑證存取磁碟區。
+ a| 
+布林值
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+發起者 CHAP 秘密。
+ a| 
+細繩
+
+
+
+ a| 
+`status`
+ a| 
+帳戶的目前狀態。可能的值：
+
+* 活躍帳戶：一個活躍的帳戶。
+* 已鎖定：一個已鎖定的帳戶。
+* 已刪除：已刪除並清除的帳戶。
+
+ a| 
+細繩
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+與此帳戶關聯的虛擬磁碟區儲存容器的唯一 ID。
+ a| 
+唯一識別符
+
+
+
+ a| 
+`targetSecret`
+ a| 
+目標 CHAP 密鑰。
+ a| 
+細繩
+
+
+
+ a| 
+`username`
+ a| 
+帳戶的用戶名。
+ a| 
+細繩
+
+
+
+ a| 
+`volumes`
+ a| 
+此帳戶擁有的磁碟區的磁碟區 ID 清單。
+ a| 
+整數數組
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_addaccount.adoc[新增帳戶]
+* xref:reference_element_api_getaccountbyid.adoc[GetAccountByID]
+* xref:reference_element_api_getaccountbyname.adoc[按名稱取得帳戶]
+* xref:reference_element_api_listaccounts.adoc[列出帳戶]
+

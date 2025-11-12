@@ -1,0 +1,61 @@
+---
+permalink: api/reference_element_api_resetnodesupplementaltlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,reset,supplemental,resetnodesupplementaltlsciphers,restore,restoring,node,supplemental 
+summary: 您可以使用 ResetNodeSupplementalTlsCiphers 方法將補充 TLS 密碼清單還原為預設值。您可以在管理節點上使用此命令。 
+---
+= 重置節點補充TLS密碼
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ResetNodeSupplementalTlsCiphers`將補充 TLS 密碼套件清單還原為預設值的方法。您可以在管理節點上使用此命令。
+
+
+
+== 範圍
+
+
+NOTE: 必須對管理節點呼叫此方法。例如：
+
+[listing]
+----
+https://<management node IP>:442/json-rpc/10.0
+----
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "ResetNodeSupplementalTlsCiphers",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----

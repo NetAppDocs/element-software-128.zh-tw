@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_protocolendpoint.html 
+sidebar: sidebar 
+keywords: object,objects,protocolEndpoint 
+summary: protocolEndpoint 物件包含協定端點的屬性。您可以使用 ListProtocolEndpoints API 方法檢索叢集中所有協定端點的此資訊。 
+---
+= 協定端點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protocolEndpoint 物件包含協定端點的屬性。您可以使用以下方法檢索叢集中所有協定端點的此資訊： `ListProtocolEndpoints` API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+主提供者ID
+ a| 
+協定端點的主協定端點提供者物件的 ID。
+ a| 
+整數
+
+
+
+ a| 
+協定端點ID
+ a| 
+協定端點的唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+協定端點狀態
+ a| 
+協定端點的狀態。可能的值：
+
+* 已啟動：協定端點正在使用中。
+* 開始：協定端點正在啟動。
+* 故障轉移：協定端點已發生故障轉移。
+* 保留：協定端點已保留。
+
+ a| 
+細繩
+
+
+
+ a| 
+提供者類型
+ a| 
+協定端點提供者的類型。可能的值：
+
+* 基本的
+* 次要
+
+ a| 
+細繩
+
+
+
+ a| 
+scsiNAA設備ID
+ a| 
+NAA IEEE 註冊擴充格式中協定端點的全球唯一 SCSI 裝置識別碼。
+ a| 
+細繩
+
+
+
+ a| 
+secondaryProviderID
+ a| 
+協定端點的輔助協定端點提供者物件的 ID。
+ a| 
+整數
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listprotocolendpoints.adoc[列出協定端點]

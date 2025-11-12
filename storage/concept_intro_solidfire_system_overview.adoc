@@ -1,0 +1,37 @@
+---
+permalink: storage/concept_intro_solidfire_system_overview.html 
+sidebar: sidebar 
+keywords: drives, nodes, unified cluster, nodes, storage nodes, Fibre Channel nodes, FC, cluster, management, Active IQ, system components, components, hardware, storage resources, storage, Element UI, Element software, Element 
+summary: SolidFire全快閃儲存系統由獨立的硬體元件（驅動器和節點）組成，這些元件透過在每個節點上獨立運行的NetApp Element軟體組合成一個單一的儲存資源池。此統一叢集作為一個單一的儲存系統供外部客戶端使用，並透過 Element 軟體 UI、API 和其他管理工具作為單一實體進行管理。 
+---
+= SolidFire儲存系統
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A SolidFire all-flash storage system is comprised of discrete hardware components (drive and nodes) that are combined into a single pool of storage resources through NetApp Element software running independently on each node.此統一叢集作為一個單一的儲存系統供外部客戶端使用，並透過 Element 軟體 UI、API 和其他管理工具作為單一實體進行管理。
+
+使用NetApp Element軟體使用者介面，您可以設定和監控SolidFire叢集儲存容量和效能，並管理跨多租戶基礎架構的儲存活動。
+
+image::../media/solidfire_concepts_architecture_image.gif[Element 軟體架構圖]
+
+SolidFire全快閃儲存系統包含下列元件：
+
+* 節點：為叢集提供儲存資源的實體硬體。節點分為兩種類型：
++
+** 儲存節點：包含多個磁碟機的伺服器。
+** 光纖通道 (FC) 節點：用於透過光纖通道交換器連接 FC 用戶端。
+
+
+* 叢集： SolidFire儲存系統的中心，由至少四個節點組成。
+* 管理節點：使您能夠升級和提供系統服務（包括監控和遙測）、管理叢集資產和設定、運行系統測試和實用程序，並提供NetApp支援存取權限以進行故障排除。管理節點（mNode）是與 Element 軟體儲存叢集協同運作的虛擬機器。
+* Active IQ：一個基於網路的工具，提供叢集範圍資料的持續更新歷史視圖。您可以針對特定事件、閾值或指標設定警報。  Active IQ讓您能夠監控系統效能和容量，並隨時了解叢集運作狀況。
+* 儲存節點中使用磁碟機來儲存叢集資料。儲存節點包含兩種類型的磁碟機：
++
+** 卷元資料驅動儲存訊息，該資訊定義叢集中的捲和其他物件。
+** 區塊驅動器用於儲存應用程式捲的資料塊。
+
+
+

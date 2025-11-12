@@ -1,0 +1,34 @@
+= 
+:allow-uri-read: 
+
+
+* *升級過程時間*：您已安排足夠的時間執行升級。當您升級到 Element 軟體 12.5 或更高版本時，升級過程時間取決於您目前的 Element 軟體版本和韌體更新情況。
++
+[cols="20,20,20,20,20"]
+|===
+| 儲存節點 | 目前 Element 軟體版本 | 每個節點的軟體和韌體安裝大約需要10000秒^1^ | 每個節點的大約資料同步時間^2^ | 每個節點的大約總升級時間 
+
+
+| 所有配備最新韌體的SolidFire和NetApp H 系列節點^3^ | 12.x | 15分鐘 | 10到15分鐘 | 20至30分鐘 
+
+
+| H610S 和 H410S | 12.x 和 11.8 | 60分鐘 | 30至60分鐘 | 90至120分鐘 
+
+
+| H610S | 11.7 及更早版本 | 90分鐘 | 40至70分鐘 | 130至160分鐘 您還必須 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["執行節點完全關閉和斷電操作"^]針對每個 H610S 節點。 
+|===
++
+^1^有關適用於您硬體的韌體和驅動程式韌體的完整矩陣，請參閱link:../hardware/fw_storage_nodes.html["SolidFire儲存節點支援的儲存韌體版本"]。
+
++
+^2^如果將叢集與高寫入 IOPS 負載和較長的韌體更新時間結合起來，資料同步時間將會增加。
+
++
+^3^ 以下節點不受支援。如果您嘗試將這些節點之一升級到不受支援的 Element 版本，您將看到一條錯誤訊息，指出 Element 12.x 不支援該節點：
+
++
+** 從 Element 12.8、SF4805、SF9605、SF19210 和 SF38410 儲存節點開始。
+** 從 Element 12.7、SF2405 和 SF9608 儲存節點以及 FC0025 和 SF-FCN-01 FC 節點開始。
+
+
+

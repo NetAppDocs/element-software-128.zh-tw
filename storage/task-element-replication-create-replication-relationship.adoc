@@ -1,0 +1,86 @@
+---
+permalink: storage/task-element-replication-create-replication-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, relationship, element, source, destination 
+summary: 您可以使用SnapMirror將 Element 磁碟區的快照副本複製到ONTAP目標系統。如果 Element 網站發生災難，您可以從ONTAP系統向用戶端提供數據，然後在服務復原後重新啟動 Element 來源磁碟區。 
+---
+= 建立從元素來源到ONTAP目標的關聯
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+主記憶體中的來源磁碟區與輔助記憶體中的目標磁碟區之間的關係稱為_資料保護關係_。你可以使用 `snapmirror create`用於建立從 Element 來源到ONTAP目標，或從ONTAP來源到 Element 目標的資料保護關係的命令。
+
+您可以使用SnapMirror將 Element 磁碟區的快照副本複製到ONTAP目標系統。如果 Element 網站發生災難，您可以從ONTAP系統向用戶端提供數據，然後在服務復原後重新啟動 Element 來源磁碟區。
+
+.開始之前
+* 包含要複製的磁碟區的 Element 節點必須已對ONTAP開放。
+* Element 磁碟區必須已啟用SnapMirror複製功能。
+* 如果您使用的是「`mirror-vault`」政策類型，則必須設定SnapMirror標籤才能複製 Element 快照副本。
++
+[NOTE]
+====
+你只能在以下情況下執行此任務：link:concept_snapmirror_labels.html["Element 軟體 Web 使用者介面"]或使用link:../api/concept_element_api_snapshots_overview.html["API 方法"]。
+
+====
+
+
+.關於此任務
+您必須在表單中指定元素來源路徑。 `<hostip:>/lun/<name>`其中“`lun`”是實際的字串“`lun`”， `name`是元素卷的名稱。
+
+Element 容量大致相當於ONTAP LUN。當 Element 軟體和ONTAP之間建立資料保護關係時， SnapMirror會建立一個與 Element 磁碟區同名的 LUN。如果 LUN 符合從 Element 軟體複製到ONTAP 的要求， SnapMirror會將資料複製到現有的 LUN。
+
+複製規則如下：
+
+* 一個ONTAP磁碟區只能包含來自一個 Element 卷的資料。
+* 您無法將ONTAP磁碟區中的資料複製到多個 Element 磁碟區。
+
+
+在ONTAP 9.3 及更早版本中，一個目標磁碟區最多可以包含 251 個快照副本。在ONTAP 9.4 及更高版本中，目標磁碟區最多可以包含 1019 個快照副本。
+
+.步
+. 從目標集群，建立從 Element 來源到ONTAP目標的複製關係：
++
+`snapmirror create -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -schedule schedule -policy <policy>`
+
++
+有關完整的命令語法，請參閱手冊頁。
+
++
+以下範例使用預設值建立SnapMirror災難復原關係。 `MirrorLatest`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy MirrorLatest
+----
++
+以下範例使用預設值建立統一複製關係。 `MirrorAndVault`政策：
+
++
+[listing]
+----
+cluster_dst:> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy MirrorAndVault
+----
++
+以下範例使用以下方式建立統一複製關係： `Unified7year`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy Unified7year
+----
++
+以下範例使用自訂建立統一複製關係。 `my_unified`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy my_unified
+----
+
+
+.完成後
+使用 `snapmirror show`命令用於驗證SnapMirror關係是否已建立。有關完整的命令語法，請參閱手冊頁。

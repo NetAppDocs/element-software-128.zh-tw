@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_snapmirrorvserver.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVserver 
+summary: snapMirrorVserver 物件包含有關目標ONTAP叢集中的儲存虛擬機器（或 Vserver）的資訊。 
+---
+= snapMirrorVserver
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVserver 物件包含有關目標ONTAP叢集中的儲存虛擬機器（或 Vserver）的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目標ONTAP系統的 ID。
+ a| 
+整數
+
+
+
+ a| 
+虛擬伺服器名稱
+ a| 
+虛擬伺服器的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+vserverType
+ a| 
+虛擬伺服器的類型。可能的值：
+
+* 數據
+* 行政
+* 系統
+* 節點
+
+ a| 
+細繩
+
+
+
+ a| 
+vserverSubtype
+ a| 
+Vserver 的子類型。可能的值：
+
+* 預設
+* dp_destination
+* 數據
+* 同步來源
+* 同步目標
+
+ a| 
+細繩
+
+
+
+ a| 
+根卷
+ a| 
+Vserver 的根磁碟區。
+ a| 
+細繩
+
+
+
+ a| 
+根卷聚合
+ a| 
+根體積將基於該聚合體創建。
+ a| 
+細繩
+
+
+
+ a| 
+vserverAggregateInfo
+ a| 
+snapMirrorVserverAggregateInfo 物件陣列。
+ a| 
+JSON 物件
+
+
+
+ a| 
+管理員狀態
+ a| 
+Vserver 的詳細管理狀態。可能的值：
+
+* 跑步
+* 停止
+* 開始
+* 停止
+* 初始化
+* 刪除
+
+ a| 
+細繩
+
+
+
+ a| 
+運作狀態
+ a| 
+Vserver 的基本運作狀態。可能的值：
+
+* 跑步
+* 停止
+
+ a| 
+細繩
+
+|===

@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_configure_proxy_server.html 
+summary: 如果您的叢集位於代理伺服器之後，則必須配置代理設定才能存取公共網路。 
+keywords: netapp, Element, mnode, api, management node, add proxy, proxy server 
+---
+= 配置代理伺服器
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您的叢集位於代理伺服器之後，則必須配置代理設置，以便可以存取公共網路。
+
+代理伺服器用於遙測資料收集器和反向隧道連線。如果您在安裝或升級過程中尚未設定代理伺服器，則可以使用 REST API UI 啟用和設定代理伺服器。您也可以修改現有的代理伺服器設定或停用代理伺服器。
+
+配置代理伺服器的命令會更新並傳回管理節點的目前代理設定。代理設定由Active IQ、 NetApp監控服務以及安裝在管理節點上的其他 Element 軟體公用程式（包括NetApp支援的反向支援隧道）使用。
+
+.開始之前
+* 您應該了解所配置代理伺服器的主機和憑證資訊。
+* 請確保您的叢集版本運行的是NetApp Element軟體 11.3 或更高版本。
+* 請確保您已部署執行 11.3 或更高版本的管理節點。
+* （管理節點 12.0 及更高版本）在設定代理伺服器之前，您已將NetApp Hybrid Cloud Control 更新至管理服務版本 2.16。
+
+
+.步驟
+. 輸入管理節點 IP 位址，然後輸入以下內容，即可存取管理節點上的 REST API UI： `/mnode` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. 選擇“授權”或任意鎖形圖標，然後完成以下步驟：
++
+.. 請輸入叢集使用者名稱和密碼。
+.. 請輸入客戶端 ID `mnode-client` 。
+.. 選擇“授權”以開始會話。
+.. 關閉視窗。
+
+
+. 選擇 *PUT /settings*。
+. 選擇*試用*。
+. 若要啟用代理伺服器，您必須進行以下設置 `use_proxy`為真。輸入IP位址或主機名稱以及代理埠目標位址。
++
+代理用戶名、代理密碼和 SSH 連接埠是可選的，如果不使用則應省略。
+
++
+[listing]
+----
+{
+"proxy_ip_or_hostname": "[IP or name]",
+"use_proxy": [true/false],
+"proxy_username": "[username]",
+"proxy_password": "[password]",
+"proxy_port": [port value],
+"proxy_ssh_port": [port value: default is 443]
+}
+----
+. 選擇*執行*。
+
+
+
+NOTE: 根據您的環境，您可能需要重新啟動管理節點。
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

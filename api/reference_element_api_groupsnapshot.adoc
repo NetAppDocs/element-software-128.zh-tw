@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_groupsnapshot.html 
+sidebar: sidebar 
+keywords: object,objects,groupSnapshot 
+summary: groupSnapshot 物件包含有關一組磁碟區的快照的資訊。您可以使用 ListGroupSnapshots API 方法來檢索群組快照資訊。 
+---
+= 群組快照
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+groupSnapshot 物件包含有關一組磁碟區的快照的資訊。你可以使用 `ListGroupSnapshots`用於檢索群組快照資訊的 API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+
+
+
+ a| 
+創建時間
+ a| 
+建立群組快照的日期和時間（UTC+0 格式）。
+ a| 
+ISO 8601 日期字串
+
+
+
+ a| 
+啟用遠端複製
+ a| 
+確定快照是否已啟用遠端複製。
+ a| 
+布林值
+
+
+
+ a| 
+群組快照ID
+ a| 
+群組快照的唯一 ID。
+ a| 
+整數
+
+
+
+ a| 
+群組快照 UUID
+ a| 
+群組快照的 UUID。
+ a| 
+細繩
+
+
+
+ a| 
+成員
+ a| 
+包含群組快照中每個成員資訊的陣列物件。
+ a| 
+xref:reference_element_api_snapshot.adoc[快照]大批
+
+
+
+ a| 
+姓名
+ a| 
+群組快照的名稱；如果沒有指定名稱，則為建立快照的 UTC 格式日期和時間。
+ a| 
+字串或 ISO 8601 日期字串
+
+
+
+ a| 
+遠端狀態
+ a| 
+包含從來源叢集看到的、目標叢集上每個遠端快照的通用識別碼和複製狀態的陣列。
+ a| 
+xref:reference_element_api_remoteclustersnapshotstatus.adoc[遠端集群快照狀態]大批
+
+
+
+ a| 
+地位
+ a| 
+快照的目前狀態。可能的值：
+
+* 未知：取得快照狀態時發生錯誤。
+* 準備中：此快照正在準備使用，目前尚不可寫入。
+* 遠端同步：此快照正在從遠端叢集複製。
+* 完成：此快照已完成準備或複製，現在可以使用了。
+* 目前狀態：此快照為目前活動分支。
+* 克隆：此快照參與了 CopyVolume 操作。
+
+ a| 
+細繩
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listgroupsnapshots.adoc[列出群組快照]

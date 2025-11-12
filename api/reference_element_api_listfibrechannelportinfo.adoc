@@ -1,0 +1,210 @@
+---
+permalink: api/reference_element_api_listfibrechannelportinfo.html 
+sidebar: sidebar 
+keywords: fibre,channel,port,ports,list,listing,listfibrechannelportinfo 
+summary: 您可以使用 ListFibreChannelPortInfo 方法列出光纖通道連接埠的資訊。 
+---
+= 列出光纖通道連接埠信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListFibreChannelPortInfo`列出光纖通道連接埠資訊的方法。
+
+此 API 方法旨在用於單一節點；存取單一光纖通道節點需要使用者名稱和密碼。但是，如果 force 參數設為 true，則可以在叢集上使用此方法。在叢集上使用時，所有光纖通道介面都會被列出。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+力量
+ a| 
+設定為 true 可在叢集中的所有節點上運行。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+光纖通道連接埠
+ a| 
+所有實體光纖通道連接埠的列表，或單一節點的連接埠列表。
+ a| 
+xref:reference_element_api_fibrechannelport.adoc[光纖通道連接埠]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "ListFibreChannelPortInfo",
+    "params": {},
+    "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "fibreChannelPortInfo": {
+      "5": {
+        "result": {
+          "fibreChannelPorts": [
+            {
+             "firmware": "7.04.00 (d0d5)",
+             "hbaPort": 1,
+             "model": "QLE2672",
+             "nPortID": "0xc70084",
+             "pciSlot": 3,
+             "serial": "BFE1335E03500",
+             "speed": "8 Gbit",
+             "state": "Online",
+             "switchWwn": "20:01:00:2a:6a:98:a3:41",
+             "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+             "wwpn": "5f:47:ac:c0:3c:e4:95:0a"
+           },
+           {
+             "firmware": "7.04.00 (d0d5)",
+             "hbaPort": 2,
+             "model": "QLE2672",
+             "nPortID": "0x0600a4",
+             "pciSlot": 3,
+             "serial": "BFE1335E03500",
+             "speed": "8 Gbit",
+             "state": "Online",
+             "switchWwn": "20:01:00:2a:6a:9c:71:01",
+             "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+             "wwpn": "5f:47:ac:c0:3c:e4:95:0b"
+           },
+           {
+             "firmware": "7.04.00 (d0d5)",
+             "hbaPort": 1,
+             "model": "QLE2672",
+             "nPortID": "0xc70044",
+             "pciSlot": 2,
+             "serial": "BFE1335E04029",
+             "speed": "8 Gbit",
+             "state": "Online",
+             "switchWwn": "20:01:00:2a:6a:98:a3:41",
+             "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+             "wwpn": "5f:47:ac:c0:3c:e4:95:08"
+          },
+          {
+            "firmware": "7.04.00 (d0d5)",
+            "hbaPort": 2,
+            "model": "QLE2672",
+            "nPortID": "0x060044",
+            "pciSlot": 2,
+            "serial": "BFE1335E04029",
+            "speed": "8 Gbit",
+            "state": "Online",
+            "switchWwn": "20:01:00:2a:6a:9c:71:01",
+            "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+            "wwpn": "5f:47:ac:c0:3c:e4:95:09"
+          }
+       ]
+    }
+  },
+   "6": {
+     "result": {
+         "fibreChannelPorts": [
+        {
+           "firmware": "7.04.00 (d0d5)",
+           "hbaPort": 1,
+           "model": "QLE2672",
+           "nPortID": "0x060084",
+           "pciSlot": 3,
+           "serial": "BFE1335E04217",
+           "speed": "8 Gbit",
+           "state": "Online",
+           "switchWwn": "20:01:00:2a:6a:9c:71:01",
+           "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+           "wwpn": "5f:47:ac:c0:3c:e4:95:02"
+        },
+        {
+           "firmware": "7.04.00 (d0d5)",
+           "hbaPort": 2,
+           "model": "QLE2672",
+           "nPortID": "0xc700a4",
+           "pciSlot": 3,
+           "serial": "BFE1335E04217",
+           "speed": "8 Gbit",
+           "state": "Online",
+           "switchWwn": "20:01:00:2a:6a:98:a3:41",
+           "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+           "wwpn": "5f:47:ac:c0:3c:e4:95:03"
+        },
+        {
+           "firmware": "7.04.00 (d0d5)",
+           "hbaPort": 1,
+           "model": "QLE2672",
+           "nPortID": "0xc70064",
+           "pciSlot": 2,
+           "serial": "BFE1341E09515",
+           "speed": "8 Gbit",
+           "state": "Online",
+           "switchWwn": "20:01:00:2a:6a:98:a3:41",
+           "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+           "wwpn": "5f:47:ac:c0:3c:e4:95:00"
+        },
+        {
+           "firmware": "7.04.00 (d0d5)",
+           "hbaPort": 2,
+           "model": "QLE2672",
+           "nPortID": "0x060064",
+           "pciSlot": 2,
+           "serial": "BFE1341E09515",
+           "speed": "8 Gbit",
+           "state": "Online",
+           "switchWwn": "20:01:00:2a:6a:9c:71:01",
+           "wwnn": "5f:47:ac:c8:3c:e4:95:00",
+           "wwpn": "5f:47:ac:c0:3c:e4:95:01"
+        }
+     ]
+    }
+   }
+  }
+ }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,33 @@
+---
+permalink: api/concept_element_api_volume_access_group_api_methods.html 
+sidebar: sidebar 
+keywords: volume,access,group,method,methods,API,managing,manage 
+summary: 磁碟區存取群組方法可讓您新增、刪除、檢視和修改磁碟區存取群組，磁碟區存取群組是使用者可以使用 iSCSI 或光纖通道啟動程式存取的磁碟區的集合。 
+---
+= 磁碟區存取群組 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+磁碟區存取群組方法可讓您新增、刪除、檢視和修改磁碟區存取群組，磁碟區存取群組是使用者可以使用 iSCSI 或光纖通道啟動程式存取的磁碟區的集合。
+
+* xref:reference_element_api_addinitiatorstovolumeaccessgroup.adoc[將發起者新增至磁碟區存取群組]
+* xref:reference_element_api_addvolumestovolumeaccessgroup.adoc[將磁碟區新增至磁碟區存取群組]
+* xref:reference_element_api_createvolumeaccessgroup.adoc[建立卷宗訪問群組]
+* xref:reference_element_api_deletevolumeaccessgroup.adoc[刪除卷宗存取群組]
+* xref:reference_element_api_listvolumeaccessgroups.adoc[列出卷訪問群組]
+* xref:reference_element_api_removevolumesfromvolumeaccessgroup.adoc[從卷宗訪問群組移除卷]
+* xref:reference_element_api_removeinitiatorsfromvolumeaccessgroup.adoc[從磁碟區存取群組中刪除發起程式]
+* xref:reference_element_api_modifyvolumeaccessgroup.adoc[修改卷訪問群組]
+* xref:reference_element_api_getvolumeaccessgroupefficiency.adoc[取得卷訪問組效率]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

@@ -1,0 +1,56 @@
+---
+permalink: api/reference_element_api_protectiondomainlevel.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainLevel 
+summary: protectionDomainLevel 物件包含儲存叢集目前容忍度和復原力等級的資訊。容錯等級表示叢集在發生故障時繼續讀取和寫入資料的能力，而復原等級表示叢集在其關聯的保護域類型內自動從一個或多個故障中復原自身的能力。 
+---
+= 保護域級別
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainLevel 物件包含儲存叢集目前容忍度和復原力等級的資訊。容錯等級表示叢集在發生故障時繼續讀取和寫入資料的能力，而復原等級表示叢集在其關聯的保護域類型內自動從一個或多個故障中復原自身的能力。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+保護域類型
+ a| 
+具有相應容忍度和復原力的保護域類型。可能的值：
+
+* 節點：任何單一節點。
+* 機箱：單一機箱中的任何單一節點或所有儲存節點。
+* 自訂：單一客戶定義的保護域中的所有儲存節點。
+
+ a| 
+細繩
+
+
+
+ a| 
+彈性
+ a| 
+從這種保護領域類型的角度來看，該集群目前的韌性。
+ a| 
+xref:reference_element_api_protectiondomainresiliency.adoc[保護域彈性]
+
+
+
+ a| 
+寬容
+ a| 
+從這種保護域類型的角度來看，該群集目前的容忍度。
+ a| 
+xref:reference_element_api_protectiondomaintolerance.adoc[保護域容錯]
+
+|===

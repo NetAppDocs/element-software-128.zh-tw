@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_removevolumepair.html 
+sidebar: sidebar 
+keywords: volume,pair,volumes,remove,removing,removevolumepair 
+summary: 您可以使用 RemoveVolumePair 方法來移除兩個磁碟區之間的遠端配對。請在配對的來源捲和目標磁碟區上都使用此方法。刪除磁碟區配對資訊後，資料將不再複製到該磁碟區或從該磁碟區複製資料。 
+---
+= 移除卷對
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RemoveVolumePair`移除兩個磁碟區之間的遠端配對的方法。配對的來源捲和目標磁碟區都使用此方法。刪除磁碟區配對資訊後，資料將不再複製到該磁碟區或從該磁碟區複製資料。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+卷 ID
+ a| 
+要停止複製過程的磁碟區的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "RemoveVolumePair",
+   "params": {
+      "volumeID": 5
+   "id" : 1
+   }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

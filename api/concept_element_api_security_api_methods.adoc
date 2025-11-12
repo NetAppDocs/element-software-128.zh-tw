@@ -1,0 +1,42 @@
+---
+permalink: api/concept_element_api_security_api_methods.html 
+sidebar: sidebar 
+keywords: security,key management,encryption 
+summary: 您可以將 Element 軟體與外部安全相關服務（例如外部金鑰管理伺服器）整合。這些與安全性相關的方法可讓您設定 Element 的安全功能，例如靜態加密的外部金鑰管理。 
+---
+= 安全 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將 Element 軟體與外部安全相關服務（例如外部金鑰管理伺服器）整合。這些與安全性相關的方法可讓您設定 Element 的安全功能，例如靜態加密的外部金鑰管理。
+
+* xref:reference_element_api_addkeyservertoproviderkmip.adoc[AddKeyServerToProviderKmip]
+* xref:reference_element_api_createkeyproviderkmip.adoc[建立金鑰提供者Kmip]
+* xref:reference_element_api_createkeyserverkmip.adoc[建立金鑰伺服器Kmip]
+* xref:reference_element_api_createpublicprivatekeypair.adoc[創建公鑰/私鑰對]
+* xref:reference_element_api_deletekeyproviderkmip.adoc[刪除金鑰提供者Kmip]
+* xref:reference_element_api_deletekeyserverkmip.adoc[刪除金鑰伺服器Kmip]
+* xref:reference_element_api_disableencryptionatrest.adoc[停用靜態加密]
+* xref:reference_element_api_enableencryptionatrest.adoc[啟用靜態加密]
+* xref:reference_element_api_getclientcertificatesignrequest.adoc[取得用戶端憑證簽署請求]
+* xref:reference_element_api_getkeyproviderkmip.adoc[GetKeyProviderKmip]
+* xref:reference_element_api_getkeyserverkmip.adoc[GetKeyServerKmip]
+* xref:reference_element_api_listkeyproviderskmip.adoc[ListKeyProvidersKmip]
+* xref:reference_element_api_listkeyserverskmip.adoc[ListKeyServersKmip]
+* xref:reference_element_api_modifykeyserverkmip.adoc[修改金鑰伺服器Kmip]
+* xref:reference_element_api_removekeyserverfromproviderkmip.adoc[從提供者中移除金鑰伺服器Kmip]
+* xref:reference_element_api_signsshkeys.adoc[SignSshKeys]
+* xref:reference_element_api_testkeyproviderkmip.adoc[測試密鑰提供者Kmip]
+* xref:reference_element_api_testkeyserverkmip.adoc[測試金鑰伺服器Kmip]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

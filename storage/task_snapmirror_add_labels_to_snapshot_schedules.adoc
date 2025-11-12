@@ -1,0 +1,55 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshot_schedules.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, schedules, policies 
+summary: 您可以為快照計劃新增SnapMirror標籤，以確保應用SnapMirror策略。您可以從現有的​​SnapMirror關係對話方塊或 NetAppONTAP 系統管理員中查看可用標籤。 
+---
+= 在快照計劃中新增SnapMirror標籤
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以為快照計劃新增SnapMirror標籤，以確保應用SnapMirror策略。您可以從現有的​​SnapMirror關係對話方塊或 NetAppONTAP 系統管理員中查看可用標籤。
+
+.你需要什麼
+* 必須在叢集層級啟用SnapMirror 。
+* 您想要新增的標籤已存在於ONTAP中。
+
+
+.步驟
+. 點選“資料保護”>“日程安排”。
+. 可以透過以下方式之一將SnapMirror標籤新增至日程表：
++
+[cols="25,75"]
+|===
+| 選項 | 步驟 
+
+
+ a| 
+建立新日程
+ a| 
+.. 選擇“建立日程”。
+.. 請填寫所有其他相關資訊。
+.. 選擇“建立日程”。
+
+
+
+
+ a| 
+修改現有日程
+ a| 
+.. 點擊要新增標籤的日程表的「操作」圖標，然後選擇「編輯」。
+.. 在彈出的對話方塊中，在 * SnapMirror標籤 * 欄位中輸入文字。
+.. 選擇“儲存變更”。
+
+
+|===
+
+
+
+
+== 查找更多信息
+
+xref:task_data_protection_create_a_snapshot_schedule.adoc[建立快照計劃]

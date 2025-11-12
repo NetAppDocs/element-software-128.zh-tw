@@ -1,0 +1,55 @@
+---
+permalink: storage/task_data_manage_vvol_enable_virtual_volumes.html 
+sidebar: sidebar 
+keywords: virtual volumes, enable, functionality on the cluster, vvols 
+summary: '您必須透過NetApp Element軟體手動啟用 vSphere 虛擬磁碟區 (VVols) 功能。 Element 軟體系統預設會停用 VVols 功能，且在新安裝或升級過程中不會自動啟用此功能。啟用 VVols 功能只需進行一次設定。' 
+---
+= 啟用虛擬磁碟區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須透過NetApp Element軟體手動啟用 vSphere 虛擬磁碟區 (VVols) 功能。 Element 軟體系統預設會停用 VVols 功能，且在新安裝或升級過程中不會自動啟用此功能。啟用 VVols 功能只需進行一次設定。
+
+.你需要什麼
+* 叢集必須執行 Element 9.0 或更高版本。
+* 叢集必須連接到與 VVols 相容的 ESXi 6.0 或更高版本環境。
+* 如果您使用的是 Element 11.3 或更高版本，則叢集必須連接到 ESXi 6.0 update 3 或更高版本的環境。
+
+
+
+IMPORTANT: 啟用 vSphere Virtual Volumes 功能會永久變更 Element 軟體設定。只有當您的叢集連接到 VMware ESXi VVols 相容環境時，才應啟用 VVols 功能。只有將叢集恢復到出廠映像才能停用 VVols 功能並恢復預設設置，但這會刪除系統上的所有資料。
+
+.步驟
+. 選擇“集群”>“設定”。
+. 尋找虛擬卷的集群特定設定。
+. 點選「啟用虛擬磁碟區」。
+. 按一下“是”以確認虛擬磁碟區配置變更。
++
+*VVols* 選項卡出現在 Element 使用者介面中。
+
++
+
+NOTE: 啟用 VVols 功能後， SolidFire叢集會啟動 VASA 提供程序，開啟 8444 連接埠以進行 VASA 流量傳輸，並建立 vCenter 和所有 ESXi 主機可以發現的協定端點。
+
+. 從「叢集」>「設定」中的「虛擬磁碟區 (VVols)」設定複製 VASA 提供者 URL。您將使用此 URL 在 vCenter 中註冊 VASA 提供者。
+. 在 *VVols* > *儲存容器* 中建立儲存容器。
++
+
+NOTE: 您必須建立至少一個儲存容器，以便將虛擬機器配置到 VVol 資料儲存中。
+
+. 選擇 *VVols* > *協定端點*。
+. 確認叢集中每個節點都已建立協定端點。
++
+
+NOTE: vSphere 中還需要進行其他設定任務。請參閱《VMware vSphere Virtual Volumes for SolidFire Storage Configuration Guide》以在 vCenter 中註冊 VASA Provider、建立和管理 VVol 資料儲存以及根據策略管理儲存。
+
+
+
+
+
+== 查找更多信息
+
+https://www.netapp.com/pdf.html?item=/media/10516-tr4642pdf.pdf["VMware vSphere Virtual Volumes for SolidFire儲存配置指南"^]

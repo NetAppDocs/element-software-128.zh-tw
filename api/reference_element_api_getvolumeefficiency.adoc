@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,stats,measurements,efficiency,GetVolumeEfficiency 
+summary: 您可以使用 GetVolumeEfficiency 方法取得有關磁碟區的資訊。此 API 方法中僅使用您提供的體積參數來計算容量。 
+---
+= 獲取容量效率
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetVolumeEfficiency`取得體積資訊的方法。此 API 方法中僅使用您提供的體積參數來計算容量。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+卷 ID
+ a| 
+指定計算容量的體積。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+壓縮
+ a| 
+透過壓縮單一磁碟區上的資料所節省的空間量。以比率表示，其中 1 表示資料儲存時未進行壓縮。
+ a| 
+漂浮
+
+
+
+ a| 
+去重
+ a| 
+透過避免資料重複，在單一磁碟區上節省的空間量。以比率形式表示。
+ a| 
+漂浮
+
+
+
+ a| 
+缺失捲
+ a| 
+無法查詢效率資料的磁碟區。磁碟區遺失可能是由於垃圾回收 (GC) 時間不足一小時、網路暫時中斷或 GC 週期後服務重新啟動所致。
+ a| 
+整數數組
+
+
+
+ a| 
+精簡配置
+ a| 
+已用空間與指派給資料儲存的空間之比。以比率形式表示。
+ a| 
+漂浮
+
+
+
+ a| 
+時間戳
+ a| 
+最後一次時間效率資料是在 GC 之後收集的。
+ a| 
+ISO 8601 資料字串
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetVolumeEfficiency",
+   "params": {
+      "volumeID": 606
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.001591240821456,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T16:06:33Z"
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

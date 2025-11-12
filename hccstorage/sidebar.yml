@@ -1,0 +1,28 @@
+---
+section: hccstorage
+title: 使用NetApp Hybrid Cloud Control 管理和監控存儲
+entries:
+- title: 使用NetApp Hybrid Cloud Control 新增和管理儲存集群
+  url: "/hccstorage/task-hcc-manage-storage-clusters.html"
+- title: 配置完全限定域名 (FQDN) Web UI 訪問
+  url: "/hccstorage/task-setup-configure-fqdn-web-ui-access.html"
+- title: 使用NetApp Hybrid Cloud Control 建立和管理使用者帳戶
+  url: "/hccstorage/task-hcc-manage-accounts.html"
+- title: 使用NetApp Hybrid Cloud Control 建立和管理卷
+  url: "/hccstorage/task-hcc-manage-vol-management.html"
+- title: 建立和管理磁碟區存取群組
+  url: "/hccstorage/task-hcc-manage-vol-access-groups.html"
+- title: 建立和管理發起者
+  url: "/hccstorage/task-hcc-manage-initiators.html"
+- title: 建立和管理磁碟區 QoS 策略
+  url: "/hccstorage/task-hcc-qos-policies.html"
+- title: 使用NetApp Hybrid Cloud Control 監控您的SolidFire系統
+  entries:
+  - title: 在混合雲控制儀表板上監控儲存資源
+    url: "/hccstorage/task-hcc-dashboard.html"
+  - title: 在NetApp Hybrid Cloud Control 的「節點」頁面上查看您的庫存
+    url: "/hccstorage/task-hcc-nodes.html"
+  - title: 使用NetApp Hybrid Cloud Control 監控儲存叢集上的捲
+    url: "/hccstorage/task-hcc-volumes.html"
+  - title: 收集日誌以進行故障排除
+    url: "/hccstorage/task-hcc-collectlogs.html"

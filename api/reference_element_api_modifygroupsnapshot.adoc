@@ -1,0 +1,179 @@
+---
+permalink: api/reference_element_api_modifygroupsnapshot.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,group,snapshot,modifygroupsnapshot 
+summary: 您可以使用 ModifyGroupSnapshot 來變更一組快照的屬性。您也可以使用此方法將讀取/寫入（來源）磁碟區上建立的快照遠端複製到目標儲存系統。 
+---
+= 修改群組快照
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `ModifyGroupSnapshot`更改一組快照的屬性。您也可以使用此方法將讀取/寫入（來源）磁碟區上建立的快照遠端複製到目標儲存系統。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+
+
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+啟用遠端複製
+ a| 
+用於將建立的快照複製到遠端叢集。可能的值：
+
+* `true`快照將被複製到遠端儲存。
+* `false`快照不會複製到遠端儲存。
+
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+過期時間
+ a| 
+指定快照可以刪除的時間。不能與保留劑一起使用。如果既未指定 expirationTime，也未指定原始快照的保留時間，則快照將不會過期。時間格式為 ISO 8601 日期字串，用於基於時間的過期，否則將不會過期。一個值 `null`導致快照永久保留。 fifo 值會使快照依照先進先出 (FIFO) 原則保存，相對於磁碟區上的其他 FIFO 快照而言。如果沒有可用的FIFO空間，API將會失敗。
+ a| 
+ISO 8601 日期字串
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+姓名
+ a| 
+群組快照的名稱。如果沒有輸入姓名，則使用拍攝群組快照的日期和時間。名稱長度上限為 255 個字元。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+群組快照ID
+ a| 
+快照群組的 ID。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+SnapMirror軟體用於指定SnapMirror端點上的快照保留策略的標籤。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+群組快照
+ a| 
+包含有關新修改的群組快照資訊的物件。
+ a| 
+xref:reference_element_api_groupsnapshot.adoc[群組快照]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 695,
+  "method": "ModifyGroupSnapshot",
+  "params": {
+    "groupSnapshotID": 3,
+    "enableRemoteReplication": true,
+    "expirationTime": "2016-04-08T22:46:25Z"
+  }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 695,
+  "result": {
+    "groupSnapshot": {
+      "attributes": {},
+      "createTime": "2016-04-06T17:31:41Z",
+      "groupSnapshotID": 3,
+      "groupSnapshotUUID": "8b2e101d-c5ab-4a72-9671-6f239de49171",
+      "members": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-06T17:31:41Z",
+          "enableRemoteReplication": true,
+          "expirationReason": "None",
+          "expirationTime": "2016-04-08T22:46:25Z",
+          "groupID": 3,
+          "groupSnapshotUUID": "8b2e101d-c5ab-4a72-9671-6f239de49171",
+          "name": "grpsnap1-2",
+          "snapshotID": 2,
+          "snapshotUUID": "719b162c-e170-4d80-b4c7-1282ed88f4e1",
+          "status": "done",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeID": 2
+        }
+      ],
+      "name": "grpsnap1",
+      "status": "done"
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

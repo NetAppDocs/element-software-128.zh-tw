@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_add_assets.html 
+summary: 您可以使用 REST API UI 將控制器資產新增至管理節點配置。 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= 將控制器資產新增至管理節點
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 REST API UI 將控制器資產新增至管理節點配置。
+
+如果您最近擴展了安裝規模，但新資產沒有自動添加到您的配置中，則可能需要新增資產。使用這些 API 為安裝中新增最近新增的資源。
+
+.你需要什麼
+* 您的叢集版本正在執行NetApp Element軟體 11.3 或更高版本。
+* 您已部署執行版本 11.3 或更高版本的管理節點。
+* 您已在 vCenter 中建立了一個新的NetApp HCC 角色，以將管理節點服務視圖限制為僅限NetApp資產。看link:task_mnode_create_netapp_hcc_role_vcenter.html["在 vCenter 中建立NetApp HCC 角色"]
+
+
+.步驟
+. 取得安裝的基礎資產 ID：
++
+.. 在管理節點上開啟庫存服務 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉視窗。
+
+
+.. 從 REST API UI 中選擇 *GET /installations*。
+.. 選擇*試用*。
+.. 選擇*執行*。
+.. 從 200 錯誤代碼回應正文複製以下內容 `id`用於安裝。
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: 您的安裝具有在安裝或升級過程中建立的基本資產配置。
+
+.. 從 REST API UI 中選擇 *GET /installations/{id}*。
+.. 選擇*試用*。
+.. 將安裝資產 ID 貼到 *id* 欄位中。
+.. 選擇*執行*。
+.. 從回應複製並儲存叢集控制器 ID(`"controllerId"` ) 供後續步驟使用。
+
+
+. 若要為現有基礎資產新增控制器子資產，請選擇：
++
+[listing]
+----
+POST /assets/{asset_id}/controllers
+----
++
+.. 在管理節點上開啟 mNode 服務 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉視窗。
+
+
+.. 選擇 *POST /assets/{asset_id}/controllers*。
+.. 選擇*試用*。
+.. 在 *asset_id* 欄位中輸入父級基礎資產 ID。
+.. 將所需值新增至有效載荷。
+.. 選擇*執行*。
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

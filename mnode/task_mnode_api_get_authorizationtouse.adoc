@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_api_get_authorizationtouse.html 
+summary: 您必須先獲得授權才能在 REST API UI 中使用管理服務的 API。 
+keywords: netapp, Element, management node, mnode, api, token 
+---
+= 取得使用 REST API 的授權
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須先獲得授權才能在 REST API UI 中使用管理服務的 API。您可以透過取得存取權杖來完成此操作。
+
+要取得令牌，您需要提供叢集管理員憑證和用戶端 ID。每個代幣大約持續十分鐘。令牌過期後，您可以再次授權以取得新的存取權杖。
+
+管理節點安裝和部署期間，已為您設定授權功能。令牌服務是基於您在設定過程中定義的儲存叢集。
+
+.開始之前
+* 您的叢集版本應執行NetApp Element軟體 11.3 或更高版本。
+* 您應該部署一個執行 11.3 或更高版本的管理節點。
+
+
+.API 命令
+[listing]
+----
+TOKEN=`curl -k -X POST https://MVIP/auth/connect/token -F client_id=mnode-client -F grant_type=password -F username=CLUSTER_ADMIN -F password=CLUSTER_PASSWORD|awk -F':' '{print $2}'|awk -F',' '{print $1}'|sed s/\"//g`
+----
+.REST API UI 步驟
+. 若要存取該服務的 REST API 使用者介面，請輸入管理節點 IP 位址，後面接著服務名稱，例如： `/mnode/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. 選擇“授權”。
++
+
+NOTE: 或者，您可以選擇任何服務 API 旁邊的鎖定圖示。
+
+. 請完成以下步驟：
++
+.. 請輸入叢集使用者名稱和密碼。
+.. 請輸入客戶端 ID `mnode-client` 。
+.. 請勿輸入客戶端密鑰的值。
+.. 選擇“授權”以開始會話。
+
+
+. 關閉「可用授權」對話框。
++
+
+NOTE: 如果在令牌過期後嘗試執行命令，則會發生以下情況： `401 Error: UNAUTHORIZED`訊息出現。如果看到此訊息，請重新授權。
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

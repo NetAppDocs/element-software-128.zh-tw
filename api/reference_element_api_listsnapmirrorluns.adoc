@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_listsnapmirrorluns.html 
+sidebar: sidebar 
+keywords: snapmirror,lun,luns,list,listing,listsnapmirrorluns 
+summary: Element 軟體 Web UI 使用 ListSnapMirrorLuns 方法列出遠端ONTAP叢集中SnapMirror關係的 LUN 資訊。 
+---
+= 列表快照鏡像Luns
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體的Web使用者介面使用 `ListSnapMirrorLuns`列出遠端ONTAP叢集中SnapMirror關係的 LUN 資訊的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+僅列出與指定端點 ID 關聯的 LUN 資訊。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+目的地捲
+ a| 
+SnapMirror關係中的目標磁碟區。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorLunInfos
+ a| 
+包含有關SnapMirror LUN 資訊的物件清單。
+ a| 
+xref:reference_element_api_snapmirrorluninfo.adoc[snapMirrorLunInfo]大批
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

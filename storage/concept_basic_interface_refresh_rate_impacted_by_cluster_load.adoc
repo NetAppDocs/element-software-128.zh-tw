@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_basic_interface_refresh_rate_impacted_by_cluster_load.html 
+sidebar: sidebar 
+keywords: data refresh interval, cluster, interval controls, API requests, heavy load cluster, cluster credentials 
+summary: 根據 API 回應時間，叢集可能會自動調整您正在查看的NetApp Element軟體頁面某些部分的資料刷新間隔。 
+---
+= 介面刷新率受叢集負載影響
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+根據 API 回應時間，叢集可能會自動調整您正在查看的NetApp Element軟體頁面某些部分的資料刷新間隔。
+
+當您在瀏覽器中重新載入頁面時，刷新間隔將重設為預設值。點擊頁面右上角的群集名稱，即可查看目前的刷新間隔。請注意，間隔控制的是 API 請求的頻率，而不是伺服器傳回資料的速度。
+
+當叢集負載過重時，它可能會將來自 Element UI 的 API 請求排隊。在極少數情況下，當系統回應嚴重延遲時（例如網路連線緩慢且叢集繁忙），如果系統未能及時回應排隊的 API 請求，您可能會被從 Element UI 中登出。如果您被重新導向到登出畫面，您可以在忽略任何初始瀏覽器驗證提示後再次登入。返回概覽頁面時，如果您的瀏覽器未儲存叢集憑證，系統可能會提示您輸入叢集憑證。

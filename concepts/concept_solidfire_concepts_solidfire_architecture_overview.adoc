@@ -1,0 +1,77 @@
+---
+permalink: concepts/concept_solidfire_concepts_solidfire_architecture_overview.html 
+sidebar: sidebar 
+keywords: solidfire, element, aiq, cluster, active iq, vcenter plugin, vcp, storage, what is, activeiq 
+summary: SolidFire全快閃儲存系統由獨立的硬體元件（驅動器和節點）組成，這些元件透過在每個節點上獨立運行的NetApp Element軟體組合成一個單一的儲存資源池。此統一叢集作為一個單一的儲存系統供外部客戶端使用，並透過 Element 軟體 UI、API 和其他管理工具作為單一實體進行管理。 
+---
+= 了解SolidFire架構
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire全快閃儲存系統由獨立的硬體元件（驅動器和節點）組成，這些元件組合成一個儲存資源池， NetApp Element軟體在每個節點上獨立運作。此單一儲存系統透過 Element 軟體 UI、API 和其他管理工具作為一個整體進行管理。
+
+SolidFire儲存系統包含下列硬體元件：
+
+* *叢集*： SolidFire儲存系統的中心，由多個節點組成。
+* *節點*：組成叢集的硬體元件。節點分為兩種類型：
++
+** 儲存節點，即包含多個磁碟機的伺服器。
+** 光纖通道 (FC) 節點，用於連接到 FC 用戶端
+
+
+* *驅動器*：用於儲存節點，以儲存叢集的資料。儲存節點包含兩種類型的磁碟機：
++
+** 卷元資料驅動儲存訊息，該資訊定義叢集中的捲和其他物件。
+** 塊驅動器用於儲存卷的資料塊。
+
+
+
+
+image::../media/solidfire_concepts_guide_architecture_image.gif[Element 軟體架構圖]
+
+您可以使用 Element Web UI 和其他相容工具來管理、監控和更新系統：
+
+* link:../concepts/concept_intro_solidfire_software_interfaces.html["SolidFire軟體介面"]
+* link:../concepts/concept_intro_solidfire_active_iq.html["SolidFire Active IQ"]
+* link:../concepts/concept_intro_management_node.html["Element軟體的管理節點"]
+* link:../concepts/concept_intro_management_services_for_afa.html["管理服務"]
+
+
+
+
+== 常用網址
+
+以下是您在使用SolidFire全快閃儲存系統時常用的 URL：
+
+[cols="2*"]
+|===
+| 網址 | 描述 
+
+
+| `https://[storage cluster MVIP address]` | 存取NetApp Element軟體使用者介面。 
+
+
+| `https://activeiq.solidfire.com` | 監控資料並接收有關任何效能瓶頸或潛在系統問題的警報。 
+
+
+| `https://[management node IP address]` | 存取NetApp Hybrid Cloud Control 以升級您的儲存安裝和更新管理服務。 
+
+
+| `https://[IP address]:442` | 透過每個節點的使用者介面，存取網路和叢集設置，並使用系統測試和實用程式。link:../storage/task_per_node_access_settings.html["了解更多。"] 
+
+
+| `https://[management node IP address]/mnode` | 使用管理節點的管理服務 REST API 和其他功能。link:../mnode/task_mnode_work_overview.html["了解更多。"] 
+
+
+| `https://[management node IP address]:9443` | 在 vSphere Web Client 中註冊 vCenter 外掛程式包。link:https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html["了解更多。"^] 
+|===
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

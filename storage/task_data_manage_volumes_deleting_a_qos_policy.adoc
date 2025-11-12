@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_manage_volumes_deleting_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, delete, volumes 
+summary: 如果不再需要 QoS 策略，您可以將其刪除。刪除 QoS 策略時，與該策略關聯的所有磁碟區將保留 QoS 設置，但會與該策略解除關聯。 
+---
+= 刪除 QoS 策略
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果不再需要 QoS 策略，您可以將其刪除。刪除 QoS 策略時，與該策略關聯的所有磁碟區將保留 QoS 設置，但會與該策略解除關聯。
+
+
+NOTE: 如果您要嘗試將磁碟區與 QoS 原則解除關聯，則可以將該磁碟區的 QoS 設定變更為自訂。
+
+. 選擇“管理”>“QoS策略”。
+. 按一下要刪除的 QoS 策略旁邊的「操作」圖示。
+. 在出現的選單中，選擇“刪除”。
+. 確認操作。
+
+
+
+
+== 查找更多信息
+
+xref:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.adoc[移除磁碟區的 QoS 策略關聯]

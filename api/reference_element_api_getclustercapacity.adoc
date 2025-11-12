@@ -1,0 +1,117 @@
+---
+permalink: api/reference_element_api_getclustercapacity.html 
+sidebar: sidebar 
+keywords: cluster,capacity,getting,get,measurements,measure,deduplication,GetClusterCapacity 
+summary: 您可以使用 GetClusterCapacity 傳回整個儲存叢集的進階容量測量值。此方法傳回可用於計算 Element Web UI 中顯示的效率率的欄位。您可以在腳本中使用效率計算來傳回精簡配置、重複資料刪除、壓縮和整體效率的效率率。 
+---
+= 取得叢集容量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterCapacity`傳回整個儲存叢集的高階容量測量結果。此方法傳回可用於計算 Element Web UI 中顯示的效率率的欄位。您可以在腳本中使用效率計算來傳回精簡配置、重複資料刪除、壓縮和整體效率的效率率。
+
+
+
+== 效率計算
+
+使用以下公式計算精簡配置、重複資料刪除和壓縮。這些公式適用於 Element 8.2 及更高版本。
+
+* 精簡配置因子 = (非零塊 + 零塊) / 非零塊
+* 去重因子 = (非零塊數 + 快照非零塊數) / 唯一塊數
+* 壓縮因子 = (唯一區塊數 * 4096) / (唯一區塊數已用空間 * 0.93)
+
+
+
+
+== 整體效率率計算
+
+使用以下公式，根據精簡配置、重複資料刪除和壓縮效率計算結果來計算叢集整體效率。
+
+* 效率因子 = 精簡配置因子 * 去重因子 * 壓縮因子
+
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+叢集容量
+ a| 
+儲存叢集的容量測量。
+ a| 
+xref:reference_element_api_clustercapacity.adoc[叢集容量]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetClusterCapacity",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "clusterCapacity": {
+      "activeBlockSpace": 236015557096,
+      "activeSessions": 20,
+      "averageIOPS": 0,
+      "clusterRecentIOSize": 0,
+      "currentIOPS": 0,
+      "maxIOPS": 150000,
+      "maxOverProvisionableSpace": 259189767127040,
+      "maxProvisionedSpace": 51837953425408,
+      "maxUsedMetadataSpace": 404984011161,
+      "maxUsedSpace": 12002762096640,
+      "nonZeroBlocks": 310080350,
+      "peakActiveSessions": 20,
+      "peakIOPS": 0,
+      "provisionedSpace": 1357931085824,
+      "snapshotNonZeroBlocks": 0,
+      "timestamp": "2016-10-17T21:24:36Z",
+      "totalOps": 1027407650,
+      "uniqueBlocks": 108180156,
+      "uniqueBlocksUsedSpace": 244572686901,
+      "usedMetadataSpace": 8745762816,
+      "usedMetadataSpaceInSnapshots": 8745762816,
+      "usedSpace": 244572686901,
+      "zeroBlocks": 352971938
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

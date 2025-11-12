@@ -1,0 +1,251 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_prechecks.html 
+summary: 作為NetApp SolidFire儲存系統升級的一部分，您需要對NetApp Element軟體執行健康檢查。 
+keywords: netapp, storage prechecks, element upgrade, sfupgradecheck 
+---
+= 在升級儲存之前，請先執行 Element 儲存健康檢查
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在升級 Element 儲存之前，必須執行健康檢查，以確保叢集中的所有儲存節點都已準備好進行下一次 Element 儲存升級。
+
+.你需要什麼
+* *管理服務*：您已更新至最新的管理服務包（2.10.27 或更高版本）。
++
+
+IMPORTANT: 您必須先升級到最新的管理服務包，然後才能升級 Element 軟體。
+
+* *管理節點*：您正在執行管理節點 11.3 或更高版本。
+* *Element 軟體*：您的叢集版本正在執行NetApp Element軟體 11.3 或更高版本。
+* *最終使用者授權協議 (EULA)*：從管理服務 2.20.69 版本開始，您必須接受並儲存 EULA，然後才能使用NetApp Hybrid Cloud Control UI 或 API 執行 Element 儲存運作狀況檢查：
++
+.. 在網頁瀏覽器中開啟管理節點的IP位址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 使用儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+.. 在介面右上角附近選擇“升級”。
+.. 最終用戶許可協議彈出。向下捲動，選擇“我接受當前及所有未來的更新”，然後選擇“儲存”。
+
+
+
+
+.健康檢查選項
+您可以使用NetApp Hybrid Cloud Control UI 或NetApp Hybrid Cloud Control API 執行執行狀況檢查：
+
+* <<在升級儲存之前，請使用NetApp Hybrid Cloud Control 執行 Element 儲存運作狀況檢查。>>（首選方法）
+
+
+您還可以了解更多關於該服務運行的存儲健康檢查的信息：
+
+* <<服務執行的儲存健康檢查>>
+
+
+
+
+== 在升級儲存之前，請使用NetApp Hybrid Cloud Control 執行 Element 儲存運作狀況檢查。
+
+使用NetApp Hybrid Cloud Control，您可以驗證儲存叢集是否已準備好進行升級。
+
+.步驟
+. 在網頁瀏覽器中開啟管理節點的IP位址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 使用儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在介面右上角附近選擇“升級”。
+. 在「升級」頁面上，選擇「儲存」標籤。
+. 選擇健康檢查image:hcc_healthcheck_icon.png["圖示"]您要檢查叢集的升級準備情況。
+. 在「儲存健康檢查」頁面上，選擇「執行健康檢查」。
+. 如果出現問題，請執行下列操作：
++
+.. 請前往每個問題對應的知識庫文章或執行指定的解決方法。
+.. 如果指定了知識庫文章，請依照相關知識庫文章中所述的步驟完成操作。
+.. 解決叢集問題後，選擇「重新運行健康檢查」。
+
+
+
+
+健康檢查完成後，如果未出現任何錯誤，儲存叢集即可進行升級。請參閱儲存節點升級link:task_hcc_upgrade_element_software.html["指示"]繼續。
+
+
+
+== 在升級儲存之前，使用 API 執行 Element 儲存健康檢查
+
+您可以使用 REST API 來驗證儲存叢集是否已準備好進行升級。健康檢查會驗證升級過程中是否有障礙，例如待處理的節點、磁碟空間問題和叢集故障。
+
+.步驟
+. 找到儲存叢集 ID：
++
+.. 在管理節點上開啟管理節點 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client`如果該值尚未填入。
+... 選擇“授權”以開始會話。
+... 關閉授權視窗。
+
+
+.. 從 REST API 使用者介面中選擇 `GET /assets`。
+.. 選擇*試用*。
+.. 選擇*執行*。
+.. 從回覆中複製以下內容 `"id"`從 `"storage"`您打算檢查叢集中哪些部分是否已準備好升級。
++
+
+NOTE: 不要使用 `"parent"`本節中的值是因為這是管理節點的 ID，而不是儲存叢集的 ID。
+
++
+[listing, subs="+quotes"]
+----
+"config": {},
+"credentialid": "12bbb2b2-f1be-123b-1234-12c3d4bc123e",
+"host_name": "SF_DEMO",
+*"id": "12cc3a45-e6e7-8d91-a2bb-0bdb3456b789",*
+"ip": "10.123.12.12",
+"parent": "d123ec42-456e-8912-ad3e-4bd56f4a789a",
+"sshcredentialid": null,
+"ssl_certificate": null
+----
+
+
+. 對儲存叢集運行健康檢查：
++
+.. 在管理節點上開啟儲存 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client`如果該值尚未填入。
+... 選擇“授權”以開始會話。
+... 關閉授權視窗。
+
+
+.. 選擇 *POST /health-checks*。
+.. 選擇*試用*。
+.. 在參數欄位中，輸入在步驟 1 中取得的儲存叢集 ID。
++
+[listing]
+----
+{
+  "config": {},
+  "storageId": "123a45b6-1a2b-12a3-1234-1a2b34c567d8"
+}
+----
+.. 選擇“執行”以對指定的儲存叢集運行健康檢查。
++
+響應應表明狀態為 `initializing`：
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://10.117.149.231/storage/1/health-checks",
+    "log": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc/log",
+    "self": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc"
+  },
+  "config": {},
+  "dateCompleted": null,
+  "dateCreated": "2020-02-21T22:11:15.476937+00:00",
+  "healthCheckId": "358f073f-896e-4751-ab7b-ccbb5f61f9fc",
+  "state": "initializing",
+  "status": null,
+  "storageId": "c6d124b2-396a-4417-8a47-df10d647f4ab",
+  "taskId": "73f4df64-bda5-42c1-9074-b4e7843dbb77"
+}
+----
+.. 複製 `healthCheckID`這是回應的一部分。
+
+
+. 核實健康檢查結果：
++
+.. 選擇 *GET /health-checks/{healthCheckId}*。
+.. 選擇*試用*。
+.. 在參數欄位中輸入健康檢查 ID。
+.. 選擇*執行*。
+.. 滾動到回復正文底部。
++
+如果所有健康檢查均成功，則傳回結果類似於以下範例：
+
++
+[listing]
+----
+"message": "All checks completed successfully.",
+"percent": 100,
+"timestamp": "2020-03-06T00:03:16.321621Z"
+----
+
+
+. 如果 `message`傳回結果表示群集健康狀況有問題，請執行以下操作：
++
+.. 選擇 *GET /health-checks/{healthCheckId}/log*
+.. 選擇*試用*。
+.. 在參數欄位中輸入健康檢查 ID。
+.. 選擇*執行*。
+.. 查看具體錯誤並取得其相關的知識庫文章連結。
+.. 請前往每個問題對應的知識庫文章或執行指定的解決方法。
+.. 如果指定了知識庫文章，請依照相關知識庫文章中所述的步驟完成操作。
+.. 解決叢集問題後，再次執行 *GET /health-checks/{healthCheckId}/log*。
+
+
+
+
+
+
+== 服務執行的儲存健康檢查
+
+儲存健康檢查會對每個叢集執行以下檢查。
+
+|===
+| 檢查名稱 | 節點/叢集 | 描述 
+
+
+| 檢查非同步結果 | 簇 | 驗證資料庫中非同步結果的數量是否低於閾值。 
+
+
+| 檢查集群故障 | 簇 | 驗證是否存在阻止升級的叢集故障（如元素來源中所定義）。 
+
+
+| 檢查上傳速度 | 節點 | 測量儲存節點和管理節點之間的上傳速度。 
+
+
+| 連接速度檢查 | 節點 | 驗證節點是否與提供升級套件的管理節點有連接，並估算連接速度。 
+
+
+| 檢查核心 | 節點 | 檢查節點上的核心崩潰轉儲和核心轉儲檔案。如果最近一段時間（閾值 7 天）內發生任何崩潰，則檢查失敗。 
+
+
+| 檢查根磁碟空間 | 節點 | 驗證根檔案系統是否有足夠的可用空間來執行升級。 
+
+
+| 檢查變數日誌磁碟空間 | 節點 | 確認 `/var/log`空閒空間達到一定的百分比閾值。如果未達到閾值，檢查程序將輪換並清除較舊的日誌，以使日誌數量低於閾值。如果未能創建足夠的可用空間，則檢查失敗。 
+
+
+| 檢查待處理節點 | 簇 | 驗證叢集中是否存在待處理的節點。 
+|===
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

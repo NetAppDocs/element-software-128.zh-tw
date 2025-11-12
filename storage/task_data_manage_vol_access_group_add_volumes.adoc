@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vol_access_group_add_volumes.html 
+sidebar: sidebar 
+keywords: access group, add volumes to 
+summary: 您可以將磁碟區新增至磁碟區存取群組。每個磁碟區可以屬於多個磁碟區存取群組；您可以在「活動磁碟區」頁面上查看每個磁碟區所屬的群組。 
+---
+= 將磁碟區新增至存取群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將磁碟區新增至磁碟區存取群組。每個磁碟區可以屬於多個磁碟區存取群組；您可以在「活動磁碟區」頁面上查看每個磁碟區所屬的群組。
+
+您也可以使用此程序將磁碟區新增至光纖通道磁碟區存取群組。
+
+. 點選“管理”>“訪問群組”。
+. 按一下要新增磁碟區的存取群組的「操作」圖示。
+. 點選“編輯”按鈕。
+. 在「新增卷」下，從「磁碟區」清單中選擇一個磁碟區。
++
+重複此步驟即可增加音量。
+
+. 點選「儲存變更」。
+

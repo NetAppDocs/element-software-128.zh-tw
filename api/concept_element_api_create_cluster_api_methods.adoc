@@ -1,0 +1,27 @@
+---
+permalink: api/concept_element_api_create_cluster_api_methods.html 
+sidebar: sidebar 
+keywords: API,methods,cluster,create,creation 
+summary: 您可以使用這些 API 方法建立儲存叢集。所有這些方法都需要在單一節點上針對 API 端點使用。 
+---
+= 叢集建立 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用這些 API 方法建立儲存叢集。所有這些方法都需要在單一節點上針對 API 端點使用。
+
+* xref:reference_element_api_checkproposedcluster.adoc[檢查擬議集群]
+* xref:reference_element_api_createcluster.adoc[建立集群]
+* xref:reference_element_api_getbootstrapconfig.adoc[取得引導配置]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

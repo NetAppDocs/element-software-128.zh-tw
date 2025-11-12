@@ -1,0 +1,36 @@
+---
+permalink: storage/task_data_manage_vvol_create_a_storage_container.html 
+sidebar: sidebar 
+keywords: storage container, create 
+summary: 您可以在 Element UI 中建立儲存容器，並在 vCenter 中發現它們。要開始配置 VVol 支援的虛擬機，您必須至少建立一個儲存容器。 
+---
+= 建立一個儲存容器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在 Element UI 中建立儲存容器，並在 vCenter 中發現它們。要開始配置 VVol 支援的虛擬機，您必須至少建立一個儲存容器。
+
+您已在叢集的 Element UI 中啟用 VVols 功能。
+
+. 選擇 *VVols* > *儲存容器*。
+. 點擊「建立儲存容器」按鈕。
+. 在「建立新儲存容器」對話方塊中輸入儲存容器資訊：
++
+.. 請輸入儲存容器的名稱。
+.. 配置 CHAP 的發起方金鑰和目標金鑰。
++
+
+TIP: 將 CHAP 設定欄位留空以自動產生密鑰。
+
+.. 點擊「建立儲存容器」按鈕。
+
+
+. 確認新儲存容器出現在「儲存容器」子選項卡的清單中。
++
+
+NOTE: 由於NetApp Element帳戶 ID 會自動建立並指派給儲存容器，因此無需手動建立帳戶。
+
+

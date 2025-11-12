@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_enableidpauthentication.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,enable 
+summary: '您可以使用 EnableIdpAuthentication 方法為叢集啟用對使用第三方身分提供者進行驗證的支援。啟用 IdP 身份驗證後，LDAP 和集群管理員將無法再透過受支援的 UI 存取集群，並且任何活動的已驗證會話都將失效/斷開連接。只有透過第三方身分提供者 (IdP) 認證的使用者才能透過支援的使用者介面存取叢集。' 
+---
+= 啟用身份提供者身份驗證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableIdpAuthentication`啟用對叢集使用第三方身分提供者進行身份驗證的支援的方法。啟用 IdP 身份驗證後，LDAP 和集群管理員將無法再透過受支援的 UI 存取集群，並且任何活動的已驗證會話都將失效/斷開連接。只有透過第三方身分提供者 (IdP) 認證的使用者才能透過支援的使用者介面存取叢集。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+idp配置ID
+ a| 
+由第三方身分提供者配置的 UUID。如果只有一個身分提供者配置，則預設啟用該配置。如果只有一個 IdpConfiguration，則無需提供 idpConfigurationID 參數。
+ a| 
+唯一識別符
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "EnableIdpAuthentication",
+  "params": {
+    "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+  }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+"result": {}
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

@@ -1,0 +1,24 @@
+---
+permalink: storage/concept_prereq_networking.html 
+sidebar: sidebar 
+keywords: 'network setup, setup network, switch requirements, port requirements, network," "networking," "set up network," "prerequisites," "requirements' 
+summary: SolidFire系統的網路配置包括交換器和連接埠需求。這些功能的具體實現取決於您的系統。 
+---
+= 聯網
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire系統的網路配置包括交換器和連接埠需求。這些功能的具體實現取決於您的系統。
+
+
+
+== 更多資訊
+
+* link:../storage/concept_prereq_switch_configuration_for_solidfire_clusters.html["執行 Element 軟體的叢集的交換器配置"]
+* link:../storage/reference_prereq_network_port_requirements.html["網路連接埠要求"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

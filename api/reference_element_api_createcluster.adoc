@@ -1,0 +1,222 @@
+---
+permalink: api/reference_element_api_createcluster.html 
+sidebar: sidebar 
+keywords: CreateCluster,cluster,create,creating,initialize,initializing 
+summary: '您可以使用 CreateCluster 方法初始化叢集中擁有“mvip”和“svip”位址的節點。每個新叢集都使用叢集中第一個節點的管理 IP (MIP) 進行初始化。此方法還會自動將所有正在配置的節點新增至叢集。每次初始化新叢集時，只需使用此方法一次即可。' 
+---
+= 建立集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreateCluster`用於初始化叢集中擁有“mvip”和“svip”位址的節點的方法。每個新叢集都使用叢集中第一個節點的管理 IP（MIP）進行初始化。此方法還會自動將所有正在配置的節點新增至叢集。每次初始化新叢集時，只需使用此方法一次即可。
+
+
+NOTE: 登入叢集的主節點並執行以下命令後：xref:reference_element_api_getbootstrapconfig.adoc[取得引導配置]若要取得要包含在叢集中的其餘節點的 IP 位址，可以對叢集的主節點執行 CreateCluster 方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+接受最終用戶許可協議
+ a| 
+建立此叢集時，請表示您接受最終使用者授權協議。若要接受最終使用者許可協議，請將此參數設為 true。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+啟用靜態軟體加密
+ a| 
+啟用此參數可對靜態資料使用軟體加密。在所有集群上預設值為 false。啟用靜態軟體加密後，無法在叢集上停用該功能。
+ a| 
+布林值
+ a| 
+真的
+ a| 
+不
+
+
+
+ a| 
+貴賓
+ a| 
+叢集在管理網路上的浮動（虛擬）IP 位址。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+節點
+ a| 
+構成叢集的初始節點集的 CIP/SIP 位址。該節點的 IP 位址必須在清單中。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+訂單編號
+ a| 
+字母數字式銷售訂單號碼。軟體平台必需。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+否（基於硬體的平台）
+
+是的（基於軟體的平台）
+
+
+
+ a| 
+密碼
+ a| 
+叢集管理員帳戶的初始密碼。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+序號
+ a| 
+九位字母數字序號。在基於軟體的平台上可能需要。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+否（基於硬體的平台）
+
+是的（基於軟體的平台）
+
+
+
+ a| 
+svip
+ a| 
+儲存（iSCSI）網路上叢集的浮動（虛擬）IP 位址。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+使用者名稱
+ a| 
+集群管理員的使用者名稱。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "CreateCluster",
+  "params": {
+    "acceptEula": true,
+    "mvip": "10.0.3.1",
+    "svip": "10.0.4.1",
+    "username": "Admin1",
+    "password": "9R7ka4rEPa2uREtE",
+    "attributes": {
+      "clusteraccountnumber": "axdf323456"
+    },
+    "nodes": [
+      "10.0.2.1",
+      "10.0.2.2",
+      "10.0.2.3",
+      "10.0.2.4"
+    ]
+  },
+  "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+"id" : 1,
+"result" : {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+[discrete]
+== 查找更多信息
+
+* link:reference_element_api_getbootstrapconfig.html["取得引導配置"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

@@ -1,0 +1,127 @@
+---
+permalink: api/reference_element_api_createidpconfiguration.html 
+sidebar: sidebar 
+keywords: IdP,idp,configuration,create,creating 
+summary: '您可以使用 CreateIpdConfiguration 方法為叢集使用第三方身分提供者 (IdP) 進行驗證建立潛在的信任關係。身分提供者 (IdP) 通訊需要 SAML 服務提供者憑證。此證書是按需生成的，並透過此 API 呼叫返回。' 
+---
+= 建立身分保護配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreateIpdConfiguration`使用第三方身分提供者 (IdP) 為叢集建立潛在的身分驗證信任關係的方法。身分提供者 (IdP) 通訊需要 SAML 服務提供者憑證。此證書是按需生成的，並透過此 API 呼叫返回。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+idpMetadata
+ a| 
+要儲存的身分提供者元資料。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+idpName
+ a| 
+用於識別 SAML 2.0 單一登入的身分提供者的名稱。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+idp配置訊息
+ a| 
+第三方身分提供者 (IdP) 配置資訊。
+ a| 
+link:reference_element_api_idpconfiginfo.html["idp配置訊息"]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "CreateIdpConfiguration",
+    "params": {
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+             <EntityDescriptor
+               xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"
+               xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"
+               xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"
+               xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"
+               ...</Organization>
+             </EntityDescriptor>",
+        "idpName": "https://provider.name.url.com"
+    },
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": false,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ... </Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MIID...SlBHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

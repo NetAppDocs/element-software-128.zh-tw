@@ -1,0 +1,20 @@
+---
+permalink: storage/task_data_protection_delete_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, delete 
+summary: 您可以刪除快照計劃。刪除排程任務後，將不會執行任何未來的計劃快照。排程任務所建立的所有快照都會保留在儲存系統中。 
+---
+= 刪除快照計劃
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以刪除快照計劃。刪除排程任務後，將不會執行任何未來的計劃快照。排程任務所建立的所有快照都會保留在儲存系統中。
+
+. 點選“資料保護”>“日程安排”。
+. 點擊要刪除的日程表旁邊的「操作」圖示。
+. 在出現的選單中，按一下「刪除」。
+. 確認操作。
+

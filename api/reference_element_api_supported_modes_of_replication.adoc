@@ -1,0 +1,19 @@
+---
+permalink: api/reference_element_api_supported_modes_of_replication.html 
+sidebar: sidebar 
+keywords: supported,replication,modes,clusters,paired,pair,pairs 
+summary: 配對集群支援以下幾種複製模式： 
+---
+= 支援的配對集群複製模式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+配對集群支援以下幾種複製模式：
+
+* 非同步資料複製：傳送到複製目標磁碟區的資料是非同步傳送的。系統在寫入資料之前不會等待發送確認訊息。
+* 資料同步複製：傳送到複製目標磁碟區的資料是同步發送的。當主機傳送的 I/O 操作得到系統確認後，系統會將確認訊息傳回主機，並將資料傳送至複製目標磁碟區。
+* 僅快照資料複製：僅將磁碟區快照複製到目標叢集。
+

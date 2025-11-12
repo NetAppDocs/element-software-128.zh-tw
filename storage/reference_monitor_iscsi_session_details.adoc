@@ -1,0 +1,66 @@
+---
+permalink: storage/reference_monitor_iscsi_session_details.html 
+sidebar: sidebar 
+keywords: iscsi sessions, monitor 
+summary: 您可以查看連接到叢集的 iSCSI 會話的資訊。 
+---
+= iSCSI 會話詳情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看連接到叢集的 iSCSI 會話的資訊。
+
+以下列表描述了您可以找到的有關 iSCSI 會話的資訊：
+
+* *節點*
++
+託管該卷主元資料分區的節點。
+
+* *帳戶*
++
+擁有該磁碟區的帳戶名稱。如果值為空，則顯示短橫線（-）。
+
+* *體積*
++
+節點上識別的磁碟區名稱。
+
+* 卷號
++
+與目標 IQN 關聯的磁碟區的 ID。
+
+* *發起方 ID*
++
+系統產生的發起者 ID。
+
+* *發起者別名*
++
+發起者的一個可選名稱，以便在長列表中更容易找到發起者。
+
+* *發起方IP*
++
+發起會話的端點的 IP 位址。
+
+* *發起人 IQN*
++
+發起會話的端點的 IQN。
+
+* *目標IP位址*
++
+卷所在的節點的 IP 位址。
+
+* *目標IQN*
++
+該體積的IQN。
+
+* *CHAP*
++
+iSCSI 會話的 CHAP 演算法。如果未使用 CHAP 演算法，則會顯示短橫線 (-)。從 Element 12.8 版本開始可用。
+
+* 創建於*
++
+會議成立日期。
+
+

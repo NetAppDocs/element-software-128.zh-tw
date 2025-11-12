@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: upgrade/concept_element_upgrade_overview.html 
+summary: 部署後，您可以透過升級所有NetApp儲存元件來保持SolidFire Element 儲存系統的最新狀態。 
+keywords: netapp, solidfire upgrade, vcp upgrade, element upgrade, vsphere upgrade 
+---
+= 升級順序概述
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+部署後，您可以透過依序升級所有NetApp儲存元件來保持SolidFire Element 儲存系統的最新狀態。
+
+這些元件包括管理服務、 NetApp Hybrid Cloud Control、Element 軟體、管理節點，以及（取決於您的安裝情況）Element vCenter Server 外掛程式。
+
+[NOTE]
+====
+* 從 2023 年 11 月開始，您將無法使用NetApp Hybrid Cloud Control 或 REST API 啟動元件升級，因為簽署金鑰憑證（私鑰和公鑰）已於 2023 年 11 月 5 日過期。您可以透過以下方式解決此問題：link:task_hcc_upgrade_management_node.html["對管理節點執行就地升級"]在使用NetApp Hybrid Cloud Control 或 REST API 升級管理服務、Element 軟體和儲存韌體之前，請先升級至 12.8 版本。
++
+如果您要部署版本為 12.8 的新管理節點，可以使用NetApp Hybrid Cloud Control 或 REST API，依照清單中所列的順序執行元件升級。<<sys_upgrade,系統升級順序>> 。
+
+* 不支援以下節點。如果您嘗試將這些節點之一升級到不受支援的 Element 版本，您將看到一條錯誤訊息，指出 Element 12.x 不支援該節點：
++
+** 從 Element 12.8、SF4805、SF9605、SF19210 和 SF38410 儲存節點開始。
+** 從 Element 12.7、SF2405 和 SF9608 儲存節點以及 FC0025 和 SF-FCN-01 FC 節點開始。
+
+
+* 從 Element 12.5 開始， NetApp HealthTools 不再支援 Element 軟體升級。如果您執行的是 Element 11.0 或 11.1 版本，則必須先 https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["使用 HealthTools 升級到 Element 12.3"^]然後使用NetApp Hybrid Cloud Control 升級到 Element 12.5 或更新版本。
+
+
+====
+這<<sys_upgrade,系統升級順序>>內容描述了完成SolidFire全快閃儲存系統升級所需的任務。理想情況下，這些程序應作為更大的升級序列的一部分來執行，而不是單獨執行。如果需要進行基於元件的升級或更新，請參閱程式前提條件，以確保解決其他複雜問題。
+
+這link:task_sf_upgrade_all_vsphere.html["vSphere 升級順序"]包含 vCenter Server 的 Element 外掛程式內容描述了重新安裝 vCenter Server 的 Element 外掛程式所需的其他升級前和升級後步驟。
+
+.開始之前
+* 您正在執行管理節點 11.3 或更高版本。新版本的管理節點採用模組化架構，可提供各項獨立服務。
++
+
+TIP: 若要查看版本，請登入您的管理節點，並在登入橫幅中查看 Element 版本號。如果您沒有 11.3 版本，請參閱link:task_hcc_upgrade_management_node.html["升級您的管理節點"]。
+
+* 您的管理服務已升級至至少 2.1.326 版本。
++
+使用NetApp Hybrid Cloud Control 進行升級在早期服務套件版本中不可用。
+
+* 您已確保所有節點上的系統時間已同步，並且已為儲存叢集和節點正確配置 NTP。每個節點都必須在其各自的 Web 使用者介面中設定 DNS 名稱伺服器。(`https://[IP address]:442` ）沒有與時間偏差相關的未解決的集群故障。
+* 您已為您的工作安排了充足的時間。link:task_hcc_upgrade_element_software.html#element-upgrade-time["Element軟體"]和link:task_hcc_upgrade_storage_firmware.html#storage-firmware-upgrade["儲存韌體"]升級。升級到 Element 軟體 12.5 或更高版本時，升級過程時間取決於 Element 軟體版本和韌體更新情況。
+
+
+
+
+== 系統升級序列
+
+您可以使用下列順序將您的NetApp SolidFire全快閃儲存系統升級至 Element 12.5 或更高版本。
+
+.步驟
+. link:task_hcc_upgrade_element_prechecks.html["在升級儲存之前執行 Element 儲存健康檢查"]。
+. link:task_hcc_upgrade_management_node.html["（可選）升級您的管理節點"]。
++
+
+NOTE: 您不再需要升級管理節點作業系統即可升級儲存叢集上的 Element 軟體。如果管理節點版本為 11.3 或更高版本，則只需將管理服務升級至最新版本，即可使用NetApp Hybrid Cloud Control 執行 Element 升級。如果出於其他原因（例如安全性修復）需要升級管理節點作業系統，請依照適用於您場景的管理節點升級程式進行操作。
+
+. link:task_hcc_update_management_services.html["來自混合雲控制的更新管理服務"]。
++
+[IMPORTANT]
+====
+** 管理服務 2.27 套裝組合包含適用於 vCenter Server 5.5 的 Element Plug-in，外掛程式僅與管理節點 12.8 相容。當您更新至管理服務 2.27 時，您必須變更升級順序並在升級至 Element 12.8 之後更新管理服務包，以使管理節點和管理服務之間相容。
+** 如果您要更新至管理服務 2.21.61 到 2.26.40，則必須在升級至 Element 12.8 之前更新管理服務套件。
+
+
+====
++
+
+IMPORTANT: 如果您要將管理服務更新至版本 2.16 或更高版本，並且正在執行管理節點 11.3 到 11.8，則需要在更新管理服務之前增加管理節點 VM 的 RAM。
+
+. link:task_hcc_upgrade_element_software.html["升級您的 Element 軟體和儲存韌體"]。
+. link:task_hcc_upgrade_storage_firmware.html["（可選）僅升級您的 Element 儲存韌體"]。
++
+
+NOTE: 當有新的儲存韌體升級（非主要版本）可用時，您可能會執行此任務。
+
+. link:task_vcp_upgrade_plugin.html["升級 vCenter Server 的 Element 插件"]。
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

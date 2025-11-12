@@ -1,0 +1,42 @@
+---
+permalink: storage/task_system_manage_virtual_edit_a_virtual_network.html 
+sidebar: sidebar 
+keywords: virtual network, edit, ip address block, vlan attributes 
+summary: 您可以變更 VLAN 屬性，例如 VLAN 名稱、子網路遮罩和 IP 位址區塊大小。 VLAN 的 VLAN 標籤和 SVIP 不能修改。對於非 VRF VLAN，網關屬性不是有效參數。 
+---
+= 編輯虛擬網絡
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以變更 VLAN 屬性，例如 VLAN 名稱、子網路遮罩和 IP 位址區塊大小。 VLAN 的 VLAN 標籤和 SVIP 不能修改。對於非 VRF VLAN，網關屬性不是有效參數。
+
+如果存在任何 iSCSI、遠端複製或其他網路會話，則修改可能會失敗。
+
+管理 VLAN IP 位址範圍大小時，應注意下列限制：
+
+* 您只能從建立 VLAN 時指派的初始 IP 位址範圍內移除 IP 位址。
+* 您可以刪除在初始 IP 位址範圍之後新增的 IP 位址區塊，但不能透過刪除 IP 位址來調整 IP 位址區塊的大小。
+* 當您嘗試從初始 IP 位址範圍或 IP 位址區塊中刪除叢集中節點正在使用的 IP 位址時，操作可能會失敗。
+* 您無法將特定正在使用的 IP 位址重新指派給叢集中的其他節點。
+
+
+您可以使用下列步驟新增 IP 位址區塊：
+
+. 選擇“集群”>“網路”。
+. 選擇要編輯的 VLAN 的「操作」圖示。
+. 選擇*編輯*。
+. 在「編輯 VLAN」對話方塊中，輸入 VLAN 的新屬性。
+. 選擇「新增區塊」為虛擬網路新增非連續的 IP 位址區塊。
+. 選擇“儲存變更”。
+
+
+.故障排除知識庫文章鏈接
+連結到知識庫文章，以取得管理 VLAN IP 位址範圍的故障排除協助。
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Duplicate_IP_warning_after_adding_a_storage_node_in_VLAN_on_Element_cluster["在 Element 叢集的 VLAN 中新增儲存節點後出現重複 IP 警告"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element["如何在 Element 中確定哪些 VLAN IP 位址正在使用以及這些 IP 位址指派給了哪些節點"^]
+

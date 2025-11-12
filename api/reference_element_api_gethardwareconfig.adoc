@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_gethardwareconfig.html 
+sidebar: sidebar 
+keywords: node,hardware,config,configuration,get,getting,gethardwareconfig 
+summary: 您可以使用 GetHardwareConfig 方法取得節點的硬體設定資訊。 
+---
+= 取得硬體配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetHardwareConfig`取得節點硬體配置資訊的方法。此配置數據僅供內部使用。若要取得更有用的即時系統硬體組件清單，請使用 `GetHardwareInfo`改用其他方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+| 硬體配置 | 硬體資訊和目前設定清單。 | JSON 物件 
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetHardwareConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法的響應與以下範例類似。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "hardwareConfig": {
+            "biosRevision": "1.0",
+            "biosVendor": [
+                "NetApp",
+                "SolidFire"
+            ],
+            "biosVersion": "1.1.2",
+            "blockDriveSizeBytes": 300069052416,
+            "blockDrives": [
+                "/dev/slot0",
+                "/dev/slot1",
+                "/dev/slot2",
+                "/dev/slot3",
+                "/dev/slot4",
+                "/dev/slot5",
+                "/dev/slot6",
+                "/dev/slot7",
+                "/dev/slot8",
+                "/dev/slot9"
+            ],
+            "blockServiceFormat": "Standard",
+            "bmcFirmwareRevision": "1.6",
+            "bmcIpmiVersion": "2.0",
+            "chassisType": "R620",
+            "cpuCores": 6,
+            "cpuCoresEnabled": 6,
+            "cpuModel": "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+            "cpuThreads": 12,
+            "driveSizeBytesInternal": 400088457216,
+            "fibreChannelFirmwareRevision": "",
+            "fibreChannelModel": "",
+            "fibreChannelPorts": {},
+            "idracVersion": "1.06.06",
+            "ignoreFirmware": [],
+            "memoryGB": 72,
+            "memoryMhz": 1333,
+            "networkDriver": [
+                "bnx2x"
+            ],
+            "nicPortMap": {
+                "PortA": "eth2",
+                "PortB": "eth3",
+                "PortC": "eth0",
+                "PortD": "eth1"
+            },
+            "nodeType": "SF3010",
+            "numCpu": 2,
+            "numDrives": 10,
+            "numDrivesInternal": 1,
+            "nvramTempMonitorEnable": false,
+            "rootDrive": "/dev/sdimm0",
+            "scsiBusExternalDriver": "mpt3sas",
+            "scsiBusInternalDriver": "ahci",
+            "sliceDriveSizeBytes": 299988156416,
+            "sliceDrives": [
+                "/dev/sdimm0p4"
+            ],
+            "slotOffset": 0,
+            "solidfireDefaults": {
+                "bufferCacheGB": 12,
+                "configuredIops": 50000,
+                "cpuDmaLatency": -1,
+                "driveWriteThroughputMBPerSleep": 10,
+                "maxDriveWriteThroughputMBPerSec": 175,
+                "maxIncomingSliceSyncs": 10,
+                "postCallbackThreadCount": 8,
+                "sCacheFileCapacity": 100000000,
+                "sliceFileLogFileCapacity": 5000000000
+            }
+        }
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

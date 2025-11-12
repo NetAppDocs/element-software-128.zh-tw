@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html 
+sidebar: sidebar 
+keywords: volumes, fc, luns, access group, assign 
+summary: 您可以變更磁碟區存取群組中光纖通道磁碟區的 LUN 分配。建立磁碟區存取群組時，也可以進行光纖通道磁碟區 LUN 分配。 
+---
+= 將 LUN 分配給光纖通道卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以變更磁碟區存取群組中光纖通道磁碟區的 LUN 分配。建立磁碟區存取群組時，也可以進行光纖通道磁碟區 LUN 分配。
+
+分配新的光纖通道 LUN 是一項進階功能，可能會對連接的主機產生未知後果。例如，主機可能不會自動發現新的 LUN ID，主機可能需要重新掃描才能發現新的 LUN ID。
+
+. 選擇“管理”>“訪問群組”。
+. 點選要編輯的訪問群組的「操作」圖示。
+. 在出現的選單中，選擇**編輯**。
+. 在「編輯磁碟區存取群組」對話方塊的「指派 LUN ID」下，按一下「LUN 指派」清單上的箭頭。
+. 對於清單中要指派 LUN 的每個卷，請在對應的 *LUN* 欄位中輸入新值。
+. 點選「儲存變更」。
+

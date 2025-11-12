@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getnodestats.html 
+sidebar: sidebar 
+keywords: node,get,getting,stats,getnodestats 
+summary: 您可以使用 GetNodeStats 方法檢索單一節點的進階活動測量值。 
+---
+= 取得節點統計資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetNodeStats`取得單一節點的高階活動測量值的方法。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+節點ID
+ a| 
+指定要傳回統計資訊的節點的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+節點統計
+ a| 
+節點活動資訊。
+ a| 
+xref:reference_element_api_nodestats.adoc[節點統計]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetNodeStats",
+   "params": {
+     "nodeID": 5
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+     "nodeStats": {
+       "cBytesIn": 1579657943924,
+       "cBytesOut": 1683056745816,
+       "count": 119529,
+       "cpu": 0,
+       "cpuTotal": 56289,
+       "mBytesIn": 475476878,
+       "mBytesOut": 269270423,
+       "networkUtilizationCluster": 0,
+       "networkUtilizationStorage": 0,
+       "nodeHeat": {
+         "primaryTotalHeat": 0.00098,
+         "recentPrimaryTotalHeat": 0.00099,
+         "recentTotalHeat": 0.00099,
+         "totalHeat": 0.00098
+       },
+       "readLatencyUSecTotal": 10125300382,
+       "readOps": 15640075,
+       "sBytesIn": 1579657943924,
+       "sBytesOut": 1683056745816,
+       "ssLoadHistogram": {
+         "Bucket0": 4873,
+         "Bucket1To19": 6301620,
+         "Bucket20To39": 396452,
+         "Bucket40To59": 142,
+         "Bucket60To79": 0,
+         "Bucket80To100": 0
+       },
+       "timestamp": "2024-03-04T20:13:22.105428Z",
+       "usedMemory": 106335510528,
+       "writeLatencyUSecTotal": 7314512535,
+       "writeOps": 59154830
+     }
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

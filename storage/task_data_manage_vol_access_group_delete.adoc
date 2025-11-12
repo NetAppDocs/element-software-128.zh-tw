@@ -1,0 +1,21 @@
+---
+permalink: storage/task_data_manage_vol_access_group_delete.html 
+sidebar: sidebar 
+keywords: access group, delete 
+summary: 不再需要存取群組時，您可以將其刪除。在刪除磁碟區存取群組之前，無需從該磁碟區存取群組中刪除啟動器 ID 和磁碟區 ID。刪除存取群組後，該群組對磁碟區的存取權限將停止。 
+---
+= 刪除訪問群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+不再需要存取群組時，您可以將其刪除。在刪除磁碟區存取群組之前，無需從該磁碟區存取群組中刪除啟動器 ID 和磁碟區 ID。刪除存取群組後，該群組對磁碟區的存取權限將停止。
+
+. 點選“管理”>“訪問群組”。
+. 點選要刪除的訪問群組的「操作」圖示。
+. 在出現的選單中，按一下「刪除」。
+. 若要同時刪除與此存取群組關聯的啟動程序，請勾選「刪除此存取群組中的發起程序」複選框。
+. 確認操作。
+

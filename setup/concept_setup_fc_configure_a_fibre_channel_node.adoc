@@ -1,0 +1,38 @@
+---
+permalink: setup/concept_setup_fc_configure_a_fibre_channel_node.html 
+sidebar: sidebar 
+keywords:  
+summary: 光纖通道節點可讓您將叢集連接到光纖通道網路結構。光纖通道節點成對添加，並以主動-主動模式運作（所有節點都主動處理叢集的流量）。運行 Element 軟體版本 9.0 及更高版本的叢集最多支援四個節點；運行先前版本的叢集最多支援兩個節點。 
+---
+= 配置光纖通道節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+光纖通道節點可讓您將叢集連接到光纖通道網路結構。光纖通道節點成對添加，並以主動-主動模式運作（所有節點都主動處理叢集的流量）。運行 Element 軟體版本 9.0 及更高版本的叢集最多支援四個節點；運行先前版本的叢集最多支援兩個節點。
+
+在配置光纖通道節點之前，必須確保滿足以下條件：
+
+* 至少有兩個光纖通道節點連接到光纖通道交換器。
+* 所有SolidFire光纖通道連接埠都應連接到您的光纖通道網路。四個SolidFire Bond10G 網路連線應該在交換器層級連接成一個 LACP 綁定群組。這將使光纖通道系統發揮最佳整體性能。
+* 審查並驗證本文（NetApp知識庫文章）中包含的所有光纖通道叢集最佳實務。
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/SolidFire_FC_cluster_best_practice["SolidFire FC 叢集最佳實踐"]
+
+
+
+光纖通道節點和儲存節點的網路和叢集配置步驟相同。
+
+當您使用光纖通道節點和SolidFire儲存節點建立新叢集時，節點的全球連接埠名稱 (WWPN) 位址可在 Element UI 中找到。您可以使用 WWPN 位址對光纖通道交換器進行區域劃分。
+
+當您建立包含節點的新叢集時，WWPN 會在系統中註冊。在 Element UI 中，您可以從「叢集」標籤存取的「FC 連接埠」標籤的「WWPN」欄位中找到 WWPN 位址。
+
+
+
+== 查找更多信息
+
+xref:task_setup_fc_add_fibre_channel_nodes_to_a_cluster.adoc[將光纖通道節點加入到集群]
+
+xref:task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.adoc[建立包含光纖通道節點的新集群]

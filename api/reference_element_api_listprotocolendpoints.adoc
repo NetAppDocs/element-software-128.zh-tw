@@ -1,0 +1,122 @@
+---
+permalink: api/reference_element_api_listprotocolendpoints.html 
+sidebar: sidebar 
+keywords: protocol,endpoints,endpoint,list,listing,listprotocolendpoints 
+summary: 您可以使用 ListProtocolEndpoints 方法檢索叢集中所有協定端點的資訊。協定端點控制對其關聯的虛擬磁碟區儲存容器的存取。 
+---
+= 列出協定端點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListProtocolEndpoints`用於檢索叢集中所有協定端點資訊的方法。協定端點控制對其關聯的虛擬磁碟區儲存容器的存取。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+協定端點 ID
+ a| 
+要檢索資訊的協定端點 ID 清單。如果省略此參數，則方法將傳回有關所有協定端點的資訊。
+ a| 
+協定端點 ID UUID 數組
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+協定端點
+ a| 
+包含系統中每個協定端點資訊的物件清單。
+ a| 
+xref:reference_element_api_protocolendpoint.adoc[協定端點]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "ListProtocolEndpoints",
+  "params": {}
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "protocolEndpoints": [
+      {
+        "primaryProviderID": 1,
+        "protocolEndpointID": "1387e257-d2e3-4446-be6d-39db71583e7b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000016970687200000000",
+        "secondaryProviderID": 2
+      },
+      {
+        "primaryProviderID": 2,
+        "protocolEndpointID": "1f16ed86-3f31-4c76-b004-a1251187700b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000026970687200000000",
+        "secondaryProviderID": 3
+      },
+      {
+        "primaryProviderID": 4,
+        "protocolEndpointID": "c6458dfe-9803-4350-bb4e-68a3feb7e830",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000046970687200000000",
+        "secondaryProviderID": 1
+      },
+      {
+        "primaryProviderID": 3,
+        "protocolEndpointID": "f3e7911d-0e86-4776-97db-7468c272213f",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000036970687200000000",
+        "secondaryProviderID": 4
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

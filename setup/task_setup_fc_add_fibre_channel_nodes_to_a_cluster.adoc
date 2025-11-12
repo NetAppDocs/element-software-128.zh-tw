@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 當需要更多儲存空間或在建立叢集期間，您可以為叢集新增光纖通道節點。光纖通道節點在首次上電時需要初始配置。節點配置完成後，它將出現在待處理節點清單中，您可以將其新增至叢集。 
+---
+= 將光纖通道節點加入到集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當需要更多儲存空間或在建立叢集期間，您可以為叢集新增光纖通道節點。光纖通道節點在首次上電時需要初始配置。節點配置完成後，它將出現在待處理節點清單中，您可以將其新增至叢集。
+
+叢集中每個光纖通道節點上的軟體版本必須相容。當您為叢集新增光纖通道節點時，叢集會根據需要在新節點上安裝叢集版本的 Element。
+
+.步驟
+. 選擇“集群”>“節點”。
+. 點選「待處理」查看待處理節點清單。
+. 執行下列操作之一：
++
+** 若要新增單一節點，請按一下要新增的節點旁的「操作」圖示。
+** 若要新增多個節點，請選取要新增的節點的複選框，然後選擇「批次操作」。
++
+
+NOTE: 如果您新增的節點的 Element 版本與叢集上執行的 Element 版本不同，則叢集會非同步地將該節點更新為叢集主節點上執行的 Element 版本。節點更新後，會自動加入到叢集中。在此非同步過程中，節點將處於 pendingActive 狀態。
+
+
+
+. 按一下“*新增*”。
++
+此節點出現在活動節點清單中。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

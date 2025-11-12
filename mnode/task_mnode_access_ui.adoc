@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_access_ui.html 
+summary: 您可以存取管理使用者介面或 REST API 使用者介面。 
+keywords: netapp, mnode, management node, api, Element 
+---
+= 存取管理節點
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+從NetApp Element軟體版本 11.3 開始，管理節點包含兩個 UI：一個用於管理基於 REST 的服務的 UI，以及一個用於管理網路和叢集設定以及作業系統測試和實用程式的節點 UI。
+
+對於執行 Element 軟體版本 11.3 或更高版本的集群，您可以使用以下兩個介面之一：
+
+* 透過使用管理節點使用者介面(`https:// [mNode IP}:442`您可以變更網路和叢集設定、執行系統測試或使用系統實用程式。
+* 透過使用內建的 REST API 使用者介面(`https://[mNode IP}/mnode`），您可以執行或了解與管理節點服務相關的 API，包括代理伺服器配置、服務等級更新或資產管理。
+
+
+
+
+== 存取每個節點的管理節點使用者介面
+
+透過每個節點的使用者介面，您可以存取網路和叢集設置，並使用系統測試和實用程式。
+
+.步驟
+. 輸入管理節點 IP 位址，後面跟著 :442，即可存取管理節點的單節點使用者介面。
++
+[listing]
+----
+https://[IP address]:442
+----
++
+image::mnode_per_node_442_ui.png[每個節點的管理節點使用者介面]
+
+. 出現提示時，請輸入管理節點使用者名稱和密碼。
+
+
+
+
+== 存取管理節點 REST API 使用者介面
+
+透過 REST API UI，您可以存取與服務相關的 API 選單，這些 API 控制管理節點上的管理服務。
+
+.步驟
+. 若要存取管理服務的 REST API 使用者介面，請輸入管理節點 IP 位址，後面接著 `/mnode`：
++
+[listing]
+----
+https://[IP address]/mnode
+----
++
+image::mnode_swagger_ui.png[管理節點 REST API UI]
+
+. 選擇「授權」或任何鎖形圖標，然後輸入叢集管理員憑證以取得使用 API 的權限。
+
+
+[discrete]
+== 了解更多信息
+
+* link:task_mnode_enable_activeIQ.html["啟用Active IQ和NetApp監控"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

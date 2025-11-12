@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_addkeyservertoproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,assigning to key provider,assign,addkeyservertoproviderkmip 
+summary: '您可以使用 AddKeyServerToProviderKmip 方法將金鑰管理互通協定 (KMIP) 金鑰伺服器指派給指定的金鑰提供者。在任務分配過程中，會聯絡伺服器以驗證其功能。如果指定的金鑰伺服器已指派給指定的金鑰提供程序，則不執行任何操作，也不傳回任何錯誤。您可以使用 RemoveKeyServerFromProviderKmip 方法移除該分配。' 
+---
+= AddKeyServerToProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddKeyServerToProviderKmip`將金鑰管理互通協定 (KMIP) 金鑰伺服器指派給指定金鑰提供者的方法。在任務分配過程中，會聯絡伺服器以驗證其功能。如果指定的金鑰伺服器已指派給指定的金鑰提供程序，則不執行任何操作，也不傳回任何錯誤。您可以使用以下方法刪除分配： `RemoveKeyServerFromProviderKmip`方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+密鑰提供者ID
+ a| 
+要將密鑰伺服器指派給的密鑰提供者的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+密鑰伺服器ID
+ a| 
+要分配的密鑰伺服器的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。只要沒有回傳錯誤，該任務就被視為成功。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "AddKeyServerToProviderKmip",
+  "params": {
+    "keyProviderID": 1,
+    "keyServerID": 15
+    },
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+11.7

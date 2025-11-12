@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_listsnapmirrorendpoints.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoint,endpoints,list,listing,listsnapmirrorendpoints 
+summary: Element 軟體 Web UI 使用 ListSnapMirrorEndpoints 方法列出 Element 儲存叢集正在與之通訊的所有SnapMirror端點。 
+---
+= 列出快照鏡像端點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體的Web使用者介面使用 `ListSnapMirrorEndpoints`列出 Element 儲存叢集正在與之通訊的所有SnapMirror端點的方法。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointIDs
+ a| 
+僅傳回與這些 ID 關聯的物件。如果沒有提供 ID 或陣列為空，則此方法傳回所有SnapMirror端點 ID。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpoints
+ a| 
+現有SnapMirror端點清單。
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]大批
+
+|===
+
+
+== 自版本以來的新版本
+
+10.0

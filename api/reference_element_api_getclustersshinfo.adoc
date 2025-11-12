@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_getclustersshinfo.html 
+sidebar: sidebar 
+keywords: ssh,service,status,get,getting,cluster,info,getclustersshinfo 
+summary: 您可以使用 GetClusterSshInfo 方法查詢整個儲存叢集的 SSH 服務狀態。 
+---
+= 獲取集群 SSH 信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterSshInfo`查詢整個儲存叢集的 SSH 服務狀態的方法。
+
+
+
+== 範圍
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+結果
+ a| 
+一個 JSON 對象，其中包含儲存叢集的 SSH 服務狀態、SSH 停用剩餘時間以及每個節點的 SSH 服務狀態。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetClusterSshInfo",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : {
+    “enabled”: “true”,
+    “timeRemaining”: "00:43:21",
+    "nodes": [
+    {
+        "nodeID": 1,
+        "enabled": true
+    },
+    {
+        "nodeID": 2,
+        "enabled": true
+    },
+    {
+        "nodeID": 3,
+        "enabled": false
+    },
+    {
+        "nodeID": 4,
+        "enabled": false
+    } ]
+			}
+	}
+----
+
+
+== 自版本以來的新版本
+
+10.3

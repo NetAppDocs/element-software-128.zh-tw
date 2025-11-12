@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_roll_back_a_volume_to_a_snapshot.html 
+sidebar: sidebar 
+keywords: volume to snapshot roll back, snapshot roll back, revert changes 
+summary: 您可以隨時將磁碟區回滾到先前的快照。這將撤銷自建立快照以來對磁碟區所做的任何變更。 
+---
+= 將磁碟區回滾到快照
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以隨時將磁碟區回滾到先前的快照。這將撤銷自建立快照以來對磁碟區所做的任何變更。
+
+.步驟
+. 點選「資料保護」>「快照」。
+. 按一下要用於磁碟區回滾的快照的「動作」圖示。
+. 在出現的選單中，選擇「將捲回快照」。
+. *可選：* 在回滾到快照之前儲存磁碟區的目前狀態：
++
+.. 在「回滾到快照」對話方塊中，選擇「將磁碟區的目前狀態儲存為快照」。
+.. 請輸入新快照的名稱。
+
+
+. 點選“回滾快照”。
+

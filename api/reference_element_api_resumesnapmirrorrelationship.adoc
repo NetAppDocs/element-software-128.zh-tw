@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_resumesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: ResumeSnapMirrorRelationship,resume,SnapMirror,relationship,resuming 
+summary: Element 軟體 Web UI 使用 ResumeSnapMirrorRelationship 方法，為已靜止的SnapMirror關係啟用未來的傳輸。 
+---
+= ResumeSnapMirror關係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體的Web使用者介面使用 `ResumeSnapMirrorRelationship`為已停止的SnapMirror關係啟用未來傳輸的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+與 Element 儲存叢集通訊的遠端ONTAP儲存系統的端點 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+目的地捲
+ a| 
+SnapMirror關係中的目標磁碟區。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirror關係
+ a| 
+包含有關已恢復的SnapMirror關係的資訊的物件。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror關係]
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

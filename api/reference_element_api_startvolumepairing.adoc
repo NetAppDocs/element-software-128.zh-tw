@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_startvolumepairing.html 
+sidebar: sidebar 
+keywords: volume,pair,pairing,start,starting,startvolumepairing 
+summary: 您可以使用 StartVolumePairing 方法從磁碟區建立編碼金鑰，該金鑰用於與另一個磁碟區配對。此方法建立的密鑰用於 CompleteVolumePairing 方法中，以建立磁碟區配對。 
+---
+= 開始音量配對
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `StartVolumePairing`用於從磁碟區建立編碼金鑰的方法，該金鑰用於與另一個磁碟區配對。此方法產生的密鑰用於 `CompleteVolumePairing`建立體積配對的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+模式
+ a| 
+開始配對過程所使用的音量模式。只有當音量為來源音量時，才能設定此模式。可能的值：
+
+* `Async`寫入操作在本地完成時會被確認。集群不會等待寫入作業複製到目標集群。  （如果未指定模式參數，則使用預設值。）
+* `Sync`：來源確認資料在本機和遠端叢集上儲存時寫入成功。
+* `SnapshotsOnly`只有在來源叢集上建立的快照才會被複製。來自來源磁碟區的活動寫入不會被複製。
+
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+卷 ID
+ a| 
+要開始配對過程的磁碟區的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+音量配對鍵
+ a| 
+被以下人員使用的字串：xref:reference_element_api_completevolumepairing.adoc[完全捲配對] API 方法。
+ a| 
+細繩
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "StartVolumePairing",
+   "params": {
+         "mode": "Async",
+	 "volumeID" : 14
+      },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "volumePairingKey" : "7b226d766970223a223139322e3136382e3133392e313232222c22766f6c756d654944223a312c22766f6c756d654e616d65223a2254657374222c22766f6c756d655061697255554944223a2236393632346663622d323032652d343332352d613536392d656339633635356337623561227d"
+      }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_completevolumepairing.adoc[完全捲配對]

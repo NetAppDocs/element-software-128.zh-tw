@@ -1,0 +1,31 @@
+---
+permalink: setup/task_setup_cluster_with_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords: element, solidfire, fibre channel, setup, node, cluster 
+summary: 了解搭建包含儲存節點的叢集的步驟。 
+---
+= 使用光纖通道節點搭建集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在機架單元中安裝並連接光纖通道節點並通電後，您可以使用 Element 軟體設定一個包含光纖通道節點的叢集並對其進行管理。然後，您可以安裝和設定儲存系統中的其他元件。
+
+.步驟
+. link:../setup/concept_setup_fc_configure_a_fibre_channel_node.html["配置光纖通道節點"]
+. link:../setup/task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.html["建立包含光纖通道節點的新集群"]
+. link:../setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html["將光纖通道節點加入到集群"]
+. link:../setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html["為光纖通道節點設定區域"]
+. link:../setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html["為光纖通道用戶端建立磁碟區存取群組"]
+. link:../setup/task_setup_determine_which_solidfire_components_to_install.html["確定要安裝哪些SolidFire組件"]
+. link:../setup/task_setup_gh_redirect_set_up_a_management_node.html["設定管理節點"]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

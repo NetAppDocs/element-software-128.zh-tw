@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_edit_vcenter_assets.html 
+summary: 您可以使用 REST API UI 編輯 vCenter 管理節點控制器。 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= 查看或編輯現有控制器資產
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 REST API 在管理節點設定中檢視和編輯現有 VMware vCenter 控制器的資訊。控制器是註冊到NetApp SolidFire安裝管理節點的 VMware vCenter 執行個體。
+
+.開始之前
+* 請確保您的叢集版本運行的是NetApp Element軟體 11.3 或更高版本。
+* 請確保您已部署執行 11.3 或更高版本的管理節點。
+
+
+
+
+== 存取管理服務 REST API
+
+.步驟
+. 輸入管理節點 IP 位址，然後輸入以下內容，即可存取管理服務的 REST API 使用者介面： `/vcenter/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/vcenter/1/
+----
+. 選擇“授權”或任意鎖形圖標，然後完成以下步驟：
++
+.. 請輸入叢集使用者名稱和密碼。
+.. 請輸入客戶端 ID `mnode-client` 。
+.. 選擇“授權”以開始會話。
+.. 關閉視窗。
+
+
+
+
+
+
+== 查看已儲存的關於現有控制器的信息
+
+您可以使用 REST API 列出已註冊到管理節點的現有 vCenter 控制器，並查看有關它們的儲存資訊。
+
+.步驟
+. 選擇 *GET /compute/controllers*。
+. 選擇*試用*。
+. 選擇*執行*。
++
+API 傳回所有已知 vCenter 控制器的列表，以及用於與每個控制器通訊的 IP 位址、控制器 ID、主機名稱和使用者 ID。
+
+. 如果要取得特定控制器的連線狀態，請從下列位置複製控制器 ID： `id`將該控制器欄位複製到剪貼簿並查看<<查看現有控制器的狀態>>。
+
+
+
+
+== 查看現有控制器的狀態
+
+您可以查看已註冊到管理節點的任何現有 vCenter 控制器的狀態。  API 傳回一個狀態，指示NetApp Hybrid Cloud Control 是否可以連接到 vCenter 控制器，以及該狀態的原因。
+
+.步驟
+. 選擇 *GET /compute/controllers/{controller_id}/status*。
+. 選擇*試用*。
+. 輸入您之前複製的控制器 ID。 `controller_id`範圍。
+. 選擇*執行*。
++
+API 會傳回此特定 vCenter 控制器的狀態，以及導致該狀態的原因。
+
+
+
+
+
+== 編輯控制器的儲存屬性
+
+您可以編輯已註冊至管理節點的任何現有 vCenter 控制器的已儲存使用者名稱或密碼。您無法編輯現有 vCenter 控制器的已儲存 IP 位址。
+
+.步驟
+. 選擇 *PUT /compute/controllers/{controller_id}*。
+. 輸入 vCenter 控制器的控制器 ID `controller_id`範圍。
+. 選擇*試用*。
+. 變更「請求內文」欄位中的以下任一參數：
++
+|===
+| 範圍 | 類型 | 描述 
+
+
+| `userId` | 細繩 | 變更用於與 vCenter 控制器通訊的使用者 ID（該使用者必須具有管理員權限）。 
+
+
+| `password` | 細繩 | 變更用於與 vCenter 控制器通訊的密碼。 
+|===
+. 選擇*執行*。
++
+API傳回更新後的控制器資訊。
+
+
+
+[discrete]
+== 查找更多信息
+
+* link:task_mnode_add_assets.html["將控制器資產新增至管理節點"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

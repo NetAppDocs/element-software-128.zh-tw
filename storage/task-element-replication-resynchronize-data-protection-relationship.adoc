@@ -1,0 +1,37 @@
+---
+permalink: storage/task-element-replication-resynchronize-data-protection-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, update, replication, relationship, manually 
+summary: 如果因網路錯誤導致更新失敗，您可能需要手動更新複製關係。 
+---
+= 重新同步複製關係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在將目標磁碟區設定為可寫入之後、由於來源磁碟區和目標磁碟區上不存在公開快照副本而導致更新失敗之後，或如果要變更關係的複製策略，則需要重新同步複製關係。
+
+.關於此任務
+雖然重新同步不需要基線傳輸，但可能會很耗時。您可能需要在非尖峰時段執行重新同步操作。
+
+您必須在表單中指定元素來源路徑。 `<hostip:>/lun/<name>`其中“`lun`”是實際的字串“`lun`”， `name`是元素卷的名稱。
+
+.步
+. 重新同步來源磁碟區和目標磁碟區：
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -policy <policy>`
+
++
+有關完整的命令語法，請參閱手冊頁。
+
++
+以下範例重新同步來源磁碟區之間的關係 `0005`IP位址為10.0.0.11，目標磁碟區為 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+

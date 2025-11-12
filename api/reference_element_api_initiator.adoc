@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_initiator.html 
+sidebar: sidebar 
+keywords: object,objects,initiator 
+summary: 發起程序物件包含有關 iSCSI 或光纖通道發起程序的資訊。發起程序物件可以包含 IQN 或 WWPN 識別碼。您可以使用 ListInitiators 方法取得系統上所有已知啟動器的清單。您可以使用啟動器物件透過磁碟區存取群組配置對一組磁碟區的 SCSI 啟動器存取。發起者一次只能加入一個磁碟區存取群組。您可以使用 CreateInitiators 和 ModifyInitiators 方法指定一個或多個 virtualNetworkID，將啟動器存取權限限製到一個或多個 VLAN。如果您不指定任何虛擬網絡，則發起程序可以存取所有網路。 
+---
+= 發起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+發起程序物件包含有關 iSCSI 或光纖通道發起程序的資訊。發起程序物件可以包含 IQN 或 WWPN 識別碼。你可以使用 `ListInitiators`取得系統上所有已知發起者清單的方法。您可以使用啟動器物件透過磁碟區存取群組配置對一組磁碟區的 SCSI 啟動器存取。發起者一次只能加入一個磁碟區存取群組。您可以透過指定一個或多個虛擬網路 ID 來限制發起程序對一個或多個 VLAN 的存取。 `CreateInitiators`和 `ModifyInitiators`方法。如果您不指定任何虛擬網絡，則發起程序可以存取所有網路。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+別名
+ a| 
+（如有）發起者的友善名稱。
+ a| 
+細繩
+
+
+
+ a| 
+屬性
+ a| 
+指派給此發起者的一組 ​​JSON 屬性。如果沒有指派任何屬性，則為空。
+ a| 
+JSON 物件
+
+
+
+ a| 
+chap用戶名
+ a| 
+此發起者的唯一 CHAP 使用者名稱。
+ a| 
+細繩
+
+
+
+ a| 
+發起者ID
+ a| 
+發起者的數字識別碼。
+ a| 
+整數
+
+
+
+ a| 
+發起者名稱
+ a| 
+發起人名稱，採用 IQN 或 WWPN 格式。
+ a| 
+細繩
+
+
+
+ a| 
+發起者金鑰
+ a| 
+用於驗證發起方身分的 CHAP 金鑰。
+ a| 
+細繩
+
+
+
+ a| 
+需要章節
+ a| 
+如果此發起程序需要 CHAP，則為真。
+ a| 
+布林值
+
+
+
+ a| 
+目標金鑰
+ a| 
+用於驗證目標身分的 CHAP 金鑰（在使用相互 CHAP 驗證時）。
+ a| 
+細繩
+
+
+
+ a| 
+虛擬網路 ID
+ a| 
+與此發起程序關聯的虛擬網路識別碼清單。如果定義了一個或多個虛擬網絡，則此發起程序將只能登入指定的虛擬網路。如果沒有定義虛擬網絡，則此發起程序可以登入所有網路。
+ a| 
+整數
+
+
+
+ a| 
+卷訪問群組
+ a| 
+此發起程序所屬的磁碟區存取群組 ID 清單。
+ a| 
+整數數組
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listinitiators.adoc[列表發起者]

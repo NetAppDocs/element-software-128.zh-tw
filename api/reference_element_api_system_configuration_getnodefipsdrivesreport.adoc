@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_system_configuration_getnodefipsdrivesreport.html 
+sidebar: sidebar 
+keywords: individual,fips,feature,support,info,report,get,getting,getnodefipsdrivesreport,drive 
+summary: 您可以使用 GetNodeFipsDrivesReport 方法檢查儲存叢集中單一節點的 FIPS 140-2 磁碟機加密功能狀態。必須針對單一儲存節點運行此方法。 
+---
+= 取得節點Fips驅動器報告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetNodeFipsDrivesReport`檢查儲存叢集中單一節點的 FIPS 140-2 磁碟機加密功能狀態的方法。必須針對單一儲存節點運行此方法。
+
+
+
+== 範圍
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+fipsDrives
+ a| 
+包含此節點對 FIPS 140-2 功能支援狀態的 JSON 物件。可能的值：
+
+* 無：節點不具備 FIPS 功能。
+* 部分：節點具備 FIPS 功能，但節點中的並非所有磁碟機都是 FIPS 磁碟機。
+* 就緒：節點具備 FIPS 功能，且節點中的所有磁碟機都是 FIPS 磁碟機（或沒有磁碟機）。
+
+ a| 
+細繩
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetNodeFipsDrivesReport",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "fipsDrives": "None"
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+11.5

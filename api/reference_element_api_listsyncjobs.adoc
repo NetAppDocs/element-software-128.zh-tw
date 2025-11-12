@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_listsyncjobs.html 
+sidebar: sidebar 
+keywords: sync,synchronization,job,jobs,list,get,listing,getting,listsyncjobs 
+summary: 您可以使用 ListSyncJobs 方法取得有關 Element 儲存叢集上執行的同步作業的資訊。此方法傳回有關切片、複製、區塊和遠端同步作業的資訊。 
+---
+= 清單同步作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListSyncJobs`取得有關 Element 儲存叢集上執行的同步作業的資訊的方法。此方法傳回有關切片、複製、區塊和遠端同步作業的資訊。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+同步作業
+ a| 
+描述系統中目前正在運行的同步進程的物件清單。
+ a| 
+xref:reference_element_api_syncjob.adoc[同步作業]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListSyncJobs",
+   "params": { },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id":1,
+    "result":{
+      "syncJobs":[
+        {
+           "bytesPerSecond":275314.8834458956,
+           "currentBytes":178257920,
+           "dstServiceID":36,
+           "elapsedTime":289.4568382049871,
+           "percentComplete":8.900523560209423,
+           "remainingTime":2962.675921065957,
+           "sliceID":5,
+           "srcServiceID":16,
+           "stage":"whole",
+           "totalBytes":2002780160,
+           "type":"slice"
+       },
+       {
+           "bytesPerSecond":305461.3198607744,
+           "cloneID":1,
+           "currentBytes":81788928,
+           "dstServiceID":16,
+           "dstVolumeID":6,
+           "elapsedTime":291.7847648200743,
+           "nodeID":1,
+           "percentComplete":8.167539267015707,
+           "remainingTime":3280.708270981153,
+           "sliceID":6,
+           "srcServiceID":16,
+           "srcVolumeID":5,
+           "stage":"whole",
+           "totalBytes":1001390080,
+           "type":"clone"
+        },
+        {
+           "blocksPerSecond":0,
+           "branchType": "snapshot",
+           "dstServiceID":8,
+           "dstVolumeID":2,
+           "elapsedTime":0,
+           "percentComplete":0,
+           "remainingTime":0,
+           "sliceID":2,
+           "stage":"metadata",
+           "type":"remote"
+       }
+     ]
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_snapmirrornetworkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorNetworkInterface 
+summary: 'snapMirrorNetworkInterface 物件包含叢集間邏輯介面 (LIF) 的資訊。' 
+---
+= snapMirrorNetworkInterface
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorNetworkInterface 物件包含叢集間邏輯介面 (LIF) 的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+行政狀態
+ a| 
+邏輯介面（LIF）是否已啟用或停用。可能的值：
+
+* 向上
+* 向下
+
+ a| 
+細繩
+
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目標ONTAP系統的 ID。
+ a| 
+整數
+
+
+
+ a| 
+介面名稱
+ a| 
+LIF 的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+網路位址
+ a| 
+LIF的IP位址。
+ a| 
+細繩
+
+
+
+ a| 
+網路遮罩
+ a| 
+LIF 的網路遮罩。
+ a| 
+細繩
+
+
+
+ a| 
+介面角色
+ a| 
+LIF 的作用。可能的值：
+
+* 未定義
+* 簇
+* 數據
+* 節點管理
+* 集群間
+* 叢集管理
+
+ a| 
+細繩
+
+
+
+ a| 
+運作狀態
+ a| 
+LIF 的運作狀態（是否已成功建立連線）。如果發生網路問題導致介面無法正常運作，則此狀態可能與管理狀態不同。可能的值：
+
+* 向上
+* 向下
+
+ a| 
+細繩
+
+
+
+ a| 
+虛擬伺服器名稱
+ a| 
+虛擬伺服器的名稱。
+ a| 
+細繩
+
+|===

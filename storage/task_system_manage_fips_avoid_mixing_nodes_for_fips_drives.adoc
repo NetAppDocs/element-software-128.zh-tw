@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_fips_avoid_mixing_nodes_for_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, nodes, drives, ear 
+summary: 為了啟用 FIPS 驅動器功能，您應該避免將一些節點支援 FIPS 驅動器功能而其他節點不支援。 
+---
+= 避免混合使用 FIPS 磁碟機的節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+為了啟用 FIPS 驅動器功能，您應該避免將一些節點支援 FIPS 驅動器功能而其他節點不支援。
+
+叢集被視為符合 FIPS 標準的驅動器，需符合以下條件：
+
+* 所有硬碟均通過了FIPS認證。
+* 所有節點均為FIPS驅動節點。
+* 已啟用靜態資料加密 (EAR)。
+* FIPS驅動功能已啟用。所有磁碟機和節點都必須具備 FIPS 功能，並且必須啟用靜態加密才能啟用 FIPS 磁碟機功能。
+

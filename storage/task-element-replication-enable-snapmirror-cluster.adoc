@@ -1,0 +1,33 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-cluster.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, cluster 
+summary: 必須先在 Element 叢集上啟用SnapMirror ，然後才能建立複製關係。您只能在 Element 軟體 Web UI 中或使用 API 方法執行此任務。 
+---
+= 在 Element 叢集上啟用SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須先在 Element 叢集上啟用SnapMirror ，然後才能建立複製關係。您只能在 Element 軟體的 Web 使用者介面或使用以下方式執行此任務： link:../api/reference_element_api_enablefeature.html["API 方法"]。
+
+.開始之前
+* Element 叢集必須執行NetApp Element軟體版本 10.1 或更高版本。
+* SnapMirror只能為與NetApp ONTAP磁碟區一起使用的 Element 叢集啟用。
+
+
+.關於此任務
+Element 系統預設禁用SnapMirror。  SnapMirror不會在新安裝或升級過程中自動啟用。
+
+[NOTE]
+====
+SnapMirror一旦啟用，便無法停用。只有將叢集恢復到出廠映像才能停用SnapMirror功能並恢復預設設定。
+
+====
+.步驟
+. 點選“集群”>“設定”。
+. 尋找SnapMirror的叢集特定設定。
+. 點選「啟用SnapMirror」。
+

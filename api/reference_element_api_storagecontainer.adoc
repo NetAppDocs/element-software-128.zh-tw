@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_storagecontainer.html 
+sidebar: sidebar 
+keywords: object,objects,storagecontainer 
+summary: storageContainer 物件包含虛擬磁碟區儲存容器的屬性。您可以使用 ListStorageContainers API 方法檢索叢集中每個儲存容器的此資訊。 
+---
+= 儲存容器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+storageContainer 物件包含虛擬磁碟區儲存容器的屬性。您可以使用以下方法檢索叢集中每個儲存容器的此資訊： `ListStorageContainers` API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+帳戶ID
+ a| 
+與儲存容器關聯的儲存系統帳戶的 ID。
+ a| 
+整數
+
+
+
+ a| 
+發起者金鑰
+ a| 
+與儲存容器關聯的發起方的 CHAP 驗證金鑰。
+ a| 
+細繩
+
+
+
+ a| 
+姓名
+ a| 
+儲存容器的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+協定端點類型
+ a| 
+儲存容器的協定端點類型。  SCSI 是唯一有效值。
+ a| 
+細繩
+
+
+
+ a| 
+地位
+ a| 
+儲存容器的狀態。可能的值：
+
+* 活動狀態：儲存容器正在使用中。
+* 已鎖定：儲存容器已鎖定。
+
+ a| 
+細繩
+
+
+
+ a| 
+儲存容器ID
+ a| 
+儲存容器的唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+目標金鑰
+ a| 
+與儲存容器關聯的目標的 CHAP 認證金鑰。
+ a| 
+細繩
+
+
+
+ a| 
+虛擬磁碟區
+ a| 
+與儲存容器關聯的虛擬磁碟區的 ID 清單。
+ a| 
+UUID 數組
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_liststoragecontainers.adoc[列出儲存容器]

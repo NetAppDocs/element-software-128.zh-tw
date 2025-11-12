@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html 
+sidebar: sidebar 
+keywords:  
+summary: '磁碟區存取組實現了光纖通道用戶端與SolidFire儲存系統上的磁碟區之間的通訊。將光纖通道用戶端發起程序 (WWPN) 對應到磁碟區存取群組中的捲，即可在光纖通道網路和SolidFire磁碟區之間實現安全的資料 I/O。' 
+---
+= 為光纖通道用戶端建立磁碟區存取群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+磁碟區存取組實現了光纖通道用戶端與SolidFire儲存系統上的磁碟區之間的通訊。將光纖通道用戶端發起程序 (WWPN) 對應到磁碟區存取群組中的捲，即可在光纖通道網路和SolidFire磁碟區之間實現安全的資料 I/O。
+
+您也可以將 iSCSI 發起程序新增至磁碟區存取群組；這樣，發起程式就可以存取磁碟區存取群組中的相同磁碟區。
+
+.步驟
+. 點選“管理”>“訪問群組”。
+. 點選「建立訪問群組」。
+. 在「名稱」欄位中輸​​入磁碟區存取群組的名稱。
+. 從「未綁定光纖通道啟動程序」清單中選擇並新增光纖通道發起程序。
++
+
+NOTE: 您可以稍後新增或刪除發起者。
+
+. *可選：*從*啟動器*清單中選擇並新增 iSCSI 啟動器。
+. 若要將磁碟區附加到存取群組，請執行下列步驟：
++
+.. 從「卷」清單中選擇一個磁碟區。
+.. 點選“附加磁碟區”。
+
+
+. 點選「建立訪問群組」。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

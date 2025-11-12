@@ -1,0 +1,35 @@
+---
+permalink: storage/concept_snapmirror_failback_scenarios.html 
+sidebar: sidebar 
+keywords: failback scenarios, snapmirror, dr, disaster recovery 
+summary: SnapMirror災難復原功能透過兩種故障復原場景進行說明。這些假設原有的關係已經破裂。 
+---
+= SnapMirror故障恢復場景
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror災難復原功能透過兩種故障復原場景進行說明。這些假設是原有的關係已經破裂（失敗）。
+
+為便於參考，已列出對應流程中的步驟。
+
+
+NOTE: 在此範例中，R1 = 原始關係，其中執行NetApp Element軟體的叢集是原始來源磁碟區 (Element)，而ONTAP是原始目標磁碟區 (ONTAP)。  R2 和 R3 代表透過反向重新同步操作所建立的反向關係。
+
+下圖顯示了來源磁碟區仍然存在時的故障復原場景：
+
+image::../media/snapmirror_element_failback1.gif[snapmirro 元素故障恢復1]
+
+下圖顯示了來源磁碟區不存在時的故障復原方案：
+
+image::../media/snapmirror_element_failback2.png[snapmirror 元素故障恢復2]
+
+
+
+== 查找更多信息
+
+* xref:task_snapmirror_perform_failback_when_source_volume_exists.adoc[如果來源磁碟區仍然存在，則執行故障復原。]
+* xref:task_snapmirror_performing_failback_when_source_volume_no_longer_exists.adoc[當來源磁碟區不存在時，執行故障復原。]
+

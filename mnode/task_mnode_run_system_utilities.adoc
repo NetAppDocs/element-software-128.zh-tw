@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_run_system_utilities.html 
+summary: 您可以建立或刪除叢集支援包、重置節點配置設定或重新啟動網路。 
+keywords: netapp, Element, management node ui, mnode ui, system utilities 
+---
+= 從管理節點運行系統實用程式
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用管理節點的單節點 UI 來建立或刪除叢集支援包、重設節點配置設定或重新啟動網路。
+
+.步驟
+. 使用管理節點管理員憑證開啟每個節點的管理節點 UI。
+. 選擇“系統實用程式”。
+. 選擇要執行的實用程式對應的按鈕：
++
+.. *控制電源*：重新啟動、斷電或關閉節點。請指定以下任一選項。
++
+
+IMPORTANT: 此操作會導致網路連線暫時中斷。
+
++
+*** *操作*：選項包括 `Restart`和 `Halt`（關機）
+*** *喚醒延遲*：節點重新上線前的任何額外時間。
+
+
+.. *建立叢集支援包*：建立叢集支援包，以協助NetApp支援人員對叢集中的一個或多個節點進行診斷評估。請指定以下選項：
++
+*** *捆綁包名稱*：每個建立的支援捆綁包的唯一名稱。如果沒有提供名稱，則使用“supportbundle”和節點名稱作為檔案名稱。
+*** *Mvip*：叢集的MVIP。從叢集中的所有節點收集資料包。如果未指定 Nodes 參數，則此參數為必填項。
+*** *節點*：從中收集資料包的節點的 IP 位址。使用 Nodes 或 Mvip（但不能同時使用兩者）來指定要從中收集捆綁包的節點。如果未指定 Mvip，則此參數為必填項。
+*** *使用者名稱*：叢集管理員使用者名稱。
+*** *密碼*：叢集管理者密碼。
+*** *允許不完整*：如果無法從一個或多個節點收集捆綁包，則允許腳本繼續運行。
+*** *額外參數*：此參數將傳遞給 `sf_make_support_bundle`腳本。此參數僅應在NetApp支援部門要求時使用。
+
+
+.. *刪除所有支援包*：刪除管理節點上所有目前的支援包。
+.. *重置節點*：將管理節點重設為新的安裝映像。這將除網路配置外的所有設定變更為預設狀態。請指定以下選項：
++
+*** *建置*：指向遠端 Element 軟體映像的 URL，節點將重設為該映像。
+*** *選項*：執行重置操作的規格。如有需要， NetApp技術支援將提供詳細資訊。
++
+
+IMPORTANT: 此操作會導致網路連線暫時中斷。
+
+
+
+.. *重啟網路*：重新啟動管理節點上的所有網路服務。
++
+
+IMPORTANT: 此操作會導致網路連線暫時中斷。
+
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

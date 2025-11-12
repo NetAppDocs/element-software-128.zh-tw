@@ -1,0 +1,29 @@
+---
+permalink: storage/task_replication_pair_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, cluster, cluster pair 
+summary: 在叢集對中建立叢集之間的連線後，您可以將一個叢集上的磁碟區與該叢集對中另一個叢集上的磁碟區配對。建立捲配對關係時，必須確定哪個磁碟區是複製目標。 
+---
+= 對數
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在叢集對中建立叢集之間的連線後，您可以將一個叢集上的磁碟區與該叢集對中另一個叢集上的磁碟區配對。建立捲配對關係時，必須確定哪個磁碟區是複製目標。
+
+您可以將儲存在連線叢集對中不同儲存叢集上的兩個磁碟區配對進行即時複製。將兩個集群配對後，您可以配置一個集群上的活動卷，使其持續複製到第二個集群，從而提供持續資料保護 (CDP)。您也可以將任一卷指定為複製的來源或目標。
+
+銷量配對始終是一對一的。卷與另一個集群上的捲配對後，就不能再與其他任何卷配對了。
+
+.你需要什麼
+* 您已在集群對中的集群之間建立了連線。
+* 您擁有配對集群中的一個或兩個集群的集群管理員權限。
+
+
+.步驟
+. xref:task_replication_create_a_target_volume_with_read_write_access.adoc[建立具有讀取或寫入權限的目標卷]
+. xref:task_replication_pair_volumes_using_volume_id_or_pairing_key.adoc[使用卷 ID 或配對密鑰配對卷]
+. xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[為配對卷分配複製來源和目標]
+

@@ -1,0 +1,430 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_storage_firmware.html 
+summary: 作為NetApp SolidFire系統升級的一部分，您需要升級與儲存節點關聯的韌體。 
+keywords: netapp, element, hcc, firmware, storage firmware 
+---
+= 升級儲存韌體
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+從 Element 12.0 和管理服務版本 2.14 開始，您可以使用NetApp Hybrid Cloud Control UI 和 REST API 對儲存節點執行僅韌體升級。此過程不會升級 Element 軟體，但允許您在 Element 主要版本之外升級儲存韌體。
+
+.你需要什麼
+* *管理員權限*：您擁有儲存叢集管理員權限來執行升級。
+* *系統時間同步*：您已確保所有節點上的系統時間已同步，並且已為儲存叢集和節點正確配置 NTP。每個節點都必須在其各自的 Web 使用者介面中設定 DNS 名稱伺服器。(`https://[IP address]:442` ）沒有與時間偏差相關的未解決的集群故障。
+* *系統連接埠*：如果您使用NetApp Hybrid Cloud Control 進行升級，則必須確保必要的連接埠已開啟。看link:../storage/reference_prereq_network_port_requirements.html["網路連接埠"]了解更多。
+* *管理節點*：對於NetApp Hybrid Cloud Control UI 和 API，您環境中的管理節點正在執行版本 11.3。
+* *管理服務*：您的管理服務包已更新至最新版本。
+
+
+
+IMPORTANT: 對於執行 Element 軟體版本 12.0 的 H610S 儲存節點，在升級至儲存韌體套件 2.27 之前，應套用 D-patch SUST-909。升級前請聯絡NetApp支援部門以取得 D 補丁。看link:http://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.27.html["儲存韌體包 2.27 發行說明"^]。
+
+
+IMPORTANT: 在升級儲存節點上的韌體之前，必須先升級到最新的管理服務套件。如果您要將 Element 軟體更新至 12.2 或更高版本，則需要管理服務 2.14.60 或更高版本才能繼續。
+
+* *叢集健康狀況*：您已執行健康狀況檢查。看link:task_hcc_upgrade_element_prechecks.html["在升級儲存之前，請先執行 Element 儲存健康檢查"]。
+* *已更新 H610S 節點的底板管理控制器 (BMC)*：您已升級 H610S 節點的BMC版本。看link:https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["發行說明和升級說明"^]。
+
+
+
+NOTE: 如需查看適用於您硬體的完整韌體和驅動程式韌體列表，請參閱link:../hardware/fw_storage_nodes.html["SolidFire儲存節點支援的儲存韌體版本"]。
+
+[[storage-firmware-upgrade]]
+* *升級過程時間*：您已安排足夠的時間執行升級。當您升級到 Element 軟體 12.5 或更高版本時，升級過程時間取決於您目前的 Element 軟體版本和韌體更新情況。
++
+[cols="20,20,20,20,20"]
+|===
+| 儲存節點 | 目前 Element 軟體版本 | 每個節點的軟體和韌體安裝大約需要10000秒^1^ | 每個節點的大約資料同步時間^2^ | 每個節點的大約總升級時間 
+
+
+| 所有配備最新韌體的SolidFire和NetApp H 系列節點^3^ | 12.x | 15分鐘 | 10到15分鐘 | 20至30分鐘 
+
+
+| H610S 和 H410S | 12.x 和 11.8 | 60分鐘 | 30至60分鐘 | 90至120分鐘 
+
+
+| H610S | 11.7 及更早版本 | 90分鐘 | 40至70分鐘 | 130至160分鐘 您還必須 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["執行節點完全關閉和斷電操作"^]針對每個 H610S 節點。 
+|===
++
+^1^有關適用於您硬體的韌體和驅動程式韌體的完整矩陣，請參閱link:../hardware/fw_storage_nodes.html["SolidFire儲存節點支援的儲存韌體版本"]。
+
++
+^2^如果將叢集與高寫入 IOPS 負載和較長的韌體更新時間結合起來，資料同步時間將會增加。
+
++
+^3^ 以下節點不受支援。如果您嘗試將這些節點之一升級到不受支援的 Element 版本，您將看到一條錯誤訊息，指出 Element 12.x 不支援該節點：
+
++
+** 從 Element 12.8、SF4805、SF9605、SF19210 和 SF38410 儲存節點開始。
+** 從 Element 12.7、SF2405 和 SF9608 儲存節點以及 FC0025 和 SF-FCN-01 FC 節點開始。
+
+
+* *最終使用者授權協議 (EULA)*：從管理服務 2.20.69 版本開始，您必須先接受並儲存 EULA，然後才能使用NetApp Hybrid Cloud Control UI 或 API 升級儲存韌體：
++
+.. 在網頁瀏覽器中開啟管理節點的IP位址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 使用儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+.. 在介面右上角附近選擇“升級”。
+.. 最終用戶許可協議彈出。向下捲動，選擇“我接受當前及所有未來的更新”，然後選擇“儲存”。
+
+
+
+
+.升級選項
+請選擇以下儲存韌體升級選項之一：
+
+* <<使用NetApp Hybrid Cloud Control UI 升級儲存韌體>>
+* <<使用NetApp Hybrid Cloud Control API 升級儲存韌體>>
+
+
+
+
+== 使用NetApp Hybrid Cloud Control UI 升級儲存韌體
+
+您可以使用NetApp Hybrid Cloud Control UI 來升級叢集中儲存節點的韌體。
+
+.你需要什麼
+* 如果您的管理節點未連接到互聯網，則您有 https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/Storage_Firmware_Bundle["下載了儲存韌體包"^]。
+
+
+
+CAUTION: 有關使用NetApp Hybrid Cloud Control 升級儲存叢集時可能出現的問題及其解決方法，請參閱以下內容： https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["知識庫文章"^] 。
+
+
+TIP: 每個儲存節點的升級過程大約需要 30 分鐘。如果您要將 Element 儲存叢集升級至高於 2.76 版本的儲存固件，則只有在新韌體寫入節點的情況下，個別儲存節點才會在升級期間重新啟動。
+
+.步驟
+. 在網頁瀏覽器中開啟管理節點的IP位址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 使用儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在介面右上角附近選擇“升級”。
+. 在「升級」頁面上，選擇「儲存」。
++
+[NOTE]
+====
+「儲存」標籤列出了安裝中包含的儲存叢集。如果NetApp Hybrid Cloud Control 無法存取集群，則該集群不會顯示在「升級」頁面上。如果您的叢集運行的是 Element 12.0 或更高版本，您將看到這些叢集的目前韌體套件版本。如果單一叢集中的節點具有不同的韌體版本，或隨著升級的進行，您將在「目前韌體套件版本」欄位中看到「多個」。您可以選擇“多個”導航至“節點”頁面以比較韌體版本。如果您的所有叢集運行的 Element 版本都早於 12.0，您將看不到任何有關韌體包版本號的資訊。
+
+如果叢集是最新的，且/或沒有可用的升級包，則不會顯示 *Element* 和 *Firmware Only* 標籤。升級過程中，這些選項卡也不會顯示。如果顯示「元素」選項卡，但不顯示「僅韌體」選項卡，則表示沒有可用的韌體套件。
+
+====
+. 選擇要升級的叢集旁的下拉箭頭。
+. 選擇「瀏覽」上傳您下載的升級套件。
+. 等待上傳完成。進度條顯示上傳狀態。
++
+
+CAUTION: 如果您離開瀏覽器窗口，上傳的檔案將會遺失。
+
++
+文件成功上傳並驗證後，螢幕上會顯示一則訊息。驗證可能需要幾分鐘。如果您此時離開瀏覽器窗口，檔案上傳內容仍會被保留。
+
+. 選擇“僅韌體”，然後從可用的升級版本中進行選擇。
+. 選擇“開始升級”。
++
+
+TIP: 升級過程中，「升級狀態」會發生變化，以反映升級過程的狀態。它還會根據您採取的操作而改變，例如暫停升級，或升級返回錯誤。看<<升級狀態變更>>。
+
++
+
+NOTE: 升級過程中，您可以離開此頁面，稍後再返回查看進度。如果叢集行已折疊，則頁面不會動態更新狀態和目前版本。必須展開叢集行才能更新表格，或者您可以重新整理頁面。
+
+
+
+升級完成後即可下載日誌。
+
+
+
+=== 升級狀態變更
+
+以下是升級過程中「升級狀態」列在升級前、升級過程中和升級後顯示的不同狀態：
+
+[cols="2*"]
+|===
+| 升級狀態 | 描述 
+
+
+| 最新 | 叢集已升級至最新的 Element 版本，或韌體已升級至最新版本。 
+
+
+| 無法檢測 | 當儲存服務 API 傳回的升級狀態不在已列出的可能升級狀態清單中時，將顯示此狀態。 
+
+
+| 可用版本 | Element 和/或儲存韌體的更新版本可供升級。 
+
+
+| 進行中 | 升級正在進行中。進度條顯示升級狀態。螢幕訊息也會顯示節點級故障，並在升級過程中顯示叢集中每個節點的節點 ID。您可以使用 Element UI 或適用於 vCenter Server UI 的NetApp Element插件來監控每個節點的狀態。 
+
+
+| 升級暫停 | 您可以選擇暫停升級。根據升級過程的狀態，暫停操作可能會成功，也可能失敗。您會看到一個使用者介面提示，要求您確認暫停操作。為了確保叢集在暫停升級之前處於安全狀態，升級操作可能需要長達兩個小時才能完全暫停。若要恢復升級，請選擇“恢復”。 
+
+
+| 暫停 | 您已暫停升級。選擇“繼續”以繼續該過程。 
+
+
+| 錯誤 | 升級過程中發生錯誤。您可以下載錯誤日誌並將其傳送給NetApp支援部門。解決錯誤後，您可以返回該頁面，然後選擇「繼續」。恢復升級時，進度條會倒退幾分鐘，同時系統會執行健康檢查並檢查升級的目前狀態。 
+|===
+
+
+== 如果使用NetApp Hybrid Cloud Control 進行升級失敗會發生什麼情況
+
+如果在升級過程中驅動器或節點發生故障，Element UI 將顯示叢集故障。升級過程不會繼續到下一個節點，而是等待叢集故障解決。使用者介面中的進度條顯示，升級正在等待叢集故障解決。現階段，在使用者介面中選擇「暫停」將不起作用，因為升級需要等待叢集運作正常。您需要聯絡NetApp支援部門協助進行故障調查。
+
+NetApp Hybrid Cloud Control 預設了三個小時的等待期，在此期間可能會出現以下情況之一：
+
+* 集群故障在三小時內解決，升級繼續進行。在這種情況下，您無需採取任何行動。
+* 三個小時後問題仍然存在，升級狀態顯示“錯誤”，並帶有紅色橫幅。問題解決後，您可以選擇“恢復”來繼續升級。
+* NetApp支援團隊已確定，需要在三小時窗口期之前暫時中止升級，以便採取糾正措施。支援人員將使用 API 來中止升級。
+
+
+
+CAUTION: 在節點更新過程中中止叢集升級可能會導致磁碟機從節點中意外移除。如果驅動器被錯誤移除，則在升級過程中重新添加驅動器將需要NetApp支援人員的手動幹預。節點可能需要更長時間才能完成韌體更新或更新後同步活動。如果升級過程似乎停滯不前，請聯絡NetApp支援部門尋求協助。
+
+
+
+== 使用NetApp Hybrid Cloud Control API 升級儲存韌體
+
+您可以使用 API 將叢集中的儲存節點升級到最新的 Element 軟體版本。您可以使用您選擇的自動化工具來執行 API。此處記錄的 API 工作流程以管理節點上可用的 REST API UI 為例。
+
+.步驟
+. 將儲存韌體升級套件下載到管理節點可存取的裝置；然後開啟 Element 軟體。 https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["下載頁面"^]並下載最新的儲存韌體鏡像。
+. 將儲存韌體升級包上傳到管理節點：
++
+.. 在管理節點上開啟管理節點 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉授權視窗。
+
+
+.. 從 REST API UI 中選擇 *POST /packages*。
+.. 選擇*試用*。
+.. 選擇“瀏覽”，然後選擇升級套件。
+.. 選擇“執行”以開始上傳。
+.. 從回應複製並儲存包 ID(`"id"` ) 供後續步驟使用。
+
+
+. 確認上傳狀態。
++
+.. 從 REST API UI 中選擇 *GET /packages/{id}/status*。
+.. 選擇*試用*。
+.. 在 *id* 中輸入您在上一個步驟中複製的韌體包 ID。
+.. 選擇“執行”以發起狀態請求。
++
+回應表明 `state`作為 `SUCCESS`完成後。
+
+
+
+. 找到安裝資產 ID：
++
+.. 在管理節點上開啟管理節點 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉授權視窗。
+
+
+.. 從 REST API UI 中選擇 *GET /installations*。
+.. 選擇*試用*。
+.. 選擇*執行*。
+.. 從回應複製安裝資產 ID(`id` ）。
++
+[listing, subs="+quotes"]
+----
+*"id": "abcd01e2-xx00-4ccf-11ee-11f111xx9a0b",*
+"management": {
+  "errors": [],
+  "inventory": {
+    "authoritativeClusterMvip": "10.111.111.111",
+    "bundleVersion": "2.14.19",
+    "managementIp": "10.111.111.111",
+    "version": "1.4.12"
+----
+.. 從 REST API UI 中選擇 *GET /installations/{id}*。
+.. 選擇*試用*。
+.. 將安裝資產 ID 貼到 *id* 欄位中。
+.. 選擇*執行*。
+.. 從回應複製並儲存儲存叢集 ID(`"id"` ) 您打算升級的集群，以便在後續步驟中使用。
++
+[listing, subs="+quotes"]
+----
+"storage": {
+  "errors": [],
+  "inventory": {
+    "clusters": [
+      {
+        "clusterUuid": "a1bd1111-4f1e-46zz-ab6f-0a1111b1111x",
+        *"id": "a1bd1111-4f1e-46zz-ab6f-a1a1a111b012",*
+----
+
+
+. 運行存儲韌體升級程式：
++
+.. 在管理節點上開啟儲存 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉視窗。
+
+
+.. 選擇 *POST /升級*。
+.. 選擇*試用*。
+.. 在參數欄位中輸入升級包 ID。
+.. 在參數欄位中輸入儲存叢集 ID。
+.. 選擇“執行”以啟動升級。
++
+響應應表明狀態為 `initializing`：
+
++
+[listing, subs="+quotes"]
+----
+{
+  "_links": {
+    "collection": "https://localhost:442/storage/upgrades",
+    "self": "https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1",
+    "log": https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1/log
+  },
+  "storageId": "114f14a4-1a1a-11e9-9088-6c0b84e200b4",
+  "upgradeId": "334f14a4-1a1a-11e9-1055-6c0b84e2001b4",
+  "packageId": "774f14a4-1a1a-11e9-8888-6c0b84e200b4",
+  "config": {},
+  *"state": "initializing",*
+  "status": {
+    "availableActions": [
+      "string"
+    ],
+    "message": "string",
+    "nodeDetails": [
+      {
+        "message": "string",
+        "step": "NodePreStart",
+        "nodeID": 0,
+        "numAttempt": 0
+      }
+    ],
+    "percent": 0,
+    "step": "ClusterPreStart",
+    "timestamp": "2020-04-21T22:10:57.057Z",
+    "failedHealthChecks": [
+      {
+        "checkID": 0,
+        "name": "string",
+        "displayName": "string",
+        "passed": true,
+        "kb": "string",
+        "description": "string",
+        "remedy": "string",
+        "severity": "string",
+        "data": {},
+        "nodeID": 0
+      }
+    ]
+  },
+  "taskId": "123f14a4-1a1a-11e9-7777-6c0b84e123b2",
+  "dateCompleted": "2020-04-21T22:10:57.057Z",
+  "dateCreated": "2020-04-21T22:10:57.057Z"
+}
+----
+.. 複製升級 ID(`"upgradeId"`這是回應的一部分。
+
+
+. 驗證升級進度和結果：
++
+.. 選擇 *GET /upgrades/{upgradeId}*。
+.. 選擇*試用*。
+.. 在 *upgradeId* 中輸入上一步得到的升級 ID。
+.. 選擇*執行*。
+.. 如果在升級過程中出現問題或有特殊要求，請執行下列其中一項：
++
+[cols="2*"]
+|===
+| 選項 | 步驟 
+
+
+| 您需要修復由於以下原因導致的叢集健康狀況問題： `failedHealthChecks`響應正文中的消息。  a| 
+... 請前往每個問題對應的知識庫文章或執行指定的解決方法。
+... 如果指定了知識庫文章，請依照相關知識庫文章中所述的步驟完成操作。
+... 解決叢集問題後，如果需要，請重新進行身份驗證，然後選擇 *PUT /upgrades/{upgradeId}*。
+... 選擇*試用*。
+... 在 *upgradeId* 中輸入上一步得到的升級 ID。
+... 進入 `"action":"resume"`在請求正文中。
++
+[listing]
+----
+{
+  "action": "resume"
+}
+----
+... 選擇*執行*。
+
+
+
+
+| 由於維護視窗即將關閉或其他原因，您需要暫停升級。  a| 
+... 如果需要，請重新驗證身分並選擇 *PUT /upgrades/{upgradeId}*。
+... 選擇*試用*。
+... 在 *upgradeId* 中輸入上一步得到的升級 ID。
+... 進入 `"action":"pause"`在請求正文中。
++
+[listing]
+----
+{
+  "action": "pause"
+}
+----
+... 選擇*執行*。
+
+
+|===
+.. 根據需要多次執行 *GET /upgrades/{upgradeId}* API，直到流程完成。
++
+升級過程中， `status`表示 `running`如果沒有遇到錯誤。隨著每個節點的升級， `step`值變化 `NodeFinished`。
+
++
+升級成功完成的標誌是： `percent`值是 `100`以及 `state`表示 `finished`。
+
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

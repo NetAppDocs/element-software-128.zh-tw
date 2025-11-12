@@ -1,0 +1,142 @@
+---
+permalink: api/reference_element_api_listaccounts.html 
+sidebar: sidebar 
+keywords: account,accounts,list,listing,all,listaccounts 
+summary: 您可以使用 ListAccounts 取得儲存租用戶帳戶的完整列表，並可選擇支援分頁。元素帳戶允許存取卷。 
+---
+= 列出帳戶
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `ListAccounts`取得儲存租用戶帳戶的完整列表，並可選擇支援分頁。元素帳戶允許存取卷。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+包含儲存容器
+ a| 
+預設情況下，回應中包含虛擬磁碟區儲存容器。若要排除儲存容器，請設定為 false。
+ a| 
+布林值
+ a| 
+真的
+ a| 
+不
+
+
+
+ a| 
+起始帳號 ID
+ a| 
+要傳回的起始帳戶ID。如果不存在具有此帳戶 ID 的帳戶，則使用帳戶 ID 順序的下一個帳戶作為清單的開頭。要翻頁瀏覽列表，請傳遞上一個回應中最後一個帳戶的 accountID + 1。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+限制
+ a| 
+要傳回的帳戶物件的最大數量。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+帳戶
+ a| 
+帳戶列表。
+ a| 
+xref:reference_element_api_account.adoc[帳戶]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListAccounts",
+   "params": {
+     "startAccountID"  : 0,
+     "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "result" : {
+    "accounts": [
+	{
+        "attributes": {},
+        "username": "jamesw",
+        "targetSecret": "168#5A757ru268)",
+        "volumes": [],
+        "enableChap": false,
+        "status": "active",
+        "accountID": 16,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "168#5A757ru268)"
+    },
+    {
+        "attributes": {},
+        "username": "jimmyd",
+        "targetSecret": "targetsecret",
+        "volumes": [],
+        "enableChap": true,
+        "status": "active",
+        "accountID": 5,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "initiatorsecret"
+    }
+  ]
+}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

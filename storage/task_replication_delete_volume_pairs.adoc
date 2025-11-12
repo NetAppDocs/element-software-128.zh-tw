@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_pairs.html 
+sidebar: sidebar 
+keywords: volume pairs, delete 
+summary: 如果要移除兩個磁碟區之間的關聯關係，可以刪除磁碟區對。 
+---
+= 刪除卷對
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果要移除兩個磁碟區之間的關聯關係，可以刪除磁碟區對。
+
+. 選擇“資料保護”>“卷對”。
+. 點選要刪除的捲對旁邊的「操作」圖示。
+. 按一下“*刪除*”。
+. 確認訊息。
+

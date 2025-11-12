@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_add_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, add, multi-drive slice service 
+summary: '您可以將插槽 2 中的區塊驅動器轉換為切片驅動器，在SolidFire節點上新增第二個元資料驅動器。這是透過啟用多驅動器切片服務 (MDSS) 功能來實現的。若要啟用此功能，您必須聯絡NetApp支援。' 
+---
+= 新增 MDSS 驅動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將插槽 2 中的區塊驅動器轉換為切片驅動器，在SolidFire節點上新增第二個元資料驅動器。這是透過啟用多驅動器切片服務 (MDSS) 功能來實現的。若要啟用此功能，您必須聯絡NetApp支援。
+
+若要使切片磁碟機恢復可用狀態，可能需要用新的或備用的磁碟機取代故障磁碟機。必須同時新增系統切片磁碟機和插槽 2 的磁碟機。如果嘗試單獨新增插槽 2 切片驅動器，或在新增系統切片驅動器之前新增，系統將產生錯誤。
+
+. 點選“集群”>“驅動器”。
+. 點擊「可用」查看可用磁碟機清單。
+. 選擇要新增的切片驅動器。
+. 點擊“批量操作”。
+. 按一下“*新增*”。
+. 在「活動磁碟機」標籤中確認磁碟機已新增。
+

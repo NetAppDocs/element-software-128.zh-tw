@@ -1,0 +1,14 @@
+---
+permalink: concepts/concept_solidfire_concepts_initiators.html 
+sidebar: sidebar 
+keywords: netapp, element, initiator, storage volume, element volume, access group 
+summary: 了解發起程序以及如何使用它們來允許對磁碟區存取群組中的儲存進行存取。 
+---
+= 發起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+發起程序允許外部客戶端存取叢集中的捲，作為客戶端與磁碟區之間通訊的入口點。您可以使用發起程序來實現基於 CHAP 而不是基於帳戶的儲存磁碟區存取。將單一發起程序新增至磁碟區存取群組後，磁碟區存取群組成員無需驗證即可存取新增至該群組的所有儲存磁碟區。發起者只能屬於一個存取群組。

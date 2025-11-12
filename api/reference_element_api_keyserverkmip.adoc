@@ -1,0 +1,96 @@
+---
+permalink: api/reference_element_api_keyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,keys 
+summary: 'keyServerKmip 物件描述了金鑰管理互通協定 (KMIP) 金鑰伺服器，該伺服器用於擷取用於叢集功能（例如靜態加密）的驗證金鑰。' 
+---
+= keyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+keyServerKmip 物件描述了金鑰管理互通協定 (KMIP) 金鑰伺服器，該伺服器用於擷取用於叢集功能（例如靜態加密）的驗證金鑰。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+密鑰提供者ID
+ a| 
+如果此 KMIP 金鑰伺服器已指派給某個供應商，則此成員包含指派給它的 KMIP 金鑰提供者的 ID。否則，該成員為空。
+ a| 
+整數
+
+
+
+ a| 
+密鑰伺服器ID
+ a| 
+KMIP密鑰伺服器的ID。這是叢集在建立密鑰伺服器期間分配的唯一值。此值無法變更。
+ a| 
+整數
+
+
+
+ a| 
+kmipAssignedProviderIsActive
+ a| 
+如果此 KMIP 金鑰伺服器已指派給提供者（keyProviderID 不為空），則此成員指示該提供者是否處於活動狀態（提供目前正在使用的金鑰）。否則，該成員為空。
+ a| 
+布林值
+
+
+
+ a| 
+kmipCa證書
+ a| 
+外部金鑰伺服器根 CA 的公鑰憑證。這是用於驗證外部金鑰伺服器在 TLS 通訊中提供的憑證。對於關鍵伺服器集群，其中各個伺服器使用不同的 CA，此成員包含所有 CA 的根憑證的連接字串。
+ a| 
+細繩
+
+
+
+ a| 
+kmipClientCertificate
+ a| 
+Element 儲存 KMIP 用戶端使用的 PEM 格式 Base64 編碼 PKCS#10 X.509 憑證。
+ a| 
+細繩
+
+
+
+ a| 
+kmipKeyServerHostnames
+ a| 
+與此 KMIP 金鑰伺服器關聯的主機名稱或 IP 位址。
+ a| 
+字串數組
+
+
+
+ a| 
+kmipKeyServerName
+ a| 
+KMIP密鑰伺服器的名稱。此名稱僅用於顯示目的，無需唯一。
+ a| 
+細繩
+
+
+
+ a| 
+kmipKeyServerPort
+ a| 
+與此 KMIP 金鑰伺服器關聯的連接埠號碼（通常為 5696）。
+ a| 
+整數
+
+|===

@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_system_manage_cluster_configure_cluster_settings.html 
+sidebar: sidebar 
+keywords: configure, cluster, threshold, support access, encryption at rest, virtual volumes, ntp broadcast, client, snapmirror 
+summary: 您可以從 Element UI 的「叢集」標籤查看和變更叢集範圍的設置，並執行叢集特定的任務。 
+---
+= 配置叢集設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從 Element UI 的「叢集」標籤查看和變更叢集範圍的設置，並執行叢集特定的任務。
+
+您可以設定叢集滿度閾值、支援存取、靜態加密、虛擬磁碟區、 SnapMirror和 NTP 廣播用戶端等設定。
+
+.選項
+* xref:concept_data_manage_vvol_work_virtual_volumes.adoc[使用虛擬卷]
+* xref:task_snapmirror_use_replication_between_element_and_ontap_clusters.adoc[在 Element 和ONTAP集群之間使用SnapMirror複製]
+* xref:task_system_manage_cluster_set_the_cluster_full_threshold.adoc[設定集群滿閾值]
+* xref:task_system_manage_cluster_volume_load_balancing.adoc[啟用和停用磁碟區負載平衡]
+* xref:task_system_manage_cluster_enable_and_disable_support_access.adoc[啟用和停用支援訪問]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["元素的區塊空間閾值是如何計算的"]
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[啟用和停用叢集加密]
+* xref:concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.adoc[管理使用條款橫幅]
+* xref:task_system_manage_cluster_ntp_configure.adoc[配置叢集要查詢的網路時間協定伺服器]
+* xref:concept_system_manage_snmp_manage_snmp.adoc[管理 SNMP]
+* xref:concept_system_manage_drives_managing_drives.adoc[管理驅動器]
+* xref:concept_system_manage_nodes_manage_nodes.adoc[管理節點]
+* xref:task_system_manage_fc_view_fibre_channel_ports_details.adoc[查看光纖通道連接埠詳情]
+* xref:concept_system_manage_virtual_manage_virtual_networks.adoc[管理虛擬網絡]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

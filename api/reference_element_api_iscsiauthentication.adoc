@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_iscsiauthentication.html 
+sidebar: sidebar 
+keywords: ISCSIAuthentication,iscsi,authentication 
+summary: ISCSIAuthentication 物件包含有關 ISCSI 會話的驗證資訊。 
+---
+= ISCSI身份驗證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ISCSIAuthentication 物件包含有關 ISCSI 會話的驗證資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+認證方法
+ a| 
+iSCSI 會話登入期間所使用的驗證方法，例如 CHAP 或 None。
+ a| 
+細繩
+
+
+
+ a| 
+章節演算法
+ a| 
+所使用的 CHAP 演算法，例如 MD5、SHA1*、SHA-256* 或 SHA3-256*
+ a| 
+細繩
+
+
+
+ a| 
+chap用戶名
+ a| 
+在 iSCSI 會話登入期間，發起方指定的 CHAP 使用者名稱。
+ a| 
+細繩
+
+
+
+ a| 
+方向
+ a| 
+例如，身分驗證方向可以是單向（僅發起方）或雙向（發起方和目標）。
+ a| 
+細繩
+
+|===
+* 從 Element 12.7 版本開始可用。
+

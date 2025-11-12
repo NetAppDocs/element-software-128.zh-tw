@@ -1,0 +1,223 @@
+---
+permalink: api/reference_element_api_getasyncresult.html 
+sidebar: sidebar 
+keywords: async,asynchronous,results,result,get,getting,GetAsyncResult 
+summary: 您可以使用 GetAsyncResult 來檢索非同步方法呼叫的結果。有些方法呼叫需要一些時間才能完成，當系統發送初始回應時，這些方法可能還沒有完成。若要取得方法呼叫的狀態或結果，請使用 GetAsyncResult 輪詢方法傳回的 asyncHandle 值。 
+---
+= 取得非同步結果
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `GetAsyncResult`取得非同步方法呼叫的結果。有些方法呼叫需要一些時間才能完成，當系統發送初始回應時，這些方法可能還沒有完成。若要取得方法呼叫的狀態或結果，請使用 `GetAsyncResult`輪詢該方法傳回的 asyncHandle 值。
+
+`GetAsyncResult`以標準方式返回操作的總體狀態（進行中、已完成或出錯），但操作返回的實際資料取決於原始方法調用，並且返回的資料在每個方法中都有記錄。
+
+如果 keepResult 參數缺失或為 false，則當傳回結果時，asyncHandle 將變為非活動狀態，並且稍後嘗試查詢該 asyncHandle 將傳回錯誤。您可以將 keepResult 參數設為 true 來保持 asyncHandle 處於活動狀態，以便進行後續查詢。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+非同步句柄
+ a| 
+從原始非同步方法呼叫傳回的值。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+keepResult
+ a| 
+如果為真，GetAsyncResult 在傳回非同步結果時不會將其刪除，從而允許將來對該 asyncHandle 進行查詢。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+地位
+ a| 
+非同步方法呼叫的狀態。可能的值：
+
+* 運行中：該方法仍在運行。
+* 完成：該方法已完成，結果或錯誤可用。
+
+ a| 
+細繩
+
+
+
+ a| 
+結果
+ a| 
+如果非同步方法成功完成，則非同步操作的結果如下。如果非同步操作失敗，則此成員不存在。
+ a| 
+細繩
+
+
+
+ a| 
+錯誤
+ a| 
+如果狀態為完成且非同步方法失敗，則此成員包含錯誤詳細資訊。如果非同步操作成功，則此成員不存在。
+ a| 
+細繩
+
+
+
+ a| 
+結果類型
+ a| 
+非同步方法呼叫正在執行或曾經執行的操作類型。
+ a| 
+細繩
+
+
+
+ a| 
+細節
+ a| 
+如果狀態為“運行中”，則此成員包含與該方法目前操作相關的資訊。如果非同步方法未運行，則此成員不存在。
+ a| 
+JSON 物件
+
+
+
+ a| 
+創建時間
+ a| 
+非同步方法被呼叫的時間，採用 UTC+0 格式。
+ a| 
+ISO 8601 日期字串
+
+
+
+ a| 
+上次更新時間
+ a| 
+非同步方法狀態上次更新的時間，採用 UTC+0 格式。
+ a| 
+ISO 8601 日期字串
+
+|===
+*注意：* GetAsyncResult 的傳回值本質上是標準 JSON 回應的巢狀版本，帶有額外的狀態欄位。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetAsyncResult",
+  "params": {
+      "asyncHandle" : 389
+},
+"id" : 1
+}
+----
+
+
+== 回應範例：方法錯誤
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "error": {
+      "code": 500,
+      "message": "DBClient operation requested on a non-existent path at [/asyncresults/1]",
+      "name": "xDBNoSuchPath"
+   },
+   "id": 1
+}
+----
+如果「response」是來自 GetAsyncResult 呼叫的 JSON 回應對象，那麼「response.error」將對應到 GetAsyncResult 方法本身的錯誤（例如查詢不存在的 asyncHandle）。
+
+
+
+== 回應範例：非同步任務錯誤
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T02:05:53Z",
+     "error": {
+       "bvID": 1,
+       "message": "Bulk volume job failed",
+       "name": "xBulkVolumeScriptFailure",
+       "volumeID": 34
+     },
+     "lastUpdateTime": "2016-01-21T02:06:56Z",
+     "resultType": "BulkVolume",
+     "status": "complete"
+   }
+}
+----
+“response.result.error”對應於原始方法呼叫產生的錯誤結果。
+
+
+
+== 回應範例：非同步任務成功
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T22:29:18Z",
+     "lastUpdateTime": "2016-01-01T22:45:51Z",
+     "result": {
+       "cloneID": 25,
+       "message": "Clone complete.",
+       "volumeID": 47
+     },
+     "resultType": "Clone",
+     "status": "complete"
+   }
+}
+----
+如果呼叫成功完成，則「response.result.result」是原始方法呼叫的回傳值。
+
+
+
+== 自版本以來的新版本
+
+9.6

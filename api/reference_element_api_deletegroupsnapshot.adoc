@@ -1,0 +1,97 @@
+---
+permalink: api/reference_element_api_deletegroupsnapshot.html 
+sidebar: sidebar 
+keywords: volume,volumes,group,snapshot,snapshots,delete,deleting,DeleteGroupSnapshot 
+summary: 您可以使用 DeleteGroupSnapshot 刪除群組快照。 
+---
+= 刪除群組快照
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `DeleteGroupSnapshot`刪除群組快照。
+
+您可以使用 saveMembers 參數來保留為群組中的磁碟區所建立的所有快照，但群組關聯將被刪除。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+群組快照ID
+ a| 
+群組快照的唯一識別碼。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+保存會員
+ a| 
+指定刪除群組快照時要刪除的內容。有效值：
+
+* 正確：快照將被保留，但群組關聯將被刪除。
+* 錯誤：群組和快照已刪除。
+
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "DeleteGroupSnapshot",
+     "params": {
+       "groupSnapshotID": 10,
+       "saveMembers" : true
+        },
+     "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

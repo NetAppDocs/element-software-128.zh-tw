@@ -1,0 +1,32 @@
+---
+permalink: storage/task_system_manage_fips_enable_the_fips_drives_feature.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, enable, ear 
+summary: 您可以使用NetApp Element軟體 EnableFeature API 方法啟用 FIPS 磁碟機功能。 
+---
+= 啟用 FIPS 驅動器功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Element軟體啟用 FIPS 驅動器功能。 `EnableFeature` API 方法。
+
+叢集上必須啟用靜態資料加密，且所有節點和磁碟機都必須具備 FIPS 功能，當 GetFipsReport 對所有節點顯示「就緒」狀態時，即可表示這一點。
+
+.步
+. 使用 Element API，透過輸入以下命令在所有磁碟機上啟用 FIPS：
++
+`EnableFeature params: FipsDrives`
+
+
+
+
+
+== 查找更多信息
+
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

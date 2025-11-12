@@ -1,0 +1,35 @@
+---
+permalink: storage/concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys.html 
+sidebar: sidebar 
+keywords: slice drive error, cluster fault, authentication keys 
+summary: 偶爾會出現需要使用者介入的錯誤。如果發生錯誤，將會產生叢集故障。這裡描述了兩種最有可能的情況。 
+---
+= 恢復無法存取或無效的身份驗證金鑰
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+偶爾會出現需要使用者介入的錯誤。如果發生錯誤，將會產生叢集故障（稱為叢集故障碼）。這裡描述了兩種最有可能的情況。
+
+
+
+== 由於 KmipServerFault 叢集故障，叢集無法解鎖磁碟機。
+
+當叢集首次啟動且密鑰伺服器無法存取或所需密鑰不可用時，可能會發生這種情況。
+
+. 請依照叢集故障碼（如有）中的復原步驟進行操作。
+
+
+
+
+== 可能會設定 sliceServiceUnhealthy 故障，因為元資料磁碟機已被標記為故障並置於「可用」狀態。
+
+清除步驟：
+
+. 再次新增驅動器。
+. 3到4分鐘後，檢查一下 `sliceServiceUnhealthy`故障已排除。
+
+
+看link:reference_monitor_cluster_fault_codes.html["叢集故障碼"]了解更多。

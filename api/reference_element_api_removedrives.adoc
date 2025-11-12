@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_removedrives.html 
+sidebar: sidebar 
+keywords: cluster,drive,drives,remove,removing,removedrives 
+summary: 您可以使用 RemoveDrives 方法主動刪除叢集中的磁碟機。當您減少群集容量或準備更換即將達到使用壽命終點的驅動器時，可以使用此方法。在將磁碟機從叢集中移除之前，磁碟機上的所有資料都會被刪除並遷移到叢集中的其他磁碟機。 
+---
+= 移除驅動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RemoveDrives`主動移除叢集中磁碟機的方法。當您減少群集容量或準備更換即將達到使用壽命終點的驅動器時，可以使用此方法。 `RemoveDrives`在叢集中的其他節點上建立區塊資料的第三個副本，並等待同步完成，然後才將磁碟機移至「可用」清單。  「可用」清單中的磁碟機已從系統中完全移除，且沒有任何正在執行的服務或活動資料。
+
+`RemoveDrives`這是一個非同步方法。根據移除的硬碟總容量，遷移所有資料可能需要幾分鐘。
+
+移除多個硬碟時，請使用單一磁碟機。 `RemoveDrives`方法調用，而不是多個單獨的方法，每個方法使用一個驅動程式。這樣就減少了均勻穩定叢集上的儲存負載必須進行的資料平衡量。
+
+您也可以使用以下命令刪除狀態為「故障」的磁碟機。 `RemoveDrives` 。當您移除狀態為「故障」的磁碟機時，該磁碟機不會恢復為「可用」或「活動」狀態。該驅動器無法在集群中使用。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+驅動
+ a| 
+要從叢集中移除的磁碟機 ID 清單。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+用於取得運算結果的句柄值。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "RemoveDrives",
+   "params": {
+      "drives"  : [3, 4, 5]
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result" : {
+     "asyncHandle": 1
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[取得非同步結果]
+* xref:reference_element_api_listdrives.adoc[清單驅動器]
+

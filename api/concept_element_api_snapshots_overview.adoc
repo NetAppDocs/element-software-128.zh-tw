@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_snapshots_overview.html 
+sidebar: sidebar 
+keywords: snapshot,overview 
+summary: 卷快照是磁碟區在特定時間點的副本。您可以使用快照將磁碟區回滾到建立快照時的狀態。 
+---
+= 快照概覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+卷快照是磁碟區在特定時間點的副本。您可以使用快照將磁碟區回滾到建立快照時的狀態。
+
+您可以將磁碟區快照分組在一起，以便以一致的方式備份或回滾相關磁碟區。群組快照擷取所有體積切片檔案的某一時刻影像。然後，您可以使用該映像將一組磁碟區回滾到某個時間點的狀態，並確保該群組所有磁碟區中的所有資料都一致。
+
+您可以安排磁碟區快照會依定義的時間間隔自動執行。您可以按時間、星期幾或月份幾來定義時間間隔。您也可以使用定時快照來確保快照備份到遠端儲存以進行歸檔。
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

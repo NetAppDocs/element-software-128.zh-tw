@@ -1,0 +1,553 @@
+---
+permalink: storage/reference_prereq_network_port_requirements.html 
+sidebar: sidebar 
+keywords: network port requirements, TCP ports, firewall, utilities, URL, access attempt, ICMP, MIP, SIP, MVIP, SVIP 
+summary: 您可能需要允許下列 TCP 連接埠透過資料中心的邊緣防火牆，以便您可以遠端管理系統並允許資料中心外部的用戶端連接到資源。根據您使用系統的方式，可能不需要其中的一些連接埠。 
+---
+= 網路連接埠要求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要允許下列 TCP 和 UDP 連接埠通過資料中心的邊緣防火牆，以便您可以遠端管理系統並允許資料中心外部的用戶端連接到資源。根據您使用系統的方式，可能不需要其中一些連接埠。
+
+除非另有說明，所有連接埠均為 TCP 連接埠，所有 TCP 連接埠必須支援NetApp支援伺服器、管理節點和執行 Element 軟體的節點之間的三次握手通訊。例如，管理節點來源上的主機透過 TCP 連接埠 443 與儲存叢集 MVIP 目標上的主機通信，目標主機透過任何連接埠與來源主機通訊。
+
+
+TIP: 啟用管理節點、執行 Element 軟體的節點和叢集 MVIP 之間的 ICMP。
+
+表格中使用了以下縮寫：
+
+* MIP：管理 IP 位址，每個節點一個位址
+* SIP：儲存 IP 位址，每個節點一個位址
+* MVIP：管理虛擬 IP 位址
+* SVIP：儲存虛擬 IP 位址
+
+
+[cols="25,25,15,35"]
+|===
+| 來源 | 目的地 | 港口 | 描述 
+
+
+ a| 
+iSCSI 用戶端
+ a| 
+儲存叢集 MVIP
+ a| 
+443
+ a| 
+（可選）用戶介面和 API 訪問
+
+
+
+ a| 
+iSCSI 用戶端
+ a| 
+儲存叢集 SVIP
+ a| 
+3260
+ a| 
+客戶端 iSCSI 通信
+
+
+
+ a| 
+iSCSI 用戶端
+ a| 
+儲存節點 SIP
+ a| 
+3260
+ a| 
+客戶端 iSCSI 通信
+
+
+
+ a| 
+管理節點
+ a| 
+`sfsupport.solidfire.com`
+ a| 
+22
+ a| 
+用於支援存取的反向 SSH 隧道
+
+
+
+ a| 
+管理節點
+ a| 
+儲存節點 MIP
+ a| 
+22
+ a| 
+SSH 存取權限以提供支持
+
+
+
+ a| 
+管理節點
+ a| 
+DNS 伺服器
+ a| 
+53 TCP/UDP
+ a| 
+DNS查找
+
+
+
+ a| 
+管理節點
+ a| 
+儲存節點 MIP
+ a| 
+442
+ a| 
+透過 UI 和 API 存取儲存節點和 Element 軟體升級
+
+
+
+ a| 
+管理節點
+ a| 
+儲存叢集 MVIP
+ a| 
+442
+ a| 
+透過 UI 和 API 存取儲存節點和 Element 軟體升級
+
+
+
+ a| 
+管理節點
+ a| 
+`monitoring.solidfire.com`
+ a| 
+443
+ a| 
+儲存叢集向Active IQ報告
+
+
+
+ a| 
+管理節點
+ a| 
+儲存叢集 MVIP
+ a| 
+443
+ a| 
+透過 UI 和 API 存取儲存節點和 Element 軟體升級
+
+
+
+ a| 
+管理節點
+ a| 
+repo.netapp.com
+ a| 
+443
+ a| 
+提供安裝/更新本機部署所需元件的存取權限。
+
+
+
+| 管理節點 | 儲存節點BMC/IPMI | 623 UDP | RMCP連接埠。這是管理啟用 IPMI 的系統所必需的。 
+
+
+ a| 
+管理節點
+ a| 
+見證節點
+ a| 
+9442
+ a| 
+每個節點的配置 API 服務
+
+
+
+ a| 
+管理節點
+ a| 
+vCenter 伺服器
+ a| 
+9443
+ a| 
+vCenter插件註冊。註冊完成後即可關閉連接埠。
+
+
+
+ a| 
+SNMP 伺服器
+ a| 
+儲存叢集 MVIP
+ a| 
+161 UDP
+ a| 
+SNMP輪詢
+
+
+
+ a| 
+SNMP 伺服器
+| 儲存節點 MIP  a| 
+161 UDP
+ a| 
+SNMP輪詢
+
+
+
+| 儲存節點BMC/IPMI | 管理節點 | 623 UDP | RMCP連接埠。這是管理啟用 IPMI 的系統所必需的。 
+
+
+ a| 
+儲存節點 MIP
+ a| 
+DNS 伺服器
+ a| 
+53 TCP/UDP
+ a| 
+DNS查找
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+管理節點
+ a| 
+80
+ a| 
+Element軟體升級
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+S3/Swift 端點
+ a| 
+80
+ a| 
+（可選）透過 HTTP 通訊與 S3/Swift 端點進行備份和恢復
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+NTP 伺服器
+ a| 
+123 UDP
+ a| 
+NTP
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+管理節點
+ a| 
+162 UDP
+ a| 
+（可選）SNMP陷阱
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+SNMP 伺服器
+ a| 
+162 UDP
+ a| 
+（可選）SNMP陷阱
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+LDAP 伺服器
+ a| 
+389 TCP/UDP
+ a| 
+（可選）LDAP 查詢
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+管理節點
+ a| 
+443
+ a| 
+元素儲存升級
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+遠端儲存叢集 MVIP
+ a| 
+443
+ a| 
+遠端複製集群配對通信
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+遠端儲存節點 MIP
+ a| 
+443
+ a| 
+遠端複製集群配對通信
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+S3/Swift 端點
+ a| 
+443
+ a| 
+（可選）透過 HTTPS 通訊與 S3/Swift 端點進行備份和恢復
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+管理節點
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+系統日誌轉發
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+Syslog伺服器
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+系統日誌轉發
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+LDAPS 伺服器
+ a| 
+636 TCP/UDP
+ a| 
+LDAPS查找
+
+
+
+ a| 
+儲存節點 MIP
+ a| 
+遠端儲存節點 MIP
+ a| 
+2181
+ a| 
+用於遠端複製的集群間通信
+
+
+
+ a| 
+儲存節點 SIP
+ a| 
+遠端儲存節點 SIP
+ a| 
+2181
+ a| 
+用於遠端複製的集群間通信
+
+
+
+ a| 
+儲存節點 SIP
+ a| 
+儲存節點 SIP
+ a| 
+3260
+ a| 
+節點間 iSCSI
+
+
+
+ a| 
+儲存節點 SIP
+ a| 
+遠端儲存節點 SIP
+ a| 
+4000至4020
+ a| 
+遠端複製節點間資料傳輸
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+管理節點
+ a| 
+442
+ a| 
+透過 HTTPS UI 存取管理節點
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+儲存節點 MIP
+ a| 
+442
+ a| 
+透過 HTTPS UI 和 API 存取儲存節點
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+管理節點
+ a| 
+443
+ a| 
+透過 HTTPS UI 和 API 存取管理節點
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+儲存叢集 MVIP
+ a| 
+443
+ a| 
+透過 HTTPS UI 和 API 存取儲存集群
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+儲存節點基板管理控制器 (BMC)/智慧型平台管理介面 (IPMI) H410 和 H600 系列
+ a| 
+443
+ a| 
+透過 HTTPS UI 和 API 存取節點遠端控制
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+儲存節點 MIP
+ a| 
+443
+ a| 
+建立 HTTPS 儲存集群，部署後透過 UI 存取儲存集群
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+儲存節點BMC/IPMI H410 和 H600 系列
+ a| 
+623 UDP
+ a| 
+遠端管理控制協定連接埠。這是管理啟用 IPMI 的系統所必需的。
+
+
+
+ a| 
+系統管理員電腦
+ a| 
+見證節點
+ a| 
+8080
+ a| 
+見證節點每個節點的 Web 使用者介面
+
+
+
+ a| 
+vCenter 伺服器
+ a| 
+儲存叢集 MVIP
+ a| 
+443
+ a| 
+vCenter 插件 API 訪問
+
+
+
+ a| 
+vCenter 伺服器
+ a| 
+遠端插入
+ a| 
+8333
+ a| 
+遠端 vCenter 插件服務
+
+
+
+ a| 
+vCenter 伺服器
+ a| 
+管理節點
+ a| 
+8443
+ a| 
+（可選）vCenter插件QoSSIOC服務。
+
+
+
+ a| 
+vCenter 伺服器
+ a| 
+儲存叢集 MVIP
+ a| 
+8444
+ a| 
+vCenter VASA 提供者存取（僅限 VVols）
+
+
+
+ a| 
+vCenter 伺服器
+ a| 
+管理節點
+ a| 
+9443
+ a| 
+vCenter插件註冊。註冊完成後即可關閉連接埠。
+
+|===
+
+
+== 更多資訊
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

@@ -1,0 +1,49 @@
+---
+permalink: storage/task_system_manage_fc_view_fibre_channel_ports_details.html 
+sidebar: sidebar 
+keywords: fibre channel ports, details, view, fc ports, hba, wwnn, wwpn 
+summary: 您可以從 FC 連接埠頁面查看光纖通道連接埠的詳細信息，例如其狀態、名稱和連接埠位址。 
+---
+= 查看光纖通道連接埠詳情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從 FC 連接埠頁面查看光纖通道連接埠的詳細信息，例如其狀態、名稱和連接埠位址。
+
+查看連接到叢集的光纖通道連接埠的相關資訊。
+
+.步驟
+. 點選“集群”>“FC連接埠”。
+. 若要篩選此頁面上的信息，請點選「篩選」。
+. 請查看詳細資訊：
++
+** *節點 ID*：承載連線會話的節點。
+** *節點名稱*：系統產生的節點名稱。
+** *插槽*：光纖通道連接埠所在的插槽編號。
+** *HBA 連接埠*：光纖通道主機匯流排適配器 (HBA) 上的實體連接埠。
+** *WWNN*：全球節點名稱。
+** *WWPN*：目標全球連接埠名稱。
+** *交換器 WWN*：光纖通道交換器的全球通用名稱。
+** *連接埠狀態*：連接埠的目前狀態。
+** *nPort ID*：光纖通道架構上的節點連接埠 ID。
+** *速度*：協商的光纖通道速度。可能的值如下：
++
+*** 4Gbps
+*** 8Gbps
+*** 16Gbps
+
+
+
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

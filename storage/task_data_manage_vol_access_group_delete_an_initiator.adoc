@@ -1,0 +1,45 @@
+---
+permalink: storage/task_data_manage_vol_access_group_delete_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator delete, deleted multiple initiators 
+summary: 不再需要啟動器時，您可以將其刪除。刪除啟動器時，系統會將其從所有關聯的磁碟區存取群組中移除。使用該發起程序建立的任何連線都將保持有效，直到連線重設為。 
+---
+= 刪除發起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+不再需要啟動器時，您可以將其刪除。刪除啟動器時，系統會將其從所有關聯的磁碟區存取群組中移除。使用該發起程序建立的任何連線都將保持有效，直到連線重設為。
+
+.步驟
+. 點選“管理”>“發起者”。
+. 執行下列步驟刪除單一或多個啟動器：
++
+[cols="25,75"]
+|===
+| 選項 | 步驟 
+
+
+ a| 
+刪除單一發起者
+ a| 
+.. 點選要刪除的發起者的「操作」圖示。
+.. 按一下“*刪除*”。
+.. 確認操作。
+
+
+
+
+ a| 
+刪除多個發起者
+ a| 
+.. 選取要刪除的發起者旁的核取方塊。
+.. 點擊“批量操作”按鈕。
+.. 在出現的選單中，選擇“刪除”。
+.. 確認操作。
+
+
+|===
+

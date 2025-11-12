@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_clusterpair.html 
+sidebar: sidebar 
+keywords: objects,object,clusterPair 
+summary: clusterPair 物件包含與本地集群配對的集群的資訊。您可以使用 ListClusterPairs 方法檢索本地叢集的 clusterPair 物件清單。 
+---
+= clusterPair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterPair 物件包含與本地集群配對的集群的資訊。您可以使用 ListClusterPairs 方法檢索本地叢集的 clusterPair 物件清單。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+叢集名稱
+ a| 
+這對簇中另一個簇的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+叢集對ID
+ a| 
+為配對中的每個聚類分配一個唯一的 ID。
+ a| 
+整數
+
+
+
+ a| 
+叢集對 UUID
+ a| 
+聚類對的通用唯一識別符。
+ a| 
+細繩
+
+
+
+ a| 
+唯一識別符
+ a| 
+集群對中遠端集群的唯一識別符。
+ a| 
+整數
+
+
+
+ a| 
+延遲
+ a| 
+集群之間的延遲，以毫秒為單位。
+ a| 
+整數
+
+
+
+ a| 
+貴賓
+ a| 
+配對群集的管理連線的 IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+地位
+ a| 
+配對集群之間的連線狀態。可能的值：
+
+* 未配置
+* 已連接
+* 配置錯誤
+* 斷開連接
+
+ a| 
+細繩
+
+
+
+ a| 
+版本
+ a| 
+此對集群中另一個集群的 Element 版本。
+ a| 
+細繩
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listclusterpairs.adoc[列出聚類對]

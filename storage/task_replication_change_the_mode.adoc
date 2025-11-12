@@ -1,0 +1,27 @@
+---
+permalink: storage/task_replication_change_the_mode.html 
+sidebar: sidebar 
+keywords: volume pairings, replication mode, change, volume pair properties 
+summary: 您可以編輯卷對屬性來變更卷宗對關係的複製模式。 
+---
+= 變更複製模式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以編輯卷對屬性來變更卷宗對關係的複製模式。
+
+. 選擇“資料保護”>“卷對”。
+. 點選音量對對應的操作圖示。
+. 按一下“*編輯*”。
+. 在「編輯卷對」窗格中，選擇新的複製模式：
++
+** *即時（非同步）*：寫入作業在來源叢集上提交後，會向客戶端發出確認。
+** *即時（同步）*：寫入作業在來源叢集和目標叢集上都提交後，才會向客戶端發出確認。
+** *僅限快照*：僅在來源叢集上建立的快照才會被複製。來自來源磁碟區的活動寫入不會被複製。 *注意：*變更複製模式會立即變更模式。請務必協調好兩個站點上的這些變更。
+
+
+. 點選「儲存變更」。
+

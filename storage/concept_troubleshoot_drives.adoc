@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, drives, ssd, swappable, solid-state drives 
+summary: '您可以將故障的固態硬碟 (SSD) 更換為新的硬碟。 SolidFire儲存節點的 SSD 支援熱插拔。如果您懷疑 SSD 發生故障，請聯絡NetApp支援部門以驗證故障並引導您完成正確的故障排除步驟。  NetApp支援團隊也會根據您的服務等級協議，協助您取得替換硬碟。' 
+---
+= 排除驅動器故障
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將故障的固態硬碟 (SSD) 更換為新的硬碟。 SolidFire儲存節點的 SSD 支援熱插拔。如果您懷疑 SSD 發生故障，請聯絡NetApp支援部門以驗證故障並引導您完成正確的故障排除步驟。  NetApp支援團隊也會根據您的服務等級協議，協助您取得替換硬碟。
+
+在這種情況下，「可更換」意味著您可以從活動節點中移除故障驅動器，並用NetApp的新 SSD 驅動器取代它。不建議在活動群集中移除未發生故障的磁碟機。
+
+您應該按照NetApp支援部門的建議，在現場備有備用硬碟，以便在硬碟發生故障時立即進行更換。
+
+
+NOTE: 為了進行測試，如果您要透過從節點中拔出驅動器來模擬驅動器故障，則必須等待 30 秒後才能將驅動器插入驅動器插槽。
+
+如果某個硬碟發生故障，Double Helix 會將硬碟上的資料重新指派到叢集中剩餘的節點上。同一節點上的多個硬碟發生故障不是問題，因為 Element 軟體可以防止同一節點上存在兩份資料副本。硬碟故障會導致以下情況：
+
+* 資料已從硬碟遷移出去。
+* 叢集總容量會因硬碟容量而減少。
+* 雙螺旋資料保護確保資料有兩個有效副本。
+
+
+
+IMPORTANT: 如果移除磁碟機會導致儲存空間不足以遷移數據， SolidFire儲存系統不支援移除磁碟機。
+
+
+
+== 更多資訊
+
+* xref:task_troubleshoot_remove_failed_drives.adoc[從叢集中移除故障磁碟機。]
+* xref:concept_troubleshoot_basic_mdss_drive_troubleshooting.adoc[MDSS驅動器基本故障排除]
+* xref:task_troubleshoot_remove_mdss_drives.adoc[移除 MDSS 驅動器]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2844771["更換SolidFire儲存節點的硬碟"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2846859["更換 H600S 系列儲存節點的硬碟"]
+* link:../hardware/task_h410s_h610s_install.html["H410S 和 H610S 硬體訊息"]
+* link:../hardware/task_sfseries_chassisrepl.html["SF系列硬體資訊"]
+

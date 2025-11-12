@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_alerts.html 
+summary: 您無法配置設定來監控SolidFire全快閃儲存系統的警報。 
+keywords: netapp, Element, management node, mnode, ui, alerts, alert monitoring 
+---
+= 設定警報監控
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+警報監控工具已配置為用於NetApp HCI警報監控。這些工具並非為SolidFire全快閃儲存配置或使用。運行這些叢集的工具會導致以下 405 錯誤，考慮到配置，這是預期的： `webUIParseError : Invalid response from server. 405`
+
+有關配置NetApp HCI警報監控的更多信息，請參閱link:https://docs.netapp.com/us-en/hci/docs/task_mnode_enable_alerts.html["設定警報監控"^]

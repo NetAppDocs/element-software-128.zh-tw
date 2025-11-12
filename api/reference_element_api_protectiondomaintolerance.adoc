@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_protectiondomaintolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainTolerance 
+summary: protectionDomainTolerance 物件包含儲存叢集在與其關聯的保護域類型相同的單一保護域內發生一個或多個故障時，繼續讀取和寫入資料的能力的資訊。 
+---
+= 保護域容錯
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainTolerance 物件包含儲存叢集在與其關聯的保護域類型相同的單一保護域內發生一個或多個故障時，繼續讀取和寫入資料的能力的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+保護方案容差
+ a| 
+包含關聯保護域類型的故障容錯資訊的物件清單（每個保護方案一個物件）。
+ a| 
+xref:reference_element_api_protectionschemetolerance.adoc[保護方案容差]大批
+
+
+
+ a| 
+可持續的失敗合奏
+ a| 
+在不失去集合法定人數的情況下，相關保護域內可同時發生的故障數量。
+ a| 
+整數
+
+|===

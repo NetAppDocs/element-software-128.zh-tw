@@ -1,0 +1,36 @@
+---
+section: hardware
+title: 安裝和維護硬體
+entries:
+- title: H410S 和 H610S 硬體訊息
+  entries:
+  - title: 安裝 H410S 和 H610S 節點
+    url: "/hardware/task_h410s_h610s_install.html"
+  - title: 更換 H410S 節點
+    url: "/hardware/task_h410s_repl.html"
+  - title: 更換 H610S 節點
+    url: "/hardware/task_h610s_repl.html"
+  - title: 更換驅動器
+    url: "/hardware/task_hseries_driverepl.html"
+  - title: 更換電源單元
+    url: "/hardware/task_psu_repl.html"
+- title: SF系列硬體資訊
+  entries:
+  - title: 更換底盤
+    url: "/hardware/task_sfseries_chassisrepl.html"
+  - title: 更換驅動器
+    url: "/hardware/task_sfseries_driverepl.html"
+  - title: 更換電源單元
+    url: "/hardware/task_sfseries_psurepl.html"
+- title: 返回工廠圖像訊息
+  entries:
+  - title: 配置恢復出廠設定映像
+    url: "/hardware/concept_rtfi_configure.html"
+  - title: RTFI部署與安裝選項
+    url: "/hardware/task_rtfi_deployment_and_install_options.html"
+  - title: RTFI流程
+    url: "/hardware/task_rtfi_process.html"
+  - title: RTFI選項選單
+    url: "/hardware/task_rtfi_options_menu.html"
+- title: 儲存節點支援的韌體版本
+  url: "/hardware/fw_storage_nodes.html"

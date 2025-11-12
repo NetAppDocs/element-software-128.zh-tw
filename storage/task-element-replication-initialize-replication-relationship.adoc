@@ -1,0 +1,60 @@
+---
+permalink: storage/task-element-replication-initialize-replication-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, initialize, replication, relationship 
+summary: 對於所有關係類型，初始化都會執行基線傳輸：它會建立來源磁碟區的快照副本，然後將該副本及其引用的所有資料區塊傳輸到目標磁碟區。 
+---
+= 初始化複製關係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於所有關係類型，初始化都會執行_基線傳輸_：它會建立來源磁碟區的快照副本，然後將該副本及其引用的所有資料區塊傳輸到目標磁碟區。
+
+.開始之前
+* 包含要複製的磁碟區的 Element 節點必須已對ONTAP開放。
+* Element 磁碟區必須已啟用SnapMirror複製功能。
+* 如果您使用的是「`mirror-vault`」政策類型，則必須設定SnapMirror標籤才能複製 Element 快照副本。
++
+[NOTE]
+====
+你只能在以下情況下執行此任務：link:concept_snapmirror_labels.html["Element 軟體 Web 使用者介面"]或使用link:../api/concept_element_api_snapshots_overview.html["API 方法"]。
+
+====
+
+
+.關於此任務
+您必須在表單中指定元素來源路徑。 `<hostip:>/lun/<name>`其中“`lun`”是實際的字串“`lun`”， `_name_`是元素卷的名稱。
+
+初始化過程可能很耗時。您可能需要在非尖峰時段運行基線傳輸。
+
+[NOTE]
+====
+如果因任何原因導致從ONTAP來源到 Element 目標的關係初始化失敗，即使您已修正了問題（例如，無效的 LUN 名稱），它仍將繼續失敗。解決方法如下：
+
+. 刪除這段關係。
+. 刪除 Element 目標磁碟區。
+. 建立新的 Element 目標磁碟區。
+. 建立並初始化從ONTAP來源到 Element 目標磁碟區的新關係。
+
+
+====
+.步
+. 初始化複製關係：
++
+`snapmirror initialize -source-path <hostip:>/lun/<name> -destination-path <SVM:volume|cluster://SVM/volume>`
+
++
+有關完整的命令語法，請參閱手冊頁。
+
++
+以下範例初始化來源磁碟區之間的關係 `0005`IP 位址為 10.0.0.11，目標磁碟區為 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror initialize -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

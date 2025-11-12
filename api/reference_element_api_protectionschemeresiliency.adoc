@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemeresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeResiliency 
+summary: protectionSchemeResiliency 物件包含有關儲存叢集（針對特定保護方案）是否可以自動從其關聯的 protectionDomainType 中的一個或多個故障中復原自身的資訊。當儲存叢集能夠透過任何單一儲存節點的故障繼續讀取和寫入資料時，該儲存叢集就被認為是已恢復的（這種狀態稱為節點容錯性）。 
+---
+= 保護方案彈性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionSchemeResiliency 物件包含有關儲存叢集（針對特定保護方案）是否可以自動從其關聯的 protectionDomainType 中的一個或多個故障中復原自身的資訊。當儲存叢集能夠透過任何單一儲存節點的故障繼續讀取和寫入資料時，該儲存叢集就被認為是已復原的（這種狀態稱為節點容錯）。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+保護計劃
+ a| 
+此儲存叢集的目前保護方案。唯一可能的值是 doubleHelix。
+ a| 
+細繩
+
+
+
+ a| 
+sustainableFailuresForBlockData
+ a| 
+預測在不喪失自動恢復到節點資料容錯狀態的能力的情況下，可以同時發生的故障數量。
+ a| 
+整數
+
+
+
+ a| 
+可持續的元數據失敗
+ a| 
+預測在不喪失自動恢復到元資料節點容錯狀態的能力的情況下，可以同時發生的故障數量。
+ a| 
+整數
+
+|===

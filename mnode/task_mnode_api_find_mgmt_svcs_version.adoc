@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_api_find_mgmt_svcs_version.html 
+summary: 您可以使用 REST API 來尋找管理節點所使用的管理節點作業系統和管理服務版本。 
+keywords: netapp, Element, management node, management services, version, bundle version, what is 
+---
+= 驗證管理節點作業系統和服務版本
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用管理節點中的 REST API 來驗證管理節點作業系統、管理服務套件以及在管理節點上執行的各個服務的版本號碼。
+
+.你需要什麼
+* 您的叢集正在執行NetApp Element軟體 11.3 或更高版本。
+* 您已部署執行版本 11.3 或更高版本的管理節點。
+
+
+.選項
+* <<API 指令>>
+* <<REST API UI 步驟>>
+
+
+
+
+== API 指令
+
+* 取得管理節點上執行的管理節點作業系統、管理服務包和管理節點 API (mnode-api) 服務的版本資訊：
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/about" -H  "accept: application/json"
+----
+* 取得管理節點上運行的各個服務的版本資訊：
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/services?status=running" -H  "accept: */*" -H  "Authorization: ${TOKEN}"
+----
++
+
+NOTE: 你可以找到持票人 `${TOKEN}`當您使用 API 命令時，它會被您使用。link:task_mnode_api_get_authorizationtouse.html["授權"] 。持票人 `${TOKEN}`位於 curl 回應中。
+
+
+
+
+
+== REST API UI 步驟
+
+. 透過輸入管理節點 IP 位址，然後輸入以下內容，即可存取該服務的 REST API UI： `/mnode/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. 執行下列操作之一：
++
+** 取得管理節點上執行的管理節點作業系統、管理服務包和管理節點 API (mnode-api) 服務的版本資訊：
++
+... 選擇 *GET /about*。
+... 選擇*試用*。
+... 選擇*執行*。
++
+管理服務包版本(`"mnode_bundle_version"`），管理節點作業系統版本(`"os_version"`）和管理節點 API 版本(`"version"`）在回應正文中有所說明。
+
+
+
+** 取得管理節點上運行的各個服務的版本資訊：
++
+... 選擇 *GET /services*。
+... 選擇*試用*。
+... 選擇狀態為“運行中”。
+... 選擇*執行*。
++
+回應正文中會指示管理節點上執行的服務。
+
+
+
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

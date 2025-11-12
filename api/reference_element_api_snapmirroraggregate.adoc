@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_snapmirroraggregate.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorAggregate 
+summary: snapMirrorAggregate 物件包含有關可用ONTAP聚合的信息，這些聚合是提供給磁碟區作為儲存的磁碟集合。您可以使用 ListSnapMirrorAggregates API 方法來取得此資訊。 
+---
+= snapMirrorAggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorAggregate 物件包含有關可用ONTAP聚合的信息，這些聚合是提供給磁碟區作為儲存的磁碟集合。您可以使用 ListSnapMirrorAggregates API 方法來取得此資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目標ONTAP系統的 ID。
+ a| 
+整數
+
+
+
+ a| 
+聚合名稱
+ a| 
+該集合體的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+節點名稱
+ a| 
+擁有此聚合的ONTAP節點的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+尺寸可用
+ a| 
+總計中剩餘的可用位元組數。
+ a| 
+整數
+
+
+
+ a| 
+總大小
+ a| 
+聚合體的總大小（以位元組為單位）。
+ a| 
+整數
+
+
+
+ a| 
+已用容量百分比
+ a| 
+目前磁碟空間使用百分比。
+ a| 
+整數
+
+
+
+ a| 
+數量計數
+ a| 
+總卷數。
+ a| 
+整數
+
+|===

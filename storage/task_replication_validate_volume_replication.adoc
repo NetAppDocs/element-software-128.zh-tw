@@ -1,0 +1,24 @@
+---
+permalink: storage/task_replication_validate_volume_replication.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, validate volume replication 
+summary: 磁碟區複製完成後，應確保來源磁碟區和目標磁碟區處於活動狀態。當處於活動狀態時，卷已配對，資料正從來源卷發送到目標卷，並且資料保持同步。 
+---
+= 驗證卷複製
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+磁碟區複製完成後，應確保來源磁碟區和目標磁碟區處於活動狀態。當處於活動狀態時，卷已配對，資料正從來源卷發送到目標卷，並且資料保持同步。
+
+. 在兩個集群中，選擇“資料保護”>“卷對”。
+. 確認卷狀態為「活動」。
+
+
+
+
+== 查找更多信息
+
+xref:reference_replication_volume_pairing_warnings.adoc[音量配對警告]

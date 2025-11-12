@@ -1,0 +1,33 @@
+---
+permalink: storage/task_snapmirror_enable_on_the_volume.html 
+sidebar: sidebar 
+keywords: element, snapmirror, enable, volume, ui, manually 
+summary: 您必須在 Element UI 中啟用磁碟區上的SnapMirror。這樣就可以將資料複製到指定的ONTAP磁碟區。這是運行NetApp Element軟體的叢集管理員授予SnapMirror控製卷的權限。 
+---
+= 在磁碟區啟用SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在 Element UI 中啟用磁碟區上的SnapMirror。這樣就可以將資料複製到指定的ONTAP磁碟區。這是運行NetApp Element軟體的叢集管理員授予SnapMirror控製卷的權限。
+
+.你需要什麼
+* 您已在叢集的 Element UI 中啟用SnapMirror 。
+* SnapMirror端點可用。
+* 體積必須為 512e 塊大小。
+* 該卷未參與遠端複製。
+* 卷存取類型不是複製目標。
+
+
+
+NOTE: 建立或克隆卷時也可以設定此屬性。
+
+.步驟
+. 點選“管理”>“磁碟區”。
+. 點選要啟用SnapMirror的磁碟區對應的 *操作* 圖示。
+. 在出現的選單中，選擇“編輯”。
+. 在「編輯卷」對話方塊中，選取「啟用SnapMirror」複選框。
+. 點選「儲存變更」。
+

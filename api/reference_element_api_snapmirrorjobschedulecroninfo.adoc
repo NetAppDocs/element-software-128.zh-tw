@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_snapmirrorjobschedulecroninfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorJobScheduleCronInfo 
+summary: snapMirrorJobScheduleCronInfo 物件包含有關ONTAP系統上 cron 作業計劃的資訊。 
+---
+= snapMirrorJobScheduleCronInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorJobScheduleCronInfo 物件包含有關ONTAP系統上 cron 作業計劃的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目標ONTAP系統的 ID。
+ a| 
+整數
+
+
+
+ a| 
+作業計劃名稱
+ a| 
+工作安排的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+工作安排說明
+ a| 
+自動產生的、便於人類閱讀的日程安排摘要。
+ a| 
+細繩
+
+|===

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_UI.html 
+summary: '透過管理節點使用者介面(https://<mNodeIP>:442[]您可以變更網路和叢集設定、執行系統測試或使用系統實用程式。' 
+keywords: 'netapp, management node ui, mnode ui, :442, Element' 
+---
+= 管理節點 UI 概覽
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+透過管理節點使用者介面(`https://<ManagementNodeIP>:442`您可以變更網路和叢集設定、執行系統測試或使用系統實用程式。
+
+您可以使用管理節點使用者介面執行下列任務：
+
+* link:task_mnode_enable_alerts.html["設定警報監控"]
+* link:task_mnode_settings.html["修改並測試管理節點網路、叢集和系統設置"]
+* link:task_mnode_run_system_utilities.html["從管理節點運行系統實用程式"]
+
+
+[discrete]
+== 查找更多信息
+
+* link:task_mnode_access_ui.html["存取管理節點"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_volume_snapshot_api_methods.html 
+sidebar: sidebar 
+keywords: volume,snapshot,API,method 
+summary: Element 軟體磁碟區快照 API 方法可讓您管理磁碟區快照。您可以使用磁碟區快照 API 方法建立、修改、複製和刪除磁碟區快照。 
+---
+= 磁碟區快照 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 軟體磁碟區快照 API 方法可讓您管理磁碟區快照。您可以使用磁碟區快照 API 方法建立、修改、複製和刪除磁碟區快照。
+
+* xref:concept_element_api_snapshots_overview.adoc[快照概覽]
+* xref:reference_element_api_creategroupsnapshot.adoc[建立群組快照]
+* xref:reference_element_api_createschedule.adoc[創建日程]
+* xref:reference_element_api_createsnapshot.adoc[建立快照]
+* xref:reference_element_api_deletegroupsnapshot.adoc[刪除群組快照]
+* xref:reference_element_api_deletesnapshot.adoc[刪除快照]
+* xref:reference_element_api_getschedule.adoc[取得日程安排]
+* xref:reference_element_api_listgroupsnapshots.adoc[列出群組快照]
+* xref:reference_element_api_listschedules.adoc[列出日程表]
+* xref:reference_element_api_listsnapshots.adoc[快照列表]
+* xref:reference_element_api_modifygroupsnapshot.adoc[修改群組快照]
+* xref:reference_element_api_modifyschedule.adoc[修改日程]
+* xref:reference_element_api_modifysnapshot.adoc[修改快照]
+* xref:reference_element_api_rollbacktogroupsnapshot.adoc[回滾到群組快照]
+* xref:reference_element_api_rollbacktosnapshot.adoc[回滾到快照]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

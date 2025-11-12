@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_modifyvolumepair.html 
+sidebar: sidebar 
+keywords: volume,pair,pairs,modify,modifying,edit,editing,changing,change,modifyvolumepair,paired 
+summary: 您可以使用 ModifyVolumePair 方法暫停或重新開始一對磁碟區之間的複製。此方法設定在來源磁碟區（具有讀取/寫入存取權限的磁碟區）上。 
+---
+= 修改卷對
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyVolumePair`暫停或重新啟動一對卷之間複製的方法。此方法設定在來源磁碟區（具有讀取/寫入存取權限的磁碟區）上。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+
+
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+卷 ID
+ a| 
+待修改卷的識別編號。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+暫停手動
+ a| 
+可以在來源（讀/寫）磁碟區上暫停或重新啟動遠端複製。可能的值：
+
+* 真：暫停卷宗複製。
+* 錯誤：重新啟動磁碟區複製。
+
+
+如果沒有指定值，則不會執行任何複製變更。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+模式
+ a| 
+卷複製模式。可能的值：
+
+* 非同步：寫入操作在本地完成時才會得到確認。集群不會等待寫入作業複製到目標集群。
+* 同步：當資料儲存在本機和遠端叢集上時，來源會確認寫入作業。
+* 僅快照：僅複製來源叢集上建立的快照。來自來源磁碟區的活動寫入不會被複製。
+
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "ModifyVolumePair",
+  "params": {
+    "pausedManual": false,
+    "volumeID": 5,
+    "mode": "sync"
+   },
+  "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

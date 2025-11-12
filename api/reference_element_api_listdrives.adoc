@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_listdrives.html 
+sidebar: sidebar 
+keywords: drives,drive,list,listing,listdrives,cluster 
+summary: 您可以使用 ListDrives 方法列出叢集活動節點中存在的磁碟機。此方法傳回已新增為磁碟區元資料或區塊驅動器的驅動器，以及尚未新增但可用的磁碟機。 
+---
+= 清單驅動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListDrives`列出叢集活動節點中存在的磁碟機的方法。此方法傳回已新增為磁碟區元資料或區塊驅動器的驅動器，以及尚未新增但可用的磁碟機。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+驅動
+ a| 
+叢集中的磁碟機清單。
+ a| 
+xref:reference_element_api_drive.adoc[駕駛]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListDrives",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+     "drives" : [
+       {
+         "attributes" : {},
+         "capacity" : 299917139968,
+         "driveID" : 35,
+         "nodeID" : 5,
+         "serial" : "scsi-SATA_INTEL_SSDSA2CW6CVPR141502R3600FGN-part2",
+         "slot" : 0,
+         "status" : "active",
+         "type" : "volume"
+       },
+       {
+         "attributes" : {},
+         "capacity" : 600127266816,
+         "driveID" : 36,
+         "nodeID" : 5,
+         "serial" : "scsi-SATA_INTEL_SSDSA2CW6CVPR1415037R600FGN",
+         "slot" : 6,
+         "status" : "active",
+         "type" : "block"
+       }
+     }
+   ]
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

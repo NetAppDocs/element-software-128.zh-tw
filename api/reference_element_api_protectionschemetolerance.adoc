@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemetolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeTolerance 
+summary: protectionSchemeTolerance 物件包含儲存叢集在特定保護方案下發生故障後是否可以繼續讀取和寫入資料的資訊。 
+---
+= 保護方案容差
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionSchemeTolerance 物件包含儲存叢集在特定保護方案下發生故障後是否可以繼續讀取和寫入資料的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+保護計劃
+ a| 
+此儲存叢集的目前保護方案。唯一可能的值是 doubleHelix。
+ a| 
+細繩
+
+
+
+ a| 
+sustainableFailuresForBlockData
+ a| 
+目前在不遺失相關保護方案的資料塊可用性的情況下，可以同時發生的故障數量。
+ a| 
+整數
+
+
+
+ a| 
+可持續的元數據失敗
+ a| 
+目前在不遺失相關保護方案的元資料可用性的情況下，可以同時發生的故障數量。
+ a| 
+整數
+
+|===

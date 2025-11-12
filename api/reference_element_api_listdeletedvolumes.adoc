@@ -1,0 +1,128 @@
+---
+permalink: api/reference_element_api_listdeletedvolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,marked,delete,deleted,deletion,list,listing,listdeletedvolumes 
+summary: 您可以使用 ListDeletedVolumes 方法檢索已標記為刪除並從系統中清除的磁碟區清單。 
+---
+= 列出已刪除卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListDeletedVolumes`取得已標記為刪除並從系統中清除的磁碟區清單的方法。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+包含虛擬卷
+ a| 
+預設情況下，回應中包含虛擬磁碟區。若要排除虛擬卷，請設定為 false。
+ a| 
+布林值
+ a| 
+真的
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+卷
+ a| 
+已刪除磁碟區清單。
+ a| 
+xref:reference_element_api_volume.adoc[體積]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListDeletedVolumes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法的回應類似於以下範例：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "volumes": [
+            {
+                "access": "readWrite",
+                "accountID": 2,
+                "attributes": {},
+                "blockSize": 4096,
+                "createTime": "2018-06-24T03:13:13Z",
+                "deleteTime": "2018-07-22T16:12:39Z",
+                "enable512e": true,
+                "iqn": "iqn.2010-01.com.solidfire:0oto.deletethis.23",
+                "name": "deleteThis",
+                "purgeTime": "2016-07-23T00:12:39Z",
+                "qos": {
+                    "burstIOPS": 15000,
+                    "burstTime": 60,
+                    "curve": {
+                        "4096": 100,
+                        "8192": 160,
+                        "16384": 270,
+                        "32768": 500,
+                        "65536": 1000,
+                        "131072": 1950,
+                        "262144": 3900,
+                        "524288": 7600,
+                        "1048576": 15000
+                    },
+                    "maxIOPS": 15000,
+                    "minIOPS": 50
+                },
+                "scsiEUIDeviceID": "306f746f00000017f47acc0100000000",
+                "scsiNAADeviceID": "6f47acc100000000306f746f00000017",
+                "sliceCount": 1,
+                "status": "deleted",
+                "totalSize": 1396703232,
+                "virtualVolumeID": null,
+                "volumeAccessGroups": [],
+                "volumeID": 23,
+                "volumePairs": []
+            }
+        ]
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,215 @@
+---
+permalink: api/reference_element_api_enableldapauthentication.html 
+sidebar: sidebar 
+keywords: LDAP,auth,authentication,enable,enabling,EnableLdapAuthentication 
+summary: 您可以使用 EnableLdapAuthentication 方法來設定 LDAP 目錄連接，以便對叢集進行 LDAP 驗證。  LDAP 目錄中的成員使用者可以使用其 LDAP 憑證登入儲存系統。 
+---
+= 啟用 LDAP 身份驗證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableLdapAuthentication`用於設定 LDAP 目錄連線以進行叢集 LDAP 驗證的方法。  LDAP 目錄中的成員使用者可以使用其 LDAP 憑證登入儲存系統。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+認證類型
+ a| 
+確定要使用的使用者身份驗證方法。可能的值：
+
+* `DirectBind`
+* `SearchAndBind`
+
+ a| 
+細繩
+ a| 
+搜尋和綁定
+ a| 
+不
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+要開始進行群組子樹搜尋的樹的基本 DN。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+群組搜尋類型
+ a| 
+控制使用的預設群組搜尋篩選器。可能的值：
+
+* NoGroups：不支援群組。
+* Active Directory：使用者所有 Active Directory 群組的巢狀成員關係。
+* MemberDN：MemberDN 風格的群組（單級）。
+
+ a| 
+細繩
+ a| 
+活動目錄
+ a| 
+不
+
+
+
+ a| 
+伺服器URI
+ a| 
+以逗號分隔的 LDAP 或 LDAPS 伺服器 URI 清單。您可以透過在 LDAP 或 LDAPS URI 末端新增冒號和連接埠號，來新增自訂連接埠。例如，URI“ldap://1.2.3.4”使用預設端口，而URI“ldaps://1.2.3.4:123”使用自訂端口123。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+用戶搜尋基於DN
+ a| 
+要開始子樹搜尋的樹的基本 DN。當使用 SearchAndBind 類型的身份驗證類型時，此參數是必需的。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+搜尋綁定DN
+ a| 
+用於登入以執行 LDAP 使用者搜尋的完整 DN。 DN 需要對 LDAP 目錄具有讀取權限。當使用 SearchAndBind 類型的身份驗證類型時，此參數是必需的。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+搜尋綁定密碼
+ a| 
+用於搜尋的 searchBindDN 帳戶的密碼。當使用 SearchAndBind 類型的身份驗證類型時，此參數是必需的。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+使用者搜尋篩選器
+ a| 
+查詢 LDAP 伺服器時要使用的 LDAP 搜尋過濾器。字串中應包含佔位符文字“%USERNAME%”，該文字將被替換為進行身份驗證的使用者的使用者名稱。例如，(&(objectClass=person)(sAMAccountName=%USERNAME%)) 將使用 Active Directory 中的 sAMAccountName 欄位來符合叢集登入時輸入的使用者名稱。當使用 SearchAndBind 類型的身份驗證類型時，此參數是必需的。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+用戶DNTemplate
+ a| 
+用於定義建構完整使用者可分辨名稱 (DN) 的模式的字串範本。字串中應包含佔位符文字“%USERNAME%”，該文字將被替換為進行身份驗證的使用者的使用者名稱。當使用 DirectBind 類型的驗證類型時，此參數是必要的。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+群組搜尋自訂篩選器
+ a| 
+用於 CustomFilter 搜尋類型，LDAP 過濾器，用於傳回使用者群組的 DN。字串中可以包含佔位符文字 %USERNAME% 和 %USERDN%，根據需要替換為使用者的使用者名稱和完整的使用者 DN。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "EnableLdapAuthentication",
+  "params": {
+     "authType": "SearchAndBind",
+     "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "groupSearchType": "ActiveDirectory",
+     "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+     "searchBindPassword": "zsw@#edcASD12",
+     "sslCert": "",
+     "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))",
+     "serverURIs":[
+           "ldaps://111.22.333.444",
+           "ldap://555.66.777.888"
+           ]
+       },
+  "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

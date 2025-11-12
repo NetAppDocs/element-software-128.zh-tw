@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_fips_enable_fips_140_2_for_https.html 
+sidebar: sidebar 
+keywords: FIPS 140-2, enable fips, federal information processing standards, ncsm 
+summary: 您可以使用 EnableFeature API 方法為 HTTPS 通訊啟用 FIPS 140-2 操作模式。 
+---
+= 在您的叢集上啟用 HTTPS 的 FIPS 140-2 標準
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 EnableFeature API 方法為 HTTPS 通訊啟用 FIPS 140-2 操作模式。
+
+使用NetApp Element軟體，您可以選擇在叢集上啟用聯邦資訊處理標準 (FIPS) 140-2 操作模式。啟用此模式將啟動NetApp加密安全模組 (NCSM)，並利用 FIPS 140-2 1 級認證加密，透過 HTTPS 對所有與NetApp Element UI 和 API 的通訊進行加密。
+
+
+IMPORTANT: 啟用 FIPS 140-2 模式後，無法停用。啟用 FIPS 140-2 模式後，叢集中的每個節點都會重新啟動並執行自檢，以確保 NCSM 已正確啟用並在 FIPS 140-2 認證模式下運作。這會導致叢集上的管理連線和儲存連線中斷。您應該仔細規劃，只有當您的環境需要它提供的加密機制時才啟用此模式。
+
+更多資訊請參閱 Element API 資訊。
+
+以下是啟用 FIPS 的 API 請求範例：
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "fips"
+    },
+    "id": 1
+}
+----
+啟用此操作模式後，所有 HTTPS 通訊均使用 FIPS 140-2 核准的密碼。
+
+
+
+== 查找更多信息
+
+* xref:reference_system_manage_fips_ssl_cipher_changes.adoc[SSL密碼]
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

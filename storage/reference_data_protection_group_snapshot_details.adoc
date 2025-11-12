@@ -1,0 +1,59 @@
+---
+permalink: storage/reference_data_protection_group_snapshot_details.html 
+sidebar: sidebar 
+keywords: snapshots, group snapshots, volumes, replication 
+summary: 資料保護標籤上的「群組快照」頁面提供了有關群組快照的資訊。 
+---
+= 群組快照詳情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+資料保護標籤上的「群組快照」頁面提供了有關群組快照的資訊。
+
+* *ID*
++
+系統產生的群組快照 ID。
+
+* *UUID*
++
+群組快照的唯一 ID。
+
+* *姓名*
++
+使用者自訂的群組快照名稱。
+
+* *創造時間*
++
+建立群組快照的時間。
+
+* *地位*
++
+快照的目前狀態。可能的值：
+
++
+** 準備中：快照正在準備使用，目前還不可寫入。
+** 完成：此快照已完成準備，現在可以使用了。
+** 活動分支：快照是目前活動分支。
+
+
+* *卷數*
++
+該組中的磁碟區數。
+
+* *保留至*
++
+快照將被刪除的日期和時間。
+
+* *遠端複製*
++
+指示快照是否已啟用複製到遠端SolidFire叢集。可能的值：
+
++
+** 已啟用：快照已啟用遠端複製。
+** 已停用：快照未啟用遠端複製。
+
+
+

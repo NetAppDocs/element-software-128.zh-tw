@@ -1,0 +1,154 @@
+---
+permalink: api/reference_element_api_setsnmpinfo.html 
+sidebar: sidebar 
+keywords: snmp,info,setting,set,setsnmpinfo 
+summary: 您可以使用 SetSnmpInfo 方法在叢集節點上設定 SNMP 版本 2 和版本 3。使用此介面設定的值適用於叢集中的所有節點，並且傳遞的值將取代先前對 SetSnmpInfo 的任何呼叫中設定的所有值。 
+---
+= 設定 SNMP 訊息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetSnmpInfo`在叢集節點上設定 SNMP 版本 2 和版本 3 的方法。您透過此介面設定的值將套用於叢集中的所有節點，並且傳遞的值將取代先前任何呼叫中設定的所有值。 `SetSnmpInfo` 。
+
+
+
+== 參數
+
+
+NOTE: SetSnmpInfo 在 Element 版本 6.0 及更高版本中已棄用。使用xref:reference_element_api_enablesnmp.adoc[啟用 SNMP]和xref:reference_element_api_setsnmpacl.adoc[設定 SNMP 存取控制列表]而是採用其他方法。
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+網路
+ a| 
+列出各個網路及其對叢集節點上執行的 SNMP 伺服器的存取權限類型。請參閱 SNMPxref:reference_element_api_network_snmp.adoc[網路]對象，用於儲存可能的值。此參數僅適用於 SNMP v2。
+ a| 
+xref:reference_element_api_network_snmp.adoc[網路]大批
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+已啟用
+ a| 
+如果設定為 true，則叢集中的每個節點都會啟用 SNMP。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+如果設定為 true，則在叢集中的每個節點上啟用 SNMP v3。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+usmUsers
+ a| 
+如果啟用了 SNMP v3，則必須將此值傳遞給 networks 參數。此參數僅適用於 SNMP v3。
+ a| 
+xref:reference_element_api_usmuser.adoc[usmUser]
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 啟用 SNMP v3 的請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+"method":"SetSnmpInfo",
+"params":{
+    "enabled":true,
+    "snmpV3Enabled":true,
+    "usmUsers":[
+      {
+        "name":"user1",
+        "access":"rouser",
+        "secLevel":"auth",
+        "password":"namex1",
+        "passphrase":"yourpassphrase"
+      }
+    ]
+  },
+ "id":1
+}
+----
+
+
+== 啟用 SNMP v2 的請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+"method":"SetSnmpInfo",
+"params":{
+    "enabled":true,
+    "snmpV3Enabled":false,
+    "networks":[
+      {
+        "community":"public",
+        "access":"ro",
+        "network":"localhost",
+      }
+    ]
+  },
+  "id":1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id" : 1
+  "result" :{
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

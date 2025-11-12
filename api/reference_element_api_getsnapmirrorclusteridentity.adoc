@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_getsnapmirrorclusteridentity.html 
+sidebar: sidebar 
+keywords: get,getting,SnapMirror,cluster,identity,GetSnapMirrorClusterIdentity 
+summary: Element 軟體 Web UI 使用 GetSnapMirrorClusterIdentity 取得有關ONTAP叢集的識別資訊。 
+---
+= 取得SnapMirror叢集標識
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體Web使用者介面使用 `GetSnapMirrorClusterIdentity`取得ONTAP集群的身份資訊。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+如果提供了指定 snapMirrorEndpointID，系統將列出端點的叢集識別碼。如果未提供，系統將列出所有已知SnapMirror端點的叢集標識。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorClusterIdentity
+ a| 
+SnapMirror端點的叢集身分清單。
+ a| 
+xref:reference_element_api_snapmirrorclusteridentity.adoc[snapMirrorClusterIdentity]大批
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

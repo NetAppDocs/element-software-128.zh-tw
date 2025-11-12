@@ -1,0 +1,95 @@
+---
+permalink: api/reference_element_api_snapmirrornode.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorNode 
+summary: snapMirrorNode 物件包含有關SnapMirror關係中目標ONTAP叢集節點的資訊。 
+---
+= snapMirrorNode
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorNode 物件包含有關SnapMirror關係中目標ONTAP叢集節點的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目標ONTAP系統的 ID。
+ a| 
+整數
+
+
+
+ a| 
+姓名
+ a| 
+ONTAP節點的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+模型
+ a| 
+ONTAP節點的模型。
+ a| 
+細繩
+
+
+
+ a| 
+序號
+ a| 
+ONTAP節點的序號。
+ a| 
+細繩
+
+
+
+ a| 
+產品版本
+ a| 
+ONTAP產品版本。
+ a| 
+細繩
+
+
+
+ a| 
+節點健康狀況
+ a| 
+ONTAP叢集中節點的健康狀況。可能的值：
+
+* 真的
+* 錯誤的
+
+ a| 
+細繩
+
+
+
+ a| 
+isNodeEligible
+ a| 
+節點是否符合參與ONTAP叢集的條件。可能的值：
+
+* 真的
+* 錯誤的
+
+ a| 
+細繩
+
+|===

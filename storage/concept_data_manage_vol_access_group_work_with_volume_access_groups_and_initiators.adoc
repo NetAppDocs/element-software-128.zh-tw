@@ -1,0 +1,51 @@
+---
+permalink: storage/concept_data_manage_vol_access_group_work_with_volume_access_groups_and_initiators.html 
+sidebar: sidebar 
+keywords: volume access groups, initiators, working with, chap, fc, iscsi 
+summary: 您可以使用 iSCSI 發起程序或光纖通道發起程序來訪問問卷訪問群組中定義的磁碟區。 
+---
+= 與大量存取群組和發起者合作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 iSCSI 發起程序或光纖通道發起程序來訪問問卷訪問群組中定義的磁碟區。
+
+您可以透過對應磁碟區集合中的 iSCSI 啟動程式 IQN 或光纖通道 WWPN 來建立存取群組。新增至存取群組的每個 IQN 都可以存取群組中的每個捲，而無需 CHAP 驗證。
+
+CHAP認證方法有兩種類型：
+
+* 帳戶級 CHAP 認證：您可以為帳戶指派 CHAP 認證。
+* 發起方級 CHAP 驗證：您可以為特定發起方指派唯一的 CHAP 目標和金鑰，而無需在單一帳戶中綁定到單一 CHAP。這種發起方層級的 CHAP 驗證取代了帳戶層級的憑證。
+
+
+（可選）使用每個發起方的 CHAP，您可以強制執行發起方授權和每個發起方的 CHAP 驗證。這些選項可以根據每個發起者進行定義，一個存取群組可以包含具有不同選項的多個發起者。
+
+將每個 WWPN 新增至存取群組，即可啟用對存取群組中磁碟區的光纖通道網路存取。
+
+
+NOTE: 磁碟區存取群組具有以下限制：
+
+* 一個訪問群組中最多允許有 64 個 IQN 或 WWPN。
+* 一個訪問群組最多可以包含 2000 卷。
+* 一個 IQN 或 WWPN 只能屬於一個存取群組。
+* 一個卷冊最多可以屬於四個訪問組。
+
+
+
+
+== 查找更多信息
+
+* xref:task_data_manage_vol_access_group_create_a_volume_access_group.adoc[建立卷宗訪問群組]
+* xref:task_data_manage_vol_access_group_add_volumes.adoc[將磁碟區新增至存取群組]
+* xref:task_data_manage_vol_access_group_remove_volumes.adoc[從訪問群組移除卷]
+* xref:task_data_manage_vol_access_group_create_an_initiator.adoc[建立發起者]
+* xref:task_data_manage_vol_access_group_edit_an_initiator.adoc[編輯發起者]
+* xref:task_data_manage_vol_access_group_add_a_single_initiator.adoc[將單一啟動器新增至磁碟區存取群組]
+* xref:task_data_manage_vol_access_group_add_multiple_initiators.adoc[在磁碟區存取群組中新增多個啟動器]
+* xref:task_data_manage_vol_access_group_remove_initiators_from_an_access_group.adoc[從訪問群組移除發起者]
+* xref:task_data_manage_vol_access_group_delete.adoc[刪除訪問群組]
+* xref:task_data_manage_vol_access_group_delete_an_initiator.adoc[刪除發起者]
+

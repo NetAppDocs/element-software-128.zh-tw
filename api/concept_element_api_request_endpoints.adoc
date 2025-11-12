@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_request_endpoints.html 
+sidebar: sidebar 
+keywords: request,endpoints 
+summary: API 中使用了三種類型的請求端點（儲存叢集、儲存叢集建立和每個節點）。您應該始終使用您的 Element 軟體版本支援的最新端點。 
+---
+= 請求端點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+API 中使用了三種類型的請求端點（儲存叢集、儲存叢集建立和每個節點）。您應該始終使用您的 Element 軟體版本支援的最新端點。
+
+API 中的三個請求端點以下列方式指定：
+
+
+
+== 叢集 API 方法
+
+用於儲存叢集範圍 API 請求的 HTTPS 端點是 `+https://<mvip>/json-rpc/<api-version>+`， 在哪裡：
+
+* `<mvip>`是儲存叢集的管理虛擬 IP 位址。
+* `<api-version>`是您正在使用的 API 版本。
+
+
+
+
+== 叢集建立和引導 API 方法
+
+用於建立儲存叢集和存取引導 API 請求的 HTTPS 端點是 `+https://<nodeIP>/json-rpc/<api-version>+`， 在哪裡：
+
+* `<nodeIP>`是您要新增到叢集中的節點的 IP 位址。
+* `<api-version>`是您正在使用的 API 版本。
+
+
+
+
+== 每個節點的 API 方法
+
+單一儲存節點 API 請求的 HTTPS 端點是 `+https://<nodeIP>:442/json-rpc/<api-version>+`， 在哪裡：
+
+* `<nodeIP>`是儲存節點的管理 IP 位址；442 是 HTTPS 伺服器運作的連接埠。
+* `<api-version>`是您正在使用的 API 版本。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_copyvolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,CopyVolume,overwrite,overwriting,data 
+summary: 您可以使用 CopyVolume 方法將現有磁碟區的資料內容替換為另一個磁碟區（或快照）的資料內容。目標磁碟區的屬性，例如 IQN、QoS 設定、大小、帳戶和磁碟區存取群組成員身份，均不會變更。目標磁碟區必須已存在，且大小必須與來源磁碟區相同。 
+---
+= 複製卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CopyVolume`使用另一個磁碟區（或快照）的資料內容覆寫現有磁碟區的資料內容的方法。目標磁碟區的屬性，例如 IQN、QoS 設定、大小、帳戶和磁碟區存取群組成員身份，均不會變更。目標磁碟區必須已存在，且大小必須與來源磁碟區相同。
+
+最好讓客戶端在​​操作開始前卸載目標磁碟區。如果在操作過程中修改了目標卷，則變更將會遺失。完成此操作所需時間可能不固定。你可以使用xref:reference_element_api_getasyncresult.adoc[取得非同步結果]確定過程何時完成的方法，以及xref:reference_element_api_listsyncjobs.adoc[清單同步作業]查看複製進度。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+目標磁碟區 ID
+ a| 
+要覆寫的磁碟區的磁碟區 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+卷 ID
+ a| 
+要讀取的磁碟區的磁碟區ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+snapshotID
+ a| 
+用作克隆來源的快照 ID。如果沒有提供 ID，則使用目前活動磁碟區。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+用於取得運算結果的句柄值。
+ a| 
+整數
+
+
+
+ a| 
+複製ID
+ a| 
+新克隆卷的克隆ID。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "CopyVolume",
+   "params": {
+      "volumeID" : 3,
+      "dstVolumeID" : 2
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 9,
+    "cloneID": 5
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[取得非同步結果]
+* xref:reference_element_api_listsyncjobs.adoc[清單同步作業]
+

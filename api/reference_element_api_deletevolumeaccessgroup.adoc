@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_deletevolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,delete,deleting,DeleteVolumeAccessGroup 
+summary: 您可以使用 DeleteVolumeAccessGroup 刪除磁碟區存取群組。 
+---
+= 刪除卷宗存取群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `DeleteVolumeAccessGroup`刪除卷宗存取群組。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+卷訪問群組ID
+ a| 
+要刪除的磁碟區存取群組的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+刪除孤兒發起者
+ a| 
+指定是否刪除啟動器物件。可能的值：
+
+* true：從磁碟區存取群組中移除啟動器物件後，將其刪除。
+* false：從磁碟區存取群組中刪除啟動器物件後，請勿將其刪除。這是預設值。
+
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+力量
+ a| 
+新增此標誌將強制刪除磁碟區存取群組，即使它具有虛擬網路 ID 或標籤。可能的值：
+
+* 正確：磁碟區存取群組將被刪除。
+* false：預設值。如果磁碟區存取群組具有虛擬網路 ID 或標籤，請勿刪除該磁碟區存取群組。
+
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "DeleteVolumeAccessGroup",
+   "params": {
+          "force": true,
+	  "volumeAccessGroupID"  : 3
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

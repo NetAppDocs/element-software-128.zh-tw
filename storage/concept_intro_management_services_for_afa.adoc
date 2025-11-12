@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_intro_management_services_for_afa.html 
+sidebar: sidebar 
+keywords: management services, aff 
+summary: 管理服務為SolidFire全快閃儲存提供集中式和擴充式管理功能。這些服務包括Active IQ系統遙測、日誌記錄和服務更新，以及 vCenter Element 外掛程式的 QoSSIOC 服務。 
+---
+= SolidFire全快閃儲存的管理服務
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+管理服務為SolidFire全快閃儲存提供集中式和擴充式管理功能。這些服務包括Active IQ系統遙測、日誌記錄和服務更新，以及 vCenter Element 外掛程式的 QoSSIOC 服務。

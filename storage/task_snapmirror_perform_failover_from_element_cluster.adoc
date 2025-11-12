@@ -1,0 +1,32 @@
+---
+permalink: storage/task_snapmirror_perform_failover_from_element_cluster.html 
+sidebar: sidebar 
+keywords: element, ui, failover, cluster, perform a failover, snapmirror 
+summary: 您可以從 Element 叢集執行故障轉移，使目標磁碟區可讀寫，並可供目標端的主機存取。在從 Element 叢集執行故障轉移之前，必須先中斷SnapMirror關係。 
+---
+= 從 Element 叢集執行故障轉移
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從 Element 叢集執行故障轉移，使目標磁碟區可讀寫，並可供目標端的主機存取。在從 Element 叢集執行故障轉移之前，必須先中斷SnapMirror關係。
+
+使用NetApp Element UI 執行故障轉移。如果 Element UI 不可用，您也可以使用ONTAP系統管理員或ONTAP CLI 發出斷開關係命令。
+
+.你需要什麼
+* SnapMirror關係存在，並且目標磁碟區上至少有一個有效的快照。
+* 由於主站點發生計劃外中斷或計劃內事件，您需要故障轉移到目標磁碟區。
+
+
+.步驟
+. 在 Element UI 中，按一下「資料保護」>「SnapMirror關係」。
+. 找出與要故障轉移的來源磁碟區的關係。
+. 點選“操作”圖示。
+. 點擊*中斷*。
+. 確認操作。
++
+目標叢集上的磁碟區現在具有讀寫存取權限，可以掛載到應用程式主機以恢復生產工作負載。此操作將導致所有SnapMirror複製停止。這段關係已經破裂。
+
+

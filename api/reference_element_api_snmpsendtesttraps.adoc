@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_snmpsendtesttraps.html 
+sidebar: sidebar 
+keywords: snmp,test,send,trap,testing,sending,snmpsendtesttraps 
+summary: SnmpSendTestTraps 可用於測試叢集的 SNMP 功能。此方法指示叢集向目前配置的 SNMP 管理器傳送測試 SNMP 陷阱。 
+---
+= SnmpSendTestTraps
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+`SnmpSendTestTraps`可用於測試叢集的SNMP功能。此方法指示叢集向目前配置的 SNMP 管理器傳送測試 SNMP 陷阱。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+地位
+ a| 
+測試狀態。
+ a| 
+細繩
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+	"method": "SnmpSendTestTraps",
+    "params": {},
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "status": "complete"
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

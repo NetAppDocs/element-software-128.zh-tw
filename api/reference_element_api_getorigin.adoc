@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getorigin.html 
+sidebar: sidebar 
+keywords: origin,get,getting,getorigin,certificate 
+summary: 您可以使用 GetOrigin 方法取得節點建置位置的原始憑證。 
+---
+= 獲取起源
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetOrigin`取得節點建置位置的原始憑證的方法。
+
+
+
+== 參數
+
+
+NOTE: 如果沒有原始認證，此方法將傳回「null」。
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回供應商來源認證資訊。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+ "method": "GetOrigin",
+ "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "integrator": "SolidFire",
+  "<signature>": {
+    "pubkey": [public key info],
+    "version": 1,
+    "data": [signature info]
+  },
+   "contract-id": "none",
+   "location": "Boulder, CO",
+   "organization": "Engineering",
+   "type": "element-x"
+  }
+ ]
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_enablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableFeature,vvols,virtual volumes,FIPS,140-2,SnapMirror 
+summary: 您可以使用 EnableFeature 方法啟用預設情況下停用的叢集功能，例如 VVols。 
+---
+= 啟用功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableFeature`啟用預設情況下停用的叢集功能（例如 VVols）的方法。
+
+
+
+== 範圍
+
+此方法有以下輸入參數。
+
+
+NOTE: 對於執行 Element 軟體 11.x 的系統，在設定保護域監控之前或之後啟用虛擬磁碟區會導致叢集保護域功能僅在節點層級運作。
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+特徵
+ a| 
+啟用叢集功能。可能的值：
+
+* `fips`啟用 FIPS 140-2 認證的 HTTPS 通訊加密。
+* `FipsDrives`為儲存叢集啟用 FIPS 140-2 磁碟機支援。
+* `SnapMirror`啟用SnapMirror複製叢集功能。
+* `VolumeLoadBalanceOnActualIOPS`啟用基於實際 IOPS 而非最小 IOPS 的切片均衡。從 Element 12.8 版本開始可用。
+* `vvols`啟用 Element 軟體 VVols 叢集功能。
+
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "vvols"
+    },
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

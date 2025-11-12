@@ -1,0 +1,236 @@
+---
+permalink: api/reference_element_api_createsnapshot.html 
+sidebar: sidebar 
+keywords: volume,volumes,create,creating,snapshot,snapshots,CreateSnapshot 
+summary: 您可以使用 CreateSnapshot 建立磁碟區的某個時間點的副本。您可以從任何磁碟區或現有快照建立快照。 
+---
+= 建立快照
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `CreateSnapshot`建立磁碟區的某個時間點的副本。您可以從任何磁碟區或現有快照建立快照。
+
+如果您未透過此 API 方法提供 SnapshotID，則會從磁碟區的活動分支建立快照。如果從中建立快照的磁碟區正在複製到遠端集群，則快照也可以複製到相同目標。使用 enableRemoteReplication 參數啟用快照複製。
+
+
+NOTE: 如果叢集容量處於第 1、2 或 3 階段，則可以建立快照。當叢集容量達到 4 或 5 級時，無法建立快照。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+`attributes`
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`enableRemoteReplication`
+ a| 
+指定是否將快照複製到遠端儲存。可能的值：
+
+* `true`快照將被複製到遠端儲存。
+* `false`快照不會複製到遠端儲存。
+
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+| `ensureSerialCreation`  a| 
+指定如果先前的快照複製正在進行中，則不應建立快照。可能的值有：
+
+* `true`這樣可以確保一次只複製一個快照。如果先前的快照複製仍在進行中，則建立新快照將會失敗。
+* `false`: 預設.如果另一個快照複製仍在進行中，則允許建立此快照。
+
+| 布林值 | `false` | 不 
+
+
+| 過期時間  a| 
+指定快照可以刪除的時間。不能與…一起使用 `retention`。如果未指定過期時間和保留時間，則快照將不會過期。時間格式為 ISO 8601 日期字串，用於基於時間的過期，否則將不會過期。一個值 `null`導致快照永久保留。一個值 `fifo`使得快照相對於磁碟區上的其他 FIFO 快照，依照先進先出 (FIFO) 原則進行保存。如果沒有可用的FIFO空間，API將會失敗。
+| 細繩 | 沒有任何 | 不 
+
+
+ a| 
+`name`
+ a| 
+快照的名稱。如果沒有輸入名稱，則使用拍攝快照的日期和時間。名稱長度上限為 255 個字元。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`retention`
+ a| 
+此參數與以下參數相同： `expirationTime`參數，但時間格式為 HH:mm:ss。如果兩者都不是 `expirationTime`也不 `retention`如果指定了快照，則快照將不會過期。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+SnapMirror軟體用於指定SnapMirror端點上的快照保留策略的標籤。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`snapshotID`
+ a| 
+用於建立新快照的快照的唯一 ID。傳遞的 snapshotID 必須是給定磁碟區上的快照。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`volumeID`
+ a| 
+要從中複製的磁碟區映像的唯一 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+校驗和
+ a| 
+表示已儲存快照中正確數字的字串。之後可以使用此校驗和來比較其他快照，以偵測資料中的錯誤。
+ a| 
+細繩
+
+
+
+ a| 
+snapshotID
+ a| 
+新快照的唯一識別碼。
+ a| 
+快照 ID
+
+
+
+ a| 
+快照
+ a| 
+包含有關新建立快照的資訊的物件。
+ a| 
+xref:reference_element_api_snapshot.adoc[快照]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "CreateSnapshot",
+   "params": {
+      "volumeID": 1
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "checksum": "0x0",
+      "snapshot": {
+        "attributes": {},
+        "checksum": "0x0",
+        "createTime": "2016-04-04T17:14:03Z",
+        "enableRemoteReplication": false,
+        "expirationReason": "None",
+        "expirationTime": null,
+        "groupID": 0,
+        "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+        "name": "2016-04-04T17:14:03Z",
+        "snapshotID": 3110,
+        "snapshotUUID": "6f773939-c239-44ca-9415-1567eae79646",
+        "status": "done",
+        "totalSize": 5000658944,
+        "virtualVolumeID": null,
+        "volumeID": 1
+      },
+        "snapshotID": 3110
+  }
+}
+----
+
+
+== 例外
+
+當出現以下情況時，將顯示 xNotPrimary 異常： `CreateSnapshot`呼叫 API 後，快照建立失敗。這是預期行為。重試 `CreateSnapshot`API呼叫。
+
+
+
+== 自版本以來的新版本
+
+9.6

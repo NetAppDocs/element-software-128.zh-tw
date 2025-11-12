@@ -1,0 +1,147 @@
+---
+permalink: api/reference_element_api_testlocalconnectivity.html 
+sidebar: sidebar 
+keywords: test,testing,local,connectivity,TestLocalConnectivity 
+summary: '您可以使用 TestLocalConnectivity 方法來 ping 活動群集中每個節點的群集 IP (CIP)。' 
+---
+= 測試本地連接
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestLocalConnectivity`用於 ping 活動叢集中每個節點的叢集 IP (CIP) 的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+細節
+ a| 
+本地活動叢集中每個節點的單獨 ping 回應時間。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "TestLocalConnectivity",
+    "params": {},
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "id": null,
+   "result": {
+      "details": {
+                 "10.26.86.17": {
+                    individualResponseTimes: [
+                         "00:00:00.006868",
+                         "00:00:00.005933",
+                         "00:00:00.006655",
+                         "00:00:00.006584",
+                         "00:00:00.006334"
+                    ],
+                    individualStatus: [
+                          true,
+                          true,
+                          true,
+                          true,
+                          true
+                    ],
+                    responseTime: "00:00:00.006475",
+                    successful: true
+                       },
+                       "10.26.86.18": {
+                    individualResponseTimes: [
+                         "00:00:00.006201",
+                         "00:00:00.006187",
+                         "00:00:00.005990",
+                         "00:00:00.006029",
+                         "00:00:00.005917"],
+                    individualStatus: [
+                          true,
+                          true,
+                          true,
+                          true,
+                          true
+                     ],
+                     "responseTime": "00:00:00.006065",
+                     "successful": true
+     },
+                       "10.26.86.19": {
+                     individualResponseTimes: [
+                         "00:00:00.005988",
+                         "00:00:00.006948",
+                         "00:00:00.005981",
+                         "00:00:00.005964",
+                         "00:00:00.005942"
+                      ],
+                    individualStatus: [
+                                "true",
+                                "true",
+                          true,
+                          true,
+                          true
+                      ],
+                      responseTime: "00:00:00.006165",
+                      successful: true,
+               },
+                          "10.26.86.20": {
+                    individualResponseTimes: [
+                         "00:00:00.005926",
+                         "00:00:00.006072",
+                         "00:00:00.005675",
+                         "00:00:00.009904",
+                         "00:00:00.006225"
+                      ],
+                              "individualStatus": [
+                          true,
+                          true,
+                          true,
+                          true,
+                          true
+                     ],
+                      responseTime: "00:00:00.006760",
+                      successful: true
+                   }
+             },
+     "duration": "00:00:00.595982",
+     "result": "Passed"
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

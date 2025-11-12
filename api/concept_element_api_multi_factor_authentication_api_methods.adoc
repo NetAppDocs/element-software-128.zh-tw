@@ -1,0 +1,36 @@
+---
+permalink: api/concept_element_api_multi_factor_authentication_api_methods.html 
+sidebar: sidebar 
+keywords: multi-factor,MFA,idp,authentication,methods 
+summary: '您可以使用多因素身份驗證 (MFA) 透過安全性斷言標記語言 (SAML) 使用第三方身分提供者 (IdP) 來管理使用者會話。' 
+---
+= 多因素身份驗證 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用多因素身份驗證 (MFA) 透過安全性斷言標記語言 (SAML) 使用第三方身分提供者 (IdP) 來管理使用者會話。
+
+* xref:reference_element_api_addidpclusteradmin.adoc[新增IDP叢集管理員]
+* xref:reference_element_api_createidpconfiguration.adoc[建立身分保護配置]
+* xref:reference_element_api_deleteauthsession.adoc[刪除授權會話]
+* xref:reference_element_api_deleteauthsessionsbyclusteradmin.adoc[DeleteAuthSessionsByClusterAdmin]
+* xref:reference_element_api_deleteauthsessionsbyusername.adoc[按使用者名稱刪除身份驗證會話]
+* xref:reference_element_api_deleteidpconfiguration.adoc[刪除Idp配置]
+* xref:reference_element_api_disableidpauthentication.adoc[禁用身份提供者身份驗證]
+* xref:reference_element_api_enableidpauthentication.adoc[啟用身份提供者身份驗證]
+* xref:reference_element_api_getidpauthenticationstate.adoc[取得 IdP 驗證狀態]
+* xref:reference_element_api_listactiveauthsessions.adoc[列出活動身份驗證會話]
+* xref:reference_element_api_listidpconfigurations.adoc[列出 Idp 配置]
+* xref:reference_element_api_updateidpconfiguration.adoc[更新Idp配置]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

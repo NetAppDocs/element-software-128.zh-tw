@@ -1,0 +1,61 @@
+---
+permalink: api/concept_element_api_system_configuration_api_methods.html 
+sidebar: sidebar 
+keywords: system,config,configuration,methods,api 
+summary: 系統配置 API 方法可讓您取得和設定適用於叢集中所有節點的配置值。 
+---
+= 系統配置 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+系統配置 API 方法可讓您取得和設定適用於叢集中所有節點的配置值。
+
+* xref:reference_element_api_disablebmccoldreset.adoc[禁用BMC冷重置]
+* xref:reference_element_api_disableclusterssh.adoc[DisableClusterSsh]
+* xref:reference_element_api_disablesnmp.adoc[禁用 SNMP]
+* xref:reference_element_api_enablebmccoldreset.adoc[啟用BMC冷重置]
+* xref:reference_element_api_enableclusterssh.adoc[啟用叢集 SSH]
+* xref:reference_element_api_enablesnmp.adoc[啟用 SNMP]
+* xref:reference_element_api_getbinassignmentproperties.adoc[取得 BinAssignmentProperties]
+* xref:reference_element_api_getclustersshinfo.adoc[獲取集群 SSH 信息]
+* xref:reference_element_api_getclusterstructure.adoc[取得聚類結構]
+* xref:reference_element_api_getfipsreport.adoc[取得Fips報告]
+* xref:reference_element_api_getlldpconfig.adoc[取得Lldp配置]
+* xref:reference_element_api_getlldpinfo.adoc[取得Lldp訊息]
+* xref:reference_element_api_system_configuration_getnodefipsdrivesreport.adoc[取得節點Fips驅動器報告]
+* xref:reference_element_api_getntpinfo.adoc[取得NTP訊息]
+* xref:reference_element_api_getnvraminfo.adoc[獲取Nvram信息]
+* xref:reference_element_api_getprotectiondomainlayout.adoc[取得保護域佈局]
+* xref:reference_element_api_getremotelogginghosts.adoc[取得遠端日誌主機]
+* xref:reference_element_api_getsnmpacl.adoc[取得 SNMP 存取控制列表]
+* xref:reference_element_api_getsnmpinfo.adoc[獲取 SNMP 信息]
+* xref:reference_element_api_getsnmpstate.adoc[獲取 SNMP 狀態]
+* xref:reference_element_api_getsnmptrapinfo.adoc[獲取 SNMP 陷阱信息]
+* xref:reference_element_api_getsslcertificate.adoc[取得SSL憑證]
+* xref:reference_element_api_listprotectiondomainlevels.adoc[列表保護域級別]
+* xref:reference_element_api_removesslcertificate.adoc[移除SSL憑證]
+* xref:reference_element_api_resetnetworkconfig.adoc[重置網路配置]
+* xref:reference_element_api_resetsupplementaltlsciphers.adoc[重置補充TLS密碼]
+* xref:reference_element_api_setclusterstructure.adoc[集合聚類結構]
+* xref:reference_element_api_setlldpconfig.adoc[設定Lldp配置]
+* xref:reference_element_api_setntpinfo.adoc[設定Ntp信息]
+* xref:reference_element_api_setprotectiondomainlayout.adoc[設定保護域佈局]
+* xref:reference_element_api_setremotelogginghosts.adoc[設定遠端日誌主機]
+* xref:reference_element_api_setsnmpacl.adoc[設定 SNMP 存取控制列表]
+* xref:reference_element_api_setsnmpinfo.adoc[設定 SNMP 訊息]
+* xref:reference_element_api_setsnmptrapinfo.adoc[設定 SNMP 陷阱訊息]
+* xref:reference_element_api_setsslcertificate.adoc[設定SSL憑證]
+* xref:reference_element_api_snmpsendtesttraps.adoc[SnmpSendTestTraps]
+* xref:reference_element_api_testaddressavailability.adoc[測試地址可用性]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

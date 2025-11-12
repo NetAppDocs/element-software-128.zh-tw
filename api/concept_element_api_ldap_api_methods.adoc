@@ -1,0 +1,29 @@
+---
+permalink: api/concept_element_api_ldap_api_methods.html 
+sidebar: sidebar 
+keywords: ldap,api,methods 
+summary: '您可以使用輕量級目錄存取協定 (LDAP) 對 Element 儲存進行驗證。本節介紹的 LDAP API 方法可讓您設定對儲存叢集的 LDAP 存取。' 
+---
+= LDAP API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用輕量級目錄存取協定 (LDAP) 對 Element 儲存進行驗證。本節介紹的 LDAP API 方法可讓您設定對儲存叢集的 LDAP 存取。
+
+* xref:reference_element_api_addldapclusteradmin.adoc[新增 LDAP 叢集管理員]
+* xref:reference_element_api_enableldapauthentication.adoc[啟用 LDAP 身份驗證]
+* xref:reference_element_api_disableldapauthentication.adoc[禁用 LDAP 驗證]
+* xref:reference_element_api_getldapconfiguration.adoc[取得LDAP配置]
+* xref:reference_element_api_testldapauthentication.adoc[測試Ldap身份驗證]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

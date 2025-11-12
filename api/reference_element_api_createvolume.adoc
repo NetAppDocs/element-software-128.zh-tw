@@ -1,0 +1,247 @@
+---
+permalink: api/reference_element_api_createvolume.html 
+sidebar: sidebar 
+keywords: create,volume,volumes,creating,CreateVolume 
+summary: 您可以使用 CreateVolume 方法在叢集上建立一個新的空磁碟區。磁碟區建立完成後，即可透過 iSCSI 連接該磁碟區。 
+---
+= 創建卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreateVolume`在叢集上建立新的空卷的方法。磁碟區建立完成後，即可透過 iSCSI 連接該磁碟區。
+
+未指定 QoS 值的磁碟區將使用預設值。您可以使用以下方法查看磁碟區的預設值： `GetDefaultQoS`方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+| `access` | 卷的訪問模式。如果包含此參數，則唯一支援的值是 `snapMirrorTarget`。 | 細繩 | 沒有任何 | 不 
+
+
+| `accountID` | 擁有此磁碟區的帳戶 ID。 | 整數 | 沒有任何 | 是的 
+
+
+| `associateWithQoSPolicy`  a| 
+將磁碟區與指定的QoS策略關聯起來。可能的值：
+
+* `true`將磁碟區與 QoSPolicyID 參數中指定的 QoS 策略關聯。
+* `false`請勿將磁碟區與 QoSPolicyID 參數中指定的 QoS 策略關聯。如果為 false，則會刪除任何現有的政策關聯，無論是否在 QoSPolicy 參數中指定 QoS 策略。
+
+| 布林值 | 真的 | 不 
+
+
+| `attributes` | JSON 物件格式的名稱-值對清單。屬性總大小必須小於 1000B，即 1KB，包含 JSON 格式字元。 | JSON 物件 | 沒有任何 | 不 
+
+
+| `dontMoveforIopsRebalance`  a| 
+使用實際 IOPS 進行負載平衡時，防止磁碟區移動。此設定從 Element 12.8 版本開始可用，僅在以下情況下生效：link:reference_element_api_enablefeature.html["VolumeLoadBalanceOnActualIOPS"]已啟用。可能的值：
+
+* `true`磁碟區不會根據實際 IOPS 進行負載平衡。
+* `false`卷會根據實際 IOPS 進行負載平衡。
+
+
+*注意*：高可用性（節點故障）的負載平衡優先於 `VolumeLoadBalanceOnActualIOPS`和 `dontMoveforIopsRebalance`。
+| 布林值 | 錯誤的 | 不 
+
+
+| `enable512e`  a| 
+啟用 512 位元組磁區模擬。可能的值：
+
+* `true`此磁碟區提供 512 位元組磁區模擬。
+* `false`512e 仿真未啟用。
+
+| 布林值 | 沒有任何 | 是的 
+
+
+| `enableSnapMirrorReplication`  a| 
+確定該磁碟區是否可用於與SnapMirror端點進行複製。可能的值：
+
+* `true`
+* `false`
+
+| 布林值 | 錯誤的 | 不 
+
+
+| `fifoSize` | 指定磁碟區支援的最大先進先出 (FIFO) 快照數。請注意，FIFO 快照和非 FIFO 快照都使用磁碟區上相同的可用快照槽池。使用此選項可限制 FIFO 快照對可用快照插槽的消耗。如果省略，則預設值為 24。 | 整數 | 24 | 不 
+
+
+| `minFifoSize` | 指定磁碟區保留的先進先出 (FIFO) 快照槽的最小數量。這樣可以保證，如果您在磁碟區上同時使用 FIFO 快照和非 FIFO 快照，則非 FIFO 快照不會意外佔用過多的 FIFO 插槽。它還能確保始終至少有這麼多 FIFO 快照可用。由於 FIFO 快照和非 FIFO 快照共用同一個池，因此 `minFifoSize`將非 FIFO 快照的總數減少相同的數量。如果省略，則預設值為 0。 | 整數 | 0 | 不 
+
+
+| `name` | 磁碟區存取群組的名稱（可由使用者指定）。不一定要獨一無二，但建議如此。長度必須為 1 到 64 個字元。 | 細繩 | 沒有任何 | 是的 
+
+
+| `qos`  a| 
+本卷的初始服務品質設定。如果沒有指定任何值，則使用預設值。可能的值：
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+| QoS對象 | 沒有任何 | 不 
+
+
+| `qosPolicyID` | 若要將 QoS 設定套用至指定磁碟區的策略的 ID。此參數與以下參數互斥： `qos`範圍。 | 整數 | 沒有任何 | 不 
+
+
+| `totalSize` | 卷的總大小（以位元組為單位）。檔案大小向上取整到最接近的兆位元組。 | 整數 | 沒有任何 | 是的 
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+體積
+ a| 
+包含有關新建立磁碟區的資訊的物件。
+ a| 
+xref:reference_element_api_volume.adoc[體積]
+
+
+
+ a| 
+卷 ID
+ a| 
+新建立卷的 volumeID。
+ a| 
+整數
+
+
+
+ a| 
+曲線
+ a| 
+曲線是一組鍵值對。關鍵訊息是 I/O 大小（以位元組為單位）。這些數值代表在特定 I/O 尺寸下進行 IOP 的成本。此曲線是相對於 4096 位元組操作，IOPS 設定為 100 的計算結果。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "CreateVolume",
+   "params": {
+      "name": "testit",
+      "accountID": 22,
+      "dontMoveForIopsRebalance": true,
+      "totalSize": 100000000000,
+      "enable512e": false,
+      "attributes": {},
+      "qos": {
+         "minIOPS": 500,
+         "maxIOPS": 27000,
+         "burstIOPS": 27000,
+         "burstTime": 60
+      }
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "curve": {
+            "1048576": 15000,
+            "131072": 1950,
+            "16384": 270,
+            "262144": 3900,
+            "32768": 500,
+            "4096": 100,
+            "524288": 7600,
+            "65536": 1000,
+            "8192": 160
+        },
+        "volume": {
+            "access": "readWrite",
+            "accountID": 22,
+            "attributes": {},
+            "blockSize": 4096,
+            "createTime": "2024-04-02T13:03:02Z",
+            "currentProtectionScheme": "doubleHelix",
+            "deleteTime": "",
+            "dontMoveForIopsRebalance": true,
+            "enable512e": false,
+            "enableSnapMirrorReplication": false,
+            "fifoSize": 24,
+            "iqn": "iqn.2010-01.com.solidfire:mysqldata.677",
+            "lastAccessTime": null,
+            "lastAccessTimeIO": null,
+            "minFifoSize": 0,
+            "name": "testit",
+            "previousProtectionScheme": null,
+            "purgeTime": "",
+            "qos": {
+                "burstIOPS": 27000,
+                "burstTime": 60,
+                "curve": {
+                    "1048576": 15000,
+                    "131072": 1950,
+                    "16384": 270,
+                    "262144": 3900,
+                    "32768": 500,
+                    "4096": 100,
+                    "524288": 7600,
+                    "65536": 1000,
+                    "8192": 160
+                },
+                "maxIOPS": 27000,
+                "minIOPS": 500
+            },
+            "qosPolicyID": null,
+            "scsiEUIDeviceID": "3365657500000140f47acc0100000000",
+            "scsiNAADeviceID": "6f47acc1000000003365657500000140",
+            "sliceCount": 0,
+            "status": "active",
+            "totalSize": 1000000716800,
+            "virtualVolumeID": null,
+            "volumeAccessGroups": [],
+            "volumeConsistencyGroupUUID": "8ed68e57-13ee-47df-8381-29b125142718",
+            "volumeID": 320,
+            "volumePairs": [],
+            "volumeUUID": "e0e2c938-4ecd-4de9-a1be-f6b17c93ce5d"
+        },
+        "volumeID": 320
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_getdefaultqos.adoc[取得預設服務質量]

@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_idpconfiginfo.html 
+sidebar: sidebar 
+keywords: objects,object,idpConfigInfo 
+summary: 'idpConfigInfo 物件包含有關第三方身分提供者 (IdP) 的配置和整合詳細資訊。' 
+---
+= idp配置訊息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+idpConfigInfo 物件包含有關第三方身分提供者 (IdP) 的配置和整合詳細資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+已啟用
+ a| 
+指定是否啟用此第三方身分提供者配置。
+ a| 
+布林值
+
+
+
+ a| 
+idp配置ID
+ a| 
+由第三方身分提供者配置的 UUID。
+ a| 
+唯一識別符
+
+
+
+ a| 
+idpMetadata
+ a| 
+SAML 2.0 單一登入的設定和整合詳細資訊的元資料。
+ a| 
+細繩
+
+
+
+ a| 
+idpName
+ a| 
+用於檢索 SAML 2.0 單一登入的身分提供者的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+服務提供者證書
+ a| 
+用於與此身分提供者通訊的 PEM 格式 Base64 編碼 PKCS#10 X.509 憑證。
+ a| 
+細繩
+
+
+
+ a| 
+spMetadataUrl
+ a| 
+用於從叢集中擷取服務提供者 (SP) 元數據，並將其提供給身分提供者 (IdP) 以建立信任關係的 URL。
+ a| 
+細繩
+
+|===

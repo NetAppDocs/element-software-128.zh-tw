@@ -1,0 +1,25 @@
+---
+permalink: storage/task-element-replication-create-snapmirror-endpoint.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, snapmirror, endpoint 
+summary: 必須先建立SnapMirror端點，然後才能建立複製關係。您只能在 Element 軟體 Web UI 中或使用 API 方法執行此任務。 
+---
+= 創建SnapMirror端點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須先建立SnapMirror端點，然後才能建立複製關係。您只能在 Element 軟體的 Web 使用者介面或使用以下方式執行此任務： link:../api/reference_element_api_abortsnapmirrorrelationship.html["SnapMirror API 方法"]。
+
+.開始之前
+您必須在 Element 叢集上啟用SnapMirror 。
+
+.步驟
+. 點選「資料保護」>「SnapMirror端點」。
+. 點選「建立端點」。
+. 在「建立新端點」對話方塊中，輸入ONTAP叢集管理 IP 位址。
+. 輸入ONTAP叢集管理員的使用者 ID 和密碼。
+. 點選「建立端點」。
+

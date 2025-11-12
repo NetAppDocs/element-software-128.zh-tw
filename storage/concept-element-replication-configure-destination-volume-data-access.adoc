@@ -1,0 +1,19 @@
+---
+permalink: storage/concept-element-replication-configure-destination-volume-data-access.html 
+sidebar: sidebar 
+keywords: ontap, cli, configure, destination, volume, data access 
+summary: 將目標磁碟區設為可寫入後，必須配置該磁碟區以進行資料存取。在來源磁碟區重新啟動之前，SAN 主機可以存取目標磁碟區中的資料。 
+---
+= 配置資料存取的目標卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將目標磁碟區設為可寫入後，必須配置該磁碟區以進行資料存取。在來源磁碟區重新啟動之前，SAN 主機可以存取目標磁碟區中的資料。
+
+. 將元素 LUN 對應到對應的啟動器群組。
+. 從 SAN 主機發起程序建立到 SAN LIF 的 iSCSI 會話。
+. 在 SAN 用戶端上，執行儲存重新掃描以偵測連線的 LUN。
+

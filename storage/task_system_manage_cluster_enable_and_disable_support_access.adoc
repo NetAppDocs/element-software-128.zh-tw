@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_support_access.html 
+sidebar: sidebar 
+keywords: support access, enable, disable 
+summary: 您可以啟用支援存取權限，以便暫時允許NetApp支援人員透過 SSH 存取儲存節點進行故障排除。 
+---
+= 啟用和停用支援訪問
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以啟用支援存取權限，以便暫時允許NetApp支援人員透過 SSH 存取儲存節點進行故障排除。
+
+您必須擁有叢集管理員權限才能變更支援存取權限。
+
+. 點選“集群”>“設定”。
+. 在「啟用/停用支援存取權限」部分，輸入您希望允許支援人員存取的持續時間（以小時為單位）。
+. 點選「啟用支援存取權限」。
+. *可選：*若要停用支援存取權限，請按一下「停用支援存取權限」。
+

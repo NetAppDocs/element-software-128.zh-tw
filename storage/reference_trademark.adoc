@@ -1,0 +1,15 @@
+---
+permalink: storage/reference_trademark.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= 商標
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+NETAPP、NETAPP 標誌和NetApp商標頁面上列出的標誌是NetApp, Inc. 的商標。其他公司和產品名稱可能是其各自所有者的商標。
+
+https://www.netapp.com/company/legal/trademarks/[]

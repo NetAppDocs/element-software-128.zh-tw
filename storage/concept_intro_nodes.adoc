@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_intro_nodes.html 
+sidebar: sidebar 
+keywords: sf-series nodes, nodes, block storage, storage nodes, fibre channel nodes, fc, FC 
+summary: 節點是組成叢集的各個硬體元件，可以作為區塊儲存進行存取。  SolidFire儲存系統中有兩種類型的節點：儲存節點和光纖通道節點。 
+---
+= 節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+節點是組成叢集的各個硬體元件，可以作為區塊儲存進行存取。  SolidFire儲存系統中有兩種類型的節點：儲存節點和光纖通道節點。

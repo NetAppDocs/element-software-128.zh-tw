@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_listiscsisessions.html 
+sidebar: sidebar 
+keywords: iscsi,connection,list,listing,session,info,cluster,listiscsisessions 
+summary: 您可以使用 ListISCSISessions 方法列出叢集中磁碟區的 iSCSI 連線資訊。 
+---
+= 列出 ISCSI 會話
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListISCSISessions`列出叢集中磁碟區的 iSCSI 連線資訊的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+會議
+ a| 
+每個 iSCSI 會話的資訊。
+ a| 
+xref:reference_element_api_session_iscsi.adoc[會議]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListISCSISessions",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+ {
+  "id": 1,
+  "result": {
+    "sessions": [
+      {
+        "accountID": 1,
+        "accountName": "account1",
+        "authentication": {
+            "authMethod": "CHAP",
+            "chapAlgorithm": "SHA3_256",
+            "chapUsername": "iqn.1994-05.com."redhat:1cf11f3eed3",
+            "direction": "two-way"
+        },
+        "createTime": "2022-10-03T22:02:49.121723Z",
+        "driveID": 23,
+        "driveIDs": [23],
+        "initiator": null,
+        "initiatorIP": "10.1.1.1:37138",
+        "initiatorName": "iqn.2010-01.net.solidfire.eng:c",
+        "initiatorPortName": "iqn.2010-01.net.solidfire.eng:c,i,0x23d860000",
+        "initiatorSessionID": 9622126592,
+        "msSinceLastIscsiPDU": 243,
+        "msSinceLastScsiCommand": 141535021,
+        "nodeID": 3,
+        "serviceID": 6,
+        "sessionID": 25769804943,
+        "targetIP": "10.1.1.2:3260",
+        "targetName": "iqn.2010-01.com.solidfire:a7sd.3",
+        "targetPortName": "iqn.2010-01.com.solidfire:a7sd.3,t,0x1",
+        "virtualNetworkID": 0,
+        "volumeID": 3,
+        "volumeInstance": 140327214758656
+      }
+     ...
+    ]
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

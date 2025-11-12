@@ -1,0 +1,43 @@
+---
+permalink: storage/task_system_manage_cluster_volume_load_balancing.html 
+sidebar: sidebar 
+keywords: cluster, volume, volumes, load, balancing, actual, IOPS 
+summary: 從 Element 12.8 開始，您可以啟用磁碟區負載平衡，根據每個磁碟區的實際 IOPS 而不是 QoS 策略中配置的最小 IOPS 來平衡節點間的磁碟區。 
+---
+= 啟用和停用磁碟區負載平衡
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從 Element 12.8 開始，您可以使用磁碟區負載平衡，根據每個磁碟區的實際 IOPS 而不是 QoS 策略中配置的最小 IOPS，在節點之間平衡磁碟區。您可以使用 Element UI 或 API 啟用和停用磁碟區負載平衡（預設為停用狀態）。
+
+.步驟
+. 選擇“集群”>“設定”。
+. 在「叢集特定」部分，變更卷負載平衡的狀態：
++
+[role="tabbed-block"]
+====
+.啟用磁碟區負載平衡
+--
+選擇“啟用基於實際 IOPS 的負載平衡”，並確認您的選擇。
+
+--
+.停用卷宗負載平衡：
+--
+選擇“停用基於實際 IOPS 的負載平衡”，並確認您的選擇。
+
+--
+====
+. （可選）選擇「報告」>「概覽」以確認「實際 IOPS 餘額」的狀態變更。您可能需要向下捲動叢集健康資訊才能查看狀態。
+
+
+
+
+== 查找更多信息
+
+* link:../api/reference_element_api_enablefeature.html["使用 API 啟用卷負載平衡"]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablefeature.html["使用 API 停用卷負載平衡"]
+* link:../hccstorage/task-hcc-qos-policies.html["建立和管理磁碟區 QoS 策略"]
+

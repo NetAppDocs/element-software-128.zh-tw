@@ -1,0 +1,244 @@
+---
+permalink: api/reference_element_api_checkpingonvlan.html 
+sidebar: sidebar 
+keywords: VLAN,pre-deployment,network,validation,validate,validating,check,checking,CheckPingOnVlan 
+summary: 在執行部署前網路驗證時，可以使用 CheckPingOnVlan 方法測試臨時 VLAN 上的網路連線。  CheckPingOnVlan 建立一個臨時 VLAN 接口，使用該 VLAN 介面向儲存叢集中的所有節點發送 ICMP 封包，然後刪除該介面。 
+---
+= 檢查 VLAN 的 Ping
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CheckPingOnVlan`在執行部署前網路驗證時，測試臨時 VLAN 上的網路連線性的方法。 `CheckPingOnVlan`建立一個臨時 VLAN 接口，使用該 VLAN 介面向儲存叢集中的所有節點發送 ICMP 封包，然後刪除該介面。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+嘗試
+ a| 
+指定係統應重複執行測試 ping 的次數。
+ a| 
+整數
+ a| 
+5
+ a| 
+不
+
+
+
+ a| 
+主持人
+ a| 
+指定要 ping 的裝置位址或主機名稱的逗號分隔清單。
+ a| 
+細繩
+ a| 
+叢集中的節點
+ a| 
+不
+
+
+
+ a| 
+介面
+ a| 
+現有（基礎）接口，用於發送 ping 請求。可能的值：
+
+* Bond10G：從 Bond10G 介面發送 ping 請求。
+* Bond1G：從 Bond1G 介面發送 ping 請求。
+
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+資料包大小
+ a| 
+指定傳送到每個 IP 位址的 ICMP 封包中要傳送的位元組數。位元組數必須小於網路配置中指定的最大 MTU。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+ping超時毫秒
+ a| 
+指定等待每個 ping 回應的毫秒數。
+ a| 
+整數
+ a| 
+500毫秒
+ a| 
+不
+
+
+
+ a| 
+禁止碎片化
+ a| 
+啟用 ICMP 封包的 DF（非分片）標誌。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+sourceAddressV4
+ a| 
+ICMP ping 封包中使用的來源 IPv4 位址。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+sourceAddressV6
+ a| 
+ICMP ping 封包中使用的來源 IPv6 位址。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+總超時時間秒
+ a| 
+指定 ping 指令在發出下一次 ping 嘗試或結束進程之前應等待系統回應的時間（以秒為單位）。
+ a| 
+整數
+ a| 
+5
+ a| 
+不
+
+
+
+ a| 
+虛擬網路標籤
+ a| 
+傳送 ping 封包時要使用的 VLAN ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+結果
+ a| 
+列出節點能夠通訊的每個 IP 位址以及 ping 回應統計資料。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "CheckPingOnVlan",
+    "params": {
+        "interface": "Bond10G",
+        "virtualNetworkTag": 4001,
+        "sourceAddressV4": "192.168.41.4",
+        "hosts": "192.168.41.2"
+},
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "192.168.41.2": {
+      "individualResponseCodes": [
+        "Success",
+        "Success",
+        "Success",
+        "Success",
+        "Success"
+      ],
+      "individualResponseTimes": [
+        "00:00:00.000373",
+        "00:00:00.000098",
+        "00:00:00.000097",
+        "00:00:00.000074",
+        "00:00:00.000075"
+      ],
+      "individualStatus": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "interface": "Bond10G",
+      "responseTime": "00:00:00.000143",
+      "sourceAddressV4": "192.168.41.4",
+      "successful": true,
+      "virtualNetworkTag": 4001
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+11.1

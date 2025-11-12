@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_resetdrives.html 
+sidebar: sidebar 
+keywords: drive,drives,remove,removing,data,reset,resetting,resetdrives,erase 
+summary: 您可以使用 ResetDrives 方法主動初始化磁碟機並刪除目前磁碟機上的所有資料。然後，該驅動器可以在現有節點中重複使用，也可以在升級後的節點中使用。 
+---
+= 重置驅動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ResetDrives`主動初始化磁碟機並刪除磁碟機上目前所有資料的方法。然後，該驅動器可以在現有節點中重複使用，也可以在升級後的節點中使用。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+驅動
+ a| 
+要重置的裝置名稱清單（不是磁碟機 ID）。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+力量
+ a| 
+設定為 true 可重置驅動器。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+細節
+ a| 
+正在重置的驅動器的詳細資訊。
+ a| 
+JSON 物件數組
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ResetDrives",
+   "params": {
+      "drives" : "slot3",
+      "force" : true
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+   "details": {
+    "drives": [
+    {
+      "drive": "slot3",
+      "returnCode": 0,
+      "stderr": " * Unlocking /dev/slot9 .[ ok ]\ * Setting master password /dev/slot9 .[ ok ]\ * Secure erasing /dev/slot9 (hdparm) [tries=0/1] ...........................[ ok ]",
+      "stdout": ""
+    }
+   ]
+  },
+  "duration": "00:00:28.501269",
+  "result": "Passed"
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

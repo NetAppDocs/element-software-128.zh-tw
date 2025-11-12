@@ -1,0 +1,27 @@
+---
+permalink: storage/task_intro_limit_results_by_using_filters.html 
+sidebar: sidebar 
+keywords: filter, filtering, sorting information, viewing lists, unfiltered list 
+summary: 您可以在元素使用者介面中篩選頁面上的清單資訊。當您查看清單（例如磁碟區和快照）時，您可以新增一個或多個篩選器來聚焦訊息，使其更容易適應頁面。 
+---
+= 使用篩選器限制結果
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在元素使用者介面中篩選頁面上的清單資訊。當您查看清單（例如磁碟區和快照）時，您可以新增一個或多個篩選器來聚焦訊息，使其更容易適應頁面。
+
+. 查看清單資訊時，點選「篩選」。
+. 展開「篩選依據」欄位。
+. 從欄位最左側的元素中選擇要篩選的欄位。
+. 為該列選擇一個約束條件。
+. 請輸入篩選條件。
+. 按一下“*新增*”。
++
+系統對清單中的資訊運行新的篩選器，並將新的篩選器暫時儲存在「篩選依據」欄位中。
+
+. 若要新增另一個篩選條件，請點選“新增”，然後再次選擇篩選條件。
+. 點擊「全部清除」以移除篩選器清單並顯示未篩選的清單資訊。
+

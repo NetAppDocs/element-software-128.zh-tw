@@ -1,0 +1,122 @@
+---
+permalink: api/reference_element_api_listauthsessionbyusername.html 
+sidebar: sidebar 
+keywords: username,sessions,authentication sessions,list 
+summary: 您可以使用 ListAuthSessionsByUsername 方法列出所有指定使用者的驗證會話。不具有 AccessGroup ClusterAdmins / Administrator 權限的呼叫者只能列出自己的會話。具有 ClusterAdmins / Administrator 權限的呼叫者可以列出屬於任何使用者的會話。 
+---
+= 按使用者名稱列出身份驗證會話
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListAuthSessionsByUsername`列出指定使用者的所有身份驗證會話的方法。不具有 AccessGroup ClusterAdmins / Administrator 權限的呼叫者只能列出自己的會話。具有 ClusterAdmins / Administrator 權限的呼叫者可以列出屬於任何使用者的會話。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+認證方法
+ a| 
+要列出的使用者會話的身份驗證方法。只有屬於 ClusterAdmins/Administrator AccessGroup 的呼叫者才能提供此參數。可能的值有：
+
+* *authMethod=Cluster* 指定叢集管理員使用者名稱。
+* *authMethod=Ldap* 指定使用者的 LDAP DN。
+* *authMethod=Idp* 指定使用者的 IdP UUID 或 NameID。如果 IdP 未配置為傳回任一選項，則此設定會指定在建立工作階段時所發出的隨機 UUID。
+
+ a| 
+認證方法
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+使用者名稱
+ a| 
+用戶的唯一識別碼。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+會議
+ a| 
+身份驗證會話的會話資訊清單。
+ a| 
+link:reference_element_api_authsessioninfo.html["authSessionInfo"]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "ListAuthSessionsByUsername",
+    "authMethod": "Cluster",
+    "username": "admin"
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+"sessions": [
+      {
+        "accessGroupList": [
+          "administrator"
+        ],
+        "authMethod": "Cluster",
+        "clusterAdminIDs": [
+          1
+        ],
+        "finalTimeout": "2020-03-14T19:21:24Z",
+        "idpConfigVersion": 0,
+        "lastAccessTimeout": "2020-03-11T19:51:24Z",
+        "sessionCreationTime": "2020-03-11T19:21:24Z",
+        "sessionID": "b12bfc64-f233-44df-8b9f-6fb6c011abf7",
+        "username": "admin"
+      }
+    ]
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

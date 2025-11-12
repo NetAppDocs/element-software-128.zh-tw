@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_remote_support_connections.html 
+summary: 您可以使用管理節點啟用NetApp支援存取權限以進行故障排除。 
+keywords: netapp, mnode, management node, connect to support, support tunnel, rst 
+---
+= 啟動遠端NetApp支援會話
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您需要SolidFire全快閃儲存系統的技術支持， NetApp支援團隊可以遠端連接到您的系統。要啟動會話並獲得遠端存取權限， NetApp支援人員可以開啟到您環境的反向安全外殼 (SSH) 連線。
+
+您可以聯絡NetApp支援部門，為 SSH 反向隧道連線開啟 TCP 連接埠。此連線允許NetApp支援人員登入您的管理節點。
+
+.開始之前
+* 對於管理服務 2.18 及更高版本，管理節點上的遠端存取功能預設為停用狀態。若要啟用遠端存取功能，請參閱 https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["管理管理節點上的 SSH 功能"]。
+* 如果您的管理節點位於代理伺服器之後，則需要在 sshd.config 檔案中設定下列 TCP 連接埠：
++
+[cols="15,25,60"]
+|===
+| TCP 連接埠 | 描述 | 連接方向 
+
+
+| 443 | 透過開放支援隧道進行反向連接埠轉送的 API 呼叫/HTTPS 連接到 Web UI | 管理節點到儲存節點 
+
+
+| 22 | SSH登入訪問 | 管理節點到儲存節點或從儲存節點到管理節點 
+|===
+
+
+.步驟
+* 登入管理節點並開啟終端會話。
+* 根據提示，輸入以下內容：
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* 若要關閉遠端支援通道，請輸入以下命令：
++
+`rst --killall`
+
+* （可選）停用 https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["遠端存取功能"]再次。
++
+
+NOTE: 如果您不停用 SSH，管理節點上的 SSH 將保持啟用狀態。啟用 SSH 的配置會在管理節點上持續存在，即使經過更新和升級，直到手動停用為止。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

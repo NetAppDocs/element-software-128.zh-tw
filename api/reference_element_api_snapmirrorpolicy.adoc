@@ -1,0 +1,113 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicy.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicy 
+summary: snapMirrorPolicy 物件包含儲存在ONTAP系統上的SnapMirror策略的資訊。 
+---
+= snapMirrorPolicy
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorPolicy 物件包含儲存在ONTAP系統上的SnapMirror策略的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目標ONTAP系統的 ID。
+ a| 
+整數
+
+
+
+ a| 
+策略名稱
+ a| 
+分配給該保單的唯一名稱。
+ a| 
+細繩
+
+
+
+ a| 
+策略類型
+ a| 
+保單類型。可能的值：
+
+* 非同步鏡像
+* 鏡像庫
+
+ a| 
+細繩
+
+
+
+ a| 
+評論
+ a| 
+與SnapMirror策略相關的易於理解的描述。
+ a| 
+細繩
+
+
+
+ a| 
+轉移優先權
+ a| 
+SnapMirror傳輸的優先順序。可能的值：
+
+* 普通：預設優先級。這些調撥任務的安排優先於大多數低優先權調撥任務。
+* 低優先級：這些轉帳優先順序最低，會在大多數正常優先轉帳之後安排。
+
+ a| 
+細繩
+
+
+
+ a| 
+策略規則
+ a| 
+描述策略規則的物件清單。
+ a| 
+xref:reference_element_api_snapmirrorpolicyrule.adoc[snapMirrorPolicyRule]大批
+
+
+
+ a| 
+總保留計數
+ a| 
+策略中所有規則的總保留計數。
+ a| 
+整數
+
+
+
+ a| 
+總規則
+ a| 
+策略中的規則總數。
+ a| 
+整數
+
+
+
+ a| 
+虛擬伺服器名稱
+ a| 
+SnapMirror策略的虛擬伺服器名稱。
+ a| 
+細繩
+
+|===

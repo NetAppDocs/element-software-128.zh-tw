@@ -1,0 +1,30 @@
+---
+permalink: storage/task_per_node_access_settings.html 
+sidebar: sidebar 
+keywords: nodes, accessing node settings, accessing node settings with per-node UI 
+summary: 輸入管理節點 IP 並進行身份驗證後，即可在每個節點的使用者介面中存取網路設定、叢集設定、系統測試和實用程式。 
+---
+= 使用節點級使用者介面存取每個節點的設定。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+輸入管理節點 IP 並進行身份驗證後，即可在每個節點的使用者介面中存取網路設定、叢集設定、系統測試和實用程式。
+
+如果要修改叢集中處於活動狀態的節點的設置，則必須以叢集管理員使用者身分登入。
+
+
+TIP: 您應該一次只配置或修改一個節點。在對其他節點進行修改之前，應確保指定的網路設定能夠達到預期效果，並且網路穩定且運作良好。
+
+. 使用以下方法之一開啟每個節點的使用者介面：
++
+** 在瀏覽器視窗中輸入管理 IP 位址，後面跟著 :442，然後使用管理員使用者名稱和密碼登入。
+** 在 Element UI 中，選擇“叢集”>“節點”，然後按一下要設定或修改的節點的管理 IP 位址連結。在開啟的瀏覽器視窗中，您可以編輯節點的設定。
+
+
++
+image::../media/per_node_ui_hcc_skin.png[每個節點的 UI 網路設定頁面]
+
+

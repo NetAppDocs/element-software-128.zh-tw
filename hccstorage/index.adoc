@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/index.html 
+summary: 透過NetApp SolidFire全快閃存儲，您可以使用NetApp Hybrid Cloud Control 管理和監控儲存資產。 
+keywords: netapp, element, cluster, element, account, user, volume, hybrid cloud control, hcc 
+---
+= 使用NetApp Hybrid Cloud Control 管理和監控存儲
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+透過NetApp SolidFire全快閃存儲，您可以使用NetApp Hybrid Cloud Control 管理和監控儲存資產，並配置儲存系統中的元件。
+
+* link:task-hcc-manage-storage-clusters.html["新增和管理儲存集群"]
+* link:task-setup-configure-fqdn-web-ui-access.html["配置完全限定域名 (FQDN) Web UI 訪問"]
+* link:task-hcc-manage-accounts.html["建立和管理使用者帳戶"]
+* link:task-hcc-manage-vol-management.html["建立和管理卷"]
+* link:task-hcc-manage-vol-access-groups.html["建立和管理磁碟區存取群組"]
+* link:task-hcc-manage-initiators.html["建立和管理發起者"]
+* link:task-hcc-qos-policies.html["建立和管理磁碟區 QoS 策略"]
+* link:task-hcc-dashboard.html["使用NetApp Hybrid Cloud Control 監控您的SolidFire系統"]
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

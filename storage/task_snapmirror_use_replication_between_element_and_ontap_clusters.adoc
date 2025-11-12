@@ -1,0 +1,30 @@
+---
+permalink: storage/task_snapmirror_use_replication_between_element_and_ontap_clusters.html 
+sidebar: sidebar 
+keywords: replication, snapmirror, data protection 
+summary: 您可以從NetApp Element UI 的「資料保護」標籤建立SnapMirror關係。必須啟用SnapMirror功能才能在使用者介面中看到此功能。 
+---
+= 在 Element 和ONTAP叢集之間使用SnapMirror複製（Element UI）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從NetApp Element UI 的「資料保護」標籤建立SnapMirror關係。必須啟用SnapMirror功能才能在使用者介面中看到此功能。
+
+NetApp Element軟體和ONTAP叢集之間的SnapMirror複製不支援 IPv6。
+
+https://www.youtube.com/embed/kerGI1ZtnZQ?rel=0["NetApp影片：適用於NetApp HCI和 Element 軟體的SnapMirror"^]
+
+運行NetApp Element軟體的系統支援SnapMirror功能，可將快照副本複製並還原至NetApp ONTAP系統。使用此技術的主要原因是實現NetApp HCI到ONTAP的災難復原。端點包括ONTAP、 ONTAP Select和Cloud Volumes ONTAP。請參閱 TR-4641 NetApp HCI資料保護。
+
+https://www.netapp.com/pdf.html?item=/media/17048-tr4641pdf.pdf["NetApp技術報告 4641： NetApp HCI資料保護"^]
+
+
+
+== 查找更多信息
+
+* https://www.netapp.com/pdf.html?item=/media/16991-tr4748pdf.pdf["使用NetApp HCI、 ONTAP和融合基礎架構建立您的資料架構"^]
+* link:element-replication-index.html["NetApp Element軟體與ONTAP (ONTAP CLI) 之間的複製"]
+

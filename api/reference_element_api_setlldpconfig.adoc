@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setlldpconfig.html 
+sidebar: sidebar 
+keywords: lldp,config,configure,set,setting,setlldpconfig 
+summary: '您可以使用 SetLldpConfig 方法為儲存叢集設定連結層發現協定 (LLDP) 設定。' 
+---
+= 設定Lldp配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetLldpConfig`配置儲存叢集的連結層發現協定 (LLDP) 設定的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+啟用其他協定
+ a| 
+啟用其他發現協定（CDP、FDP、EDP 和 SONMP）的自動使用。
+ a| 
+布林值
+ a| 
+真的
+ a| 
+不
+
+
+
+ a| 
+啟用醫療
+ a| 
+啟用媒體端點發現（LLDP-MED）。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+啟用Lldp
+ a| 
+啟用或停用 LLDP。
+ a| 
+布林值
+ a| 
+真的
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+lldp配置
+ a| 
+有關目前儲存叢集 LLDP 配置的信息，包括新變更的設定。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 3920,
+  "method":"SetLldpConfig",
+    "params": {
+        "lldpConfig": {
+            "enableMed": true
+        }
+    }
+  }
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 3920,
+  "result": {
+    "lldpConfig": {
+        "enableLldp": true,
+        "enableMed": true,
+        "enableOtherProtocols": true
+     }
+  }
+}
+----

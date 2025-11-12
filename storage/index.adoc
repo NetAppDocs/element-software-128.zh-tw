@@ -1,0 +1,37 @@
+---
+permalink: storage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= 使用 Element 軟體管理存儲
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用 Element 軟體設定SolidFire存儲，監控叢集容量和效能，並管理跨多租戶基礎架構的儲存活動。
+
+Element 是SolidFire叢集的核心儲存作業系統。  Element 軟體在叢集中的所有節點上獨立運行，使叢集中的節點能夠組合資源，並作為單一儲存系統呈現給外部用戶端。  Element 軟體負責整個系統的叢集協調、擴展和管理。
+
+該軟體介面基於 Element API 建置。
+
+* link:task_post_deploy_access_the_element_software_user_interface.html["存取 Element 軟體使用者介面"]
+* link:task_post_deploy_configure_system_options.html["部署後配置SolidFire系統選項"]
+* link:../upgrade/concept_element_upgrade_overview.html["升級儲存系統組件"]
+* link:task_intro_use_basic_options_in_the_element_software_ui.html["使用 Element 軟體使用者介面中的基本選項。"]
+* link:concept_system_manage_accounts_overview.html["管理帳戶"]
+* link:concept_system_manage_system_management.html["管理您的系統"]
+* link:concept_data_manage_data_management.html["管理捲和虛擬卷"]
+* link:concept_data_protection.html["保護您的數據"]
+* link:concept_system_monitoring_and_troubleshooting.html["排查系統故障"]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

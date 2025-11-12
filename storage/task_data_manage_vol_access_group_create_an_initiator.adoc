@@ -1,0 +1,53 @@
+---
+permalink: storage/task_data_manage_vol_access_group_create_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, create, fc, iscsi, aliases, chap 
+summary: 您可以建立 iSCSI 或光纖通道發起程序，並可選擇為其指派別名。 
+---
+= 建立發起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以建立 iSCSI 或光纖通道發起程序，並可選擇為其指派別名。
+
+您也可以透過 API 呼叫來指派基於發起方的 CHAP 屬性。若要為每個發起方新增 CHAP 帳戶名稱和憑證，您必須使用 `CreateInitiator`呼叫 API 來移除和新增 CHAP 存取權和屬性。透過指定一個或多個虛擬網路 ID，可以將發起方存取權限限制為一個或多個 VLAN。 `CreateInitiators`和 `ModifyInitiators`API呼叫。如果沒有指定虛擬網絡，則發起程序可以存取所有網路。
+
+詳情請參閱 API 參考資訊。 link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]
+
+.步驟
+. 點選“管理”>“發起者”。
+. 點選「建立發起者」。
+. 執行下列步驟建立單一啟動器或多個啟動器：
++
+[cols="25,75"]
+|===
+| 選項 | 步驟 
+
+
+ a| 
+創建一個單一發起者
+ a| 
+.. 點選「建立單一發起者」。
+.. 在 *IQN/WWPN* 欄位中輸入發起人的 IQN 或 WWPN。
+.. 在「別名」欄位中輸​​入發起者的友善名稱。
+.. 點選「建立發起者」。
+
+
+
+
+ a| 
+建立多個啟動器
+ a| 
+.. 點擊「批量創建發起者」。
+.. 在文字方塊中輸入 IQN 或 WWPN 清單。
+.. 點選“新增發起者”。
+.. 從結果清單中選擇一個發起者，然後按一下「別名」列中對應的「新增」圖標，為該發起者新增別名。
+.. 點擊勾選標記以確認新別名。
+.. 點選「建立發起者」。
+
+
+|===
+

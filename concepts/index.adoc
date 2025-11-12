@@ -1,0 +1,25 @@
+---
+permalink: concepts/index.html 
+sidebar: sidebar 
+keywords: element, security, clusters, protection, qos 
+summary: 學習Element軟體的基本概念。 
+---
+= 概念
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+學習Element軟體的基本概念。
+
+* link:concept_intro_product_overview.html["產品概述"]
+* xref:concept_solidfire_concepts_solidfire_architecture_overview.adoc[SolidFire架構概述]
+* xref:concept_solidfire_concepts_nodes.adoc[節點]
+* xref:concept_intro_clusters.adoc[叢集]
+* link:concept_solidfire_concepts_security.html["安全"]
+* xref:concept_solidfire_concepts_accounts_and_permissions.adoc[帳戶和權限]
+* link:concept_solidfire_concepts_volumes.html["卷"]
+* xref:concept_solidfire_concepts_data_protection.adoc[資料保護]
+* xref:concept_data_manage_volumes_solidfire_quality_of_service.adoc[服務性能和品質]
+

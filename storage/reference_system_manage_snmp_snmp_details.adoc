@@ -1,0 +1,39 @@
+---
+permalink: storage/reference_system_manage_snmp_snmp_details.html 
+sidebar: sidebar 
+keywords: snmp, overview, reference, mib, settings, trap 
+summary: 在叢集標籤的 SNMP 頁面上，您可以查看以下資訊。 
+---
+= 了解 SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在叢集中設定簡單網路管理協定 (SNMP)。
+
+您可以選擇 SNMP 請求者、選擇要使用的 SNMP 版本、識別 SNMP 基於用戶的安全模型 (USM) 用戶，並配置陷阱來監控SolidFire叢集。您也可以檢視和存取管理資訊庫文件。
+
+
+NOTE: 你可以同時使用 IPv4 位址和 IPv6 位址。
+
+
+
+== SNMP 詳細資訊
+
+在叢集標籤的 SNMP 頁面上，您可以查看以下資訊。
+
+* *SNMP MIB*
++
+您可以查看或下載的 MIB 檔案。
+
+* *常規SNMP設定*
++
+您可以啟用或停用SNMP。啟用 SNMP 後，您可以選擇要使用的版本。如果使用版本 2，您可以新增請求者；如果使用版本 3，您可以設定 USM 使用者。
+
+* *SNMP陷阱設定*
++
+您可以確定要捕獲哪些陷阱。您可以為每個陷阱接收者設定主機、連接埠和團體字串。
+
+

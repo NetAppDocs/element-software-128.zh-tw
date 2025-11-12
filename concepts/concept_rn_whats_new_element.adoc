@@ -1,0 +1,172 @@
+---
+permalink: concepts/concept_rn_whats_new_element.html 
+sidebar: sidebar 
+keywords: netapp, solidfire, element, storage, solidfire enterprise sds 
+summary: NetApp會定期更新SolidFire和 Element 軟體，為您帶來新功能、增強功能和錯誤修復。 
+---
+= Element軟體的新功能有哪些？
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Element_Software_-_Apache_Log4j_Vulnerability_-_Workaround
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp會定期更新SolidFire和 Element 軟體，為您帶來新功能、增強功能和錯誤修復。  Element 12.8 是最新版本，包含安全性和系統元件更新、操作改進以及已解決的問題。
+
+
+NOTE: 累積軟體和韌體更新是作為 Element 12.8 升級的一部分安裝的，該升級基於儲存叢集上運行的當前 Element 版本。例如，如果叢集目前正在執行 Element 12.5，您可以直接升級到 Element 12.8，以取得 Element 12.7 和 12.8 的累積更新。有關支援的升級路徑，請參閱知識庫文章。 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_upgrade_matrix_for_storage_clusters_running_NetApp_Element_software["運行NetApp Element軟體的儲存叢集的升級矩陣是什麼？"^] 。
+
+
+
+== 元素 12.8
+
+了解 Element 12.8 的新增功能。
+
+
+
+=== 卷負載平衡
+
+Element 12.8 引入了容量負載平衡功能。您可以使用此功能，根據每個磁碟區的實際 IOPS 等級（而不是 QoS 策略中配置的最小 IOPS）在節點之間平衡磁碟區。您只能使用卷負載平衡功能來平衡磁碟區。它不能用於平衡虛擬卷。卷負載平衡功能預設為停用狀態。您可以使用以下方式啟用和停用它： `VolumeLoadBalanceOnActualIOPS` API 參數與link:../api/reference_element_api_enablefeature.html["啟用功能"]和link:../api/reference_element_api_disablefeature.html["停用功能"]API 方法或透過使用link:../storage/task_system_manage_cluster_volume_load_balancing.html["卷負載平衡"]Element UI 中的選項。
+
+
+
+=== 查看節點利用率資訊
+
+使用 Element 12.8，您可以查看節點利用率信息，如下所示 `nodeHeat`使用 `GetNodeStats`和 `ListNodeStats`API 方法。這 `nodeHeat`對像是下列成員之一 `nodeStats`物件並顯示基於主總 IOPS 或總 IOPS 與配置 IOPS 的比率（隨時間平均）的節點利用率資訊。
+
+此外，您還可以查看節點利用率的百分比。 `recentPrimaryTotalHeat`在元素使用者介面中節點的「查看詳細資料」顯示中。
+
+
+
+=== 查看卷的 I/O 統計信息
+
+使用 Element 12.8，您可以查看磁碟區的 I/O 使用情況統計資料。 `sliceIopsStats`使用 `GetVolumeStats`和 `ListVolumeStatsByVolume`API 方法。 I/O 統計數據是根據卷的讀取和寫入 IOPS 資訊計算得出的，測量時間段為兩個時期：最近 24 小時和最近 1 小時。link:../api/reference_element_api_volumestats.html#object-members["了解更多"]。
+
+
+
+=== iSCSI 會話的 CHAP 演算法
+
+主機 iSCSI 發起程序請求一個質詢握手驗證協定 (CHAP) 演算法列表，以便在與 Element iSCSI 目標建立 iSCSI 會話時使用。從 Element 12.8 開始，您可以查看 Element iSCSI 目標選擇用於 iSCSI 會話的支援的 CHAP 演算法。
+
+
+
+=== 升級虛擬機器硬體版本
+
+如果您要將現有管理節點就地升級到 Element 12.8，則在升級之前，必須確保管理節點上的 VM 硬體版本與您的環境相容於 ESXi 6.7（VM 硬體版本 14）或更高版本。link:../upgrade/task_hcc_upgrade_management_node.html#step-1-upgrade-vm-hardware-version-on-a-management-node["了解更多"]。
+
+
+
+== 元素 12.7
+
+了解 Element 12.7 的新增功能。
+
+
+
+=== 安全的 CHAP 演算法
+
+Element 12.7 包括對符合 FIPS 標準的安全挑戰握手認證協定 (CHAP) 演算法 SHA1、SHA-256 和 SHA3-256 的支援。link:../storage/task_data_manage_accounts_work_with_accounts_task.html["了解更多"]。
+
+
+
+=== 動態區塊（bin）同步輸入速率
+
+叢集操作，例如節點的新增、升級或維護，或新增磁碟機等，都會觸發區塊（bin）同步，將區塊資料分發到叢集佈局中的新節點或更新節點。使用單一的慢速作為預設同步速率會導致這些操作耗時過長，並且無法利用更大節點的更高處理能力。從 Element 12.7 開始，同步速率會根據儲存節點上的核心數動態調整，使這些操作能夠顯著加快速度。
+
+例如，當您向現有叢集新增執行 Element 12.7 的大型 28 核儲存節點（H610S、SF19210 和 SF38410）時，資料同步速率會自動調整為 110Mbps 而不是 60Mbps。此外，當您將這些大型儲存節點從節點維護模式中取出時（例如，使用NetApp Hybrid Cloud Control 從 Element 12.3.x 或更高版本升級到 Element 12.7 時），變更區塊資料速率的同步輸入速率會自動調整為 110Mbps 而不是 20Mbps。
+
+當您將中型 16 核儲存節點 (H410S) 和小型 12 核儲存節點 (SF4805) 新增至 Element 12.7 叢集時，資料同步速率保持在 60Mbps；但是，在從 Element 12.3.x 升級到 Element 12.7 期間，當您將儲存速率20Mbps 調整到 60Mbps，小型儲存節點的同步速率從 40Mbps 調整到 40Mbps。
+
+移除儲存節點時，不會對區塊同步輸出速率產生影響，從而避免對客戶端 I/O 效能造成影響。
+
+
+
+=== 垃圾收集改進
+
+例如，對於擁有較大儲存節點的集群，如 H610S-4，其已使用空間為 1PB，運行非常高的工作負載（包括覆蓋操作），並且具有很高的重複數據刪除和壓縮率，由於較大節點的默認布隆過濾器大小已從 700GB 或更大的內存增加到 1048576 位，因此垃圾回收操作現在可以跟上。將儲存節點升級到 Element 12.7 後，此變更將自動生效，並且對較小的節點沒有影響。
+
+
+
+=== 規模改進
+
+使用 Element 12.7，在現有叢集中新增多個儲存節點的區塊和元資料磁碟機時，就不再需要遵循特定的順序。使用 Element UI 或 API，您可以輕鬆選擇所有可用磁碟機並同時大量新增它們。 Element 12.7 會自動管理資料同步，以便所有區塊服務同時同步。當每個節點的區塊服務完成同步後，該節點上的元資料驅動器即可指派給主機磁碟區。這種規模上的改進顯著降低了讀取回應延遲，並防止了在新添加的儲存節點之間同步資料時效能下降。
+
+
+
+=== 儲存節點韌體更新
+
+Element 12.7 包含儲存韌體套件版本 2.164.0，其中包含對新系統元件的支援。link:https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.164.0.html["了解更多"]。
+
+
+NOTE: Element 12.7 版本中沒有新的韌體更新。但是，根據儲存節點上執行的目前韌體包，升級到 Element 12.7 時會安裝累積更新。
+
+
+
+=== SolidFire Active IQ文檔
+
+在SolidFire Active IQ UI 中，您現在可以導覽至 QoS 管理頁面，查看叢集的建議和節點限速資訊。此外，叢集儀表板現在會顯示快照總數。最近的其他增強功能包括：為活動卷添加主節點和輔助節點信息，以及節點上主卷最近 30 分鐘的平均吞吐量、IOPS 和平均延遲。
+
+現在您可以從 Element 軟體文件中存取SolidFire Active IQ文件。link:https://docs.netapp.com/us-en/element-software/monitor-storage-active-iq.html["了解更多"]。
+
+
+
+=== NetApp Bugs Online 包含已解決和已知問題。
+
+已解決和已知問題列於NetApp Bugs Online 工具中。您可以瀏覽 Element 軟體和其他產品的這些問題，網址為： https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab["NetApp Bugs Online"^] 。
+
+
+
+== 元素 12.5
+
+了解 Element 12.5 的新增功能。
+
+
+
+=== 改進的儲存節點訪問
+
+Element 12.5 版本透過簽署 SSH 憑證改進了對單一節點的遠端存取。為了提供對儲存節點的安全遠端訪問，需要建立一個新的、權限受限的本機使用者帳戶，名為 `sfreadonly`現在在儲存節點的 RTFI 期間建立。這 `sfreadonly`此帳戶允許存取儲存節點後端，以進行基本維護或故障排除。現在您可以進行配置了 `supportAdmin`允許叢集管理員使用者存取叢集的存取類型，以便NetApp支援人員根據需要存取叢集。
+
+
+
+=== 增強自訂保護域的可管理性
+
+Element 12.5 具有全新的使用者介面，可讓您快速輕鬆地查看現有的自訂保護網域並配置新的自訂保護網域。
+
+
+
+=== 新增和改進的叢集故障、事件和警報
+
+Element 12.5 引進了新的叢集故障碼，增強了系統故障排除功能。 `BmcSelfTestFailed`和 `CpuThermalEventThreshold`。  Element 12.5 還包含現有叢集事件和警報的穩健性改進，例如： `nodeOffline` ， `volumeOffline` ， `driveHealthFault` ， `networkEvent` ， 和	`cSumEvent`。
+
+
+
+=== 從「建立叢集」使用者介面啟用靜態軟體加密
+
+Element 12.5 在建立叢集 UI 中新增了一個新複選框，讓您可以在建立叢集期間為SolidFire全快閃儲存叢集啟用叢集範圍的靜態軟體加密。
+
+
+
+=== 儲存節點韌體更新
+
+Element 12.5 包含儲存節點的韌體更新。link:../concepts/concept_rn_relatedrn_element.html#storage-firmware["了解更多"]。
+
+
+
+=== 增強安全性
+
+Element 12.5 包含緩解措施，可消除 Element 軟體對 Apache Log4j 漏洞的暴露。啟用虛擬磁碟區 (VVols) 功能的NetApp SolidFire儲存叢集容易受到 Apache Log4j 漏洞的影響。有關NetApp Element軟體中 Apache Log4j 漏洞的解決方法的信息，請參閱 {url-peak}[KB 文章^]。
+
+如果您正在執行 Element 11.x、12.0 或 12.2，或者您的儲存叢集已經是 Element 12.3 或 12.3.1 並啟用了 VVols 功能，則應升級至 12.5。
+
+第 12.5 部分還包括 120 多個 CVE 安全漏洞修復措施。
+
+
+
+== 查找更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["NetApp混合雲端控制與管理服務發行說明"^]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire和 Element 軟體文件中心（適用於先前版本）"^]
+* https://docs.netapp.com/us-en/hci/index.html["NetApp HCI文檔"^]
+* link:../hardware/fw_storage_nodes.html["SolidFire儲存節點支援的儲存韌體版本"]
+

@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-collectlogs.html 
+summary: 您可以使用NetApp Hybrid Cloud Control 從 Element 安裝中收集日誌，以協助進行故障排除。 
+keywords: netapp, element, logs, collection, troubleshooting, monitor 
+---
+= 收集日誌以進行故障排除
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您在使用SolidFire全快閃儲存安裝時遇到問題，可以收集日誌並將其發送給NetApp支援部門以協助診斷。您可以使用NetApp Hybrid Cloud Control 或 REST API 來收集 Element 系統上的日誌。
+
+.你需要什麼
+* 請確保您的儲存叢集版本運行的是NetApp Element軟體 11.3 或更高版本。
+* 請確保您已部署執行 11.3 或更高版本的管理節點。
+
+
+.日誌收集選項
+請選擇以下選項之一：
+
+* <<使用NetApp Hybrid Cloud Control 收集日誌>>
+* <<使用 REST API 收集日誌>>
+
+
+
+
+== 使用NetApp Hybrid Cloud Control 收集日誌
+
+您可以從NetApp混合雲控制儀表板存取日誌收集區域。
+
+.步驟
+. 在網頁瀏覽器中開啟管理節點的IP位址。例如：
++
+[listing]
+----
+https://[management node IP address]
+----
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，選擇右上角的選單。
+. 選擇*收集日誌*。
++
+如果您之前收集過日誌，您可以下載現有的日誌包，或開始新的日誌收集。
+
+. 在「日期範圍」下拉式選單中選擇日期範圍，以指定日誌應包含的日期。
++
+如果指定自訂開始日期，則可以選擇日期範圍的起始日期。日誌將從該日期起收集至今日止。
+
+. 在「日誌收集」部分，選擇日誌包應包含的日誌檔案類型。
++
+對於儲存日誌，您可以展開儲存節點列表，並選擇要從中收集日誌的單一節點（或清單中的所有節點）。
+
+. 選擇“收集日誌”開始收集日誌。
++
+日誌收集在背景運行，頁面會顯示進度。
+
++
+
+NOTE: 根據您收集的日誌，進度條可能會在某個百分比停留幾分鐘，或在某些時候進展非常緩慢。
+
+. 選擇“下載日誌”以下載日誌包。
++
+日誌包採用壓縮的 UNIX .tgz 檔案格式。
+
+
+
+
+
+== 使用 REST API 收集日誌
+
+您可以使用 REST API 收集 Element 日誌。
+
+.步驟
+. 找到儲存叢集 ID：
++
+.. 在管理節點上開啟管理節點 REST API 使用者介面：
++
+[listing]
+----
+https://[management node IP]/logs/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client`如果該值尚未填入。
+... 選擇“授權”以開始會話。
+
+
+
+
+. 從 Element 收集日誌：
++
+.. 選擇 *POST /bundle*。
+.. 選擇*試用*。
+.. 根據您需要收集的日誌類型和時間範圍，變更「請求正文」欄位中以下參數的值：
++
+|===
+| 範圍 | 類型 | 描述 
+
+
+| `modifiedSince` | 日期字串 | 僅包含此日期和時間之後修改的日誌。例如，「2020-07-14T20:19:00.000Z」值定義了 2020 年 7 月 14 日 20:19 UTC 的開始日期。 
+
+
+| `mnodeLogs` | 布林值 | 將此參數設為 `true`包括管理節點日誌。 
+
+
+| `storageCrashDumps` | 布林值 | 將此參數設為 `true`包含儲存節點崩潰調試日誌。 
+
+
+| `storageLogs` | 布林值 | 將此參數設為 `true`包括儲存節點日誌。 
+
+
+| `storageNodeIds` | UUID 數組 | 如果 `storageLogs`設定為 `true`，使用儲存叢集節點 ID 填入此參數，以將日誌收集限制在這些特定的儲存節點上。使用 `GET https://[management node IP]/logs/1/bundle/options`可在此端點查看所有可用的節點 ID。 
+|===
+.. 選擇“執行”以開始日誌收集。響應應類似於以下內容：
++
+[listing]
+----
+{
+  "_links": {
+    "self": "https://10.1.1.5/logs/1/bundle"
+  },
+  "taskId": "4157881b-z889-45ce-adb4-92b1843c53ee",
+  "taskLink": "https://10.1.1.5/logs/1/bundle"
+}
+----
+
+
+. 檢查日誌收集任務的狀態：
++
+.. 選擇 *GET /bundle*。
+.. 選擇*試用*。
+.. 選擇“執行”以返回收集任務的狀態。
+.. 滾動到回復正文底部。
++
+你應該看看 `percentComplete`屬性，用於詳細描述收藏進度。如果收藏品已齊全， `downloadLink`此屬性包含完整的下載鏈接，包括日誌包的檔案名稱。
+
+.. 複製文件末尾的文件名 `downloadLink`屬性。
+
+
+. 下載收集到的日誌包：
++
+.. 選擇 *GET /bundle/{filename}*。
+.. 選擇*試用*。
+.. 將你之前複製的檔案名稱貼到 `filename`參數文字欄位。
+.. 選擇*執行*。
++
+執行完成後，回應正文區域會出現下載連結。
+
+.. 選擇“下載檔案”，並將產生的檔案儲存到您的電腦。
++
+日誌包採用壓縮的 UNIX .tgz 檔案格式。
+
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

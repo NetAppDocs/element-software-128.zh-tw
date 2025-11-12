@@ -1,0 +1,154 @@
+---
+permalink: api/reference_element_api_createinitiators.html 
+sidebar: sidebar 
+keywords: create,creating,initiator,CreateInitiators,WWPN,IQN,initiators 
+summary: '您可以使用 CreateInitiators 建立多個新的發起方 IQN 或全球連接埠名稱 (WWPN)，並可選擇為它們指派別名和屬性。使用 CreateInitiators 建立新啟動器時，也可以將其新增至磁碟區存取群組。' 
+---
+= 建立啟動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `CreateInitiators`建立多個新的發起方 IQN 或全球連接埠名稱 (WWPN)，並可選擇為其指派別名和屬性。當你使用 `CreateInitiators`若要建立新的發起程序，您也可以將其新增至磁碟區存取群組。
+
+如果操作未能建立參數中提供的啟動器之一，則該方法會傳回錯誤，並且不會建立任何啟動器（不可能部分完成）。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+發起者
+ a| 
+包含每個新發起者特徵的物件清單。對象：
+
+* `alias`（可選）要指派給此發起者的友善名稱。  （細繩）
+* `attributes`（可選）要指派給此啟動器的 JSON 屬性集。  （JSON 對象）
+* `chapUsername`（可選）此發起者的唯一 CHAP 使用者名稱。如果在建立期間未指定，則預設為發起者名稱 (IQN)，且 requireChap 為 true。  （細繩）
+* `initiatorSecret`（可選）用於驗證發起者的 CHAP 金鑰。如果在建立時未指定且 requireChap 為 true，則預設使用隨機產生的金鑰。  （細繩）
+* `name`（必填）要建立的發起者（IQN 或 WWPN）的名稱。  （細繩）
+* `requireChap`（可選）如果此發起方在會話登入期間需要 CHAP，則為 True。  （布林值）
+* `targetSecret`（可選）用於驗證目標身分的 CHAP 金鑰（在使用相互 CHAP 驗證時）。如果在建立時未指定且 requireChap 為 true，則預設使用隨機產生的金鑰。  （細繩）
+* `virtualNetworkIDs`（可選）與此啟動器關聯的虛擬網路識別碼清單。如果您定義了一個或多個虛擬網絡，則此發起程式只能登入這些虛擬網路。如果沒有定義任何虛擬網絡，則此發起程序可以登入所有網路。
+* `volumeAccessGroupID`（可選）要將新建立的啟動器新增至的磁碟區存取群組的 ID。  （整數）
+
+ a| 
+JSON 物件數組
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+發起者
+ a| 
+描述新建立的啟動器的物件清單。
+ a| 
+xref:reference_element_api_initiator.adoc[發起者]大批
+
+|===
+
+
+== 錯誤
+
+此方法可能會傳回以下錯誤：
+
+|===
+
+
+| Name | 描述 
+
+
+ a| 
+xInitiatorExists
+ a| 
+如果您選擇的發起者名稱已存在，則傳回該名稱。
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 3291,
+  "method": "CreateInitiators",
+  "params": {
+    "initiators": [
+      {
+        "name": "iqn.1993-08.org.debian:01:288170452",
+        "alias": "example1"
+      },
+      {
+        "name": "iqn.1993-08.org.debian:01:297817012",
+        "alias": "example2"
+      }
+    ]
+  }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 3291,
+  "result": {
+    "initiators": [
+      {
+        "alias": "example1",
+        "attributes": {},
+        "initiatorID": 145,
+        "initiatorName": "iqn.1993-08.org.debian:01:288170452",
+        "volumeAccessGroups": []
+      },
+      {
+        "alias": "example2",
+        "attributes": {},
+        "initiatorID": 146,
+        "initiatorName": "iqn.1993-08.org.debian:01:297817012",
+        "volumeAccessGroups": []
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_listinitiators.adoc[列表發起者]

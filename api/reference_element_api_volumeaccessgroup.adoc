@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_volumeaccessgroup.html 
+sidebar: sidebar 
+keywords: object,objects,volumeAccessGroup 
+summary: volumeAccessGroup 物件包含有關特定磁碟區存取群組的資訊。您可以使用 API 方法 ListVolumeAccessGroups 取得所有存取群組的此資訊清單。 
+---
+= 卷訪問群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+volumeAccessGroup 物件包含有關特定磁碟區存取群組的資訊。您可以使用 API 方法檢索所有存取群組的此類資訊清單。 `ListVolumeAccessGroups` 。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+
+
+
+ a| 
+已刪除卷
+ a| 
+已從磁碟區存取群組中刪除但尚未從系統中清除的磁碟區數組。
+ a| 
+整數數組
+
+
+
+ a| 
+發起者 ID
+ a| 
+對應到磁碟區存取群組的發起程序 ID 清單。
+ a| 
+整數數組
+
+
+
+ a| 
+發起者
+ a| 
+對應到磁碟區存取群組的唯一 IQN/WWPN 發起程式陣列。
+ a| 
+字串數組
+
+
+
+ a| 
+姓名
+ a| 
+卷訪問群組的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+卷訪問群組ID
+ a| 
+磁碟區存取群組的唯一 VolumeAccessGroupID 識別碼。
+ a| 
+整數
+
+
+
+ a| 
+卷
+ a| 
+屬於磁碟區存取群組的 VolumeID 清單。
+ a| 
+整數數組
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listvolumeaccessgroups.adoc[列出卷訪問群組]

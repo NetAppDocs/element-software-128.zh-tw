@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_volumepair.html 
+sidebar: sidebar 
+keywords: object,objects,volumePair 
+summary: volumePair 物件包含與不同叢集上的另一個磁碟區配對的磁碟區的資訊。如果音量未配對，則此物件為空。您可以使用 ListActivePairedVolumes 和 ListActiveVolumes API 方法傳回配對磁碟區的資訊。 
+---
+= 體積對
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+volumePair 物件包含與不同叢集上的另一個磁碟區配對的磁碟區的資訊。如果音量未配對，則此物件為空。你可以使用 `ListActivePairedVolumes`和 `ListActiveVolumes`用於傳回配對磁碟區資訊的 API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+叢集對ID
+ a| 
+該卷與簇配對。
+ a| 
+整數
+
+
+
+ a| 
+遠端複製
+ a| 
+卷複製詳情。成員：
+
+* mode: (字串) 可以是「Async」、「Sync」或「SnapshotsOnly」之一。
+* pauseLimit: (整數) 僅供內部使用。
+* remoteServiceID: (整數) 遠端切片服務 ID。
+* resumeDetails: (字串) 保留供將來使用。
+* snapshotReplication（JSON 物件）
++
+** state: (字串) 正在進行的快照​​複製的狀態（如果正在進行）。
+** stateDetails: (字串) 保留供將來使用。
+
+
+* 狀態：（字串）磁碟區複製的狀態。
+* stateDetails: (字串) 保留供將來使用。
+
+ a| 
+JSON 物件
+
+
+
+ a| 
+遠端切片ID
+ a| 
+遠端集群上集群定義的切片 ID。
+ a| 
+整數
+
+
+
+ a| 
+遠端磁碟區 ID
+ a| 
+與本機磁碟區配對的遠端叢集上的磁碟區的 ID。
+ a| 
+整數
+
+
+
+ a| 
+遠端磁碟區名稱
+ a| 
+遠端卷的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+volumePairUUID
+ a| 
+以規範格式表示此配對的通用唯一、群集定義的識別碼。
+ a| 
+細繩
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listactivepairedvolumes.adoc[列出活動配對卷]
+* xref:reference_element_api_listactivevolumes.adoc[列出活動卷]
+

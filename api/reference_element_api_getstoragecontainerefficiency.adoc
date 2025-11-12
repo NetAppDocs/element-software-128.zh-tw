@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getstoragecontainerefficiency.html 
+sidebar: sidebar 
+keywords: volume,virtual,container,volumes,get,getting,efficiency,vvol,GetStorageContainerEfficiency 
+summary: 您可以使用 GetStorageContainerEfficiency 方法檢索有關虛擬磁碟區儲存容器的效率資訊。 
+---
+= 取得儲存容器效率
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetStorageContainerEfficiency`取得虛擬磁碟區儲存容器效率資訊的方法。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+儲存容器ID
+ a| 
+要檢索效率資訊的儲存容器的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+壓縮
+ a| 
+儲存容器中所有虛擬磁碟區透過資料壓縮節省的空間量。以比率表示，其中值為 1 表示資料儲存時未進行壓縮。
+ a| 
+漂浮
+
+
+
+ a| 
+去重
+ a| 
+儲存容器中所有虛擬磁碟區不重複儲存資料所節省的空間量。以比率形式表示。
+ a| 
+漂浮
+
+
+
+ a| 
+缺失捲
+ a| 
+無法查詢效率資料的虛擬磁碟區。磁碟區遺失可能是由於垃圾回收 (GC) 週期不到一小時、網路連線暫時中斷或 GC 週期後重新啟動服務造成的。
+ a| 
+整數數組
+
+
+
+ a| 
+精簡配置
+ a| 
+已用空間與指派給資料儲存的空間之比。以比率形式表示。
+ a| 
+漂浮
+
+
+
+ a| 
+時間戳
+ a| 
+最後一次時間效率資料是在 GC 之後收集的。
+ a| 
+ISO 8601 資料字串
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetStorageContainerEfficiency",
+  "params": {
+    "storageContainerID" : "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1"
+  },
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "compression": 1,
+    "deduplication": 1,
+    "missingVolumes": [],
+    "thinProvisioning": 1,
+    "timestamp": "2016-04-12T15:39:49Z"
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

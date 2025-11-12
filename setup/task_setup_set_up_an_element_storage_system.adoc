@@ -1,0 +1,14 @@
+---
+permalink: setup/task_setup_set_up_an_element_storage_system.html 
+sidebar: sidebar 
+keywords:  
+summary: 設定NetApp Element軟體儲存系統包括配置儲存節點、建立儲存叢集以及新增磁碟機至叢集。如果使用光纖通道網絡，則可以設定光纖通道節點。 
+---
+= 建立元素儲存系統
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+設定NetApp Element軟體儲存系統包括配置儲存節點、建立儲存叢集以及新增磁碟機至叢集。如果使用光纖通道網絡，則可以設定光纖通道節點。

@@ -1,0 +1,33 @@
+= 查找更多信息
+:allow-uri-read: 
+
+
+您可以使用NetApp Element API 變更管理節點的預設 SSL 憑證和私密金鑰。
+
+配置管理節點時，它會建立一個唯一的自簽名安全通訊端層 (SSL) 憑證和私鑰，用於透過 Element UI、每個節點的 UI 或 API 進行的所有 HTTPS 通訊。  Element 軟體支援自簽名憑證以及受信任的憑證授權單位 (CA) 所核發和驗證的憑證。
+
+您可以使用以下 API 方法取得有關預設 SSL 憑證的更多資訊並進行變更。
+
+* *取得節點SSL憑證*
++
+你可以使用link:../api/reference_element_api_getnodesslcertificate.html["GetNodeSSLCertificate 方法"]檢索有關目前已安裝的 SSL 憑證的信息，包括所有憑證詳細資訊。
+
+* *設定節點SSL憑證*
++
+你可以使用link:../api/reference_element_api_setnodesslcertificate.html["SetNodeSSLCertificate 方法"]將叢集和每個節點的 SSL 憑證設定為您提供的憑證和私鑰。系統會對憑證和私鑰進行驗證，以防止套用無效憑證。
+
+* *移除節點SSL憑證*
++
+這link:../api/reference_element_api_removenodesslcertificate.html["RemoveNodeSSLCertificate 方法"]移除目前已安裝的 SSL 憑證和私鑰。然後，叢集會產生一個新的自簽名憑證和私鑰。
+
+
+
+
+
+== 查找更多信息
+
+* link:../storage/reference_post_deploy_change_default_ssl_certificate.html["更改 Element 軟體的預設 SSL 憑證"]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_are_the_requirements_around_setting_custom_SSL_certificates_in_Element_Software%3F["在 Element Software 中設定自訂 SSL 憑證有哪些需求？"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

@@ -1,0 +1,89 @@
+---
+permalink: api/reference_element_api_getloginbanner.html 
+sidebar: sidebar 
+keywords: terms,use,banner,get,getting,getloginbanner,login 
+summary: 您可以使用 GetLoginBanner 方法取得使用者登入 Element Web 介面時看到的目前活動的「使用條款」橫幅。 
+---
+= 取得登入橫幅
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetLoginBanner`取得使用者登入 Element Web 介面時看到的目前有效的「使用條款」橫幅的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+橫幅
+ a| 
+使用條款橫幅的當前文字。即使橫幅廣告被停用，此值也可以包含文字。
+ a| 
+細繩
+
+
+
+ a| 
+已啟用
+ a| 
+使用條款橫幅的狀態。可能的值：
+
+* 正確：登入網頁介面後會顯示使用條款橫幅。
+* 錯誤：登入網頁介面後，未顯示「使用條款」橫幅。
+
+ a| 
+布林值
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 3411,
+  "method": "GetLoginBanner",
+  "params": {}
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 3411,
+  "result": {
+    "loginBanner": {
+      "banner": "Welcome to NetApp!",
+      "enabled": false
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+10.0

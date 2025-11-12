@@ -1,0 +1,18 @@
+---
+permalink: storage/concept-element-replication-workflow.html 
+sidebar: sidebar 
+keywords: workflow, replication, element, ontap, cli 
+summary: 無論您是將資料從 Element 複製到ONTAP，還是從ONTAP複製到 Element，您都需要配置作業計劃、指定策略，並建立和初始化關係。您可以使用預設策略或自訂策略。 
+---
+= Element 與ONTAP之間複製的工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+無論您是將資料從 Element 複製到ONTAP，還是從ONTAP複製到 Element，您都需要配置作業計劃、指定策略，並建立和初始化關係。您可以使用預設策略或自訂策略。
+
+工作流程假定您已完成以下列出的先決任務：link:element-replication-index.html#prerequisites["先決條件"] 。有關SnapMirror策略的完整背景信息，包括使用哪種策略的指南，請參閱link:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["資料保護概述"^]。
+
+image:solidfire-to-ontap-backup-workflow.gif["Solidfire 到ONTAP工作流程"]

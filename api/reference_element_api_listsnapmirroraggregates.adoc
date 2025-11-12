@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_listsnapmirroraggregates.html 
+sidebar: sidebar 
+keywords: snapmirror,aggregate,aggregates,list,listing,listsnapmirroraggregates 
+summary: Element 軟體 Web UI 使用 ListSnapMirrorAggregates 方法列出遠端ONTAP系統上所有可用的SnapMirror聚合。聚合體描述了一組實體儲存資源。 
+---
+= 清單快照鏡像聚合
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體的Web使用者介面使用 `ListSnapMirrorAggregates`列出遠端ONTAP系統上所有可用的SnapMirror聚合的方法。聚合體描述了一組實體儲存資源。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+僅傳回與指定端點 ID 關聯的聚合資料。如果沒有提供端點 ID，系統將列出所有已知SnapMirror端點的聚合資料。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorAggregates
+ a| 
+ONTAP儲存系統上可用的聚合清單。
+ a| 
+xref:reference_element_api_snapmirroraggregate.adoc[snapMirrorAggregate]大批
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

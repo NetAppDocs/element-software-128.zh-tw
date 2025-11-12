@@ -1,0 +1,127 @@
+---
+permalink: api/reference_element_api_getsnmpinfo.html 
+sidebar: sidebar 
+keywords: snmp,information,info,get,getting 
+summary: '您可以使用 GetSnmpInfo 方法取得目前簡單網路管理協定 (SNMP) 設定資訊。' 
+---
+= 獲取 SNMP 信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetSnmpInfo`取得目前簡單網路管理協定（SNMP）設定資訊的方法。
+
+
+
+== 參數
+
+
+NOTE: GetSnmpInfo 在 Element 版本 8.0 之後的版本中已棄用。這xref:reference_element_api_getsnmpstate.adoc[獲取 SNMP 狀態]和xref:reference_element_api_setsnmpacl.adoc[設定 SNMP 存取控制列表]方法取代了 GetSnmpInfo 方法。
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+網路
+ a| 
+已啟用SNMP的網路和存取類型清單。  *注意：*僅當 SNMP v3 停用時才會顯示「網路」選項。
+ a| 
+xref:reference_element_api_network_snmp.adoc[網路]
+
+
+
+ a| 
+已啟用
+ a| 
+指示叢集中的節點是否配置了 SNMP。可能的值：
+
+* 真的
+* 錯誤的
+
+ a| 
+布林值
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+如果叢集中的節點配置為 SNMP v3。可能的值：
+
+* 真的
+* 錯誤的
+
+ a| 
+布林值
+
+
+
+ a| 
+usmUsers
+ a| 
+如果啟用了 SNMP v3，則會從叢集傳回 SNMP 使用者存取參數清單。傳回此值，而不是 networks 參數。
+ a| 
+xref:reference_element_api_usmuser.adoc[usmUser]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetSnmpInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "enabled" : true,
+      "networks" : [
+         {
+            "access" : "rosys",
+            "cidr" : 0,
+            "community" : "public",
+            "network" : "localhost"
+         }
+      ]
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getsnmpstate.adoc[獲取 SNMP 狀態]
+* xref:reference_element_api_setsnmpacl.adoc[設定 SNMP 存取控制列表]
+

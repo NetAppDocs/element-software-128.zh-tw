@@ -1,0 +1,20 @@
+= 查找更多信息
+:allow-uri-read: 
+
+
+返回工廠映像 (RTFI) 程序使用可啟動、可安裝的介質，其中包含完全獨立的、極簡的 Linux 作業系統，以便在節點上部署 Element 軟體。您可以從以下位置下載與您的 Element 軟體版本對應的 RTFI ISO 映像： https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["NetApp支援站點"^] 。
+
+下載 RTFI ISO 鏡像後，您可以按照以下常用方法之一進行部署：
+
+* *實體 USB 金鑰*：您可以將可啟動的 Element 軟體 ISO 寫入 USB 金鑰。有關說明，請參閱知識庫文章。 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["如何建立 RTFI 金鑰以重新映像SolidFire儲存節點"^] 。將裝有 ISO 檔案的 USB 插入節點，並從 USB 啟動。
+* *使用基板管理控制器（BMC）管理連接埠的虛擬媒體*：您可以使用BMC動態連接到位於客戶端系統上的 ISO。 ISO 檔案以虛擬磁碟機（CD 或 DVD）的形式提供給主機作業系統。更多信息，請參閱知識庫文章。 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_RTFI_a_node_via_BMC["如何透過BMC對節點進行 RTFI 操作"^] 。
+* 使用預啟動執行環境 (PXE)、簡單檔案傳輸協定 (TFTP) 或 FTP 進行網路啟動：無需手動解壓縮 ISO 鏡像，您可以使用 `autofs`當 RTFI 進程請求時，自動提取映像。這種部署機制需要更多的初始設置，但可以實現正確的自動化安裝和可擴展性。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

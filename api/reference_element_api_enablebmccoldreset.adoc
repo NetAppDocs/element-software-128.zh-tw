@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_enablebmccoldreset.html 
+sidebar: sidebar 
+keywords: BMC cold reset,BMC reset,enable BMC 
+summary: '您可以使用 EnableBmcColdReset 方法啟用一個背景任務，該任務會定期重設叢集中所有節點的基板管理控制器 (BMC)。' 
+---
+= 啟用BMC冷重置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableBmcColdReset`啟用後台任務的方法，該任務會定期重置叢集中所有節點的基板管理控制器（BMC）。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+暫停
+ a| 
+BMC重置操作之間的時間間隔，以分鐘為單位。
+ a| 
+整數
+ a| 
+20160分鐘
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+cBmc重置持續時間分鐘
+ a| 
+傳回重置間隔之間的時間。指令執行完畢後，間隔時間應始終為 0。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "EnableBmcColdReset",
+    "params": {
+                "timeout": 36000
+    },
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "cBmcResetDurationMinutes": 36000
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

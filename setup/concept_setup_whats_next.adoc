@@ -1,0 +1,32 @@
+---
+permalink: setup/concept_setup_whats_next.html 
+sidebar: sidebar 
+keywords: element, solidfire, workflow 
+summary: 在開始之前，您可能需要了解安裝並設定NetApp Element軟體的順序。 
+---
+= 接下來會發生什麼事？
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+安裝 Element 軟體後，您可以透過完成以下一些選項來管理儲存：
+
+* link:task_post_deploy_access_the_element_software_user_interface.html["存取 Element 軟體使用者介面"]
+* link:../storage/task_post_deploy_configure_system_options.html["部署後配置SolidFire系統選項"]
+* link:../storage/concept_system_manage_accounts_overview.html["管理帳戶"]
+* link:../storage/concept_system_manage_system_management.html["管理您的系統"]
+* link:../storage/concept_data_manage_data_management.html["管理捲和虛擬卷"]
+* link:../storage/concept_data_protection.html["保護您的數據"]
+* link:../storage/concept_system_monitoring_and_troubleshooting.html["排查系統故障"]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

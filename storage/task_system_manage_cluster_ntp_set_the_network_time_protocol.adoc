@@ -1,0 +1,16 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_set_the_network_time_protocol.html 
+sidebar: sidebar 
+keywords: set, ntp, broadcasts, query, updates, clocks, synchronize, 
+summary: '設定網路時間協定 (NTP) 可以透過兩種方式之一實現：要麼指示叢集中的每個節點監聽廣播，要麼指示每個節點向 NTP 伺服器查詢更新。' 
+---
+= 設定網路時間協議
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+設定網路時間協定 (NTP) 可以透過兩種方式之一來實現：要麼指示叢集中的每個節點監聽廣播，要麼指示每個節點向 NTP 伺服器查詢更新。
+
+NTP用於透過網路同步時鐘。連接到內部或外部 NTP 伺服器應該是叢集初始設定的一部分。

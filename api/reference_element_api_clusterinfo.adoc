@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_clusterinfo.html 
+sidebar: sidebar 
+keywords: element, api, object, objects, clusterInfo 
+summary: clusterInfo 物件包含節點用於與叢集通訊的資訊。您可以使用 GetClusterInfo API 方法來取得此資訊。 
+---
+= 集群資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterInfo 物件包含節點用於與叢集通訊的資訊。您可以使用 GetClusterInfo API 方法來取得此資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+
+
+
+ a| 
+預設保護方案
+ a| 
+除非另行指定保護方案，否則新磁碟區預設使用下列保護方案：xref:reference_element_api_createvolume.adoc[創建卷]方法調用。此保護方案必須始終包含在已啟用的保護方案集合中。
+ a| 
+細繩
+
+
+
+ a| 
+啟用防護方案
+ a| 
+此儲存叢集上已啟用的所有保護方案清單。
+ a| 
+字串數組
+
+
+
+ a| 
+靜態加密狀態
+ a| 
+靜態資料加密功能的狀態。可能的值：
+
+* 正在啟用：靜態資料加密已啟用。
+* 已啟用：已啟用靜態資料加密。
+* 已停用：靜態資料加密已停用。
+* 已停用：靜態資料加密已停用。
+
+ a| 
+細繩
+
+
+
+ a| 
+合奏
+ a| 
+參與叢集的節點。
+ a| 
+字串數組
+
+
+
+ a| 
+貴賓
+ a| 
+叢集在管理網路上的浮動（虛擬）IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+mvip介面
+ a| 
+與MVIP位址關聯的實體介面。
+ a| 
+細繩
+
+
+
+ a| 
+mvipNodeID
+ a| 
+持有主 MVIP 位址的節點。
+ a| 
+整數
+
+
+
+ a| 
+mvipVlan標籤
+ a| 
+MVIP 位址的 VLAN 識別碼。
+ a| 
+細繩
+
+
+
+ a| 
+姓名
+ a| 
+唯一的叢集名稱。
+ a| 
+細繩
+
+
+
+ a| 
+重複次數
+ a| 
+叢集中要儲存的每個資料的副本數。有效值為“2”。
+ a| 
+整數
+
+
+
+ a| 
+軟體靜態加密狀態
+ a| 
+基於軟體的靜態狀態加密。
+ a| 
+細繩
+
+
+
+ a| 
+支援的保護方案
+ a| 
+此儲存叢集支援的所有保護方案清單。
+ a| 
+字串數組
+
+
+
+ a| 
+svip
+ a| 
+儲存（iSCSI）網路上叢集的浮動（虛擬）IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+svip介面
+ a| 
+與主 SVIP 位址關聯的實體介面。
+ a| 
+細繩
+
+
+
+ a| 
+svipNodeID
+ a| 
+持有主 SVIP 位址的節點。
+ a| 
+整數
+
+
+
+ a| 
+svipVlanTag
+ a| 
+主 SVIP 位址的 VLAN 識別碼。
+ a| 
+細繩
+
+
+
+ a| 
+唯一識別符
+ a| 
+集群的唯一識別碼。
+ a| 
+細繩
+
+
+
+ a| 
+UUID
+ a| 
+集群的唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+volumeLoadBalanceOnActualIOPSState
+ a| 
+基於實際 IOPS 而非最小 IOPS 功能的切片平衡狀態。從 Element 12.8 版本開始可用。
+ a| 
+細繩
+
+|===
+[discrete]
+== 查找更多信息
+
+* link:reference_element_api_getclusterinfo.html["獲取集群資訊"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

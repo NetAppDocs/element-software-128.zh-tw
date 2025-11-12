@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_setsnmptrapinfo.html 
+sidebar: sidebar 
+keywords: snmp,trap,information,info,setting,set,setsnmptrapinfo 
+summary: 您可以使用 SetSnmpTrapInfo 方法啟用和停用叢集 SNMP 通知（陷阱）的生成，並指定接收通知的主機集。每次呼叫 SetSnmpTrapInfo 方法時傳遞的值都會取代先前任何呼叫中設定的所有值。 
+---
+= 設定 SNMP 陷阱訊息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetSnmpTrapInfo`用於啟用和停用叢集 SNMP 通知（陷阱）的生成，並指定接收通知的主機集的方法。您傳遞的每個值 `SetSnmpTrapInfo`方法呼叫會取代先前所有呼叫中設定的值。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+陷阱收件人
+ a| 
+將接收儲存叢集產生的陷阱的主機清單。如果啟用了任何一種陷阱類型，則至少需要一個物件。只有當任何布林參數設定為 true 時，此參數才是必需的。  （無預設值。）  （非必需。）
+ a| 
+xref:reference_element_api_snmptraprecipient.adoc[snmpTrapRecipient]大批
+
+
+
+ a| 
+叢集故障陷阱已啟用
+ a| 
+如果設定為 true，則在記錄叢集故障時，會向配置的陷阱接收者清單發送相應的叢集故障通知。  （預設值：false。）  （非必需。）
+ a| 
+布林值
+
+
+
+ a| 
+叢集故障已解決陷阱已啟用
+ a| 
+如果設定為 true，則在叢集故障解決時，會將對應的叢集故障解決通知傳送至配置的陷阱接收者清單。  （預設值：false。）  （非必需。）
+ a| 
+布林值
+
+
+
+ a| 
+叢集事件陷阱已啟用
+ a| 
+如果設定為 true，則在記錄叢集事件時，會向配置的陷阱接收者清單傳送對應的叢集事件通知。  （預設值：false。）  （非必需。）
+ a| 
+布林值
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+"method":"SetSnmpTrapInfo",
+"params":{
+    "clusterFaultTrapsEnabled":true,
+    "clusterFaultResolvedTrapsEnabled":true,
+    "clusterEventTrapsEnabled":true,
+    "trapRecipients":[
+    {
+      "host":"192.30.0.10",
+      "port":162,
+      "community":"public"
+    }
+   ]
+  },
+  "id":1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

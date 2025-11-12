@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectiondomainresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainResiliency 
+summary: protectionDomainResiliency 物件包含此儲存叢集的彈性狀態。彈性是指儲存叢集能夠在與其關聯的保護域類型相同的單一保護域內，自動從一個或多個故障中復原自身的能力。當儲存叢集能夠透過任何單一儲存節點的故障繼續讀取和寫入資料時，該儲存叢集就被認為是已恢復的（這種狀態稱為節點容錯性）。 
+---
+= 保護域彈性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainResiliency 物件包含此儲存叢集的彈性狀態。彈性是指儲存叢集能夠在與其關聯的保護域類型相同的單一保護域內，自動從一個或多個故障中復原自身的能力。當儲存叢集能夠透過任何單一儲存節點的故障繼續讀取和寫入資料時，該儲存叢集就被認為是已復原的（這種狀態稱為節點容錯）。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+保護方案彈性
+ a| 
+物件清單（每個保護方案一個物件），其中包含與關聯類型的保護域的故障復原資訊。
+ a| 
+xref:reference_element_api_protectionschemeresiliency.adoc[保護方案彈性]大批
+
+
+
+ a| 
+singleFailureThresholdBytesForBlockData
+ a| 
+在失去自動恢復到節點容錯狀態的能力之前，儲存叢集可以儲存的最大位元組數。
+ a| 
+整數
+
+
+
+ a| 
+可持續的失敗合奏
+ a| 
+預測在不喪失自動復原能力的情況下，可以同時發生的故障數量，以達到集合仲裁的節點容忍狀態。
+ a| 
+整數
+
+|===

@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,relationship,modifysnapmirrorrelationship 
+summary: 您可以使用 ModifySnapMirrorRelationship 來變更計劃快照發生的間隔。您也可以使用此方法刪除或暫停日程安排。 
+---
+= 修改快照鏡像關係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `ModifySnapMirrorRelationship`變更計劃快照發生的間隔。您也可以使用此方法刪除或暫停日程安排。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+
+
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+目的地捲
+ a| 
+SnapMirror關係中的目標磁碟區。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+最大轉帳費率
+ a| 
+指定磁碟區之間的最大資料傳輸速率，單位為千字節每秒。預設值 0 表示無限制，允許SnapMirror關係充分利用可用的網路頻寬。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+策略名稱
+ a| 
+指定關係的ONTAP SnapMirror策略的名稱。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+計劃名稱
+ a| 
+ONTAP系統上預先存在的 cron 計畫的名稱，用於更新SnapMirror關係。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+與 Element 儲存叢集通訊的遠端ONTAP儲存系統的端點 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirror關係
+ a| 
+包含已修改的SnapMirror關係屬性的物件。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror關係]
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

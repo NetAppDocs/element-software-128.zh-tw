@@ -1,0 +1,24 @@
+---
+permalink: setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: '當您使用光纖通道節點和SolidFire儲存節點建立新叢集時，節點的全球連接埠名稱 (WWPN) 位址可在 Web UI 中找到。您可以使用 WWPN 位址對光纖通道交換器進行區域劃分。' 
+---
+= 為光纖通道節點設定區域
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您使用光纖通道節點和SolidFire儲存節點建立新叢集時，節點的全球連接埠名稱 (WWPN) 位址可在 Web UI 中找到。您可以使用 WWPN 位址對光纖通道交換器進行區域劃分。
+
+當您建立包含節點的新叢集時，WWPN 會在系統中註冊。在 Element UI 中，您可以從「叢集」標籤存取的「FC 連接埠」標籤的「WWPN」欄位中找到 WWPN 位址。
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

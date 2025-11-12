@@ -1,0 +1,43 @@
+---
+permalink: storage/task-element-replication-create-replication-job-schedule.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, replication, job, schedule 
+summary: 您可以使用作業計劃 cron create 指令建立複製作業計劃。作業計畫決定SnapMirror何時會自動更新指派給該計畫的資料保護關係。 
+---
+= 建立複製作業計劃
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+無論您是將資料從 Element 複製到ONTAP，還是從ONTAP複製到 Element，您都需要配置作業計劃、指定策略，並建立和初始化關係。您可以使用預設策略或自訂策略。
+
+你可以使用 `job schedule cron create`建立複製作業計劃的命令。作業計畫決定SnapMirror何時會自動更新指派給該計畫的資料保護關係。
+
+.關於此任務
+建立資料保護關係時，您需要指定一個工作計劃。如果您不指派工作計劃，則必須手動更新關係。
+
+.步
+. 制定工作計劃：
++
+`job schedule cron create -name _job_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+為了 `-month`， `-dayofweek` ， 和 `-hour`您可以指定 `all`分別按月、按週、按小時運行該作業。
+
++
+從ONTAP 9.10.1 開始，您可以將 Vserver 新增至作業計劃：
+
++
+`job schedule cron create -name _job_name_ -vserver _Vserver_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+以下範例建立一個名為“ `my_weekly`每週六凌晨 3 點運行：
+
++
+[listing]
+----
+cluster_dst::> job schedule cron create -name my_weekly -dayofweek "Saturday" -hour 3 -minute 0
+----
+

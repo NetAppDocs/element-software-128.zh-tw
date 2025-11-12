@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_getsnmptrapinfo.html 
+sidebar: sidebar 
+keywords: snmp,trap,get,getting,info,getsnmptrapinfo 
+summary: 您可以使用 GetSnmpTrapInfo 方法取得目前的 SNMP trap 設定資訊。 
+---
+= 獲取 SNMP 陷阱信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetSnmpTrapInfo`取得目前SNMP陷阱配置資訊的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+陷阱收件人
+ a| 
+將接收叢集產生的陷阱的主機清單。
+ a| 
+xref:reference_element_api_snmptraprecipient.adoc[snmpTrapRecipient]大批
+
+
+
+ a| 
+叢集故障陷阱已啟用
+ a| 
+值為 true 表示配置了 solidFireClusterFaultNotification，以便在記錄群集故障時向陷阱接收者清單發送通知。
+ a| 
+布林值
+
+
+
+ a| 
+叢集故障已解決陷阱已啟用
+ a| 
+值為 true 表示已配置 solidFireClusterFaultResolvedNotification，以便在叢集故障解決時向陷阱接收者清單發送通知。
+ a| 
+布林值
+
+
+
+ a| 
+叢集事件陷阱已啟用
+ a| 
+值為 true 表示配置了 solidFireClusterEventNotification，以便在記錄群集事件時向陷阱接收者清單發送通知。
+ a| 
+布林值
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method":"GetSnmpTrapInfo"
+   "params":{},
+   "id":1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "clusterEventTrapsEnabled": true,
+    "clusterFaultResolvedTrapsEnabled": true,
+    "clusterFaultTrapsEnabled": true,
+    "trapRecipients": [
+     {
+      "community": "public",
+      "host": "192.168.151.60",
+      "port": 162
+     },
+     {
+      "community": "solidfireAlerts",
+      "host": "NetworkMonitor",
+      "port": 162
+     },
+     {
+      "community": "wakeup",
+      "host": "PhoneHomeAlerter",
+      "port": 1008
+     }
+   ]
+ }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

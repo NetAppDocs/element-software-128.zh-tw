@@ -1,0 +1,103 @@
+---
+permalink: api/reference_element_api_listauthsessionbyclusteradmin.html 
+sidebar: sidebar 
+keywords: cluster admin,sessions,auth sessions,list 
+summary: 您可以使用 ListAuthSessionsByClusterAdmin 方法列出與指定的 ClusterAdminID 關聯的所有驗證工作階段。如果指定的 ClusterAdminID 對應到一組用戶，則會列出該群組所有成員的所有驗證工作階段。 
+---
+= ListAuthSessionsByClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListAuthSessionsByClusterAdmin`列出與指定會話關聯的所有驗證會話的方法 `ClusterAdminID`。如果指定 `ClusterAdminID`對應到一組用戶，將列出該群組所有成員的所有身份驗證會話。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+叢集管理員ID
+ a| 
+群集管理員的唯一識別碼。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+會議
+ a| 
+身份驗證會話的會話資訊清單。
+ a| 
+link:reference_element_api_authsessioninfo.html["authSessionInfo"]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "ListAuthSessionsByClusterAdmin",
+    "clusterAdminID": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+"sessions": [
+      {
+        "accessGroupList": [
+          "administrator"
+        ],
+        "authMethod": "Cluster",
+        "clusterAdminIDs": [
+          1
+        ],
+        "finalTimeout": "2020-03-14T19:21:24Z",
+        "idpConfigVersion": 0,
+        "lastAccessTimeout": "2020-03-11T19:51:24Z",
+        "sessionCreationTime": "2020-03-11T19:21:24Z",
+        "sessionID": "b12bfc64-f233-44df-8b9f-6fb6c011abf7",
+        "username": "admin"
+      }
+    ]
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

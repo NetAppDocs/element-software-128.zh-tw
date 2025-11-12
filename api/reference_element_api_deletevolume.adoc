@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_deletevolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,delete,deleting,DeleteVolume 
+summary: 您可以使用 DeleteVolume 方法將活動磁碟區標記為要刪除的磁碟區。標記後，在清理間隔結束後，該磁碟區將被清除（永久刪除）。 
+---
+= 刪除卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `DeleteVolume`標記活動卷以進行刪除的方法。標記後，在清理間隔結束後，該磁碟區將被清除（永久刪除）。
+
+發出刪除磁碟區的請求後，與該磁碟區的所有活動的 iSCSI 連線將立即終止，並且在該磁碟區處於此狀態時，不允許建立任何進一步的連線。目標發現請求中不會傳回已標記的磁碟區。
+
+任何已標記為刪除的磁碟區的快照均不受影響。快照會一直保留到該磁碟區從系統中清除為止。如果磁碟區被標記為要刪除，並且正在進行批次磁碟區讀取或批次磁碟區寫入操作，則停止批次磁碟區讀取或寫入操作。
+
+如果要刪除的磁碟區與某個磁碟區配對，則配對磁碟區之間的複製將暫停，且在刪除狀態下不會向該磁碟區傳輸任何資料或從該磁碟區傳輸任何資料。與已刪除磁碟區配對的遠端磁碟區進入 PausedMisconfigured 狀態，資料不再傳送至該遠端磁碟區或從已刪除磁碟區傳送資料。在刪除的磁碟區被徹底清除之前，它可以被恢復，資料傳輸也可以繼續進行。如果從系統中刪除的捲，則與其配對的捲將進入「已停止但配置錯誤的」狀態，並且磁碟區配對狀態將被移除。被清除的磁碟區將永久不可用。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+卷 ID
+ a| 
+要刪除的磁碟區的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+體積
+ a| 
+包含已刪除磁碟區的資訊的物件。
+ a| 
+xref:reference_element_api_volume.adoc[體積]
+
+
+
+ a| 
+卷 ID
+ a| 
+已刪除磁碟區的磁碟區 ID。
+ a| 
+整數
+
+
+
+ a| 
+曲線
+ a| 
+曲線是一組鍵值對。關鍵訊息是 I/O 大小（以位元組為單位）。這些數值代表在特定 I/O 尺寸下進行 IOP 的成本。此曲線是相對於 4096 位元組操作，IOPS 設定為 100 的計算結果。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "DeleteVolume",
+   "params": {
+      "volumeID"  : 5
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volume": {
+      "access": "readWrite",
+      "accountID": 1,
+      "attributes": {
+        "name1": "value1",
+        "name2": "value2",
+        "name3": "value3"
+      },
+      "blockSize": 4096,
+      "createTime": "2016-03-28T16:16:13Z",
+      "deleteTime": "2016-03-31T22:59:42Z",
+      "enable512e": true,
+      "iqn": "iqn.2010-01.com.solidfire:jyay.1459181777648.5",
+      "name": "1459181777648",
+      "purgeTime": "2016-04-01T06:59:42Z",
+      "qos": {
+        "burstIOPS": 150,
+        "burstTime": 60,
+        "curve": {
+          "4096": 100,
+          "8192": 160,
+          "16384": 270,
+          "32768": 500,
+          "65536": 1000,
+          "131072": 1950,
+          "262144": 3900,
+          "524288": 7600,
+          "1048576": 15000
+        },
+        "maxIOPS": 100,
+        "minIOPS": 60
+      },
+      "scsiEUIDeviceID": "6a79617900000005f47acc0100000000",
+      "scsiNAADeviceID": "6f47acc1000000006a79617900000005",
+      "sliceCount": 1,
+      "status": "deleted",
+      "totalSize": 1000341504,
+      "virtualVolumeID": null,
+      "volumeAccessGroups": [
+        1
+      ],
+      "volumeID": 5,
+      "volumePairs": []
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

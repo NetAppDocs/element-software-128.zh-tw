@@ -1,0 +1,234 @@
+---
+permalink: api/reference_element_api_session_iscsi.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: '會話 (iSCSI) 物件包含每個磁碟區的 iSCSI 會話的詳細資訊。您可以使用 ListISCSISessions API 方法檢索 iSCSI 會話資訊。' 
+---
+= 會話（iSCSI）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+會話（iSCSI）物件包含有關每個磁碟區的 iSCSI 會話的詳細資訊。您可以使用以下命令檢索 iSCSI 會話資訊： `ListISCSISessions` API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+帳戶ID
+ a| 
+用於 CHAP 驗證的帳戶的帳戶 ID（如有）。
+ a| 
+整數
+
+
+
+ a| 
+帳戶名稱
+ a| 
+用於 CHAP 驗證的帳戶名稱（如有）。
+ a| 
+細繩
+
+
+
+ a| 
+驗證
+ a| 
+此 iSCSI 會話的身份驗證資訊。
+ a| 
+xref:reference_element_api_iscsiauthentication.adoc[ISCSI身份驗證]
+
+
+
+ a| 
+創建時間
+ a| 
+iSCSI 會話的建立時間，採用 UTC+0 格式。
+ a| 
+ISO 8601 日期字串
+
+
+
+ a| 
+磁碟機ID
+ a| 
+與承載會話的傳輸服務關聯的磁碟機 ID。
+ a| 
+整數
+
+
+
+ a| 
+磁碟機 ID
+ a| 
+列出報告故障的磁碟機的磁碟機 ID。如果無適用，則清單為空。
+ a| 
+整數數組
+
+
+
+ a| 
+發起者
+ a| 
+有關此 iSCSI 會話伺服器發起程序的資訊。成員：
+
+* 別名：分配給發起者的友善名稱。
+* 屬性：此發起者的屬性。
+* initiatorID：此發起者的 ID。
+* initiatorName：此發起者的名稱。
+* volumeAccessGroups：與此啟動器關聯的磁碟區存取群組清單。
+
+ a| 
+JSON 物件
+
+
+
+ a| 
+發起者IP
+ a| 
+iSCSI 伺服器發起程序的 IP 位址和連接埠號碼。
+ a| 
+細繩
+
+
+
+ a| 
+發起者名稱
+ a| 
+iSCSI 伺服器發起程式的 iSCSI 限定名稱 (IQN)。
+ a| 
+細繩
+
+
+
+ a| 
+發起方連接埠名稱
+ a| 
+發起者名稱與發起者會話 ID 結合使用，可識別發起者連接埠。
+ a| 
+細繩
+
+
+
+ a| 
+發起者會話 ID
+ a| 
+由發起方提供的 48 位元 ID，用於識別 iSCSI 會話屬於該發起方。
+ a| 
+整數
+
+
+
+ a| 
+msSinceLastIscsiPDU
+ a| 
+自本次會話收到最後一個 iSCSI PDU 以來所經過的時間（以毫秒為單位）。
+ a| 
+整數
+
+
+
+ a| 
+msSinceLastScsiCommand
+ a| 
+自本次會話收到最後一個 SCSI 指令以來所經過的時間（以毫秒為單位）。
+ a| 
+整數
+
+
+
+ a| 
+節點ID
+ a| 
+與承載會話的傳輸服務關聯的節點​​ ID。
+ a| 
+整數
+
+
+
+ a| 
+服務ID
+ a| 
+承載該會話的傳輸服務的 serviceID。
+ a| 
+整數
+
+
+
+ a| 
+會話ID
+ a| 
+iSCSI 會話 ID。
+ a| 
+整數
+
+
+
+ a| 
+目標IP
+ a| 
+iSCSI 儲存目標的 IP 位址和連接埠號碼。
+ a| 
+細繩
+
+
+
+ a| 
+目標名稱
+ a| 
+iSCSI 目標的 IQN。
+ a| 
+細繩
+
+
+
+ a| 
+目標連接埠名稱
+ a| 
+targetName 與目標入口網站群組標籤結合使用，可識別目標連接埠。
+ a| 
+細繩
+
+
+
+ a| 
+虛擬網路 ID
+ a| 
+與會話關聯的虛擬網路 ID。
+ a| 
+整數
+
+
+
+ a| 
+卷 ID
+ a| 
+會話關聯的磁碟區的 volumeID（如果有）。
+ a| 
+整數
+
+
+
+ a| 
+卷實例
+ a| 
+標識與 iSCSI 會話關聯的磁碟區物件（如果有）。
+ a| 
+整數
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listiscsisessions.adoc[列出 ISCSI 會話]

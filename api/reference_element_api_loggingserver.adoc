@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_loggingserver.html 
+sidebar: sidebar 
+keywords: object,objects,loggingServer 
+summary: loggingServer 物件包含有關為儲存叢集配置的任何日誌主機的資訊。您可以使用 GetRemoteLoggingHosts 來確定目前日誌主機是什麼，然後使用 SetRemoteLoggingHosts 設定目前和新日誌主機的所需清單。 
+---
+= 日誌伺服器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+loggingServer 物件包含有關為儲存叢集配置的任何日誌主機的資訊。您可以使用 `GetRemoteLoggingHosts`確定目前日誌主機是什麼，然後使用 `SetRemoteLoggingHosts`設定目前和新增日誌主機的所需清單。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+主持人
+ a| 
+日誌伺服器的IP位址。
+ a| 
+細繩
+
+
+
+ a| 
+港口
+ a| 
+用於與日誌伺服器通訊的連接埠號碼。
+ a| 
+整數
+
+|===

@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_logs.html 
+summary: 您可以使用 REST API 從管理節點上執行的服務擷取日誌。 
+keywords: netapp, element, management node, management services, mnode, logs 
+---
+= 從管理服務取得日誌
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 REST API 從管理節點上執行的服務擷取日誌。您可以從所有公共服務中提取日誌，也可以指定特定服務並使用查詢參數來更好地定義傳回結果。
+
+.你需要什麼
+* 您的叢集版本正在執行NetApp Element軟體 11.3 或更高版本。
+* 您已部署執行版本 11.3 或更高版本的管理節點。
+
+
+.步驟
+. 在管理節點上開啟 REST API 使用者介面。
++
+** 從管理服務 2.21.61 開始：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/4/
+----
+** 適用於管理服務 2.20.69 或更早版本：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+
+
+. 選擇“授權”或任意鎖形圖標，然後完成以下步驟：
++
+.. 請輸入叢集使用者名稱和密碼。
+.. 如果客戶端 ID 尚未填充，請輸入 mnode-client。
+.. 選擇“授權”以開始會話。
+.. 關閉視窗。
+
+
+. 選擇 *GET /logs*。
+. 選擇*試用*。
+. 請指定以下參數：
++
+** `Lines`請輸入您希望日誌傳回的行數。此參數為整數，預設值為 1000。
++
+
+TIP: 將 Lines 設為 0，即可避免要求完整的日誌內容歷史記錄。
+
+** `since`：為服務日誌起始點新增 ISO-8601 時間戳記。
++
+
+TIP: 使用合理的 `since`收集更長時間跨度日誌時的參數。
+
+** `service-name`請輸入服務名稱。
++
+
+TIP: 使用 `GET /services`列出管理節點上服務的命令。
+
+** `stopped`設定為 `true`從已停止的服務中檢索日誌。
+
+
+. 選擇*執行*。
+. 從回應正文中選擇“下載”以保存日誌輸出。
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_listsnapmirrorvservers.html 
+sidebar: sidebar 
+keywords: snapmirror,vserver,vservers,list,listing,listsnapmirrorvservers 
+summary: Element 軟體 Web UI 使用 ListSnapMirrorVservers 方法列出遠端ONTAP系統上所有可用的SnapMirror Vserver。 
+---
+= 列出快照鏡像虛擬伺服器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體的Web使用者介面使用 `ListSnapMirrorVservers`列出遠端ONTAP系統上所有可用SnapMirror Vserver 的方法。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+僅列出與指定端點 ID 關聯的虛擬伺服器。如果沒有提供端點 ID，系統將列出所有已知SnapMirror端點的 Vserver。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+vserverType
+ a| 
+僅列出指定類型的虛擬伺服器。可能的值：
+
+* 行政
+* 數據
+* 節點
+* 系統
+
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+虛擬伺服器名稱
+ a| 
+僅列出具有指定名稱的虛擬伺服器。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorVservers
+ a| 
+ONTAP儲存系統上可用的SnapMirror虛擬伺服器清單。
+ a| 
+xref:reference_element_api_snapmirrorvserver.adoc[snapMirrorVserver]大批
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

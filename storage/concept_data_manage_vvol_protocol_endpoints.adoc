@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_data_manage_vvol_protocol_endpoints.html 
+sidebar: sidebar 
+keywords: protocol endpoint, access, cluster, storage node, iscsi supported 
+summary: 協定端點是主機用來存取運行NetApp Element軟體的叢集上的儲存的存取點。協定端點不能由使用者刪除或修改，不與帳戶關聯，也不能加入到磁碟區存取群組。 
+---
+= 了解協定端點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+協定端點是主機用來存取運行NetApp Element軟體的叢集上的儲存的存取點。協定端點不能由使用者刪除或修改，不與帳戶關聯，也不能加入到磁碟區存取群組。
+
+執行 Element 軟體的叢集會自動為叢集中的每個儲存節點建立一個協定端點。例如，一個六節點儲存叢集有六個協定端點，分別對應到每個 ESXi 主機。協定端點由 Element 軟體動態管理，可根據需要建立、移動或刪除，無需任何干預。協定端點是多路徑的目標，並充當附屬 LUN 的 I/O 代理。每個協定端點都會佔用一個可用的 SCSI 位址，就像標準的 iSCSI 目標一樣。協定端點在 vSphere 用戶端中顯示為單一區塊（512 位元組）儲存設備，但此儲存設備無法格式化或用作儲存。
+
+iSCSI 是唯一支援的協定。不支援光纖通道協定。

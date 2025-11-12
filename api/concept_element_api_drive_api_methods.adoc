@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_drive_api_methods.html 
+sidebar: sidebar 
+keywords: drive,API,methods,method 
+summary: 您可以使用磁碟機 API 方法新增和管理儲存叢集中可用的磁碟機。當您為儲存叢集新增儲存節點或在現有儲存節點中安裝新磁碟機時，這些磁碟機即可新增至儲存叢集。 
+---
+= 驅動 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用磁碟機 API 方法新增和管理儲存叢集中可用的磁碟機。當您為儲存叢集新增儲存節點或在現有儲存節點中安裝新磁碟機時，這些磁碟機即可新增至儲存叢集。
+
+* xref:reference_element_api_adddrives.adoc[AddDrives]
+* xref:reference_element_api_getdrivehardwareinfo.adoc[取得驅動硬體資訊]
+* xref:reference_element_api_getdrivestats.adoc[取得駕駛統計數據]
+* xref:reference_element_api_listdrives.adoc[清單驅動器]
+* xref:reference_element_api_listdrivestats.adoc[ListDriveStats]
+* xref:reference_element_api_removedrives.adoc[移除驅動器]
+* xref:reference_element_api_secureerasedrives.adoc[安全擦除驅動器]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

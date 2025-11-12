@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_setsnmpacl.html 
+sidebar: sidebar 
+keywords: setsnmpACL,set,setting,snmp,acl,permissions,access,control,list 
+summary: 您可以使用 SetSnmpACL 方法設定叢集節點上的 SNMP 存取權限。使用此介面設定的值適用於叢集中的所有節點，並且傳遞的值將取代先前對 SetSnmpACL 的任何呼叫中設定的所有值。另請注意，使用此介面設定的值將取代使用 SetSnmpInfo 設定的所有網路或 usmUsers 值。 
+---
+= 設定 SNMP 存取控制列表
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetSnmpACL`在叢集節點上設定SNMP存取權限的方法。您透過此介面設定的值將套用於叢集中的所有節點，並且傳遞的值將取代先前任何呼叫中設定的所有值。 `SetSnmpACL` 。另請注意，透過此介面設定的值將取代所有透過該介面設定的網路或 usmUsers 值。 `SetSnmpInfo`方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+網路
+ a| 
+列出各個網路及其對叢集節點上執行的 SNMP 伺服器的存取權限類型。有關可能的網路值，請參閱 SNMP 網路物件。如果停用 SNMP v3，則此參數為必填項。
+ a| 
+xref:reference_element_api_network_snmp.adoc[網路]
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+usmUsers
+ a| 
+列出在叢集節點上執行的 SNMP 伺服器的使用者及其存取權限類型。如果啟用了 SNMP v3，則此參數為必填項。
+ a| 
+xref:reference_element_api_usmuser.adoc[usmUser]
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "SetSnmpACL",
+  "params": {
+    "usmUsers"  : [
+      {
+         "name": "jdoe",
+         "access": "rouser",
+         "secLevel": "priv",
+         "password": "mypassword",
+         "passphrase": "mypassphrase",
+      }
+    ]
+  },
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_setsnmpinfo.adoc[設定 SNMP 訊息]

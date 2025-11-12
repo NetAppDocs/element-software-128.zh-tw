@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_fipserrornodereport.html 
+sidebar: sidebar 
+keywords: objects,object,fipsErrorNodeReport 
+summary: fipsErrorNodeReport 物件包含每個節點的錯誤訊息，該節點在使用 GetFipsReport 方法查詢時，不會回應有關 FIPS 140-2 支援的資訊。 
+---
+= fips錯誤節點報告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fipsErrorNodeReport 物件包含每個節點的錯誤訊息，這些節點在您使用以下方式查詢時未回應有關 FIPS 140-2 支援的資訊： `GetFipsReport`方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+節點ID
+ a| 
+未響應節點的 ID。
+ a| 
+整數
+
+
+
+ a| 
+錯誤
+ a| 
+包含錯誤訊息的JSON物件。
+ a| 
+JSON 物件
+
+|===

@@ -1,0 +1,44 @@
+---
+permalink: storage/task_troubleshoot_power_down_a_cluster.html 
+sidebar: sidebar 
+keywords: cluster, power down, mvip 
+summary: 聯絡NetApp支援並完成初步步驟後，您可以關閉整個叢集的電源。 
+---
+= 關閉集群電源
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+執行以下步驟關閉整個叢集的電源。
+
+.步驟
+. （可選）聯絡NetApp支援以取得完成初步步驟的協助。
+. 確認所有 I/O 操作均已停止。
+. 中斷所有 iSCSI 會話：
++
+.. 導航至叢集上的管理虛擬 IP (MVIP) 位址以開啟 Element UI。
+.. 請注意節點清單中列出的節點。
+.. 對叢集中的每個節點 ID 執行帶有 halt 選項的 Shutdown API 方法。
+
+
+
+
+[NOTE]
+====
+重啟叢集時，必須按照以下步驟驗證所有節點是否都已上線：
+
+. 驗證所有嚴重程度和 `volumesOffline`集群故障已解決。
+. 等待 10 到 15 分鐘，讓集群穩定下來。
+. 開始啟動主機以存取資料。
+
+
+如果您希望在維護後啟動節點並驗證其健康狀況時留出更多時間，請聯絡技術支援以取得延遲資料同步的協助，以防止不必要的 bin 同步。
+
+====
+
+
+== 查找更多信息
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/How_to_gracefully_shut_down_and_power_on_a_NetApp_Solidfire_HCI_storage_cluster["如何優雅地關閉和啟動NetApp Solidfire/HCI 儲存集群"^]

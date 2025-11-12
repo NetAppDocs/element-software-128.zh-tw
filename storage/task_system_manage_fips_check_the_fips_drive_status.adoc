@@ -1,0 +1,37 @@
+---
+permalink: storage/task_system_manage_fips_check_the_fips_drive_status.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, drive, enable 
+summary: 您可以使用NetApp Element軟體 GetFeatureStatus API 方法檢查叢集上是否啟用了 FIPS 磁碟機功能，該方法會顯示 FIPS 磁碟機啟用狀態是真是假。 
+---
+= 檢查 FIPS 驅動器狀態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Element軟體檢查叢集上是否啟用了 FIPS 磁碟機功能。 `GetFeatureStatus` API 方法，用於顯示 FIPS 磁碟機啟用狀態是真還是假。
+
+. 使用 Element API，透過輸入以下命令檢查叢集上的 FIPS 磁碟機功能：
++
+`GetFeatureStatus`
+
+. 回顧結果 `GetFeatureStatus`API呼叫。如果 FIPS 磁碟機啟用值為 True，則啟用 FIPS 磁碟機功能。
++
+[listing]
+----
+{"enabled": true,
+"feature": "FipsDrives"
+}
+----
+
+
+
+
+== 查找更多信息
+
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

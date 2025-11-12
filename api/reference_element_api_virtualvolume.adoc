@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_virtualvolume.html 
+sidebar: sidebar 
+keywords: object,objects,virtualVolume 
+summary: virtualVolume 物件包含有關虛擬磁碟區的設定資訊以及有關虛擬磁碟區快照的資訊。它不包含運行時或使用情況資訊。您可以使用 ListVirtualVolumes 方法檢索叢集的此資訊。 
+---
+= 虛擬磁碟區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+virtualVolume 物件包含有關虛擬磁碟區的設定資訊以及有關虛擬磁碟區快照的資訊。它不包含運行時或使用情況資訊。你可以使用 `ListVirtualVolumes`檢索群集此資訊的方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+綁定
+ a| 
+此虛擬磁碟區的綁定 ID 清單。
+ a| 
+UUID 數組
+
+
+
+ a| 
+孩子們
+ a| 
+此虛擬磁碟區的子虛擬磁碟區 UUID 清單。
+ a| 
+UUID 數組
+
+
+
+ a| 
+後代
+ a| 
+當你將 recursive: true 傳遞給 ListVirtualVolumes 方法時，它將包含一個虛擬卷 UUID 列表，這些虛擬卷是此虛擬卷的後代。
+ a| 
+UUID 數組
+
+
+
+ a| 
+元數據
+ a| 
+虛擬卷元資料的鍵值對，例如虛擬磁碟區類型、客戶作業系統類型等。
+ a| 
+JSON 物件
+
+
+
+ a| 
+父親虛擬磁碟區 ID
+ a| 
+父虛擬磁碟區的虛擬磁碟區 ID。如果 ID 全部為零，則這是一個獨立的虛擬卷，與父卷沒有連結。
+ a| 
+唯一識別符
+
+
+
+ a| 
+snapshotID
+ a| 
+底層磁碟區快照的 ID。如果虛擬磁碟區不代表快照，則此值為「0」。
+ a| 
+整數
+
+
+
+ a| 
+快照訊息
+ a| 
+關聯快照的快照物件（如果非 ixestent 則為 null）。
+ a| 
+xref:reference_element_api_snapshot.adoc[快照]
+
+
+
+ a| 
+地位
+ a| 
+虛擬卷的當前狀態。可能的值：
+
+* 複製：正在處理虛擬磁碟區以回應複製或快照操作。
+* 等待中：虛擬磁碟區正在等待快照操作完成。
+* 就緒：虛擬卷已準備好供一般用途使用。
+
+ a| 
+細繩
+
+
+
+ a| 
+儲存容器
+ a| 
+描述擁有此虛擬磁碟區的儲存容器的物件。
+ a| 
+xref:reference_element_api_storagecontainer.adoc[儲存容器]
+
+
+
+ a| 
+虛擬磁碟區 ID
+ a| 
+虛擬卷的唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+虛擬卷類型
+ a| 
+虛擬卷的類型。
+ a| 
+細繩
+
+
+
+ a| 
+卷 ID
+ a| 
+基礎卷的ID。
+ a| 
+整數
+
+
+
+ a| 
+容量資訊
+ a| 
+當您將 details: true 傳遞給 ListVirtualVolumes 方法時，此成員是描述磁碟區的物件。
+ a| 
+xref:reference_element_api_volume.adoc[體積]
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listvirtualvolumes.adoc[列出虛擬卷]
+* xref:reference_element_api_snapshot.adoc[快照]
+* xref:reference_element_api_storagecontainer.adoc[儲存容器]
+* xref:reference_element_api_volume.adoc[體積]
+

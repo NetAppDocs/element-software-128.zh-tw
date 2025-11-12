@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_remove_nodes_from_cluster.html 
+sidebar: sidebar 
+keywords: troubleshoot, nodes removing 
+summary: 您可以從叢集中移除節點以進行維護或更換。在將節點離線之前，應使用NetApp Element UI 或 API 刪除節點。 
+---
+= 從叢集中移除節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從叢集中移除節點以進行維護或更換。在將節點離線之前，應使用NetApp Element UI 或 API 刪除節點。
+
+移除儲存節點的步驟概述如下：
+
+* 確保叢集中有足夠的容量來建立節點上的資料副本。
+* 使用 UI 或 RemoveDrives API 方法從叢集中移除磁碟機。
++
+這樣一來，系統就會將資料從節點的磁碟機遷移到叢集中的其他磁碟機。這個過程所需的時間取決於需要遷移的資料量。
+
+* 從叢集中移除該節點。
+
+
+在關閉或啟動節點之前，請注意以下事項：
+
+* 如果操作不當，關閉節點和叢集會帶來風險。
++
+關閉節點電源的操作應在NetApp支援人員的指導下進行。
+
+* 如果節點在任何類型的關機情況下停機超過 5.5 分鐘，Double Helix 資料保護就會開始將單一複製區塊寫入另一個節點以複製資料。在這種情況下，請聯絡NetApp支援部門，以取得分析故障節點的協助。
+* 若要安全地重新啟動或關閉節點，可以使用 Shutdown API 指令。
+* 如果節點處於宕機或關閉狀態，您必須先聯絡NetApp支持，然後才能重新連線。
+* 節點恢復上線後，必須根據其停止服務的時間長短，將磁碟機重新新增至叢集。
+
+
+
+
+== 更多資訊
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2844772["更換故障的SolidFire機箱"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2846861["更換故障的 H600S 系列節點"]

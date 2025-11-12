@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_networkinterfacestats.html 
+sidebar: sidebar 
+keywords: object,objects,stats,statistics,networkInterfacestats 
+summary: networkInterfaceStats 物件包含儲存節點上各個網路介面的網路統計資料和錯誤資訊。 
+---
+= 網路介面統計資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+networkInterfaceStats 物件包含儲存節點上各個網路介面的網路統計資料、已傳送和已接收的資料包總數以及錯誤訊息。你可以使用 `ListNetworkInterfaceStats`用於列出儲存節點上網路介面資訊的 API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+| 碰撞 | 偵測到的碰撞次數。 | 整數 
+
+
+| 姓名 | 網路介面名稱。 | 細繩 
+
+
+| rxBytes | 接收到的總位元組數。 | 整數 
+
+
+| rxCrcErrors | 接收到的出現 CRC 錯誤的包的數量。 | 整數 
+
+
+| rxDropped | 接收到的資料包中被丟棄的數量。 | 整數 
+
+
+| rxErrors | 接收到的錯誤或格式錯誤的資料包數量。 | 整數 
+
+
+| rxFifoErrors | 接收到的資料中 FIFO 溢出錯誤的數量。 | 整數 
+
+
+| rxFrameErrors | 接收到的訊框對齊錯誤的包的數量。 | 整數 
+
+
+| rxLengthErrors | 接收到的長度錯誤的包的數量。 | 整數 
+
+
+| rxMissedErrors | 接收器遺失的資料包數量。 | 整數 
+
+
+| rxOverErrors | 此介面的接收器環形緩衝區溢位錯誤次數。 | 整數 
+
+
+| 接收封包 | 接收到的資料包總數。 | 整數 
+
+
+| txBytes | 傳輸的總位元組數。 | 整數 
+
+
+| 傳輸載波錯誤 | 發射端的載波錯誤次數。 | 整數 
+
+
+| txErrors | 資料包傳輸錯誤次數。 | 整數 
+
+
+| txFifoErrors | 發送端 FIFO 溢位錯誤次數。 | 整數 
+
+
+| 發送包 | 已傳輸資料包的總數。 | 整數 
+|===

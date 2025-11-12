@@ -1,0 +1,64 @@
+---
+permalink: api/reference_element_api_snapmirrorvolumeinfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolumeInfo 
+summary: snapMirrorVolumeInfo 物件包含有關SnapMirror關係中磁碟區位置的信息，例如其名稱和類型。 
+---
+= snapMirrorVolumeInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVolumeInfo 物件包含有關SnapMirror關係中磁碟區位置的信息，例如其名稱和類型。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+類型
+ a| 
+音量類型。可能的值：
+
+* solidfire：此磁碟區位於執行 Element 軟體的儲存叢集上。
+* ONTAP：此磁碟區位於遠端ONTAP叢集上。
+
+ a| 
+細繩
+
+
+
+ a| 
+卷 ID
+ a| 
+卷的ID。僅當“type”為solidfire時有效。
+ a| 
+整數
+
+
+
+ a| 
+虛擬伺服器
+ a| 
+擁有此卷的虛擬伺服器的名稱。僅當“type”為 ontap 時有效。
+ a| 
+細繩
+
+
+
+ a| 
+姓名
+ a| 
+卷名。
+ a| 
+細繩
+
+|===

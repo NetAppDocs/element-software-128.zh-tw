@@ -1,0 +1,30 @@
+---
+permalink: storage/task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html 
+sidebar: sidebar 
+keywords: remove qos policy, disassociate from a volume, modify 
+summary: 您可以選擇自訂 QoS 設置，從磁碟區中刪除 QoS 策略關聯。 
+---
+= 移除磁碟區的 QoS 策略關聯
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以選擇自訂 QoS 設置，從磁碟區中刪除 QoS 策略關聯。
+
+您要修改的磁碟區應該與 QoS 策略關聯。
+
+. 選擇“管理”>“卷”。
+. 按一下包含要修改的 QoS 策略的磁碟區的「操作」圖示。
+. 按一下“*編輯*”。
+. 在出現的「服務品質」選單下，點選「自訂設定」。
+. 修改 *最小 IOPS*、*最大 IOPS* 和 *突發 IOPS*，或保持預設值。
+. 點選「儲存變更」。
+
+
+
+
+== 查找更多信息
+
+xref:task_data_manage_volumes_deleting_a_qos_policy.adoc[刪除 QoS 策略]

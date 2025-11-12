@@ -1,0 +1,25 @@
+---
+permalink: concepts/concept_solidfire_concepts_volume_access_groups.html 
+sidebar: sidebar 
+keywords: volume access groups, volumes, access volumes 
+summary: NetApp SolidFire儲存中的磁碟區存取群組允許 iSCSI 發起程式 IQN 或光纖通道 WWPN 存取一組磁碟區。新增至存取群組的每個 IQN 都可以在不使用 CHAP 驗證的情況下存取群組中的每個磁碟區。將每個 WWPN 新增至存取群組，即可啟用對存取群組中磁碟區的光纖通道網路存取。 
+---
+= 卷訪問群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+透過建立和使用磁碟區存取群組，您可以控制對一組磁碟區的存取。當您將一組磁碟區和一組啟動器與磁碟區存取群組關聯時，此存取群組將授予這些啟動器對該群組磁碟區的存取權限。
+
+NetApp SolidFire儲存中的磁碟區存取群組允許 iSCSI 發起程式 IQN 或光纖通道 WWPN 存取一組磁碟區。新增至存取群組的每個 IQN 都可以在不使用 CHAP 驗證的情況下存取群組中的每個磁碟區。將每個 WWPN 新增至存取群組，即可啟用對存取群組中磁碟區的光纖通道網路存取。
+
+磁碟區存取群組具有以下限制：
+
+* 每個卷訪問組最多可有 128 個發起者。
+* 每個卷最多可有 64 個訪問組。
+* 一個訪問群組最多可以包含 2000 卷。
+* 一個 IQN 或 WWPN 只能屬於一個磁碟區存取群組。
+* 對於光纖通道集群，單一磁碟區最多可以屬於四個存取組。
+

@@ -1,0 +1,86 @@
+---
+permalink: hardware/task_h610s_repl.html 
+sidebar: sidebar 
+keywords: h610s, replacement, node replacement, chassis replacement, maintenance 
+summary: '如果風扇、中央處理器 (CPU) 或雙列直插式記憶體模組 (DIMM) 發生故障，或需要修復過熱問題或啟動流程問題，則可能需要更換機殼。機殼前方的琥珀色 LED 指示燈閃爍，表示可能需要更換機殼。在繼續操作之前，您應該聯絡NetApp支援。' 
+---
+= 更換 H610S 節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果風扇、中央處理器 (CPU) 或雙列直插式記憶體模組 (DIMM) 發生故障，或需要修復過熱問題或啟動流程問題，則可能需要更換機殼。機殼前方的琥珀色 LED 指示燈閃爍，表示可能需要更換機殼。在繼續操作之前，您應該聯絡NetApp支援。
+
+
+NOTE: 參見link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/NetApp_H610S_installation_requirements_for_replacement_or_expansion_nodes["知識庫文章"^]有關 H610S 節點的安裝要求的資訊。根據儲存叢集中現有 Element 軟體版本，新的和備用的 H610S 儲存節點可能有額外的安裝要求。請聯絡NetApp支援以取得更多資訊。
+
+
+TIP: 對於 H610S 而言，「節點」和「機箱」這兩個術語可以互換使用，H610S 是一個機架單元 (1U) 機箱。
+
+
+
+== 新增和刪除驅動器的最佳實踐
+
+在叢集新增磁碟機時，應遵循以下最佳實務：
+
+* 新增所有區塊驅動器，並確保在新增切片驅動器之前完成區塊同步。
+* 對於 Element 軟體 10.x 及更高版本，請一次新增所有區塊磁碟機。請確保一次操作的節點不超過三個。
+* 對於 Element 軟體 9.x 及更早版本，請一次新增三個驅動器，待它們完全同步後再新增下一組三個驅動器。
+* 移除切片驅動器，並確保切片同步完成後再移除塊驅動器。
+* 一次性從單一節點移除所有區塊驅動器。在繼續處理下一個節點之前，請確保所有區塊同步都已完成。
+
+
+.你需要什麼
+* 您已聯繫NetApp支援團隊。如果您要訂購替換件，則應向NetApp支援部門提交案例。
+* 您已獲得替換節點。
+* 您配戴了靜電放電 (ESD) 腕帶，或採取了其他防靜電防護措施。
+* 如果您需要執行恢復原廠設定 (RTFI) 流程，您已經獲得了 USB 金鑰。  NetApp支援團隊可以協助您確定是否需要執行 RTFI 流程。
+* 你擁有鍵盤和顯示器。
+* 您已從叢集中正確移除故障節點。
+* 如果 DIMM 發生故障，則在將節點從叢集中移除之前，您應該先移除磁碟機。
+
+
+.關於此任務
+Element UI 中的警報會在主機發生故障時發出提醒。您必須將 VMware vSphere Web Client 中故障主機的序號與節點背面標籤上的序號進行比對。
+
+.步驟
+. 找到故障機殼正面的服務標籤。
++
+image::h610s-servicetag.gif[顯示 H610S 機殼正面的服務標籤。]
+
+. 請確認服務標籤上的序號是否與您訂購更換機箱時所獲得的NetApp支援案例編號一致。
+. 將鍵盤和顯示器連接到故障機殼的背面。
+. 請向NetApp支援部門核實故障節點的序號。
+. 關閉機殼電源。
+. 在前面板上貼上硬碟標籤，在後面板上貼上線纜標籤，標明它們的位置，以便更換後可以將它們放回原來的位置。請參考下圖，了解硬碟在機殼中的位置：
++
+image::h610s-drives.gif[圖中顯示了 H610S 機箱的正面，並標示了各個驅動器的位置。]
+
+. 拆下電纜。
+. 旋開安裝耳上的蝶形螺絲，即可拆下機殼。您應該將故障機箱打包並退回給NetApp。
+. 安裝替換機箱。
+. 小心地將硬碟從故障機箱中取出，然後插入替換機箱中。
++
+
+NOTE: 你應該將硬碟重新插入到你之前取出它們時所在的插槽。
+
+. 將電源單元從故障機箱中取出，然後插入替換機箱中。
+. 將電源線和網路線插入原來的介面。
+. 可以將小型可插拔 (SFP) 收發器插入替換節點的 10GbE 連接埠。在連接 10GbE 連接埠之前，應該先將它們移除。
++
+
+NOTE: 如果您的交換器無法辨識線纜，請參閱交換器供應商的文件。
+
+. 按下前面板上的電源按鈕，啟動機殼。節點啟動大約需要五分三十秒。
+. 執行配置步驟。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_system_manage_nodes_manage_nodes.html 
+sidebar: sidebar 
+keywords: nodes, manage, cluster, capacity rule, pairs, stranded nodes 
+summary: 您可以從叢集標籤的「節點」頁面管理SolidFire儲存和光纖通道節點。 
+---
+= 管理節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從叢集標籤的「節點」頁面管理SolidFire儲存和光纖通道節點。
+
+如果新新增的節點佔叢集總容量的 50% 以上，則該節點的部分容量將停用（「閒置」），以使其符合容量規則。在增加更多儲存空間之前，這種情況將持續下去。如果新增一個非常大的節點，並且該節點也違反容量規則，則先前被困的節點將不再被困，而新新增的節點將變為被困。為避免這種情況發生，容量應該始終成對添加。當節點發生孤立狀態時，會拋出對應的叢集故障。
+
+
+
+== 查找更多信息
+
+xref:task_system_manage_nodes_adding_a_node_to_a_cluster.adoc[向叢集新增節點]

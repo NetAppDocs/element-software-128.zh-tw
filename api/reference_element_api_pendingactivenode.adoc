@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_pendingactivenode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingActiveNode 
+summary: pendingActiveNode 物件包含目前處於 pendingActive 狀態（介於 pending 狀態和 active 狀態之間）的節點的資訊。這些節點目前正在恢復到出廠軟體鏡像。使用 ListPendingActiveNodes API 方法傳回所有 pendingActive 節點的此資訊清單。 
+---
+= 待處理活動節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+pendingActiveNode 物件包含目前處於 pendingActive 狀態（介於 pending 狀態和 active 狀態之間）的節點的資訊。這些節點目前正在恢復到出廠軟體鏡像。使用 `ListPendingActiveNodes`API 方法，用於傳回所有 pendingActive 節點的此資訊清單。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+活動節點鍵
+ a| 
+一個唯一的金鑰，允許節點在軟體成功安裝後自動加入叢集。
+ a| 
+細繩
+
+
+
+ a| 
+已分配節點 ID
+ a| 
+節點的分配節點 ID。
+ a| 
+細繩
+
+
+
+ a| 
+非同步句柄
+ a| 
+可用於查詢操作狀態的非同步方法句柄。
+ a| 
+整數
+
+
+
+ a| 
+cip
+ a| 
+指派給該節點的叢集 IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+mip
+ a| 
+指派給節點的管理 IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+節點槽
+ a| 
+對於 HCI 平台，此節點所在的機箱插槽對應的字母（「A」、「B」、「C」或「D」）。對於儲存平台，此值為空。
+ a| 
+細繩
+
+
+
+ a| 
+待處理活動節點ID
+ a| 
+節點的待處理節點 ID。
+ a| 
+整數
+
+
+
+ a| 
+platformInfo
+ a| 
+節點的硬體資訊。成員：
+
+* chassisType：節點的硬體平台。
+* cpuModel：硬體平台的 CPU 型號。
+* nodeMemoryGB：實體平台上安裝的記憶體量（以 GB 為單位）。
+* nodeType：節點模型名稱。
+* platformConfigVersion：為此節點硬體配置的軟體版本。
+
+ a| 
+JSON 物件
+
+
+
+ a| 
+角色
+ a| 
+節點在叢集中的角色。可能的值：
+
+* 管理
+* 儲存
+* 運算
+* 證人
+
+ a| 
+
+
+
+ a| 
+啜飲
+ a| 
+分配給節點的儲存（iSCSI）IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+軟體版本
+ a| 
+節點上執行的 Element 軟體的目前版本。
+ a| 
+細繩
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listpendingactivenodes.adoc[列出待處理活動節點]

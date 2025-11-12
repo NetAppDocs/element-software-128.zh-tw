@@ -1,0 +1,43 @@
+---
+permalink: storage/task_intro_view_api_activity_in_real_time.html 
+sidebar: sidebar 
+keywords: solidfire api, element api, element os, element, viewing the API log, viewing API calls 
+summary: Element 系統以NetApp Element API 為基礎，實現了其特性和功能。 Element UI 可讓您在使用介面時查看系統上各種類型的即時 API 活動。透過 API 日誌，您可以查看使用者發起的 API 活動和後台系統 API 活動，以及您目前正在查看的頁面上發出的 API 呼叫。 
+---
+= 查看 API 活動
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 系統以NetApp Element API 為基礎，實現了其特性和功能。 Element UI 可讓您在使用介面時查看系統上各種類型的即時 API 活動。透過 API 日誌，您可以查看使用者發起的 API 活動和後台系統 API 活動，以及您目前正在查看的頁面上發出的 API 呼叫。
+
+您可以使用 API 日誌來確定特定任務使用了哪些 API 方法，並了解如何使用 API 方法和物件來建立自訂應用程式。
+
+有關每種方法的詳細信息，請參見 link:../api/concept_element_api_about_the_api.html["Element Software API 參考"]。
+
+. 在 Element UI 導覽列中，按一下「API 日誌」。
+. 若要修改 API 日誌視窗中顯示的 API 活動類型，請執行下列步驟：
++
+.. 選擇「請求」以顯示 API 請求流量。
+.. 選擇「回應」以顯示 API 回應流量。
+.. 請選擇以下選項之一來篩選 API 流量類型：
++
+*** *使用者發起*：指您在此 Web UI 會話期間的活動所產生的 API 流量。
+*** *後台輪詢*：由後台系統活動產生的 API 流量。
+*** *目前頁面*：您目前正在查看的頁面上的任務所產生的 API 流量。
+
+
+
+
+
+
+
+
+== 查找更多信息
+
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

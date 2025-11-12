@@ -1,0 +1,178 @@
+---
+permalink: api/reference_element_api_createvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,groups,group,create,creating,CreateVolumeAccessGroup 
+summary: 您可以使用 CreateVolumeAccessGroup 建立新的磁碟區存取群組。建立磁碟區存取群組時，需要為它命名，也可以選擇輸入啟動器和磁碟區。 
+---
+= 建立卷宗訪問群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `CreateVolumeAccessGroup`建立新的磁碟區存取群組。建立磁碟區存取群組時，需要為它命名，也可以選擇輸入啟動器和磁碟區。
+
+新增至磁碟區存取群組的任何發起方 IQN 都無需 CHAP 驗證即可存取群組中的任何磁碟區。
+
+
+NOTE: 複製磁碟區不會繼承來源磁碟區的磁碟區存取群組成員身分。
+
+建立卷宗訪問組時，請考慮以下事項：
+
+* 磁碟區存取群組最多可以包含 64 個發起方 IQN。
+* 一個發起者只能屬於一個磁碟區存取群組。
+* 一個磁碟區存取群組最多可以包含 2000 個磁碟區。
+* 每個卷訪問組最多可以屬於四個卷訪問組。
+
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+發起者
+ a| 
+若要包含在磁碟區存取群組中的發起程序 ID 或名稱（IQN 和 WWPN）清單。如果傳遞一個啟動器名稱列表，則當啟動器尚不存在時，將建立這些啟動器。如果傳遞一個發起者 ID 列表，則如果其中任何發起者尚不存在，則該方法將傳回錯誤。傳遞發起者名稱已被棄用；應盡可能使用發起者 ID。
+ a| 
+整數數組或字串數組（已棄用）
+ a| 
+ a| 
+不
+
+
+
+ a| 
+姓名
+ a| 
+卷訪問群組的名稱。不一定要獨一無二，但建議如此。長度必須為 1 到 64 個字元。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+卷
+ a| 
+要包含在磁碟區存取群組中的磁碟區 ID 清單。
+ a| 
+整數數組
+ a| 
+ a| 
+不
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+ a| 
+{}
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+卷訪問群組
+ a| 
+包含有關新建立的磁碟區存取群組資訊的物件。
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[卷訪問群組]
+
+
+
+ a| 
+卷訪問群組ID
+ a| 
+新磁碟區存取群組的 ID。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "CreateVolumeAccessGroup",
+   "params": {
+      "name": "myaccessgroup",
+      "initiators": ["iqn.1993-08.org.debian: 01: a31b1d799d5c"],
+      "volumes": [327],
+      "attributes": {}
+   }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [],
+      "initiatorIDs": [
+        95
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian: 01: a31b1d799d5c"
+      ],
+      "name": "myaccessgroup",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        327
+      ]
+    },
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[取得非同步結果]
+* xref:reference_element_api_listsyncjobs.adoc[清單同步作業]
+* xref:reference_element_api_modifyvolume.adoc[修改音量]
+

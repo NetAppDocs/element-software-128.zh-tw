@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: legal-notices.html 
+keywords:  
+summary:  
+---
+= 法律聲明
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+法律聲明提供對版權聲明、商標、專利等的存取。
+
+
+
+== 版權
+
+link:https://www.netapp.com/company/legal/copyright/["https://www.netapp.com/company/legal/copyright/"^]
+
+
+
+== 商標
+
+NETAPP、NETAPP 標誌和NetApp商標頁面上列出的標誌是NetApp, Inc. 的商標。其他公司和產品名稱可能是其各自所有者的商標。
+
+link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/company/legal/trademarks/"^]
+
+
+
+== 專利
+
+NetApp擁有的專利的最新清單可在以下位置找到：
+
+link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf"^]
+
+
+
+== 隱私權政策
+
+link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
+
+
+
+== 開源
+
+通知文件提供有關NetApp軟體中使用的第三方版權和許可的資訊。
+
+* link:./media/Element_Software_12.8.pdf["Element 軟體 12.8 版通知"^]
+* link:./media/Element_Software_12.7.pdf["Element 軟體 12.7 版通知"^]
+* link:./media/Ember_OS_12.7.pdf["Ember OS 12.7 的通知"^]
+* link:./media/mNode_12.7.pdf["管理節點 12.7 的通知"^]
+* link:./media/Element_Software_12.5.pdf["Element 軟體 12.5 版通知"^]
+* link:./media/mNode_12.5.pdf["管理節點 12.5 的通知"^]
+* link:./media/mgmt_svcs_2.27_notice.pdf["管理服務 2.27.40 版通知（適用於 VMware vCenter Server 5.5.16 的NetApp Element插件）"^]
+* link:./media/mgmt_svcs_2.26_notice.pdf["管理服務 2.26.30 版通知（適用於 VMware vCenter Server 5.4.1 的NetApp Element插件）"^]
+* link:./media/mgmt_svcs_2.25_notice.pdf["管理服務 2.25.42 版通知（適用於 VMware vCenter Server 5.3.9 的NetApp Element插件）"^]
+* link:./media/mgmt_svcs_2.24_notice.pdf["管理服務 2.24.40 版通知（適用於 VMware vCenter Server 5.2.12 的NetApp Element插件）"^]
+* link:./media/mgmt_svcs_2.23_notice.pdf["管理服務 2.23.64 版通知（適用於 VMware vCenter Server 5.1.12 的NetApp Element插件）"^]
+* link:./media/mgmt_svcs_2.22_notice.pdf["管理服務 2.22.7 版通知（適用於 VMware vCenter Server 5.0.37 的NetApp Element插件）"^]
+* link:./media/mgmt_svcs_2.21_notice.pdf["管理服務 2.21.61 版通知（適用於 VMware vCenter Server 4.10.12 的NetApp Element插件）"^]
+* link:./media/mgmt_2.20_notice.pdf["管理服務 2.20.69 版通知（NetApp Element vCenter Server 外掛程式 4.9.14）"^]
+* link:./media/mgmt_2.19_notice.pdf["管理服務 2.19.48 版通知（NetApp Element vCenter Server 外掛程式 4.8.34）"^]
+* link:./media/mgmt_svcs_2.18.pdf["管理服務 2.18.91 版通知（NetApp Element vCenter Server 外掛程式 4.7.10）"^]
+* link:./media/mgmt_2.17.56_notice.pdf["管理服務 2.17.56 版通知（NetApp Element vCenter Server 外掛程式 4.6.32）"^]
+* link:./media/mgmt-217.pdf["管理服務 2.17.52 版通知（NetApp Element vCenter Server 外掛程式 4.6.29）"^]
+* link:./media/mgmt-216.pdf["管理服務 2.16 版通知（NetApp Element vCenter Server 外掛程式 4.6.29）"^]
+* link:./media/mgmt-214.pdf["管理服務 2.14 版通知（NetApp Element vCenter Server 外掛程式 4.5.42）"^]
+* link:./media/mgmt-213.pdf["管理服務 2.13 版通知（NetApp Element vCenter Server 外掛程式 4.5.42）"^]
+* link:./media/storage_firmware_bundle_2.182.0_notices.pdf["儲存韌體包 2.182.0 的通知"^]
+* link:./media/storage_firmware_bundle_2.175.0_notices.pdf["儲存韌體包 2.175.0 的通知"^]
+* link:./media/storage_firmware_bundle_2.164.0_notices.pdf["儲存韌體包 2.164.0 的通知"^]
+* link:./media/storage_firmware_bundle_2.150_notices.pdf["儲存韌體包 2.150 的通知"^]
+* link:./media/storage_firmware_bundle_2.146_notices.pdf["儲存韌體包 2.146 的通知"^]
+* link:./media/storage_firmware_bundle_2.99_notices.pdf["儲存韌體包 2.99.2 的通知"^]
+* link:./media/storage_firmware_bundle_2.76_notices.pdf["儲存韌體包 2.76 的通知"^]
+* link:./media/storage_firmware_bundle_2.27_notices.pdf["儲存韌體包 2.27 的通知"^]
+

@@ -1,0 +1,90 @@
+---
+permalink: concepts/concept_rn_relatedrn_element.html 
+sidebar: sidebar 
+keywords: release information,previous,current,updates 
+summary: 您可以找到 Element 儲存環境各個元件的最新和早期版本說明的連結。 
+---
+= 目前及先前版本訊息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以找到 Element 儲存環境各個元件的最新和早期版本說明的連結。
+
+
+NOTE: 系統將提示您使用NetApp支援憑證登入。
+
+
+
+== NetApp Element軟體
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2886996["NetApp Element軟體 12.8 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2884468["NetApp Element軟體 12.7 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2882193["NetApp Element軟體 12.5 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2881056["NetApp Element軟體 12.3.2 版本說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2878089["NetApp Element軟體 12.3.1 版本說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2876498["NetApp Element軟體 12.3 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2877210["NetApp Element軟體 12.2.1 版本說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2873789["NetApp Element軟體 12.2 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2877208["NetApp Element軟體 12.0.1 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2865022["NetApp Element軟體 12.0 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2880259["NetApp Element軟體 11.8.2 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2877206["NetApp Element軟體 11.8.1 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2864256["NetApp Element軟體 11.8 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2861225["NetApp Element軟體 11.7 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2863854["NetApp Element軟體 11.5.1 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2859857["NetApp Element軟體 11.3P1 版本說明"^]
+
+
+
+
+== 管理服務
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服務版本說明"^]
+
+
+
+
+== NetApp Element vCenter Server 插件
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP3344864["vCenter 外掛程式 5.5 發行說明"^]_新的_
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP3330676["vCenter 外掛程式 5.4 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP3316480["vCenter 外掛程式 5.3 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2886272["vCenter 外掛程式 5.2 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2885734["vCenter 外掛程式 5.1 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2884992["vCenter 外掛程式 5.0 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2884458["vCenter 外掛程式 4.10 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2881904["vCenter 外掛程式 4.9 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2879296["vCenter 外掛程式 4.8 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2876748["vCenter 外掛程式 4.7 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2874631["vCenter 外掛程式 4.6 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2873396["vCenter 外掛程式 4.5 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2866569["vCenter 外掛程式 4.4 發行說明"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2856119["vCenter 外掛程式 4.3 發行說明"^]
+
+
+
+
+== 儲存韌體
+
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.182.0.html["儲存韌體包 2.182.0 發行說明"^]_新的_
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.175.0.html["儲存韌體包 2.175.0 發行說明"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.164.0.html["儲存韌體包 2.164.0 發行說明"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.150.html["儲存韌體包 2.150 發行說明"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.146.html["儲存韌體包 2.146 發行說明"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.99.2.html["儲存韌體包 2.99.2 發行說明"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.76.html["儲存韌體包 2.76 發行說明"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.27.html["儲存韌體包 2.27 發行說明"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["H610S BMC 3.84.07 版本說明"^]
+* https://docs.netapp.com/us-en/hci/docs/firmware_driver_versions.html["支援的韌體和 ESXi 驅動程式版本"]_新的_
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

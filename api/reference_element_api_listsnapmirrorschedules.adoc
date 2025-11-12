@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrorschedules.html 
+sidebar: sidebar 
+keywords: snapmirror,schedule,schedules,list,listing,listsnapmirrorschedules,ontap 
+summary: Element 軟體 Web UI 使用 ListSnapMirrorSchedules 方法取得遠端ONTAP叢集上可用的計畫清單。 
+---
+= 列出快照鏡像計劃
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體的Web使用者介面使用 `ListSnapMirrorSchedules`取得遠端ONTAP叢集上可用計畫清單的方法。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+如果提供了，系統會列出具有指定SnapMirror端點 ID 的端點的計畫。如果未提供，系統將列出所有已知SnapMirror端點的方案。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorSchedules
+ a| 
+遠端ONTAP叢集上的SnapMirror計畫清單。
+ a| 
+xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[snapMirrorJobScheduleCronInfo]大批
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

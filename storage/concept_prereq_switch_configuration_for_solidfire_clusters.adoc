@@ -1,0 +1,76 @@
+---
+permalink: storage/concept_prereq_switch_configuration_for_solidfire_clusters.html 
+sidebar: sidebar 
+keywords: cluster switch configuration, best practices for switch configuration, optimal storage performance, node hardware, traffic, cluster, Element software, best practices, switches, switch requirements, storage, performance, storage performance 
+summary: NetApp Element軟體系統對交換器有一定的要求，並且需要遵循最佳實務才能獲得最佳儲存效能。 
+---
+= 執行 Element 軟體的叢集的交換器配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element軟體系統對交換器有一定的要求，並且需要遵循最佳實務才能獲得最佳儲存效能。
+
+根據特定節點硬體的不同，儲存節點需要 10GbE 或 25GbE 乙太網路交換機，用於 iSCSI 儲存服務和節點叢集內服務通訊。  1GbE交換器可用於以下類型的流量：
+
+* 叢集和節點的管理
+* 叢集內部節點間的管理流量
+* 叢集節點與管理節點虛擬機器之間的流量
+
+
+|===
+
+
+ a| 
+*最佳實務：*在設定乙太網路交換器以傳輸叢集流量時，應實施以下最佳實務：
+
+* 對於叢集中的非儲存流量，部署一對 1GbE 交換器以提供高可用性和負載平衡。
+* 在儲存網路交換器上，成對部署交換機，並配置和使用巨型訊框（MTU 大小為 9216 位元組）。這樣可以確保安裝成功，並消除因封包碎片化而導致的儲存網路錯誤。
+
+
+|===
+元素部署至少需要兩個網路段，分別用於以下每種類型的流量：
+
+* 管理
+* 儲存/數據
+
+
+根據NetApp H 系列儲存節點型號和計畫的佈線配置，您可以使用單獨的交換器將這些網路物理隔離，或使用 VLAN 將它們邏輯隔離。但是，對於大多數部署而言，您需要使用 VLAN 將這些網路在邏輯上隔離。
+
+儲存節點需要在部署前、部署期間和部署後能夠進行通訊。
+
+如果您要為儲存節點實施單獨的管理網絡，請確保這些管理網路之間有網路路由。這些網路必須分配網關，且網關之間必須有路由。確保每個新節點都分配一個網關，以促進節點與管理網路之間的通訊。
+
+NetApp Element需要以下元件：
+
+* 連接到NetApp H 系列儲存節點的所有交換器連接埠必須配置為生成樹邊緣連接埠。
++
+** 在Cisco交換器上，根據交換器型號、軟體版本和連接埠類型，您可以使用下列命令之一來完成此操作：
++
+*** `spanning-tree port type edge`
+*** `spanning-tree port type edge trunk`
+*** `spanning-tree portfast`
+*** `spanning-tree portfast trunk`
+
+
+** 在 Mellanox 交換器上，您可以使用以下方法實作： `spanning-tree port type edge`命令。
+
+
+* 處理儲存流量的交換器必須支援每個連接埠至少 10GbE 的速度（最高支援每個連接埠 25GbE）。
+* 處理管理流量的交換器必須支援每個連接埠至少 1GbE 的速度。
+* 必須在處理儲存流量的交換器連接埠上配置巨型訊框。要成功安裝，主機必須能夠端到端發送 9000 位元組的封包。
+* 所有儲存節點之間的往返網路延遲不得超過 2 毫秒。
+
+
+某些節點透過專用管理連接埠提供額外的帶外管理功能。  NetApp H300S、H500S 和 H700S 節點也允許透過 A 連接埠進行 IPMI 存取。最佳實踐是，您應該為環境中的所有節點配置帶外管理，從而簡化遠端管理。
+
+
+
+== 更多資訊
+
+* https://docs.netapp.com/us-en/hci/docs/hci_prereqs_network_switch.html["NetApp HCI網路和交換器需求"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

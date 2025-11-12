@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_API.html 
+summary: '您可以使用管理節點 (mNode) API 來升級系統服務、管理叢集資產和設定、執行系統測試和公用程式、配置Active IQ以進行系統監控，以及啟用或停用NetApp支援 SSH 存取以進行故障排除。' 
+keywords: netapp, mnode api, management node api, rest api 
+---
+= 管理節點 REST API UI 概覽
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+透過使用內建的 REST API 使用者介面(`https://<ManagementNodeIP>/mnode`），您可以執行或了解與管理節點服務相關的 API，包括代理伺服器配置、服務等級更新或資產管理。
+
+您可以使用 REST API 執行下列任務：
+
+
+
+== 授權
+
+* link:task_mnode_api_get_authorizationtouse.html["取得使用 REST API 的授權"]
+
+
+
+
+== 資產配置
+
+* link:task_mnode_enable_activeIQ.html["啟用Active IQ和NetApp監控"]
+* link:task_mnode_configure_proxy_server.html["為管理節點配置代理伺服器"]
+* link:task_mnode_multi_vcenter_config.html["配置NetApp Hybrid Cloud Control 以支援多個 vCenter。"]
+* link:task_mnode_add_assets.html["將控制器資產新增至管理節點"]
+* link:task_mnode_manage_storage_cluster_assets.html["建立和管理儲存叢集資產"]
+
+
+
+
+== 資產管理
+
+* link:task_mnode_edit_vcenter_assets.html["查看或編輯現有控制器資產"]
+* link:task_mnode_manage_storage_cluster_assets.html["建立和管理儲存叢集資產"]
+* link:../hccstorage/task-hcc-collectlogs.html#use-the-rest-api-to-collect-netapp-hci-logs["使用 REST API 收集 Element 系統日誌"]
+* link:task_mnode_api_find_mgmt_svcs_version.html["驗證管理節點作業系統和服務版本"]
+* link:task_mnode_logs.html["從管理服務取得日誌"]
+
+
+[discrete]
+== 查找更多信息
+
+* link:task_mnode_access_ui.html["存取管理節點"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

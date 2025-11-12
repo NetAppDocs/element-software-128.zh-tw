@@ -1,0 +1,147 @@
+---
+permalink: api/reference_element_api_getdrivestats.html 
+sidebar: sidebar 
+keywords: drive,drives,stats,get,getting,getdrivestats 
+summary: 您可以使用 GetDriveStats 方法取得單一磁碟機的進階活動測量值。從將驅動器新增到叢集開始，數值是累積的。某些值是區塊磁碟機特有的。執行此方法時，將傳回區塊磁碟機或元資料磁碟機類型的統計資料。 
+---
+= 取得駕駛統計數據
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetDriveStats`取得單一驅動器高級活動測量的方法。從將驅動器新增到叢集開始，數值是累積的。某些值是區塊磁碟機特有的。執行此方法時，將傳回區塊磁碟機或元資料磁碟機類型的統計資料。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+磁碟機ID
+ a| 
+請求所用磁碟機的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+驅動統計
+ a| 
+指定磁碟機 ID 的磁碟機活動資訊。
+ a| 
+xref:reference_element_api_drivestats.adoc[驅動統計]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetDriveStats",
+   "params": {
+     "driveID": 3
+   },
+   "id" : 1
+}
+----
+
+
+== 響應範例（區塊驅動器）
+
+對於區塊驅動器，此方法傳回的回應類似於以下範例：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveStats": {
+      "driveID": 10,
+      "failedDieCount": 0,
+      "lifeRemainingPercent": 99,
+      "lifetimeReadBytes": 26471661830144,
+      "lifetimeWriteBytes": 13863852441600,
+      "powerOnHours": 33684,
+      "readBytes": 10600432105,
+      "readOps": 5101025,
+      "reallocatedSectors": 0,
+      "reserveCapacityPercent": 100,
+      "timestamp": "2016-10-17T20:23:45.456834Z",
+      "totalCapacity": 300069052416,
+      "usedCapacity": 6112226545,
+      "usedMemory": 114503680,
+      "writeBytes": 53559500896,
+      "writeOps": 25773919
+    }
+  }
+}
+----
+
+
+== 回應範例（卷元資料驅動器）
+
+此方法傳回的回應類似於以下卷元資料磁碟機的範例：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveStats": {
+      "activeSessions": 8,
+      "driveID": 12,
+      "failedDieCount": 0,
+      "lifeRemainingPercent": 100,
+      "lifetimeReadBytes": 2308544921600,
+      "lifetimeWriteBytes": 1120986464256,
+      "powerOnHours": 16316,
+      "readBytes": 1060152152064,
+      "readOps": 258826209,
+      "reallocatedSectors": 0,
+      "reserveCapacityPercent": 100,
+      "timestamp": "2016-10-17T20:34:52.456130Z",
+      "totalCapacity": 134994670387,
+      "usedCapacity": null,
+      "usedMemory": 22173577216,
+      "writeBytes": 353346510848,
+      "writeOps": 86266238
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_listdrives.adoc[清單驅動器]

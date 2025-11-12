@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_addaccount.html 
+sidebar: sidebar 
+keywords: addaccount,add,adding,account,accounts 
+summary: '您可以使用 AddAccount 為系統中新增帳戶。您也可以使用此方法在建立新帳戶時，在新帳戶下建立新磁碟區。您為帳戶指定的質詢握手驗證協定 (CHAP) 設定適用於該帳戶擁有的所有磁碟區。' 
+---
+= 新增帳戶
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `AddAccount`在系統中新增帳戶。您也可以使用此方法在建立新帳戶時，在新帳戶下建立新磁碟區。您為帳戶指定的質詢握手驗證協定 (CHAP) 設定適用於該帳戶擁有的所有磁碟區。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+`attributes`
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`enableChap`
+ a| 
+指定發起方是否可以使用 CHAP 帳戶憑證存取磁碟區。
+ a| 
+布林值
+ a| 
+真的
+ a| 
+不
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+發起者使用的 CHAP 金鑰。這個秘密必須為 12 到 16 個字符，並且應該絕對無法破解。發起方 CHAP 金鑰必須是唯一的，且不能與目標 CHAP 金鑰相同。如果未指定，則會產生一個隨機密鑰。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`targetSecret`
+ a| 
+用於目標的 CHAP 金鑰（相互 CHAP 認證）。這個秘密必須為 12 到 16 個字符，並且應該絕對無法破解。目標 CHAP 金鑰必須是唯一的，不能與發起方 CHAP 金鑰相同。如果未指定，則會產生一個隨機密鑰。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+`username`
+ a| 
+此帳戶的唯一使用者名稱。  （長度必須為 1 到 64 個字元）。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+帳戶
+ a| 
+包含有關新建立帳戶資訊的物件。
+ a| 
+xref:reference_element_api_account.adoc[帳戶]
+
+
+
+ a| 
+帳戶ID
+ a| 
+新建立的帳戶物件的 ID。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+	"method": "AddAccount",
+    "params": {
+     "username"  : "bobsmith",
+     "initiatorSecret" : "168[#5A757ru268)",
+     "targetSecret" : "tlt&lt;,8TUYa7bC",
+     "attributes" : {
+       "billingcode" : 2345
+     }
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "account": {
+      "accountID": 90,
+      "attributes": {
+        "billingcode": 2345
+      },
+      "initiatorSecret": "168[#5A757ru268)",
+      "status": "active",
+      "storageContainerID": "00000000-0000-0000-0000-000000000000",
+      "targetSecret": "tlt&lt;,8TUYa7bC",
+      "username": "bobsmith",
+      "volumes": [],
+      "enableChap": true
+    },
+    "accountID": 90
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,191 @@
+---
+permalink: api/reference_element_api_startbulkvolumeread.html 
+sidebar: sidebar 
+keywords: volume,read,session,start,starting,bulk,startbulkvolumeread 
+summary: 您可以使用 StartBulkVolumeRead 方法對指定的磁碟區啟動批次磁碟區讀取會話。 
+---
+= 啟動批次讀取
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `StartBulkVolumeRead`在指定磁碟區上啟動批次磁碟區讀取會話的方法。
+
+一個磁碟區上只能同時執行兩個批次卷處理進程。初始化會話時，資料將從SolidFire儲存卷讀取並儲存在外部備份來源上。外部資料由運行在 Element 儲存節點上的 Web 伺服器存取。儲存系統上執行的腳本會傳遞用於外部資料存取的伺服器互動資訊。
+
+在批次磁碟區讀取操作開始時，會建立磁碟區的快照，讀取完成後會刪除該快照。您也可以透過輸入快照 ID 作為參數來讀取磁碟區的快照。讀取先前的快照時，系統不會建立新的磁碟區快照，也不會在讀取完成後刪除先前的快照。
+
+
+NOTE: 如果沒有提供現有快照的 ID，則此程序將建立新的快照。如果叢集容量達到第 2 或第 3 階段，則可以建立快照。當叢集容量達到 4 或 5 級時，不會建立快照。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+格式
+ a| 
+容量資料的格式。可以是以下兩種情況之一：
+
+* `uncompressed`：卷中的每個位元組都以未壓縮的形式傳回。
+* `native`傳回的是不透明數據，其體積更小，儲存和寫入效率更高，以便於後續批量卷寫入。
+
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+卷 ID
+ a| 
+要讀取的磁碟區的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+snapshotID
+ a| 
+用於批次磁碟區讀取的先前建立的快照的 ID。如果沒有輸入 ID，則會建立目前活動磁碟區映像的快照。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+腳本
+ a| 
+可執行腳本的名稱。如果沒有提供腳本名稱，則需要金鑰和 URL 才能存取 Element 儲存節點。該腳本在主節點上運行，並將金鑰和 URL 傳回給腳本，以便可以聯繫本機 Web 伺服器。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+腳本參數
+ a| 
+要傳遞給腳本的JSON參數。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。link:reference_element_api_attributes.html["了解更多"]。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+若要檢查是否完成的非同步進程的 ID。
+ a| 
+整數
+
+
+
+ a| 
+鑰匙
+ a| 
+用於唯一標識會話的不透明密鑰。
+ a| 
+細繩
+
+
+
+ a| 
+網址
+ a| 
+存取節點 Web 伺服器的 URL。
+ a| 
+細繩
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "StartBulkVolumeRead",
+   "params": {
+      "volumeID" : 5,
+      "format"  : "native",
+      "snapshotID" : 2
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+      "id" : 1,
+   "result" : {
+      "asyncHandle" : 1,
+      "key" : "11eed8f086539205beeaadd981aad130",
+      "url" : "https://127.0.0.1:44000/"
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

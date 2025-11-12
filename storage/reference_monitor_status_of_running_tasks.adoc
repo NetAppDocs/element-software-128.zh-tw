@@ -1,0 +1,19 @@
+---
+permalink: storage/reference_monitor_status_of_running_tasks.html 
+sidebar: sidebar 
+keywords: running tasks, view progress of 
+summary: 您可以透過 Web UI 查看 ListSyncJobs 和 ListBulkVolumeJobs API 方法報告的正在執行的任務的進度和完成狀態。您可以從 Element UI 的「報表」標籤存取「正在執行的任務」頁面。 
+---
+= 查看正在運行的任務的狀態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以透過 Web UI 查看 ListSyncJobs 和 ListBulkVolumeJobs API 方法報告的正在執行的任務的進度和完成狀態。您可以從 Element UI 的「報表」標籤存取「正在執行的任務」頁面。
+
+如果任務數量很多，系統可能會將它們排隊，然後分批運行。 「正在運行的任務」頁面顯示目前正在同步的服務。當一個任務完成後，它將被下一個排隊的同步任務取代。同步任務可能會持續顯示在「正在執行的任務」頁面上，直到沒有更多任務需要完成為止。
+
+
+NOTE: 您可以在包含目標磁碟區的叢集的「正在執行的任務」頁面上查看正在進行複製的磁碟區的複製同步資料。

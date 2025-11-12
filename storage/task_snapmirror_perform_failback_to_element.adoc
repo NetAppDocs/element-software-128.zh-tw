@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_perform_failback_to_element.html 
+sidebar: sidebar 
+keywords: failback, perform a failbacl, Element, snapmirror 
+summary: 當主端的問題得到緩解後，您必須重新同步原始來源磁碟區並回退到NetApp Element軟體。根據原始來源磁碟區是否存在，或是否需要回退到新建立的捲，您需要執行的步驟會有所不同。 
+---
+= 了解如何執行故障恢復到 Element 模式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當主端的問題得到緩解後，您必須重新同步原始來源磁碟區並回退到NetApp Element軟體。根據原始來源磁碟區是否存在，或是否需要回退到新建立的捲，您需要執行的步驟會有所不同。
+
+
+
+== SnapMirror故障恢復場景
+
+SnapMirror災難復原功能透過兩種故障復原場景進行說明。這些假設是原有的關係已經破裂（失敗）。
+
+為便於參考，已列出對應流程中的步驟。
+
+
+NOTE: 在此範例中，R1 = 原始關係，其中執行NetApp Element軟體的叢集是原始來源磁碟區 (Element)，而ONTAP是原始目標磁碟區 (ONTAP)。  R2 和 R3 代表透過反向重新同步操作所建立的反向關係。
+
+下圖顯示了來源磁碟區仍然存在時的故障復原場景：
+
+image::../media/snapmirror_element_failback1.gif[來源磁碟區仍存在時的故障復原場景示意圖]
+
+下圖顯示了來源磁碟區不存在時的故障復原方案：
+
+image::../media/snapmirror_element_failback2.png[源卷不存在時的故障復原場景示意圖]
+
+
+
+== 查找更多信息
+
+* xref:task_snapmirror_perform_failback_when_source_volume_exists.adoc[如果來源磁碟區仍然存在，則執行故障復原。]
+* xref:task_snapmirror_performing_failback_when_source_volume_no_longer_exists.adoc[當來源磁碟區不存在時，執行故障復原。]
+* xref:concept_snapmirror_failback_scenarios.adoc[SnapMirror故障恢復場景]
+

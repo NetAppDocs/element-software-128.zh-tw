@@ -1,0 +1,25 @@
+---
+permalink: storage/task_replication_create_a_target_volume_with_read_write_access.html 
+sidebar: sidebar 
+keywords: target volume, create, read, write access 
+summary: 複製過程涉及兩個端點：來源磁碟區和目標磁碟區。建立目標磁碟區時，該磁碟區會自動設定為讀取/寫入模式，以便在複製期間接受資料。 
+---
+= 建立具有讀取或寫入權限的目標卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+複製過程涉及兩個端點：來源磁碟區和目標磁碟區。建立目標磁碟區時，該磁碟區會自動設定為讀取/寫入模式，以便在複製期間接受資料。
+
+. 選擇“管理”>“卷”。
+. 點擊“創建卷”。
+. 在「建立新磁碟區」對話方塊中，輸入磁碟區名稱。
+. 輸入磁碟區的總大小，選擇磁碟區的區塊大小，並選擇應該有權存取該磁碟區的帳戶。
+. 點擊“創建卷”。
+. 在「活動」視窗中，按一下音量對應的「操作」圖示。
+. 按一下“*編輯*”。
+. 將帳戶存取等級變更為「複製目標」。
+. 點選「儲存變更」。
+

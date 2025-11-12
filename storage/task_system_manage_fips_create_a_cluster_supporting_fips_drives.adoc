@@ -1,0 +1,24 @@
+---
+permalink: storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, cluster, create 
+summary: 在許多客戶環境中，安全性對於解決方案的部署變得越來越重要。聯邦資訊處理標準（FIPS）是電腦安全和互通性標準。符合 FIPS 140-2 標準的靜態資料加密是整體安全解決方案的一個組成部分。 
+---
+= 為 FIPS 驅動器功能準備元素集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在許多客戶環境中，安全性對於解決方案的部署變得越來越重要。聯邦資訊處理標準（FIPS）是電腦安全和互通性標準。符合 FIPS 140-2 標準的靜態資料加密是整體安全解決方案的一個組成部分。
+
+為了啟用 FIPS 驅動器功能，您應該避免將一些節點支援 FIPS 驅動器功能而其他節點不支援。
+
+叢集被視為符合 FIPS 標準的驅動器，需符合以下條件：
+
+* 所有硬碟均通過了FIPS認證。
+* 所有節點均為FIPS驅動節點。
+* 已啟用靜態資料加密 (EAR)。
+* FIPS驅動功能已啟用。所有磁碟機和節點都必須具備 FIPS 功能，並且必須啟用靜態加密才能啟用 FIPS 磁碟機功能。
+

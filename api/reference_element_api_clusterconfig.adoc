@@ -1,0 +1,150 @@
+---
+permalink: api/reference_element_api_clusterconfig.html 
+sidebar: sidebar 
+keywords: objects,object,clusterConfig 
+summary: clusterConfig 物件傳回節點用於與叢集通訊的資訊。 
+---
+= clusterConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+這 `clusterConfig`此物件傳回節點用於與叢集通訊的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+`cipi`
+ a| 
+用於集群通訊的網路介面。
+ a| 
+細繩
+
+
+
+ a| 
+`cluster`
+ a| 
+叢集的唯一名稱。
+ a| 
+細繩
+
+
+
+ a| 
+`encryptionCapable`
+ a| 
+指定節點是否支援加密。
+ a| 
+布林值
+
+
+
+ a| 
+`ensemble`
+ a| 
+參與叢集的節點。
+ a| 
+字串數組
+
+
+
+ a| 
+`fipsDriveConfiguration`
+ a| 
+指定節點是否支援 FIPS 140-2 認證的磁碟機。
+ a| 
+布林值
+
+
+
+ a| 
+`hasLocalAdmin`
+ a| 
+指定集群是否具有本機管理員。
+ a| 
+布林值
+
+
+
+ a| 
+`mipi`
+ a| 
+用於節點管理的網路介面。
+ a| 
+細繩
+
+
+
+ a| 
+`name`
+ a| 
+集群的唯一識別碼。
+ a| 
+細繩
+
+
+
+ a| 
+`nodeID`
+ a| 
+節點的唯一識別碼。
+ a| 
+整數
+
+
+
+ a| 
+`pendingNodeID`
+ a| 
+待處理節點的唯一識別碼。
+ a| 
+整數
+
+
+
+ a| 
+`role`
+ a| 
+確定節點的角色。
+ a| 
+細繩
+
+
+
+ a| 
+`sipi`
+ a| 
+用於儲存的網路介面。
+ a| 
+細繩
+
+
+
+ a| 
+`state`
+ a| 
+指示節點的狀態。
+ a| 
+細繩
+
+
+
+ a| 
+`version`
+ a| 
+指示節點的版本。
+ a| 
+細繩
+
+|===

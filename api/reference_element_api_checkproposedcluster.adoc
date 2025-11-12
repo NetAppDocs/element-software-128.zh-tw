@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_checkproposedcluster.html 
+sidebar: sidebar 
+keywords: cluster,creation,check,proposed,checking,nodes,node,before,CheckProposedCluster 
+summary: 您可以使用 CheckProposedCluster 方法在建立儲存叢集之前測試一組儲存節點，以識別嘗試過程中可能出現的錯誤或故障，例如節點功能不平衡或雙節點儲存叢集不支援的節點類型。 
+---
+= 檢查擬議集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CheckProposedCluster`在以一組儲存節點建立儲存叢集之前，先對其進行測試，以識別嘗試過程中可能出現的錯誤或故障，例如節點功能不平衡或雙節點儲存叢集不支援的節點類型。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+節點
+ a| 
+儲存叢集初始儲存節點集的儲存 IP 位址清單。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+力量
+ a| 
+設定為 true 可在儲存叢集中的所有儲存節點上運作。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+提議的集群有效性
+ a| 
+指示所提議的儲存節點是否可以構成有效的儲存叢集。可能的值：
+
+* 真的
+* 錯誤的
+
+ a| 
+布林值
+
+
+
+ a| 
+提議的聚類錯誤
+ a| 
+使用建議的儲存節點建立儲存叢集時將會出現的錯誤。
+ a| 
+字串數組
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+	"method": "CheckProposedCluster",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== 自版本以來的新版本
+
+11.0

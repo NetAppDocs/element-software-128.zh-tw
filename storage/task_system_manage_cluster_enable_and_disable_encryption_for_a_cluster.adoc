@@ -1,0 +1,78 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html 
+sidebar: sidebar 
+keywords: enable, disable, encryption at rest, cluster, sed, hardware-based, encryption settings, software-based 
+summary: 使用SolidFire集群，您可以對儲存在集群上的所有資料進行靜態加密，並且可以使用軟體或硬體加密。 
+---
+= 啟用和停用叢集的靜態資料加密
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用SolidFire集群，您可以加密儲存在集群驅動器上的所有靜態資料。您可以使用下列任一方式啟用對自加密磁碟機 (SED) 的叢集層級保護link:../concepts/concept_solidfire_concepts_security.html["靜態資料採用硬體或軟體加密"]。
+
+您可以使用 Element UI 或 API 啟用靜態硬體加密。啟用靜態資料硬體加密功能不會影響叢集的效能或效率。您只能使用 Element API 啟用靜態軟體加密。
+
+在叢集建立期間，預設不會啟用基於硬體的靜態加密，可以透過 Element UI 啟用和停用。
+
+
+WARNING: 對於SolidFire全快閃儲存集群，必須在建立集群期間啟用靜態軟體加密，且集群建立後不能停用靜態軟體加密。
+
+.你需要什麼
+* 您擁有叢集管理員權限，可以啟用或變更加密設定。
+* 對於基於硬體的靜態加密，在變更加密設定之前，您已確保叢集處於健康狀態。
+* 如果要停用加密，則必須有兩個節點參與叢集才能存取金鑰以停用磁碟機上的加密。
+
+
+
+
+== 檢查靜態加密狀態
+
+若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：link:../api/reference_element_api_getclusterinfo.html["獲取集群資訊"^]方法。你可以使用link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["取得靜態軟體加密訊息"^]獲取集群用於加密靜態資料的資訊的方法。
+
+
+NOTE: Element軟體使用者介面儀表板 `https://<MVIP>/`目前僅顯示基於硬體的加密的靜態加密狀態。
+
+.選項
+* <<啟用基於硬體的靜態資料加密>>
+* <<啟用靜態資料軟體加密>>
+* <<停用靜態資料的硬體加密>>
+
+
+
+
+== 啟用基於硬體的靜態資料加密
+
+
+NOTE: 若要使用外部金鑰管理配置啟用靜態加密，您必須透過以下方式啟用靜態加密：link:../api/reference_element_api_enableencryptionatrest.html["API"] 。啟用使用現有 Element UI 按鈕後，將恢復使用內部產生的金鑰。
+
+. 從元素使用者介面中，選擇“集群”>“設定”。
+. 選擇“啟用靜態資料加密”。
+
+
+
+
+== 啟用靜態資料軟體加密
+
+
+NOTE: 軟體靜態加密在叢集上啟用後無法停用。
+
+. 在叢集建立期間，運行link:../api/reference_element_api_createcluster.html["建立集群方法"]和 `enableSoftwareEncryptionAtRest`設定為 `true`。
+
+
+
+
+== 停用靜態資料的硬體加密
+
+. 從元素使用者介面中，選擇“集群”>“設定”。
+. 選擇“停用靜態資料加密”。
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: bulkVolumeJob 物件包含大量磁碟區讀取或寫入操作的信息，例如複製或快照建立。 
+---
+= 批量作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+這 `bulkVolumeJob`該物件包含有關批量卷讀取或寫入操作的信息，例如克隆或快照創建。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+`attributes`
+ a| 
+批量作業的 JSON 屬性。
+ a| 
+JSON 物件
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+內部批量作業 ID。
+ a| 
+整數
+
+
+
+ a| 
+`createTime`
+ a| 
+為批次作業建立的時間戳，格式為 UTC+0。
+ a| 
+ISO 8601 日期字串
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+自任務開始以來的秒數。
+ a| 
+細繩
+
+
+
+ a| 
+`format`
+ a| 
+批量交易操作的格式。可能的值：
+
+* 本國的
+* 未壓縮
+
+ a| 
+細繩
+
+
+
+ a| 
+`key`
+ a| 
+由大量交易會話建立的唯一金鑰。
+ a| 
+細繩
+
+
+
+ a| 
+`percentComplete`
+ a| 
+此手術報告的完成百分比。
+ a| 
+整數
+
+
+
+ a| 
+`remainingTime`
+ a| 
+剩餘時間（以秒為單位）的估計值。
+ a| 
+整數
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+來源磁碟區 ID。
+ a| 
+整數
+
+
+
+ a| 
+`status`
+ a| 
+手術狀態。可能的值：
+
+* 準備
+* 跑步
+* 完全的
+* 失敗的
+
+ a| 
+細繩
+
+
+
+ a| 
+`script`
+ a| 
+如果有腳本，則填寫腳本名稱。
+ a| 
+細繩
+
+
+
+ a| 
+`snapshotID`
+ a| 
+如果批次磁碟區作業的來源中存在快照，則此快照的 ID 為快照 ID。
+ a| 
+整數
+
+
+
+ a| 
+`type`
+ a| 
+大宗作業類型。可能的值：
+
+* 讀
+* 寫
+
+ a| 
+細繩
+
+|===

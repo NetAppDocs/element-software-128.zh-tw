@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listidpconfigurations.html 
+sidebar: sidebar 
+keywords: configs configurations,idp configs,list 
+summary: 您可以使用 ListIdpConfigurations 方法列出第三方身分提供者的設定。您也可以選擇提供 enabledOnly 標誌來檢索目前啟用的 IdP 配置，或提供 IdP 元資料 UUID 或 IdP 名稱來查詢特定 IdP 配置的資訊。 
+---
+= 列出 Idp 配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListIdpConfigurations`列出第三方身分提供者配置的方法。您也可以選擇提供以下任一資訊： `enabledOnly`標誌用於擷取目前啟用的身分識別提供者 (IdP) 配置，或使用 IdP 元資料 UUID 或 IdP 名稱來查詢特定身分提供者 (IdP) 配置的資訊。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+僅啟用
+ a| 
+篩選結果，傳回目前啟用的身分提供者配置。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+idp配置ID
+ a| 
+由第三方身分提供者配置的 UUID。
+ a| 
+唯一識別符
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+idpName
+ a| 
+取得指定身分提供者 (IdP) 名稱的身分提供者設定資訊。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+idp配置訊息
+ a| 
+第三方身分提供者配置資訊。
+ a| 
+link:reference_element_api_idpconfiginfo.html["idp配置訊息"]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "ListIdpConfigurations",
+  "params": {}
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": true,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ...</Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MI...BHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

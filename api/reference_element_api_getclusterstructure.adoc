@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,structure,config,configuration,info,get,getting,getclusterstructure 
+summary: 您可以使用 GetClusterStructure 方法來備份目前儲存叢集設定資訊。如果在執行此方法期間變更儲存叢集配置，則配置備份的內容將無法預測。您可以將此資料儲存到文字檔案中，並在發生災難時將其還原到其他叢集或同一叢集。 
+---
+= 取得聚類結構
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterStructure`備份目前儲存叢集配置資訊的方法。如果在執行此方法期間變更儲存叢集配置，則配置備份的內容將無法預測。您可以將此資料儲存到文字檔案中，並在發生災難時將其還原到其他叢集或同一叢集。
+
+
+
+== 範圍
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+結果
+ a| 
+包含目前儲存叢集設定資訊的 JSON 物件。
+ a| 
+xref:reference_element_api_clusterstructure.adoc[簇結構]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetClusterStructure",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : <clusterStructure object containing configuration information>
+	}
+----
+
+
+== 自版本以來的新版本
+
+10.3

@@ -1,0 +1,38 @@
+---
+permalink: api/reference_element_api_cluster_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: cluster,pairing,pair,order,operations,clusters 
+summary: 必須先在執行 Element 軟體的一對儲存叢集之間建立連接，才能使用遠端複製。 
+---
+= 集群配對操作順序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須先在執行 Element 軟體的一對儲存叢集之間建立連接，才能使用遠端複製。
+
+使用以下 API 方法建立叢集連線：
+
+* xref:reference_element_api_startclusterpairing.adoc[開始集群配對]：
++
+此 API 方法會建立並傳回用於建立叢集對的配對金鑰。密鑰經過編碼，包含用於建立集群間通訊的資訊。一個聚類最多可以與其他四個聚類配對。但是，每個集群配對都需要產生一個新的密鑰。這xref:reference_element_api_startclusterpairing.adoc[開始集群配對]每次呼叫該方法時，都會產生一個新的鍵。將每個唯一密鑰與xref:reference_element_api_completeclusterpairing.adoc[完全簇配對]將每個額外的聚類配對的方法。
+
++
+
+NOTE: 出於安全考慮，配對金鑰不應透過電子郵件發送給其他使用者。密鑰包含使用者名稱和密碼。
+
+* xref:reference_element_api_completeclusterpairing.adoc[完全簇配對]：
++
+此方法使用與以下方式建立的配對密鑰：xref:reference_element_api_startclusterpairing.adoc[開始集群配對]建立叢集對的 API 方法。問題xref:reference_element_api_completeclusterpairing.adoc[完全簇配對]API 方法，並將 clusterPairingKey 參數傳遞給目標。密鑰的建立集群是密鑰的創建集群。
+
+
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_startclusterpairing.adoc[開始集群配對]
+* xref:reference_element_api_completeclusterpairing.adoc[完全簇配對]
+

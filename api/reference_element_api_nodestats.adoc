@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: nodeStats 物件包含節點的高階活動測量值。您可以使用 GetNodeStats 和 ListNodeStats API 方法取得部分或全部 nodeStats 物件。 
+---
+= 節點統計
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+nodeStats 物件包含節點的高階活動測量值。你可以使用 `GetNodeStats`和 `ListNodeStats`取得部分或全部 nodeStats 物件的 API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+數數
+ a| 
+nodeStats 物件中的樣本總數。
+ a| 
+整數
+
+
+
+ a| 
+中央處理器
+ a| 
+CPU 使用率（%）
+ a| 
+整數
+
+
+
+ a| 
+CPU總計
+ a| 
+CPU利用率單調遞增。
+ a| 
+整數
+
+
+
+ a| 
+cBytesIn
+ a| 
+叢集介面上的位元組數。
+ a| 
+整數
+
+
+
+ a| 
+cBytesOut
+ a| 
+叢集介面輸出位元組。
+ a| 
+整數
+
+
+
+ a| 
+sBytesIn
+ a| 
+儲存介面上的位元組數。
+ a| 
+整數
+
+
+
+ a| 
+sBytesOut
+ a| 
+儲存介面輸出位元組。
+ a| 
+整數
+
+
+
+ a| 
+毫位元組
+ a| 
+管理介面上的位元組已輸入。
+ a| 
+整數
+
+
+
+ a| 
+mBytesOut
+ a| 
+管理介面輸出位元組。
+ a| 
+整數
+
+
+
+ a| 
+網路利用集群
+ a| 
+集群網路介面的網路介面利用率（%）。
+ a| 
+整數
+
+
+
+ a| 
+網路利用率儲存
+ a| 
+儲存網路介面的網路介面利用率（%）。
+ a| 
+整數
+
+
+
+ a| 
+節點熱
+ a| 
+節點利用率資訊。從 Element 12.8 版本開始可用。成員：
+
+* primaryTotalHeat：節點主節點總 IOPS / 節點配置 IOPS 的 24 小時平均值
+* recentPrimaryTotalHeat：節點主節點總 IOPS / 節點配置 IOPS 一小時平均值
+* recentTotalHeat：節點總 IOPS / 節點配置 IOPS 一小時平均值
+* totalHeat：節點總 IOPS / 節點配置 IOPS 的 24 小時平均值
+
+ a| 
+JSON 物件
+
+
+
+ a| 
+讀取延遲（單位：秒）總計
+ a| 
+對節點執行讀取操作所花費的總時間單調遞增。
+ a| 
+整數
+
+
+
+ a| 
+讀取操作
+ a| 
+對節點進行的總讀取操作值單調遞增。
+ a| 
+整數
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+直方圖資料展示了切片服務負載隨時間的變化。
+ a| 
+JSON 物件
+
+
+
+ a| 
+時間戳
+ a| 
+目前時間，格式為UTC+0。
+ a| 
+ISO 8601 日期字串
+
+
+
+ a| 
+已用記憶體
+ a| 
+總記憶體使用量（位元組）。
+ a| 
+整數
+
+
+
+ a| 
+寫入延遲（單位：秒）總計
+ a| 
+對節點執行寫入作業所花費的總時間單調遞增。
+ a| 
+整數
+
+
+
+ a| 
+寫入操作
+ a| 
+對節點進行的總寫入操作值單調遞增。
+ a| 
+整數
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getnodestats.adoc[取得節點統計資訊]
+* xref:reference_element_api_listnodestats.adoc[列出節點統計資訊]
+

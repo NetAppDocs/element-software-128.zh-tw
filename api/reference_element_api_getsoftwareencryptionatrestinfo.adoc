@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_getsoftwareencryptionatrestinfo.html 
+sidebar: sidebar 
+keywords: system, api, security, get, getting, software encryption at rest 
+summary: 您可以使用 GetSoftwareEncryptionAtRestInfo 方法取得叢集用於加密靜態資料的資訊。 
+---
+= 取得靜態軟體加密訊息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetSoftwareEncryptionAtRestInfo`取得集群用於加密靜態資料的軟體靜態加密資訊的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+[cols="4*"]
+|===
+| 範圍 | 描述 | 類型 | 選修的 
+
+
+| 主密鑰資訊 | 有關目前軟體靜態加密主金鑰的資訊。 | 加密金鑰訊息 | 真的 
+
+
+| 重新密鑰主密鑰異步結果ID | 目前或最近一次重新金鑰操作的非同步結果 ID（如果有），如果尚未刪除。 `GetAsyncResult`輸出將包含 `newKey`包含新主密鑰的資訊的欄位以及 `keyToDecommission`包含舊密鑰資訊的欄位。 | 整數 | 真的 
+
+
+| 狀態 | 目前軟體靜態加密狀態。可能的值有 `disabled`或者 `enabled`。 | 細繩 | 錯誤的 
+
+
+| 版本 | 每次啟用靜態軟體加密時，版本號碼都會增加。 | 整數 | 錯誤的 
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+ "method": "getsoftwareencryptionatrestinfo"
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "masterKeyInfo": {
+            "keyCreatedTime": "2021-09-20T23:15:56Z",
+            "keyID": "4d80a629-a11b-40ab-8b30-d66dd5647cfd",
+            "keyManagementType": "internal"
+        },
+        "state": "enabled",
+        "version": 1
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.3
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

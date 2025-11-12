@@ -1,0 +1,168 @@
+---
+permalink: api/reference_element_api_event.html 
+sidebar: sidebar 
+keywords: object,objects,event 
+summary: 事件物件包含 API 方法呼叫期間或系統執行操作期間發生的事件的詳細資訊。 
+---
+= 事件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+事件物件包含 API 方法呼叫期間或系統執行操作期間發生的事件的詳細資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+細節
+ a| 
+活動補充資料。
+ a| 
+JSON 物件
+
+
+
+ a| 
+磁碟機ID
+ a| 
+報告故障的磁碟機的磁碟機 ID。  0（如不適用）。
+ a| 
+整數
+
+
+
+ a| 
+磁碟機 ID
+ a| 
+列出報告故障的磁碟機的磁碟機 ID。如果無適用，則清單為空。
+ a| 
+整數數組
+
+
+
+ a| 
+事件ID
+ a| 
+每個事件都關聯一個唯一的ID。
+ a| 
+整數
+
+
+
+ a| 
+事件資訊類型
+ a| 
+故障類型。
+ a| 
+細繩
+
+
+
+ a| 
+訊息
+ a| 
+對所發生事件的字串描述。
+ a| 
+細繩
+
+
+
+ a| 
+節點ID
+ a| 
+報告故障的節點的節點 ID。  0（如不適用）。
+ a| 
+整數
+
+
+
+ a| 
+服務ID
+ a| 
+報告故障的服務的服務ID。  0（如不適用）。
+ a| 
+整數
+
+
+
+ a| 
+嚴重性
+ a| 
+事件報告的嚴重程度。
+ a| 
+整數
+
+
+
+ a| 
+發佈時間
+ a| 
+叢集事件日誌接收到事件的時間，採用 UTC+0 格式。
+ a| 
+ISO 8601 日期字串
+
+
+
+ a| 
+報告時間
+ a| 
+事件在叢集上發生的時間，採用 UTC+0 格式。
+ a| 
+ISO 8601 日期字串
+
+|===
+*注意：*如果事件發生但未能立即發布，則 timeOfReport 和 timeOfPublish 之間可能會略有不同。
+
+
+
+== 事件類型
+
+以下列表描述了 eventInfoType 成員可以包含的事件類型：
+
+* apiEvent：透過 API 或 Web UI 發起的、用於修改設定的事件。
+* binAssignmentsEvent：與將資料指派給內部容器相關的事件。
+* binSyncEvent：與區塊服務之間資料重新分配相關的事件。
+* bsCheckEvent：與阻止服務檢查相關的事件。
+* bsKillEvent：與阻止服務終止相關的事件。
+* bulkOpEvent：整個磁碟區進行操作的事件，例如磁碟區備份、還原、快照或複製。
+* cloneEvent：與卷克隆相關的事件。
+* clusterMasterEvent：叢集配置變更事件，例如新增或刪除節點。
+* dataEvent：與資料讀取和寫入相關的事件。
+* dbEvent：與整合節點資料庫相關的事件。
+* driveEvent：與磁碟機操作相關的事件。
+* encryptionAtRestEvent：與儲存資料加密相關的事件。
+* ensembleEvent：與集合規模增加或減少相關的事件。
+* fiberChannelEvent：與光纖通道節點配置或連接相關的事件。
+* gcEvent：與垃圾回收相關的事件。這些進程每 60 分鐘運行一次，以回收區塊驅動器上的儲存空間。
+* ieEvent：與內部系統錯誤相關的事件。
+* installEvent：與待處理儲存節點上的自動軟體安裝相關的事件。
+* iSCSIEvent：與 iSCSI 連線或設定問題相關的事件。
+* limitEvent：與帳戶或叢集中的磁碟區或虛擬磁碟區的數量接近允許的最大值相關的事件。
+* networkEvent：與虛擬網路相關的事件。
+* platformHardwareEvent：硬體設備上偵測到的問題相關的事件。
+* remoteClusterEvent：與遠端叢集配對相關的事件。
+* schedulerEvent：與計畫快照相關的事件。
+* serviceEvent：與系統服務狀態相關的事件。
+* statEvent：與系統統計資訊相關的事件。
+* sliceEvent：與元資料儲存相關的事件。
+* snmpTrapEvent：與 SNMP 陷阱相關的事件。
+* tsEvent：系統傳輸服務事件。
+* unexpectedException：與意外錯誤相關的事件。
+* vasaProviderEvent：與 VMware VASA 提供者相關的事件。
+
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_listevents.adoc[事件列表]

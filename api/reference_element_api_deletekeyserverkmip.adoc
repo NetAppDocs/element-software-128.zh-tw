@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_deletekeyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,deleting,delete 
+summary: '您可以使用 DeleteKeyServerKmip 方法刪除現有的金鑰管理互通協定 (KMIP) 金鑰伺服器。除非密鑰伺服器是分配給其提供者的最後一個密鑰伺服器，並且該提供者正在提供當前正在使用的密鑰，否則您可以刪除密鑰伺服器。' 
+---
+= 刪除金鑰伺服器Kmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `DeleteKeyServerKmip`刪除現有金鑰管理互通協定 (KMIP) 金鑰伺服器的方法。除非密鑰伺服器是分配給其提供者的最後一個密鑰伺服器，並且該提供者正在提供當前正在使用的密鑰，否則您可以刪除密鑰伺服器。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+密鑰伺服器ID
+ a| 
+要刪除的 KMIP 金鑰伺服器的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。如果沒有錯誤，則刪除操作被視為成功。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "DeleteKeyServerKmip",
+  "params": {
+     "keyServerID": 15
+  },
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== 自版本以來的新版本
+
+11.7

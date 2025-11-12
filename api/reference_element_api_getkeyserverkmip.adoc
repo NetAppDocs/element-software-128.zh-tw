@@ -1,0 +1,103 @@
+---
+permalink: api/reference_element_api_getkeyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,getting information,retrieving 
+summary: '您可以使用 GetKeyServerKmip 方法傳回指定的金鑰管理互通協定 (KMIP) 金鑰伺服器的資訊。' 
+---
+= GetKeyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetKeyServerKmip`傳回指定金鑰管理互通協定 (KMIP) 金鑰伺服器的資訊的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+密鑰伺服器ID
+ a| 
+要傳回資訊的 KMIP 金鑰伺服器的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+kmip金鑰伺服器
+ a| 
+包含所請求密鑰伺服器詳細資訊的物件。
+ a| 
+link:reference_element_api_keyserverkmip.html["金鑰伺服器Kmip"]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetKeyServerKmip",
+  "params": {
+     "keyServerID": 15
+  },
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "kmipKeyServer": {
+            "kmipCaCertificate":"MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames":[
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID":1,
+            "kmipKeyServerName":"keyserverName",
+            "keyServerID":15
+            "kmipKeyServerPort":1,
+            "kmipClientCertificate":"dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "kmipAssignedProviderIsActive":true
+        }
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+11.7

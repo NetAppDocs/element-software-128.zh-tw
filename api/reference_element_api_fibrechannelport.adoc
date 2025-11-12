@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_fibrechannelport.html 
+sidebar: sidebar 
+keywords: object,objects,fibreChannelPort 
+summary: fiberChannelPort 物件包含有關節點上的各個連接埠或叢集中整個節點的資訊。您可以使用 ListNodeFibreChannelPortInfo 方法檢索此資訊。 
+---
+= 光纖通道連接埠
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fiberChannelPort 物件包含有關節點上的各個連接埠或叢集中整個節點的資訊。您可以使用以下方法檢索此資訊： `ListNodeFibreChannelPortInfo`方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+韌體
+ a| 
+光纖通道連接埠上安裝的韌體版本。
+ a| 
+整數
+
+
+
+ a| 
+hbaPort
+ a| 
+單一主機匯流排適配器（HBA）連接埠的 ID。
+ a| 
+整數
+
+
+
+ a| 
+模型
+ a| 
+連接埠上的HBA型號。
+ a| 
+細繩
+
+
+
+ a| 
+nPortID
+ a| 
+唯一的連接埠節點ID。
+ a| 
+細繩
+
+
+
+ a| 
+PCI插槽
+ a| 
+光纖通道節點機箱中容納 PCI 卡的插槽。
+ a| 
+整數
+
+
+
+ a| 
+序號
+ a| 
+光纖通道連接埠上的序號。
+ a| 
+細繩
+
+
+
+ a| 
+速度
+ a| 
+連接埠上HBA的速度。
+ a| 
+細繩
+
+
+
+ a| 
+狀態
+ a| 
+可能的值：
+
+* 未知
+* 未出現
+* 在線的
+* 離線
+* 已屏蔽
+* 繞過
+* 診斷
+* 連結
+* 錯誤
+* 環回
+* 已刪除
+
+ a| 
+細繩
+
+
+
+ a| 
+切換視窗
+ a| 
+光纖通道交換器連接埠的全球通用名稱。
+ a| 
+細繩
+
+
+
+ a| 
+WWNN
+ a| 
+HBA節點的全球節點名稱。
+ a| 
+細繩
+
+
+
+ a| 
+wwpn
+ a| 
+分配給 HBA 實體連接埠的全球連接埠名稱。
+ a| 
+細繩
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listnodefibrechannelportinfo.adoc[列出節點光纖通道連接埠信息]

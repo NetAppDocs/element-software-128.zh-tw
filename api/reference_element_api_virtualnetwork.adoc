@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_virtualnetwork.html 
+sidebar: sidebar 
+keywords: object,objects,virtualNetwork 
+summary: virtualNetwork 物件包含特定虛擬網路的資訊。您可以使用 ListVirtualNetworks API 方法來擷取系統中所有虛擬網路的此類資訊清單。 
+---
+= 虛擬網路
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+virtualNetwork 物件包含特定虛擬網路的資訊。你可以使用 `ListVirtualNetworks`API 方法，用於檢索系統中所有虛擬網路的此類資訊清單。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+地址區塊
+ a| 
+目前指派給虛擬網路的位址區塊範圍。成員：
+
+* 可用：由“1”和“0”組成的二進位字串。 「1」表示 IP 位址可用，「0」表示 IP 位址不可用。字串從右向左讀取，最右邊的數字是位址區塊清單中的第一個 IP 位址。
+* 大小：此位址區塊的大小。
+* 起始位址：該位址區塊中的第一個 IP 位址。
+
+ a| 
+JSON 物件數組
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+
+
+
+ a| 
+姓名
+ a| 
+指派給虛擬網路的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+網路遮罩
+ a| 
+虛擬網路子網路遮罩的 IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+svip
+ a| 
+虛擬網路的儲存 IP 位址。
+ a| 
+細繩
+
+
+
+ a| 
+閘道
+ a| 
+用於虛擬網路的網關。
+ a| 
+細繩
+
+
+
+ a| 
+虛擬網路 ID
+ a| 
+虛擬網路的唯一識別碼。
+ a| 
+整數
+
+
+
+ a| 
+虛擬網路標籤
+ a| 
+VLAN標籤識別碼。
+ a| 
+整數
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listvirtualnetworks.adoc[列出虛擬網絡]

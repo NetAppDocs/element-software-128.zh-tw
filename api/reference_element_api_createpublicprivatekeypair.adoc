@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_createpublicprivatekeypair.html 
+sidebar: sidebar 
+keywords: SSL keys,public and private keys,certificate signing request,creating key pair 
+summary: 您可以使用 CreatePublicPrivateKeyPair 方法建立公鑰和私鑰。您可以使用這些金鑰產生憑證簽署請求。每個儲存叢集只能使用一對密鑰。在使用此方法替換現有金鑰之前，請確保金鑰不再被任何提供者使用。 
+---
+= 創建公鑰/私鑰對
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreatePublicPrivateKeyPair`創建公鑰和私鑰的方法。您可以使用這些金鑰產生憑證簽署請求。每個儲存叢集只能使用一對密鑰。在使用此方法替換現有金鑰之前，請確保金鑰不再被任何提供者使用。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+通用名
+ a| 
+X.509 可分辨名稱 *通用名稱* 欄位 (CN)。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+國家
+ a| 
+X.509 可分辨名稱 *國家* 欄位 (C)。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+電子郵件地址
+ a| 
+X.509 專有名稱 *電子郵件地址* 欄位 (MAIL)。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+地點
+ a| 
+X.509 可分辨名稱 *本地名稱* 欄位 (L)。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+組織
+ a| 
+X.509 可分辨名稱 *組織名稱* 欄位 (O)。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+組織單位
+ a| 
+X.509 可分辨名稱 *組織單元名稱* 欄位 (OU)。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+狀態
+ a| 
+X.509 可分辨名稱 *州* 或 *省名稱* 欄位（ST 或SP或 S）。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。如果沒有錯誤，則密鑰建立被視為成功。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "CreatePublicPrivateKeyPair",
+  "params": {
+    "commonName": "Name",
+    "country": "US",
+    "emailAddress" : "email@domain.com"
+   },
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== 自版本以來的新版本
+
+11.7

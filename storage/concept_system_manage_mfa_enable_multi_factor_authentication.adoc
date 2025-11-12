@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_system_manage_mfa_enable_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: saml, idp, mfa, enable 
+summary: '多因素身份驗證 (MFA) 使用第三方身分提供者 (IdP) 透過安全性斷言標記語言 (SAML) 來管理使用者會話。  MFA 允許管理員根據需要配置其他身份驗證因素，例如密碼和短信，以及密碼和電子郵件。' 
+---
+= 啟用多重身份驗證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+多因素身份驗證 (MFA) 使用第三方身分提供者 (IdP) 透過安全性斷言標記語言 (SAML) 來管理使用者會話。  MFA 允許管理員根據需要配置其他身份驗證因素，例如密碼和短信，以及密碼和電子郵件。

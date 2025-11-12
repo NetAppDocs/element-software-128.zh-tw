@@ -1,0 +1,59 @@
+---
+permalink: api/concept_element_api_cluster_api_methods.html 
+sidebar: sidebar 
+keywords: cluster,API,methods,method,manage 
+summary: Element 軟體叢集 API 方法可讓您管理儲存叢集及其所屬節點的配置和拓撲。 
+---
+= 叢集 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 軟體叢集 API 方法可讓您管理儲存叢集及其所屬節點的配置和拓撲。
+
+某些叢集 API 方法在屬於叢集的節點上操作，或在已配置為加入叢集的節點上操作。您可以為新叢集或現有叢集新增節點。準備新增到叢集中的節點處於「待處理」狀態，這表示它們已經配置好，但尚未新增到叢集中。
+
+* xref:reference_element_api_addnodes.adoc[新增節點]
+* xref:reference_element_api_clearclusterfaults.adoc[清除叢集故障]
+* xref:reference_element_api_createclusterinterfacepreference.adoc[建立叢集介面首選項]
+* xref:reference_element_api_deleteclusterinterfacepreference.adoc[刪除叢集介面首選項]
+* xref:reference_element_api_disablefeature.adoc[停用功能]
+* xref:reference_element_api_enablefeature.adoc[啟用功能]
+* xref:reference_element_api_getclustercapacity.adoc[取得叢集容量]
+* xref:reference_element_api_getclusterfullthreshold.adoc[取得集群完整閾值]
+* xref:reference_element_api_getclusterhardwareinfo.adoc[取得叢集硬體資訊]
+* xref:reference_element_api_getclusterinfo.adoc[獲取集群資訊]
+* xref:reference_element_api_getclusterinterfacepreference.adoc[取得叢集介面首選項]
+* xref:reference_element_api_getclustermasternodeid.adoc[取得叢集主節點ID]
+* xref:reference_element_api_getclusterstats.adoc[獲取集群統計信息]
+* xref:reference_element_api_getclusterversioninfo.adoc[獲取集群版本信息]
+* xref:reference_element_api_getfeaturestatus.adoc[取得功能狀態]
+* xref:reference_element_api_getloginsessioninfo.adoc[獲取登入會話信息]
+* xref:reference_element_api_getnodehardwareinfo.adoc[取得節點硬體資訊]
+* xref:reference_element_api_getnodestats.adoc[取得節點統計資訊]
+* xref:reference_element_api_listactivenodes.adoc[列出活動節點]
+* xref:reference_element_api_listallnodes.adoc[列出所有節點]
+* xref:reference_element_api_listclusterfaults.adoc[列出集群故障]
+* xref:reference_element_api_listclusterinterfacepreferences.adoc[列出叢集介面首選項]
+* xref:reference_element_api_listevents.adoc[事件列表]
+* xref:reference_element_api_listnodestats.adoc[列出節點統計資訊]
+* xref:reference_element_api_listiscsisessions.adoc[列出 ISCSI 會話]
+* xref:reference_element_api_listservices.adoc[清單服務]
+* xref:reference_element_api_listpendingnodes.adoc[列出待處理節點]
+* xref:reference_element_api_listpendingactivenodes.adoc[列出待處理活動節點]
+* xref:reference_element_api_modifyclusterfullthreshold.adoc[修改集群完整閾值]
+* xref:reference_element_api_modifyclusterinterfacepreference.adoc[修改叢集介面首選項]
+* xref:reference_element_api_removenodes.adoc[移除節點]
+* xref:reference_element_api_setloginsessioninfo.adoc[設定登入會話訊息]
+* xref:reference_element_api_cluster_shutdown.adoc[關閉]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

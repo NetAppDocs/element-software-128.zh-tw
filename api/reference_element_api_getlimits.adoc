@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getlimits.html 
+sidebar: sidebar 
+keywords: system,limits,get,getting,getlimits 
+summary: 您可以使用 GetLimits 方法取得 API 設定的限制值。這些值在 Element 的不同版本之間可能會發生變化，但如果不更新系統，這些值不會改變。了解 API 設定的限制值對於編寫面向使用者的工具的 API 腳本非常有用。 
+---
+= 取得限制
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetLimits`取得 API 設定的限值的方法。這些值在 Element 的不同版本之間可能會發生變化，但如果不更新系統，這些值不會改變。了解 API 設定的限制值對於編寫面向使用者的工具的 API 腳本非常有用。
+
+
+NOTE: 這 `GetLimits`此方法傳回目前軟體版本的限制，而不管用於傳遞該方法的 API 端點版本是什麼。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回一個 JSON 對象，其中包含 API 限制的名稱-值對。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetLimits",
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "accountCountMax": 5000,
+        "accountNameLengthMax": 64,
+        "accountNameLengthMin": 1,
+        "backupTargetNameLengthMax": 64,
+        "backupTargetNameLengthMin": 1,
+        "bulkVolumeJobsPerNodeMax": 8,
+        "bulkVolumeJobsPerVolumeMax": 2,
+        "chapCredentialsCountMax": 15000,
+        "cloneJobsPerNodeMax": 8,
+        "cloneJobsPerVirtualVolumeMax": 8,
+        "cloneJobsPerVolumeMax": 2,
+        "clusterAdminAccountMax": 5000,
+        "clusterAdminInfoNameLengthMax": 1024,
+        "clusterAdminInfoNameLengthMin": 1,
+        "clusterPairsCountMax": 4,
+        "fibreChannelVolumeAccessMax": 16384,
+        "initiatorAliasLengthMax": 224,
+        "initiatorCountMax": 10000,
+        "initiatorNameLengthMax": 224,
+        "initiatorsPerVolumeAccessGroupCountMax": 128,
+        "iscsiSessionsFromFibreChannelNodesMax": 4096,
+        "maxAuthSessionsForCluster": 1024,
+        "maxAuthSessionsPerUser": 1024,
+        "nodesPerClusterCountMax": 100,
+        "nodesPerClusterCountMin": 3,
+        "qosPolicyCountMax": 500,
+        "qosPolicyNameLengthMax": 64,
+        "qosPolicyNameLengthMin": 1,
+        "scheduleNameLengthMax": 244,
+        "secretLengthMax": 16,
+        "secretLengthMin": 12,
+        "snapMirrorEndpointIPAddressesCountMax": 64,
+        "snapMirrorEndpointsCountMax": 4,
+        "snapMirrorLabelLengthMax": 31,
+        "snapMirrorObjectAttributeValueInfoCountMax": 9900000,
+        "snapshotNameLengthMax": 255,
+        "snapshotsPerVolumeMax": 32,
+        "storageNodesPerClusterCountMin": 2,
+        "virtualVolumeCountMax": 8000,
+        "virtualVolumesPerAccountCountMax": 10000,
+        "volumeAccessGroupCountMax": 1000,
+        "volumeAccessGroupLunMax": 16383,
+        "volumeAccessGroupNameLengthMax": 64,
+        "volumeAccessGroupNameLengthMin": 1,
+        "volumeAccessGroupsPerInitiatorCountMax": 1,
+        "volumeAccessGroupsPerVolumeCountMax": 64,
+        "volumeBurstIOPSMax": 200000,
+        "volumeBurstIOPSMin": 100,
+        "volumeCountMax": 4000,
+        "volumeMaxIOPSMax": 200000,
+        "volumeMaxIOPSMin": 100,
+        "volumeMinIOPSMax": 15000,
+        "volumeMinIOPSMin": 50,
+        "volumeNameLengthMax": 64,
+        "volumeNameLengthMin": 1,
+        "volumeSizeMax": 17592186044416,
+        "volumeSizeMin": 1000000000,
+        "volumesPerAccountCountMax": 2000,
+        "volumesPerGroupSnapshotMax": 32,
+        "volumesPerVolumeAccessGroupCountMax": 2000,
+        "witnessNodesPerClusterCountMax": 4
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

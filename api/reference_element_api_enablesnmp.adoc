@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_enablesnmp.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableSNMP 
+summary: 您可以使用 EnableSnmp 方法在叢集節點上啟用 SNMP。啟用 SNMP 時，此操作將套用於叢集中的所有節點，並且傳遞的值將取代先前對 EnableSnmp 的任何呼叫中設定的所有值。 
+---
+= 啟用 SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableSnmp`在叢集節點上啟用SNMP的方法。啟用 SNMP 後，該操作將套用於叢集中的所有節點，並且傳遞的值將取代先前任何呼叫中設定的所有值。 `EnableSnmp` 。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snmpV3Enabled
+ a| 
+如果設定為 true，則在叢集中的每個節點上啟用 SNMP v3。如果設定為 false，則啟用 SNMP v2。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "EnableSnmp",
+  "params": {
+      "snmpV3Enabled"  : "true"
+  },
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

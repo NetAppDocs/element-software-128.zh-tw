@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_secureerasedrives.html 
+sidebar: sidebar 
+keywords: drive,drives,secure,erase,reset,resetting,encryption,key,secureerasedrives 
+summary: 您可以使用 SecureEraseDrives 方法刪除狀態為「可用」的磁碟機中的任何殘留資料。當更換即將達到使用壽命終點且包含敏感資料的硬碟時，您可以使用此方法。此方法使用安全擦除單元命令將預定的圖案寫入驅動器，並重置驅動器上的加密金鑰。這種非同步方法可能需要幾分鐘才能完成。 
+---
+= 安全擦除驅動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SecureEraseDrives`用於清除狀態為「可用」的磁碟機中所有殘留資料的方法。當更換即將達到使用壽命終點且包含敏感資料的硬碟時，您可以使用此方法。此方法使用安全擦除單元命令將預定的圖案寫入驅動器，並重置驅動器上的加密金鑰。這種非同步方法可能需要幾分鐘才能完成。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+驅動
+ a| 
+要安全擦除的磁碟機 ID 清單。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+用於取得運算結果的句柄值。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "SecureEraseDrives",
+   "params": {
+     "drives"  : [3, 4, 5]
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 1
+   "result" : {
+     "asyncHandle" : 1
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[取得非同步結果]
+* xref:reference_element_api_listdrives.adoc[清單驅動器]
+

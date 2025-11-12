@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_getnvraminfo.html 
+sidebar: sidebar 
+keywords: nvram,info,get,getting,getnvraminfo 
+summary: 您可以使用 GetNvramInfo 方法從每個節點取得有關NVRAM卡的資訊。 
+---
+= 獲取Nvram信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetNvramInfo`從每個節點獲取有關NVRAM卡的資訊的方法。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+力量
+ a| 
+要使該方法在叢集中的所有節點上成功運行，必須包含 force 參數。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+nvramInfo
+ a| 
+NVRAM卡上偵測到的事件和錯誤陣列。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetNvramInfo",
+  "params": {
+      "force": true
+	  },
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+由於此回應範例篇幅較長，因此已在補充主題中進行了記錄。
+
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_response_example_getnvraminfo.adoc[獲取Nvram信息]

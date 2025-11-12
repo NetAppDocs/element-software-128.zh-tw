@@ -1,0 +1,31 @@
+= 查找更多信息
+:allow-uri-read: 
+
+
+NetApp SolidFire儲存系統使用恢復原廠映像 (RTFI) 流程將軟體映像寫入新節點或將節點還原為原始出廠狀態。  RTFI 程序會安全地擦除所有現有資料和配置（如果有），並安裝未配置的NetApp Element軟體映像。  RTFI 流程適用於所有SolidFire節點。
+
+SolidFire系統對所有 Element 軟體安裝都使用同一個 RTFI 流程。這包括開發人員執行的內部手動安裝、自動化框架測試執行的自動安裝、服務工程師和客戶執行的現場安裝，以及各種整合商和合作夥伴執行的安裝。無論使用何種機箱或節點類型，所有SolidFire節點都使用相同的 RTFI 流程來自動修復任何問題。
+
+本指南的目標讀者是負責安裝、配置、使用或解決儲存相關問題的整合商。
+
+* Linux：您對Linux系統有一定的了解。
+* 網路：您熟悉伺服器網路和網路存儲，包括 IP 位址、子網路遮罩和網關。
+
+
+
+WARNING: RTFI 過程會破壞數據，安全地擦除節點上的所有數據和配置詳細信息，並安裝新的作業系統。確認用於 RTFI 過程的節點未作為群集的一部分處於活動狀態。
+
+部署並安裝 RTFI 國際標準化組織 (ISO) 鏡像，並執行 RTFI 流程：
+
+* xref:task_rtfi_deployment_and_install_options.adoc[RTFI部署與安裝選項]
+* xref:task_rtfi_process.adoc[執行 RTFI 流程]
+* xref:task_rtfi_options_menu.adoc[RTFI選項選單]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

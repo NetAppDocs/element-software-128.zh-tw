@@ -1,0 +1,157 @@
+---
+permalink: api/reference_element_api_addclusteradmin.html 
+sidebar: sidebar 
+keywords: addclusteradmin,cluster,admin,administrator,adding,add 
+summary: 您可以使用 AddClusterAdmin 方法新增新的叢集管理員帳號。叢集管理員可以透過 API 和管理工具來管理叢集。集群管理員與標準租用戶帳戶完全獨立且無關。 
+---
+= 新增集群管理員
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddClusterAdmin`新增集群管理員帳戶的方法。叢集管理員可以透過 API 和管理工具來管理叢集。集群管理員與標準租用戶帳戶完全獨立且無關。
+
+每個叢集管理員都可以被限制使用 API 的子集。您應該為不同的使用者和應用程式使用多個叢集管理員帳戶。最佳實踐是，給予每個叢集管理員必要的最低權限；這樣可以降低憑證外洩可能造成的影響。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+使用權
+ a| 
+控制群集管理員可以使用的方法。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+接受最終用戶許可協議
+ a| 
+接受最終用戶許可協議。設定為 true 可向系統中新增叢集管理員帳戶。如果省略或設為 false，則方法呼叫失敗。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱/值對清單。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+密碼
+ a| 
+用於驗證此群集管理員身分的密碼。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+使用者名稱
+ a| 
+此叢集管理員的唯一使用者名稱。長度必須介於 1 到 1024 個字元之間。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+叢集管理員ID
+ a| 
+新建立的叢集管理員的 ClusterAdminID。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "AddClusterAdmin",
+  "params": {
+    "username": "joeadmin",
+    "password": "68!5Aru268)$",
+    "attributes": {},
+    "acceptEula": true,
+    "access": ["volumes", "reporting", "read"]
+  },
+  "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id":1,
+  "result" : {
+    "clusterAdminID": 2
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_app_b_access_control.adoc[存取控制]

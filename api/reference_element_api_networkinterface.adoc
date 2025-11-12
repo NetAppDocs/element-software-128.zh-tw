@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_networkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,networkInterface 
+summary: networkInterface 物件包含儲存節點上各個網路介面的設定資訊。 
+---
+= 網路介面
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+networkInterface 物件包含儲存節點上各個網路介面的設定資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+地址
+ a| 
+介面的 IPv4 管理位址。
+ a| 
+細繩
+
+
+
+ a| 
+addressV6
+ a| 
+介面的 IPv6 管理位址。
+ a| 
+細繩
+
+
+
+ a| 
+pod送
+ a| 
+介面的廣播位址。
+ a| 
+細繩
+
+
+
+ a| 
+mac位址
+ a| 
+介面的MAC位址。
+ a| 
+細繩
+
+
+
+ a| 
+行動通訊技術
+ a| 
+介面的最大傳輸單元（以位元組為單位）。
+ a| 
+整數
+
+
+
+ a| 
+姓名
+ a| 
+介面名稱。
+ a| 
+細繩
+
+
+
+ a| 
+命名空間
+ a| 
+此介面是否被指派了虛擬網路命名空間。
+ a| 
+布林值
+
+
+
+ a| 
+網路遮罩
+ a| 
+介面的子網路遮罩。
+ a| 
+細繩
+
+
+
+ a| 
+地位
+ a| 
+介面的運作狀態。
+ a| 
+細繩
+
+
+
+ a| 
+類型
+ a| 
+介面類型（綁定主介面、綁定從介面等）。
+ a| 
+細繩
+
+
+
+ a| 
+虛擬網路標籤
+ a| 
+指派給虛擬網路上介面的 VLAN ID。
+ a| 
+整數
+
+|===

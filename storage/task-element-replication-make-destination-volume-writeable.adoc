@@ -1,0 +1,67 @@
+---
+permalink: storage/task-element-replication-make-destination-volume-writeable.html 
+sidebar: sidebar 
+keywords: ontap, cli, make, destination, volume, write 
+summary: 在能夠將資料從磁碟區提供給客戶端之前，需要將目標磁碟區設定為可寫入。您可以使用 snapmirror quiesce 指令停止計劃傳輸到目標位置，使用 snapmirror abort 指令停止正在進行的傳輸，以及使用 snapmirror break 指令使目標位置可寫入。 
+---
+= 使目標卷可寫。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當災難導致SnapMirror DR 關係的主網站無法運作時，您可以從目標磁碟區提供數據，從而最大限度地減少中斷。當主站點的服務恢復後，您可以重新啟動來源磁碟區。
+
+在能夠將資料從磁碟區提供給客戶端之前，需要將目標磁碟區設定為可寫入。你可以使用 `snapmirror quiesce`停止向目的地發送預定傳輸的命令 `snapmirror abort`下令停止正在進行的轉賬，以及 `snapmirror break`使目標位置可寫入的指令。
+
+.關於此任務
+您必須在表單中指定元素來源路徑。 `<hostip:>/lun/<name>`其中“`lun`”是實際的字串“`lun`”， `name`是元素卷的名稱。
+
+.步驟
+. 停止前往目的地的預定接送服務：
++
+`snapmirror quiesce -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+有關完整的命令語法，請參閱手冊頁。
+
++
+以下範例停止來源磁碟區之間的計畫傳輸 `0005`IP位址為10.0.0.11，目標磁碟區為 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror quiesce -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. 停止向目的地的持續轉運：
++
+`snapmirror abort -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+有關完整的命令語法，請參閱手冊頁。
+
++
+以下範例停止來源磁碟區之間的正在進行的傳輸 `0005`IP位址為10.0.0.11，目標磁碟區為 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror abort -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. 終止與SnapMirror DR 的合作關係：
++
+`snapmirror break -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+有關完整的命令語法，請參閱手冊頁。
+
++
+以下範例打破了源卷之間的關係 `0005`IP位址為10.0.0.11，目標磁碟區為 `volA_dst`在 `svm_backup`以及目的地數量 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror break -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

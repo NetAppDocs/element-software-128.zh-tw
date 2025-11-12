@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_listfibrechannelsessions.html 
+sidebar: sidebar 
+keywords: list,listing,fibre,channel,session,sessions,listfibrechannelsessions 
+summary: 您可以使用 ListFibreChannelSessions 方法列出叢集上光纖通道會話的資訊。 
+---
+= 列出光纖通道會話
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListFibreChannelSessions`列出叢集上光纖通道會話資訊的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+會議
+ a| 
+描述叢集上活動光纖通道會話的物件清單。
+ a| 
+xref:reference_element_api_session_fibre_channel.adoc[會議]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListFibreChannelSessions",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "sessions" : [
+    {
+       "initiatorWWPN" : "21:00:00:0e:1e:14:af:40",
+       "nodeID" : 5,
+       "serviceID" : 21,
+       "targetWWPN": "5f:47:ac:c0:00:00:00:10",
+       "volumeAccessGroupID": 7
+    },
+    {
+       "initiatorWWPN" : "21:00:00:0e:1e:14:af:40",
+       "nodeID" : 1,
+       "serviceID" : 22,
+       "targetWWPN": "5f:47:ac:c0:00:00:00:11",
+       "volumeAccessGroupID": 7
+    }
+    ]
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

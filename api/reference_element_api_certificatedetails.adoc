@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_certificatedetails.html 
+sidebar: sidebar 
+keywords: security,certificate,SSL,get,getting,certificateDetails,object,objects 
+summary: certificateDetails 物件包含有關安全性憑證的解碼資訊。 
+---
+= 證書詳情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+這 `certificateDetails`該物件包含有關安全證書的解碼資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+`issuer`
+ a| 
+發行人的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+`modulus`
+ a| 
+公鑰的模數。
+ a| 
+細繩
+
+
+
+ a| 
+`notAfter`
+ a| 
+證書的有效期限。
+ a| 
+ISO 8601字串
+
+
+
+ a| 
+`notBefore`
+ a| 
+證書生效日期。
+ a| 
+ISO 8601字串
+
+
+
+ a| 
+`serial`
+ a| 
+證書序號。
+ a| 
+細繩
+
+
+
+ a| 
+`sha1Fingerprint`
+ a| 
+DER編碼版本的證書摘要。
+ a| 
+細繩
+
+
+
+ a| 
+`subject`
+ a| 
+主題名稱。
+ a| 
+細繩
+
+|===

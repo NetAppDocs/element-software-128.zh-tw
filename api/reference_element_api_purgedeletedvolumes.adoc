@@ -1,0 +1,86 @@
+---
+permalink: api/reference_element_api_purgedeletedvolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,purge,purging,multiple,deleted,purgedeletedvolumes 
+summary: 您可以使用 PurgeDeletedVolumes 方法立即永久清除已刪除的磁碟區；您可以使用此方法一次清除多達 500 個磁碟區。 
+---
+= 已清除已刪除磁碟區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `PurgeDeletedVolumes`可以立即永久清除已刪除磁碟區的方法；您可以使用此方法一次清除多達 500 個磁碟區。
+
+您必須使用以下命令刪除卷 `DeleteVolumes`在它們被清除之前。一段時間後，磁碟區會自動清除，因此通常不需要使用此方法。
+
+
+NOTE: 如果一次清除大量磁碟區，或要清除的每個磁碟區都有許多關聯的快照，則該方法可能會失敗並傳回錯誤「xDBConnectionLoss」。如果發生這種情況，請嘗試使用較小的音量再次呼叫方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+| 卷 ID | 要從系統中清除的磁碟區的 volumeID 清單。 | 整數數組 | 不 | 不 
+
+
+| 帳戶ID | 帳戶ID列表。系統將從所有指定帳戶中清除所有磁碟區。 | 整數數組 | 不 | 不 
+
+
+| 磁碟區存取群組 ID | volumeAccessGroupIDs列表。系統將從所有指定的磁碟區存取群組中刪除所有磁碟區。 | 整數數組 | 不 | 不 
+|===
+*注意：*每次方法呼叫只能指定上述參數中的一個。指定多個或不指定任何一項都會導致錯誤。
+
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "PurgeDeletedVolumes",
+   "params": {
+      "accountIDs" : [1, 2, 3]
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result": {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_deletevolumes.adoc[刪除卷]

@@ -1,0 +1,161 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-qos-policies.html 
+summary: 您可以設定和修改 QoS 策略，以套用於儲存叢集中的磁碟區。 
+keywords: netapp, qos policy, quality of service, qos policies, volumes, element 
+---
+= 建立和管理磁碟區 QoS 策略
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+QoS（服務品質）策略可讓您建立和儲存可套用於多個磁碟區的標準化服務品質設定。若要使用 QoS 策略，所選叢集必須是 Element 10.0 或更高版本；否則，QoS 策略功能將無法使用。
+
+
+NOTE: 有關使用 SolidFire 全快閃儲存的更多信息，請參閱SolidFire全快閃儲存概念內容。link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-policies["QoS策略"]而不是單一體積link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["服務品質"]。
+
+使用NetApp Hybrid Cloud Control，您可以透過完成以下任務來建立和管理 QoS 策略：
+
+* <<建立 QoS 策略>>
+* <<對卷應用 QoS 策略>>
+* <<更改磁碟區的 QoS 策略分配>>
+* <<編輯 QoS 策略>>
+* <<刪除 QoS 策略>>
+
+
+
+
+== 建立 QoS 策略
+
+您可以建立 QoS 策略，並將其套用於應具有相同效能的磁碟區。
+
+
+NOTE: 如果您正在使用 QoS 策略，請不要在磁碟區上使用自訂 QoS。自訂 QoS 將覆蓋和調整磁碟區 QoS 設定的 QoS 策略值。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，展開儲存叢集的選單。
+. 選擇“儲存 > 卷”。
+. 選擇“QoS策略”標籤。
+. 選擇「建立保單」。
+. 請輸入*保單名稱*。
++
+
+TIP: 採用描述性命名最佳實踐。如果您的環境中使用了多個叢集或 vCenter Server，這一點尤其重要。
+
+. 輸入最小 IOPS、最大 IOPS 和突發 IOPS 值。
+. 選擇“建立QoS策略”。
++
+系統會為該策略產生一個系統 ID，而該策略及其指派的 QoS 值會顯示在 QoS 策略頁面上。
+
+
+
+
+
+== 對卷應用 QoS 策略
+
+您可以使用NetApp Hybrid Cloud Control 將現有的 QoS 策略指派給磁碟區。
+
+.你需要什麼
+您要指派的 QoS 策略已<<建立 QoS 策略,創建>>。
+
+.關於此任務
+本任務說明如何透過變更設定將 QoS 策略指派給單一磁碟區。最新版本的NetApp Hybrid Cloud Control 沒有批次分配多個磁碟區的選項。在未來的版本中提供批次分配功能之前，您可以使用 Element Web UI 或 vCenter 外掛程式 UI 批次指派 QoS 策略。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，展開儲存叢集的選單。
+. 選擇“儲存 > 卷”。
+. 選擇要修改的音量旁的“操作”選單。
+. 在出現的選單中，選擇“編輯”。
+. 在對話方塊中，啟用“指派 QoS 策略”，然後從下拉清單中選擇要套用於所選磁碟區的 QoS 策略。
++
+
+NOTE: 指派 QoS 將覆寫先前套用的任何單一磁碟區 QoS 值。
+
+. 選擇*儲存*。
+
+
+
+
+== 更改磁碟區的 QoS 策略分配
+
+您可以從磁碟區移除 QoS 策略的分配，或選擇不同的 QoS 策略或自訂 QoS。
+
+.你需要什麼
+您要修改的音量是<<對卷應用 QoS 策略,分配>>服務品質策略。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，展開儲存叢集的選單。
+. 選擇“儲存 > 卷”。
+. 選擇要修改的音量旁的“操作”選單。
+. 在出現的選單中，選擇“編輯”。
+. 在對話方塊中，執行下列其中一項操作：
++
+** 停用“分配 QoS 策略”，並修改各個磁碟區 QoS 的“最小 IOPS”、“最大 IOPS”和“突發 IOPS”值。
++
+
+NOTE: 停用 QoS 策略時，除非另行修改，否則磁碟區將使用預設的 QoS IOPS 值。
+
+** 從下拉清單中選擇不同的 QoS 策略，以套用於所選磁碟區。
+
+
+. 選擇*儲存*。
+
+
+
+
+== 編輯 QoS 策略
+
+您可以變更現有 QoS 策略的名稱或編輯與該策略關聯的值。更改 QoS 策略效能值會影響與該策略關聯的所有磁碟區的 QoS。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，展開儲存叢集的選單。
+. 選擇“儲存 > 卷”。
+. 選擇“QoS策略”標籤。
+. 選擇要修改的 QoS 策略旁邊的「操作」功能表。
+. 選擇*編輯*。
+. 在「編輯 QoS 策略」對話方塊中，變更以下一項或多項內容：
++
+** *名稱*：QoS策略的使用者自訂名稱。
+** *最小 IOPS*：保證該磁碟區的最小 IOPS 數。預設值 = 50。
+** *最大 IOPS*：卷允許的最大 IOPS 數。預設值 = 15,000。
+** *突發IOPS*：在短時間內允許達到的最大IOPS數量。預設值 = 15,000。
+
+
+. 選擇*儲存*。
++
+
+TIP: 您可以點擊策略的「活動卷」列中的鏈接，顯示分配給該策略的捲的篩選列表。
+
+
+
+
+
+== 刪除 QoS 策略
+
+如果不再需要 QoS 策略，您可以將其刪除。刪除 QoS 策略時，所有指派了該策略的磁碟區都會保留該策略先前定義的 QoS 值，但會作為單獨的磁碟區 QoS 進行設定。與已刪除的 QoS 策略的任何關聯都將被移除。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，展開儲存叢集的選單。
+. 選擇“儲存 > 卷”。
+. 選擇“QoS策略”標籤。
+. 選擇要修改的 QoS 策略旁邊的「操作」功能表。
+. 選擇*刪除*。
+. 確認操作。
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"^]
+

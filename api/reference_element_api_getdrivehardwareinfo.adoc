@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_getdrivehardwareinfo.html 
+sidebar: sidebar 
+keywords: drive,get,getting,hardware,info,getdrivehardwareinfo 
+summary: 您可以使用 GetDriveHardwareInfo 方法來取得給定磁碟機的所有硬體資訊。這通常包括製造商、供應商、版本和其他相關的硬體識別資訊。 
+---
+= 取得驅動硬體資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetDriveHardwareInfo`取得給定驅動器所有硬體資訊的方法。這通常包括製造商、供應商、版本和其他相關的硬體識別資訊。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+磁碟機ID
+ a| 
+請求所用磁碟機的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+結果
+ a| 
+傳回指定磁碟機 ID 的硬體資訊。
+ a| 
+xref:reference_element_api_hardwareinfo.adoc[硬體資訊]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetDriveHardwareInfo",
+   "params": {
+     "driveID": 5
+   },
+   "id" : 100
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id" : 100,
+   "result" : {
+     "driveHardwareInfo" : {
+       "description" : "ATA Drive",
+       "dev" : "8:80",
+       "devpath" : "/devices/pci0000:40/0000:40:01.0/0000:41:00.0/host6/port-6:0/expander-6:0/port-6:0:4/end_device-6:0:4/target6:0:4/6:0:4:0/block/sdf",
+       "driveSecurityAtMaximum" : false,
+       "driveSecurityFrozen" : false
+       "driveSecurityLocked" : false,
+       "logicalname" : "/dev/sdf",
+       "product" : "INTEL SSDSA2CW300G3",
+       "securityFeatureEnabled" : false,
+       "securityFeatureSupported" : true,
+       "serial" : "CVPR121400NT300EGN",
+       "size" : "300069052416",
+       "uuid" : "7e1fd5b9-5acc-8991-e2ac-c48f813a3884",
+       "version" : "4PC10362"
+     }
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_listdrives.adoc[清單驅動器]

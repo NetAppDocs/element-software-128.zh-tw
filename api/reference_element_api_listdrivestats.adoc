@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_listdrivestats.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,drive,drives,stats,statistics,listdrivestats 
+summary: 您可以使用 ListDriveStats 方法列出叢集中多個磁碟機的進階活動測量值。預設情況下，此方法會傳回叢集中所有磁碟機的統計訊息，這些測量值是從將磁碟機新增至叢集開始累積的。此方法傳回的一些值是區塊磁碟機特有的，而有些值是元資料磁碟機特有的。 
+---
+= ListDriveStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListDriveStats`列出集群中多個驅動器的高級活動測量值的方法。預設情況下，此方法會傳回叢集中所有磁碟機的統計訊息，這些測量值是從將磁碟機新增至叢集開始累積的。此方法傳回的一些值是區塊磁碟機特有的，而有些值是元資料磁碟機特有的。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+驅動
+ a| 
+若要傳回磁碟機統計資料的磁碟機 ID (driveID) 清單。如果省略此參數，則會傳回所有磁碟機的測量結果。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+驅動統計
+ a| 
+每個磁碟機的活動資訊清單。
+ a| 
+xref:reference_element_api_drivestats.adoc[驅動統計]大批
+
+
+
+ a| 
+錯誤
+ a| 
+此清單包含磁碟機 ID 和相關的錯誤訊息。它始終存在，如果沒有錯誤，則為空。
+ a| 
+JSON 物件數組
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "ListDriveStats",
+  "params": {
+    "drives":[22,23]
+  }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveStats": [
+      {
+        "driveID": 22,
+        "failedDieCount": 0,
+        "lifeRemainingPercent": 84,
+        "lifetimeReadBytes": 30171004403712,
+        "lifetimeWriteBytes": 103464755527680,
+        "powerOnHours": 17736,
+        "readBytes": 14656542,
+         "readOps": 3624,
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "timestamp": "2016-03-01T00:19:24.782735Z",
+        "totalCapacity": 300069052416,
+        "usedCapacity": 1783735635,
+        "usedMemory": 879165440,
+        "writeBytes": 2462169894,
+        "writeOps": 608802
+      }
+    ],
+    "errors": [
+      {
+        "driveID": 23,
+        "exception": {
+          "message": "xStatCheckpointDoesNotExist",
+          "name": "xStatCheckpointDoesNotExist"
+        }
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_getdrivestats.adoc[取得駕駛統計數據]

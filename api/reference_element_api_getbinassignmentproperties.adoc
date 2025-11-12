@@ -1,0 +1,143 @@
+---
+permalink: api/reference_element_api_getbinassignmentproperties.html 
+sidebar: sidebar 
+keywords: bin assignment,assignment properties,retrieve assignment properties 
+summary: 您可以使用 GetBinAssignmentProperties 方法檢索資料庫中的箱分配屬性。 
+---
+= 取得 BinAssignmentProperties
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetBinAssignmentProperties`用於從資料庫中檢索箱分配屬性的方法。
+
+
+
+== 範圍
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+特性
+ a| 
+詳細列出資料庫中所有目前倉庫分配的屬性。
+ a| 
+binAssignmentProperties 數組
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "GetBinAssignmentProperties",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "properties": {
+            "algorithmRuntimeMS": 1105,
+            "areReplicasValid": true,
+            "binCount": 65536,
+            "isBalanced": true,
+            "isStable": true,
+            "isWellCoupled": false,
+            "layout": [
+                {
+                    "protectionDomainName": "1",
+                    "services": [
+                        {
+                            "budget": 7281,
+                            "serviceID": 16
+                        },
+                        {
+                            "budget": 7281,
+                            "serviceID": 19
+                        },
+                        {
+                            "budget": 7281,
+                            "serviceID": 24
+                        }
+                    ]
+                },
+                {
+                    "protectionDomainName": "2",
+                    "services": [
+                        {
+                            "budget": 7281,
+                            "serviceID": 17
+                        },
+                        {
+                            "budget": 7281,
+                            "serviceID": 20
+                        },
+                        {
+                            "budget": 7281,
+                            "serviceID": 22
+                        }
+                    ]
+                },
+                {
+                    "protectionDomainName": "3",
+                    "services": [
+                        {
+                            "budget": 7281,
+                            "serviceID": 18
+                        },
+                        {
+                            "budget": 7281,
+                            "serviceID": 21
+                        },
+                        {
+                            "budget": 7281,
+                            "serviceID": 23
+                        }
+                    ]
+                }
+            ],
+            "numSwaps": 0,
+            "numUpdatingBins": 0,
+            "protectionDomainType": "node",
+            "reason": "Final",
+            "replicationCount": 2,
+            "requestRebalance": false,
+            "serviceStrandedCapacities": [],
+            "timePublished": "2020-04-02T18:34:07.807681Z",
+            "validSchemes": []
+        }
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

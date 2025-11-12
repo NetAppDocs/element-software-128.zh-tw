@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_setntpinfo.html 
+sidebar: sidebar 
+keywords: ntp,info,set,setting,setntpinfo 
+summary: 您可以使用 SetNtpInfo 方法在叢集節點上設定 NTP。您透過此介面設定的值將套用至叢集中的所有節點。如果 NTP 廣播伺服器定期在您的網路上廣播時間訊息，您可以選擇將節點設定為廣播用戶端。 
+---
+= 設定Ntp信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetNtpInfo`在叢集節點上配置 NTP 的方法。您透過此介面設定的值將套用至叢集中的所有節點。如果 NTP 廣播伺服器定期在您的網路上廣播時間訊息，您可以選擇將節點設定為廣播用戶端。
+
+
+
+== 參數
+
+
+NOTE: 請確保使用網路內部的 NTP 伺服器，而不是安裝預設的 NTP 伺服器。
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+伺服器
+ a| 
+若要新增至每個節點 NTP 配置中的 NTP 伺服器清單。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+廣播客戶端
+ a| 
+使叢集中的每個節點都成為廣播客戶端。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "SetNtpInfo",
+   "params": {
+     "servers"  : [
+       "ntpserver1.example.org",
+       "ntpserver2.example.org",
+       "ntpserver3.example.org"
+     ],
+     "broadcastclient" : false
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_quiescesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: snapmirror,relationship,relationships,quiesce,quiescing,quiescescnapmirrorrelationship 
+summary: Element 軟體 Web UI 使用 QuiesceSnapMirrorRelationship 方法來停用SnapMirror關係的後續資料傳輸。如果轉帳正在進行中，則關係狀態變為“靜止”，直到轉帳完成。如果目前傳輸被中止，則不會重新開始。您可以使用 ResumeSnapMirrorRelationship API 方法重新啟用關係的資料傳輸。 
+---
+= QuiesceSnapMirror關係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體的Web使用者介面使用 `QuiesceSnapMirrorRelationship`禁用SnapMirror關係中未來資料傳輸的方法。如果轉帳正在進行中，則關係狀態變為“靜止”，直到轉帳完成。如果目前傳輸被中止，則不會重新開始。您可以使用以下方法重新啟用該關係的資料傳輸： `ResumeSnapMirrorRelationship` API 方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+與 Element 儲存叢集通訊的遠端ONTAP儲存系統的端點 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+目的地捲
+ a| 
+SnapMirror關係中的目標磁碟區。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirror關係
+ a| 
+包含有關已停止的SnapMirror關係的資訊的物件。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror關係]
+
+|===
+
+
+== 自版本以來的新版本
+
+10.1

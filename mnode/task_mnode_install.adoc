@@ -1,0 +1,355 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_install.html 
+summary: 您可以為執行NetApp Element軟體的叢集安裝管理節點。 
+keywords: netapp, element, management node, mnode, storage, install 
+---
+= 安裝管理節點
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以手動安裝執行NetApp Element軟體的叢集的管理節點，並使用適合您配置的鏡像。
+
+此手動程序適用於未使用NetApp部署引擎進行管理節點安裝的SolidFire全快閃儲存管理員。
+
+.開始之前
+* 您的叢集版本正在執行NetApp Element軟體 11.3 或更高版本。
+* 您的安裝使用 IPv4。管理節點 11.3 不支援 IPv6。
++
+
+NOTE: 如果您需要 IPv6 支持，可以使用管理節點 11.1。
+
+* 您有權利從NetApp支援網站下載軟體。
+* 您已確定適用於您平台的管理節點鏡像類型：
++
+[cols="30,30"]
+|===
+| 平台 | 安裝映像類型 
+
+
+| 微軟 Hyper-V | .iso 
+
+
+| 虛擬機 | .iso 
+
+
+| VMware vSphere | .iso、.ova 
+
+
+| Citrix XenServer | .iso 
+
+
+| OpenStack | .iso 
+|===
+* （管理節點 12.0 及更高版本，帶代理伺服器）在配置代理伺服器之前，您已將NetApp Hybrid Cloud Control 更新至管理服務版本 2.16。
+
+
+.關於此任務
+Element 12.2 管理節點是一個可選升級。現有部署不需要此功能。
+
+在執行此步驟之前，您應該了解以下內容：link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["持續性卷"]以及你是否想使用它們。持久性磁碟區是可選的，但建議用於在虛擬機器 (VM) 遺失時還原管理節點配置資料。
+
+
+
+== 步驟 1：下載 ISO 或 OVA 檔案並部署虛擬機
+
+從NetApp支援網站下載對應的 ISO 或 OVA 文件，然後安裝虛擬機器。
+
+.步驟
+. 從此處下載用於安裝的 OVA 或 ISO 檔案。link:https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Element 軟體"^] NetApp支援網站上的頁面。
++
+.. 選擇“下載最新版本”並接受最終用戶許可協議。
+.. 選擇要下載的管理節點鏡像。
+
+
+. 如果您下載了OVA文件，請依照以下步驟操作：
++
+.. 部署 OVA 檔案。
+.. 如果您的儲存叢集與管理節點 (eth0) 位於不同的子網路中，且您想要使用持久卷，請將第二個網路介面控制器 (NIC)（例如 eth1）新增至儲存子網路），或確保管理網路可以路由至儲存網路。
+
+
+. 如果您下載了 ISO 文件，請按照以下步驟操作：
++
+.. 使用下列配置，從虛擬機器管理程式建立新的 64 位元虛擬機器：
++
+*** 六個虛擬CPU
+*** 24 GB 內存
+*** 儲存適配器類型設定為 LSI Logic 並行適配器
++
+
+IMPORTANT: 您的管理節點的預設設定可能是 LSI Logic SAS。在“新虛擬機器”視窗中，選擇“自訂硬體”>“虛擬硬體”，以驗證儲存適配器配置。如有需要，請將 LSI Logic SAS 變更為 *LSI Logic Parallel*。
+
+*** 400GB 虛擬磁碟，精簡配置
+*** 一個具有網際網路存取和儲存 MVIP 存取權限的虛擬網路介面。
+*** （可選）一個具有對儲存叢集的管理網路存取權限的虛擬網路介面。如果您的儲存叢集與管理節點 (eth0) 位於不同的子網路中，且您想要使用持久性卷，請在儲存子網路上的虛擬機器中新增第二個網路介面控制器 (NIC) (eth1)，或確保管理網路可以路由至儲存網路。
++
+
+IMPORTANT: 請勿在後續步驟指示啟動虛擬機器之前啟動虛擬機器。
+
+
+
+.. 將 ISO 檔案附加到虛擬機，然後從 .iso 安裝鏡像啟動。
++
+
+NOTE: 使用該鏡像安裝管理節點可能會導致啟動畫面出現前有 30 秒的延遲。
+
+
+
+. 安裝完成後，啟動管理節點的虛擬機器。
+
+
+
+
+== 步驟 2：建立管理節點 admin 並設定網絡
+
+虛擬機器安裝完成後，建立管理節點管理員使用者並配置管理節點網路。
+
+.步驟
+. 使用終端使用者介面（TUI）建立管理節點管理員使用者。
++
+
+TIP: 若要瀏覽選單選項，請按向上或向下箭頭鍵。按下 Tab 鍵可在按鈕之間切換。若要從按鈕切換到字段，請按 Tab 鍵。若要在不同欄位之間切換，請按向上或向下箭頭鍵。
+
+. 如果網路上存在動態主機設定協定 (DHCP) 伺服器，其指派的 IP 位址的最大傳輸單元 (MTU) 小於 1500 位元組，則必須執行下列步驟：
++
+.. 暫時將管理節點放置在沒有 DHCP 的 vSphere 網路上，例如 iSCSI 網路。
+.. 重新啟動虛擬機器或重新啟動虛擬機器網路。
+.. 使用 TUI，在管理網路上配置正確的 IP 位址，MTU 大於或等於 1500 位元組。
+.. 重新為虛擬機器指派正確的虛擬機器網路。
+
+
++
+
+NOTE: 如果 DHCP 伺服器指派的 IP 位址的 MTU 小於 1500 位元組，則可能會封鎖您設定管理節點網路或使用管理節點 UI。
+
+. 配置管理節點網路（eth0）。
++
+
+NOTE: 如果需要額外的網路卡來隔離儲存流量，請參閱有關設定另一個網路卡的說明：link:task_mnode_install_add_storage_NIC.html["配置儲存網路介面控制器（NIC）"] 。
+
+
+
+
+
+== 步驟 3：設定時間同步
+
+在設定管理節點之前，同步管理節點和儲存叢集之間的時間。
+
+.步驟
+. 使用 NTP 驗證管理節點和儲存叢集之間的時間是否同步：
+
+
+
+NOTE: 從元素 12.3.1 開始，子步驟 (a) 至 (e) 將自動執行。對於管理節點 12.3.1，請繼續執行<<substep_f_install_config_time_sync,子步驟（f）>>完成時間同步配置。
+
+. 使用 SSH 或虛擬機器管理程式提供的控制台登入管理節點。
+. 停止 NTPD：
++
+[listing]
+----
+sudo service ntpd stop
+----
+. 編輯 NTP 設定檔 `/etc/ntp.conf`：
++
+.. 註解掉預設伺服器(`server 0.gentoo.pool.ntp.org`透過添加一個 `#`在每個人面前。
+.. 為每個要新增的預設時間伺服器新增行。預設時間伺服器必須與儲存叢集上使用的 NTP 伺服器相同。 <<set-up-the-management-node,後續步驟>>。
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. 配置完成後儲存檔案。
+
+
+. 強制與新新增的伺服器進行 NTP 同步。
++
+[listing]
+----
+sudo ntpd -gq
+----
+. 重啟 NTPD。
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_install_config_time_sync]]停用透過虛擬機器管理程式與主機進行時間同步（以下是 VMware 範例）：
++
+
+NOTE: 如果您在 VMware 以外的虛擬機器管理程式環境中部署 mNode，例如在 Openstack 環境中從 .iso 映像部署，請參閱虛擬機器管理程式文件以取得等效命令。
+
++
+.. 停用週期性時間同步：
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. 顯示並確認服務的目前狀態：
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. 在 vSphere 中，驗證 `Synchronize guest time with host`VM選項中的複選框未選取。
++
+
+NOTE: 如果您將來對虛擬機器進行更改，請勿啟用此選項。
+
+
+
+
+
+
+NOTE: 完成時間同步配置後，請勿編輯 NTP 設置，因為這會影響您執行以下命令時的 NTP 設定。 <<set-up-the-management-node,設定命令>> 在管理節點上。
+
+
+
+== 步驟 4：設定管理節點
+
+使用以下命令設定管理節點 `setup-mnode`命令。
+
+.步驟
+. 配置並運行管理節點設定命令：
++
+
+NOTE: 您將被提示在安全提示框中輸入密碼。如果您的叢集位於代理伺服器之後，則必須配置代理設置，以便可以存取公共網路。
+
++
+[listing]
+----
+sudo /sf/packages/mnode/setup-mnode --mnode_admin_user [username] --storage_mvip [mvip] --storage_username [username] --telemetry_active [true]
+----
++
+.. 請將方括號 [ ] 內的值（包括方括號本身）替換為下列每個必要參數的值：
++
+
+NOTE: 指令名稱的縮寫形式用括號 ( ) 括起來，可以代替全名。
+
++
+*** *--mnode_admin_user (-mu) [username]*: 管理節點管理員帳號的使用者名稱。這很可能是您用於登入管理節點的使用者帳戶的使用者名稱。
+*** *--storage_mvip (-sm) [MVIP 位址]*: 執行 Element 軟體的儲存叢集的管理虛擬 IP 位址 (MVIP)。配置管理節點時，請使用與您在配置過程中使用的相同的儲存叢集。 <<configure-time-sync,NTP 伺服器配置>>。
+*** *--storage_username (-su) [username]*: 由指定的叢集的儲存叢集管理員使用者名稱 `--storage_mvip`範圍。
+*** *--telemetry_active (-t) [true]*: 保留 true 值，以啟用Active IQ的資料收集進行分析。
+
+
+.. （可選）為指令新增Active IQ端點參數：
++
+*** *--remote_host (-rh) [AIQ_endpoint]*: Active IQ遙測資料傳送到進行處理的端點。如果未包含該參數，則使用預設端點。
+
+
+.. （建議）：新增以下持久性卷參數。請勿修改或刪除為持久卷功能建立的帳戶和磁碟區，否則將導致管理功能喪失。
++
+*** *--use_persistent_volumes (-pv) [true/false, default: false]*: 啟用或停用持久卷。輸入 true 以啟用持久卷功能。
+*** *--persistent_volumes_account (-pva) [account_name]*: 如果 `--use_persistent_volumes`如果設定為 true，請使用此參數並輸入將用於持久磁碟區的儲存帳戶名稱。
++
+
+NOTE: 持久性磁碟區使用與叢集上任何現有帳戶名稱都不同的唯一帳戶名稱。將持久卷的帳戶與環境中的其他帳戶分開至關重要。
+
+*** *--persistent_volumes_mvip (-pvm) [mvip]*: 輸入執行 Element 軟體的儲存叢集的管理虛擬 IP 位址 (MVIP)，該位址將用於持久磁碟區。只有當管理節點管理多個儲存叢集時才需要這樣做。如果沒有管理多個集群，則將使用預設集群 MVIP。
+
+
+.. 配置代理伺服器：
++
+*** *--use_proxy (-up) [true/false, default: false]*: 啟用或停用代理程式的使用。此參數是配置代理伺服器所必需的。
+*** *--proxy_hostname_or_ip (-pi) [host]*: 代理主機名稱或 IP 位址。如果您想使用代理，則必須執行此操作。如果您指定此項，系統會提示您輸入 `--proxy_port`。
+*** *--proxy_username (-pu) [username]*: 代理使用者名稱。此參數為可選參數。
+*** *--proxy_password (-pp) [password]*: 代理密碼。此參數為可選參數。
+*** *--proxy_port (-pq) [端口，預設值：0]*：代理端口。如果您指定此項，系統將提示您輸入代理主機名稱或 IP 位址。(`--proxy_hostname_or_ip` ）。
+*** *--proxy_ssh_port (-ps) [端口，預設值：443]*：SSH 代理端口。預設連接埠為 443。
+
+
+.. （可選）如果需要了解每個參數的更多信息，請使用參數幫助：
++
+*** *--help (-h)*: 傳回每個參數的資訊。根據初始部署情況，參數被定義為必需參數或可選參數。升級和重新部署的參數要求可能有所不同。
+
+
+.. 運行 `setup-mnode`命令。
+
+
+
+
+
+
+== 步驟 5：配置控制器資產
+
+找到安裝 ID 並新增 vCenter 控制器資產。
+
+.步驟
+. 找到安裝 ID：
++
+.. 透過瀏覽器登入管理節點 REST API 使用者介面：
+.. 請前往儲存 MVIP 並登入。此操作將使證書在下一步中被接受。
+.. 在管理節點上開啟庫存服務 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+
+
+.. 從 REST API UI 中選擇 *GET /installations*。
+.. 選擇*試用*。
+.. 選擇*執行*。
+.. 從 200 錯誤代碼回應正文複製並儲存以下內容 `id`供後續步驟安裝使用。
++
+您的安裝具有在安裝或升級過程中建立的基本資產配置。
+
+
+
+. 將NetApp Hybrid Cloud Control 的 vCenter 控制器資產新增至管理節點的已知資產：
++
+.. 在管理節點上，透過輸入管理節點 IP 位址，然後輸入以下內容，即可存取 mnode 服務 API UI： `/mnode` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. 選擇“授權”或任意鎖形圖標，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉視窗。
+
+
+.. 選擇 *POST /assets/{asset_id}/controllers* 新增控制器子資產。
++
+
+NOTE: 您應該在 vCenter 中建立一個新的NetApp HCC 角色，以新增控制器子資產。此新的NetApp HCC 角色將管理節點服務視圖限制為僅限NetApp資產。看link:task_mnode_create_netapp_hcc_role_vcenter.html["在 vCenter 中建立NetApp HCC 角色"]。
+
+.. 選擇*試用*。
+.. 在 *asset_id* 欄位中輸入您複製到剪貼簿的父級基礎資產 ID。
+.. 輸入所需的有效負載值，類型 `vCenter`以及 vCenter 憑證。
+.. 選擇*執行*。
+
+
+
+
+
+
+== 了解更多信息
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["持續性卷"]
+* link:task_mnode_add_assets.html["將控制器資產新增至管理節點"]
+* link:task_mnode_install_add_storage_NIC.html["設定儲存網路卡"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

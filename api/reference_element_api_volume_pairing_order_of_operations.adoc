@@ -1,0 +1,37 @@
+---
+permalink: api/reference_element_api_volume_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: volume,pairing,order,operations,volumes,pairing,pair,pairs 
+summary: 在兩個對應的集群之間建立集群對之前，必須先建立卷對。 
+---
+= 體積配對操作順序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在兩個對應的集群之間建立集群對之前，必須先建立卷對。
+
+使用以下 API 方法建立叢集連線：
+
+* xref:reference_element_api_startvolumepairing.adoc[開始音量配對]：
++
+此 API 方法會建立並傳回一個用於建立磁碟區對的磁碟區對金鑰。密鑰包含用於建立磁碟區之間通訊的資訊。
+
+* xref:reference_element_api_completevolumepairing.adoc[完全捲配對]：
++
+此方法使用與以下方式建立的配對密鑰：xref:reference_element_api_startvolumepairing.adoc[開始音量配對]建立交易對的API方法。問題xref:reference_element_api_completevolumepairing.adoc[完全捲配對]使用 volumeID 和 volumePairingKey 參數的 API 方法向目標磁碟區發送請求。
+
+
+
+只能將配對卷中的一個識別為複製目標卷。使用xref:reference_element_api_modifyvolumepair.adoc[修改卷對]透過識別哪個磁碟區是目標磁碟區來確定磁碟區資料複製方向的 API 方法。資料從來源磁碟區複製到目標磁碟區。
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_startvolumepairing.adoc[開始音量配對]
+* xref:reference_element_api_completevolumepairing.adoc[完全捲配對]
+* xref:reference_element_api_modifyvolumepair.adoc[修改卷對]
+

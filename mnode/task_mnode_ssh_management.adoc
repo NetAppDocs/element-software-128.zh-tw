@@ -1,0 +1,155 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_ssh_management.html 
+summary: 您可以使用NetApp Hybrid Cloud Control UI 或 REST API UI 在管理節點上停用和啟用 SSH 功能，或使用 REST API UI 來確定 SSH 支援連線功能的狀態。 
+keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid, cloud, control, hcc 
+---
+= 管理管理節點上的 SSH 功能
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 REST API 停用、重新啟用或確定管理節點 (mNode) 上的 SSH 功能的狀態。提供 SSH 功能link:task_mnode_enable_remote_support_connections.html["NetApp支援遠端支援隧道 (RST) 會話訪問"]在運行管理服務 2.18 或更高版本的管理節點上，預設已停用。
+
+從 Management Services 2.20.69 開始，您可以使用NetApp Hybrid Cloud Control UI 在管理節點上啟用和停用 SSH 功能。
+
+.你需要什麼
+* * NetApp混合雲控制權限*：您擁有管理員權限。
+* *叢集管理員權限*：您擁有儲存叢集的管理員權限。
+* *Element 軟體*：您的叢集正在執行NetApp Element軟體 11.3 或更高版本。
+* *管理節點*：您已部署執行版本 11.3 或更高版本的管理節點。
+* *管理服務更新*：
++
+** 若要使用NetApp Hybrid Cloud Control UI，您已更新了您的 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理服務包"^]更新至 2.20.69 或更高版本。
+** 若要使用 REST API UI，您已更新了您的系統。 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理服務包"^]版本 2.17。
+
+
+
+
+.選項
+* <<使用NetApp Hybrid Cloud Control UI 停用或啟用管理節點上的 SSH 功能>>
+
+
+之後您可以執行以下任何任務link:task_mnode_api_get_authorizationtouse.html["認證"]：
+
+* <<使用 API 停用或啟用管理節點上的 SSH 功能>>
+* <<使用 API 確定管理節點上的 SSH 功能狀態>>
+
+
+
+
+== 使用NetApp Hybrid Cloud Control UI 停用或啟用管理節點上的 SSH 功能
+
+您可以停用或重新啟用管理節點上的 SSH 功能。提供 SSH 功能link:task_mnode_enable_remote_support_connections.html["NetApp支援遠端支援隧道 (RST) 會話訪問"]在運行管理服務 2.18 或更高版本的管理節點上，預設已停用。停用 SSH 不會終止或中斷與管理節點的現有 SSH 用戶端會話。如果您停用 SSH 並選擇稍後重新啟用它，您可以使用NetApp Hybrid Cloud Control UI 來執行此操作。
+
+
+NOTE: 若要啟用或停用使用 SSH 對儲存叢集的支援訪問，您必須使用以下方法：link:../storage/task_system_manage_cluster_enable_and_disable_support_access.html["元素 UI 叢集設定頁面"] 。
+
+.步驟
+. 在控制台中，選擇右上角的選項選單，然後選擇「配置」。
+. 在「管理節點支援存取」畫面中，切換開關以啟用管理節點 SSH。
+. 完成故障排除後，在「管理節點支援存取」畫面中，切換開關以停用管理節點 SSH。
+
+
+
+
+== 使用 API 停用或啟用管理節點上的 SSH 功能
+
+您可以停用或重新啟用管理節點上的 SSH 功能。提供 SSH 功能link:task_mnode_enable_remote_support_connections.html["NetApp支援遠端支援隧道 (RST) 會話訪問"]在運行管理服務 2.18 或更高版本的管理節點上，預設已停用。停用 SSH 不會終止或中斷與管理節點的現有 SSH 用戶端會話。如果您停用 SSH 並選擇稍後重新啟用它，您可以使用相同的 API 來實作。
+
+.API 命令
+適用於管理服務 2.18 或更高版本：
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+對於管理服務 2.17 或更早版本：
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: 你可以找到持票人 `${TOKEN}`當您使用 API 命令時，它會被您使用。link:task_mnode_api_get_authorizationtouse.html["授權"] 。持票人 `${TOKEN}`位於 curl 回應中。
+
+.REST API UI 步驟
+. 透過輸入管理節點 IP 位址，然後輸入以下內容，即可存取管理節點 API 服務的 REST API 使用者介面： `/mnode/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. 選擇“授權”，然後完成以下步驟：
++
+.. 請輸入叢集使用者名稱和密碼。
+.. 請輸入客戶端 ID `mnode-client` 。
+.. 選擇“授權”以開始會話。
+.. 關閉視窗。
+
+
+. 從 REST API UI 中選擇 *PUT /settings/ssh*。
++
+.. 選擇*試用*。
+.. 將 *enabled* 參數設定為 `false`停用 SSH 或 `true`重新啟用先前已停用的 SSH 功能。
+.. 選擇*執行*。
+
+
+
+
+
+
+== 使用 API 確定管理節點上的 SSH 功能狀態
+
+您可以使用管理節點服務 API 來確定管理節點上是否啟用了 SSH 功能。在執行管理服務 2.18 或更高版本的管理節點上，SSH 預設為停用狀態。
+
+.API 命令
+適用於管理服務 2.18 或更高版本：
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+對於管理服務 2.17 或更早版本：
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: 你可以找到持票人 `${TOKEN}`當您使用 API 命令時，它會被您使用。link:task_mnode_api_get_authorizationtouse.html["授權"] 。持票人 `${TOKEN}`位於 curl 回應中。
+
+.REST API UI 步驟
+. 透過輸入管理節點 IP 位址，然後輸入以下內容，即可存取管理節點 API 服務的 REST API 使用者介面： `/mnode/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. 選擇“授權”，然後完成以下步驟：
++
+.. 請輸入叢集使用者名稱和密碼。
+.. 請輸入客戶端 ID `mnode-client` 。
+.. 選擇“授權”以開始會話。
+.. 關閉視窗。
+
+
+. 從 REST API UI 中選擇 *GET /settings/ssh*。
++
+.. 選擇*試用*。
+.. 選擇*執行*。
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_restartservices.html 
+sidebar: sidebar 
+keywords: restart,service,services,restartservices,restarting,node 
+summary: 您可以使用 RestartServices 方法重新啟動節點上的服務。 
+---
+= 重啟服務
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RestartServices`重啟節點上服務的方法。
+
+
+
+== 參數
+
+警告：
+
+此方法會導致節點服務暫時中斷。
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+力量
+ a| 
+設定為 true 可重啟節點上的服務。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+服務
+ a| 
+要重啟的服務名稱。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+行動
+ a| 
+對服務執行的操作（啟動、停止、重新啟動）。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+細節
+ a| 
+服務重啟過程的輸出，包括錯誤（如有）。
+ a| 
+JSON 物件
+
+
+
+ a| 
+期間
+ a| 
+重啟節點服務所需的時間（以秒為單位）。
+ a| 
+細繩
+
+
+
+ a| 
+結果
+ a| 
+重啟後的結果。
+ a| 
+細繩
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "RestartServices",
+   "params": {
+              "force" : true
+              "action" : restart,
+             }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": "solidfire stop/waiting\nsolidfire start/running, process 7284\n",
+    "duration": "00:00:02.541594",
+    "result": "Passed"
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

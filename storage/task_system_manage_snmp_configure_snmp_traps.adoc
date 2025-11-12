@@ -1,0 +1,29 @@
+---
+permalink: storage/task_system_manage_snmp_configure_snmp_traps.html 
+sidebar: sidebar 
+keywords: snmp, config, traps, notifications, monitor, health, enable, disable 
+summary: 系統管理員可以使用 SNMP 陷阱（也稱為通知）來監控SolidFire叢集的運作狀況。 
+---
+= 配置SNMP陷阱
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+系統管理員可以使用 SNMP 陷阱（也稱為通知）來監控SolidFire叢集的運作狀況。
+
+啟用 SNMP 陷阱後， SolidFire叢集會產生與事件日誌條目和系統警報關聯的陷阱。若要接收 SNMP 通知，您需要選擇要產生的陷阱並確定陷阱資訊的接收者。預設情況下，不會產生任何陷阱。
+
+. 點選“集群”>“SNMP”。
+. 在「SNMP陷阱設定」部分，選擇系統應產生的一種或多種陷阱類型：
++
+** 簇故障陷阱
+** 集群已解決的故障陷阱
+** 集群事件陷阱
+
+
+. 在「*Trap Recipients*」部分，輸入接收者的主機、連接埠和團體字串資訊。
+. *可選*：若要新增另一個陷阱接收者，請按一下*新增陷阱接收者*並輸入主機、連接埠和團體字串資訊。
+. 點選「儲存變更」。
+

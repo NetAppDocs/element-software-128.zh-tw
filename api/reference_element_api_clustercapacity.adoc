@@ -1,0 +1,227 @@
+---
+permalink: api/reference_element_api_clustercapacity.html 
+sidebar: sidebar 
+keywords: objects,object,clusterCapacity 
+summary: clusterCapacity 物件包含叢集的高階容量測量值。您可以使用 GetClusterCapacity API 方法來取得叢集容量資訊。物件成員中的空間度量以位元組為單位計算。 
+---
+= 叢集容量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterCapacity 物件包含叢集的高階容量測量值。您可以使用 GetClusterCapacity API 方法來取得叢集容量資訊。物件成員中的空間度量以位元組為單位計算。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+活動區塊空間
+ a| 
+硬碟上的可用空間。這包括元資料條目和可以清理的空間等附加資訊。
+ a| 
+整數
+
+
+
+ a| 
+活躍會話
+ a| 
+與叢集通訊的活動 iSCSI 會話數。
+ a| 
+整數
+
+
+
+ a| 
+平均IOPS
+ a| 
+自協調世界時 (UTC) 午夜以來，集群的平均 IOPS。
+ a| 
+整數
+
+
+
+ a| 
+集群最近 I/O 大小
+ a| 
+集群中所有磁碟區的平均 IOPS 大小。
+ a| 
+整數
+
+
+
+ a| 
+目前IOPS
+ a| 
+集群中所有捲在過去 5 秒內的平均 IOPS。
+ a| 
+整數
+
+
+
+ a| 
+最大IOPS
+ a| 
+目前群集的估計最大 IOPS 能力。
+ a| 
+整數
+
+
+
+ a| 
+最大超額配置空間
+ a| 
+可分配空間的最大量。這是一個計算值。如果目前已配置空間加上新磁碟區的大小超過此數值，則無法建立新磁碟區。該值按以下方式計​​算： `maxOverProvisionableSpace = maxProvisionedSpace * maxMetadataOverProvisionFactor`
+ a| 
+整數
+
+
+
+ a| 
+最大預留空間
+ a| 
+如果所有磁碟區都 100% 填入（沒有精簡配置元資料），則可配置空間的總量。
+ a| 
+整數
+
+
+
+ a| 
+最大已用元資料空間
+ a| 
+用於儲存元資料的磁碟機上的位元組數。
+ a| 
+整數
+
+
+
+ a| 
+最大已用空間
+ a| 
+所有活動塊驅動器上的總空間量。
+ a| 
+整數
+
+
+
+ a| 
+非零區塊
+ a| 
+最後一次垃圾回收作業完成後，包含資料的 4KiB 資料塊的總數。
+ a| 
+整數
+
+
+
+ a| 
+峰值活躍會話
+ a| 
+自UTC午夜以來iSCSI連線數的峰值。
+ a| 
+整數
+
+
+
+ a| 
+峰值IOPS
+ a| 
+currentIOPS 達到 UTC 午夜以來的最高值。
+ a| 
+整數
+
+
+
+ a| 
+預留空間
+ a| 
+集群上所有磁碟區中預留的總空間量。
+ a| 
+整數
+
+
+
+ a| 
+時間戳
+ a| 
+以 UTC+0 格式表示此集群容量樣本的收集日期和時間。
+ a| 
+ISO 8601字串
+
+
+
+ a| 
+總營運
+ a| 
+群集在其生命週期內執行的 I/O 操作總數。
+ a| 
+整數
+
+
+
+ a| 
+獨特的方塊
+ a| 
+儲存在區塊磁碟機上的區塊總數。該值包含複製區塊。
+ a| 
+整數
+
+
+
+ a| 
+唯一已使用方塊空間
+ a| 
+uniqueBlocks 在區塊磁碟機上佔用的資料總量。有關此數字與 uniqueBlocks 值的關係，請參閱 GetclusterCapacity 方法。
+ a| 
+整數
+
+
+
+ a| 
+已使用的元資料空間
+ a| 
+用於儲存元資料的磁碟機上的總位元組數。
+ a| 
+整數
+
+
+
+ a| 
+快照中使用的元資料空間
+ a| 
+用於在快照中儲存唯一資料的磁碟區磁碟機上的位元組數。該數字估算出刪除系統上的所有快照後可以回收多少元資料空間。
+ a| 
+整數
+
+
+
+ a| 
+已用空間
+ a| 
+系統中所有區塊磁碟機所使用的空間總量。
+ a| 
+整數
+
+
+
+ a| 
+零區塊
+ a| 
+最後一輪垃圾回收作業完成後，沒有資料的 4KiB 空塊的總數。
+ a| 
+整數
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_getclustercapacity.adoc[取得叢集容量]

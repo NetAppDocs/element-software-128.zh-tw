@@ -1,0 +1,36 @@
+---
+permalink: storage/concept_system_monitoring_and_troubleshooting.html 
+sidebar: sidebar 
+keywords: trouble, troubleshoot, monitor, element, alert, event 
+summary: 您必須監控系統以進行診斷，並取得有關各種系統操作的效能趨勢和狀態的資訊。出於維護目的，您可能需要更換節點或固態硬碟。 
+---
+= 排查系統故障
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須監控系統以進行診斷，並取得有關各種系統操作的效能趨勢和狀態的資訊。出於維護目的，您可能需要更換節點或固態硬碟。
+
+* link:task_monitor_information_about_system_events.html["查看系統事件資訊"]
+* link:reference_monitor_status_of_running_tasks.html["查看正在運行的任務的狀態"]
+* link:task_monitor_system_alerts.html["查看系統警報"]
+* link:task_monitor_node_performance_activity.html["查看節點效能活動"]
+* link:task_monitor_volume_performance.html["查看音量表現"]
+* link:task_monitor_iscsi_sessions.html["查看 iSCSI 會話"]
+* link:task_monitor_fibre_channel_sessions.html["查看光纖通道會話"]
+* link:concept_troubleshoot_drives.html["排除驅動器故障"]
+* link:concept_remove_nodes_from_cluster.html["排查節點故障"]
+* link:concept_per_node_work_with_utilities.html["使用每個節點的儲存節點實用程式"]
+* link:concept_mnode_work_with_the_management_node.html["與管理節點交互"]
+* link:concept_monitor_understand_cluster_fullness_levels.html["了解集群填充程度"]
+
+
+
+
+== 更多資訊
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

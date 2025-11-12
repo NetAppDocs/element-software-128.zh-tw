@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_addinitiatorstovolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: addinitiatorstovolumeaccessgroup,add,adding,initiators,initiator,volume,access,group 
+summary: 您可以使用 AddInitiatorsToVolumeAccessGroup 方法將啟動器新增至指定的磁碟區存取群組。 
+---
+= 將發起者新增至磁碟區存取群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddInitiatorsToVolumeAccessGroup`將啟動器新增至指定磁碟區存取群組的方法。
+
+發起者 IQN 的可接受格式為 iqn.yyyy-mm，其中 y 和 m 為數字，後面跟著文本，該文本必須僅包含數字、小寫字母字符、句點 (.)、冒號 (:) 或破折號 (-)。請參閱以下範例：
+
+[listing]
+----
+iqn.2010-01.com.solidfire:17oi.solidfire-0.1
+----
+光纖通道發起方 WWPN 的可接受格式為 Aa:bB:CC:dd:11:22:33:44 或 AabBCCdd11223344。請參閱以下範例：
+
+[listing]
+----
+21:00:00:0e:1e:11:f1:81
+----
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+發起者
+ a| 
+若要包含在磁碟區存取群組中的發起程序 ID 或名稱（IQN 和 WWPN）清單。如果傳遞一個啟動器名稱列表，則當啟動器尚不存在時，將建立這些啟動器。如果傳遞一個發起者 ID 列表，則如果其中任何發起者尚不存在，則該方法將傳回錯誤。
+
+傳遞發起者名稱已被棄用；應盡可能使用發起者 ID。
+ a| 
+整數數組或字串數組（已棄用）
+ a| 
+ a| 
+是的
+
+
+
+ a| 
+卷訪問群組ID
+ a| 
+若要新增發起程序的磁碟區存取群組的 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+卷訪問群組
+ a| 
+包含有關新修改的磁碟區存取群組資訊的物件。
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[卷訪問群組]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 13171,
+  "method": "AddInitiatorsToVolumeAccessGroup",
+  "params": {
+    "initiators": [116,117],
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 13171,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        327
+      ],
+      "initiatorIDs": [
+        116,
+        117
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian:01:181324777",
+        "iqn.1993-08.org.debian:01:181324888"
+      ],
+      "name": "northbanktest",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        346
+      ]
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

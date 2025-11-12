@@ -1,0 +1,67 @@
+---
+permalink: storage/task_system_manage_virtual_add_a_virtual_network.html 
+sidebar: sidebar 
+keywords: virtual network, add, cluster configuration, cluster nodes, svip, vlans, vrf, view, network details, 
+summary: 您可以為叢集配置中新增的虛擬網絡，以啟用多租戶環境連接到執行 Element 軟體的叢集。 
+---
+= 新增虛擬網路
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以為叢集配置中新增的虛擬網絡，以啟用多租戶環境連接到執行 Element 軟體的叢集。
+
+.你需要什麼
+* 確定將指派給叢集節點上虛擬網路的 IP 位址區塊。
+* 確定一個儲存網路 IP (SVIP) 位址，該位址將用作所有NetApp Element儲存流量的端點。
+
+
+
+IMPORTANT: 對於此配置，您必須考慮以下標準：
+
+* 未啟用 VRF 的 VLAN 要求發起方與 SVIP 位於相同子網路中。
+* 啟用 VRF 的 VLAN 不需要發起方與 SVIP 位於同一子網路中，並且支援路由。
+* 預設的 SVIP 不要求發起方與 SVIP 位於同一子網路中，並且支援路由。
+
+
+當新增虛擬網路時，會為每個節點建立一個接口，每個介面都需要一個虛擬網路 IP 位址。建立新虛擬網路時指定的 IP 位址數量必須等於或大於叢集中的節點數量。虛擬網路位址由系統批次自動配置並指派給各個節點。您無需手動為叢集中的節點指派虛擬網路位址。
+
+.步驟
+. 點選“集群”>“網路”。
+. 點選「建立VLAN」。
+. 在「建立新 VLAN」對話方塊中，在下列欄位中輸入值：
++
+** *VLAN名稱*
+** *VLAN標籤*
+** *SVIP*
+** *Netmask*
+** （可選）*描述*
+
+
+. 輸入 *IP 位址區塊* 中 IP 位址範圍的 *起始 IP* 位址。
+. 輸入 IP 位址範圍的*大小*，即要包含在位址區塊中的 IP 位址數量。
+. 點擊「新增區塊」為該 VLAN 新增一個非連續的 IP 位址區塊。
+. 點選「建立VLAN」。
+
+
+
+
+== 查看虛擬網路詳情
+
+.步驟
+. 點選“集群”>“網路”。
+. 查看詳細資訊。
++
+** *ID*：VLAN 網路的唯一 ID，由系統指派。
+** *名稱*：VLAN 網路的唯一使用者指定名稱。
+** *VLAN 標籤*：建立虛擬網路時指派的 VLAN 標籤。
+** *SVIP*：指派給虛擬網路的儲存虛擬 IP 位址。
+** *子網路遮罩*：此虛擬網路的子網路遮罩。
+** *網關*：虛擬網路網關的唯一IP位址。必須啟用VRF。
+** *VRF 已啟用*：指示虛擬路由和轉送是否已啟用。
+** *使用的IP位址*：用於虛擬網路的虛擬網路IP位址範圍。
+
+
+

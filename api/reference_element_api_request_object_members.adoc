@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_request_object_members.html 
+sidebar: sidebar 
+keywords: request,object,members 
+summary: 每個 Element 軟體 API 請求都包含以下基本部分： 
+---
+= 請求對象成員
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個 Element 軟體 API 請求都包含以下基本部分：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+方法
+ a| 
+要呼叫的方法名稱。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+參數
+ a| 
+包含被呼叫方法的參數的物件。必須使用命名參數。不允許使用位置參數（以陣列形式傳遞）。
+ a| 
+JSON 物件
+ a| 
+{}
+ a| 
+不
+
+
+
+ a| 
+ID
+ a| 
+用於將請求與回應進行匹配的標識符，在結果中傳回。
+ a| 
+字串或整數
+ a| 
+{}
+ a| 
+不
+
+|===

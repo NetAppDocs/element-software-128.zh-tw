@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_getclustermasternodeid.html 
+sidebar: sidebar 
+keywords: cluster,master,node,ID,get,getting,getclustermasternodeID 
+summary: '您可以使用 GetClusterMasterNodeID 方法來擷取執行叢集範圍管理任務並持有儲存虛擬 IP 位址 (SVIP) 和管理虛擬 IP 位址 (MVIP) 的節點的 ID。' 
+---
+= 取得叢集主節點ID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterMasterNodeID`用於檢索執行叢集範圍管理任務並持有儲存虛擬 IP 位址 (SVIP) 和管理虛擬 IP 位址 (MVIP) 的節點的 ID 的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+節點ID
+ a| 
+主節點的ID。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetClusterMasterNodeID",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id" : 1
+  "result": {
+    "nodeID": 1
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

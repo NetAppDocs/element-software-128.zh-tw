@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_listvolumestatsbyvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volumes,volume,stats,list,listing,access,group,listvolumestatsbyvolumeaccessgroup,activity 
+summary: 您可以使用 ListVolumeStatsByVolumeAccessGroup 方法列出指定磁碟區存取群組成員的所有磁碟區的總活動測量值。 
+---
+= 按卷訪問組列出卷統計信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListVolumeStatsByVolumeAccessGroup`列出指定磁碟區存取群組所有成員磁碟區的總活動測量值的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+包含虛擬卷
+ a| 
+預設情況下，回應中包含虛擬磁碟區。若要排除虛擬卷，請設定為 false。
+ a| 
+布林值
+ a| 
+真的
+ a| 
+不
+
+
+
+ a| 
+卷訪問群組
+ a| 
+傳回磁碟區活動資訊的 VolumeAccessGroupID 陣列。如果省略，則傳回所有磁碟區存取群組的統計資料。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+銷量統計
+ a| 
+指定磁碟區存取群組中所有磁碟區的磁碟區活動資訊清單。 *注意：*每個條目的 volumeID 成員均為 0，因為這些值表示帳戶擁有的所有磁碟區的總和。
+ a| 
+xref:reference_element_api_volumestats.adoc[銷量統計]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "ListVolumeStatsByVolumeAccessGroup",
+    "params": {"volumeAccessGroups": [1]},
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeStats": [
+      {
+        "accountID": 0,
+        "nonZeroBlocks": 149366393,
+        "readBytes": 3156273328128,
+        "readBytesLastSample": 0,
+        "readOps": 770574543,
+        "readOpsLastSample": 0,
+        "samplePeriodMSec": 500,
+        "timestamp": "2016-10-17T21:04:10.712370Z",
+        "unalignedReads": 0,
+        "unalignedWrites": 0,
+        "volumeAccessGroups": [
+            1
+        ],
+        "volumeID": 0,
+        "volumeSize": 1073741824000,
+        "writeBytes": 1051988406272,
+        "writeBytesLastSample": 0,
+        "writeOps": 256833107,
+        "writeOpsLastSample": 0,
+        "zeroBlocks": 112777607
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

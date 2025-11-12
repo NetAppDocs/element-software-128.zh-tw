@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicyrule.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicyRule 
+summary: snapMirrorPolicyRule 物件包含有關SnapMirror策略中規則的資訊。 
+---
+= snapMirrorPolicyRule
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorPolicyRule 物件包含有關SnapMirror策略中規則的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorLabel
+ a| 
+快照副本標籤，用於在擴充資料保護關係中選擇快照副本。
+ a| 
+細繩
+
+
+
+ a| 
+保持數
+ a| 
+指定規則在SnapMirror目標磁碟區上保留的最大快照副本數。
+ a| 
+整數
+
+|===

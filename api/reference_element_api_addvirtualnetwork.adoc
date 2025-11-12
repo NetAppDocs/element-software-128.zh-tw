@@ -1,0 +1,206 @@
+---
+permalink: api/reference_element_api_addvirtualnetwork.html 
+sidebar: sidebar 
+keywords: addvirtualnetwork,cluster,add,adding,virtual,network 
+summary: 您可以使用 AddVirtualNetwork 方法向叢集配置中新增新的虛擬網路。 
+---
+= 新增虛擬網路
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddVirtualNetwork`在叢集配置中新增虛擬網路的方法。
+
+當新增虛擬網路時，會為每個節點建立一個接口，每個介面都需要一個虛擬網路 IP 位址。您為此 API 方法指定的參數中指定的 IP 位址數量必須等於或大於叢集中的節點數量。系統批次配置虛擬網路位址，並自動將其指派給各個節點。您無需手動為節點指派虛擬網路位址。
+
+
+NOTE: AddVirtualNetwork 方法僅用於建立新的虛擬網路。如果要對現有虛擬網路進行更改，請使用xref:reference_element_api_modifyvirtualnetwork.adoc[修改虛擬網絡]方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+地址區塊
+ a| 
+若要包含在虛擬網路中的所有 IP 位址的唯一範圍。對象必需成員：
+
+* 起始位址：IP 位址範圍的起始位址。  （細繩）
+* 大小：要包含在區塊中的 IP 位址數量。  （整數）
+
+ a| 
+JSON 物件數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+閘道
+ a| 
+虛擬網路網關的IP位址。僅當命名空間參數設為 true 時，此參數才有效。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+姓名
+ a| 
+使用者為新虛擬網路自訂的名稱。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+命名空間
+ a| 
+設定為 true 時，透過建立和設定命名空間及其包含的虛擬網路來啟用可路由儲存 VLAN 功能。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+網路遮罩
+ a| 
+為正在建立的虛擬網路所建立的唯一網路遮罩。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+svip
+ a| 
+為正在建立的虛擬網路指派唯一的儲存 IP 位址。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+虛擬網路標籤
+ a| 
+唯一的虛擬網路（VLAN）標籤。支援的值範圍為 1 到 4094。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+*注意：*當命名空間設定為 false 時，每個虛擬網路的虛擬網路參數必須是唯一的。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+虛擬網路 ID
+ a| 
+新虛擬網路的虛擬網路 ID。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "AddVirtualNetwork",
+  "params": {
+    "virtualNetworkTag": 2010,
+    "name": "network1",
+    "addressBlocks" : [
+        { "start": "192.86.5.1", "size": 10 },
+        { "start": "192.86.5.50", "size": 20 }
+    ],
+    "netmask" : "255.255.192.0",
+    "gateway" : "10.0.1.254",
+    "svip" : "192.86.5.200",
+    "attributes" : {}
+    "namespace" : true
+  },
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "virtualNetworkID": 5
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

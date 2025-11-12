@@ -1,0 +1,83 @@
+---
+permalink: storage/concept_data_manage_volumes_quality_of_service_policies.html 
+sidebar: sidebar 
+keywords: qos policies, manage, volumes, create, edit, delete 
+summary: '服務品質 (QoS) 策略可讓您建立和儲存可套用於多個磁碟區的標準化服務品質設定。您可以在「管理」標籤的「QoS 策略」頁面中建立、編輯和刪除 QoS 策略。' 
+---
+= 管理服務品質政策
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+服務品質 (QoS) 策略可讓您建立和儲存可套用於多個磁碟區的標準化服務品質設定。您可以在「管理」標籤的「QoS 策略」頁面中建立、編輯和刪除 QoS 策略。
+
+
+NOTE: 如果您正在使用 QoS 策略，請不要在磁碟區上使用自訂 QoS。自訂 QoS 將覆蓋和調整磁碟區 QoS 設定的 QoS 策略值。
+
+https://www.youtube.com/embed/q9VCBRDtrnI?rel=0["NetApp影片： SolidFire服務品質策略"]
+
+看link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["服務性能和品質"]。
+
+* 建立 QoS 策略
+* 編輯 QoS 策略
+* 刪除 QoS 策略
+
+
+
+
+== 建立 QoS 策略
+
+您可以建立 QoS 策略，並在建立磁碟區時套用這些策略。
+
+. 選擇“管理”>“QoS策略”。
+. 點選「建立QoS策略」。
+. 請輸入*保單名稱*。
+. 輸入**最小 IOPS**、*最大 IOPS* 和 *突發 IOPS* 值。
+. 點選「建立QoS策略」。
+
+
+
+
+== 編輯 QoS 策略
+
+您可以變更現有 QoS 策略的名稱或編輯與該策略關聯的值。更改 QoS 策略會影響與該策略關聯的所有磁碟區。
+
+. 選擇“管理”>“QoS策略”。
+. 按一下要編輯的 QoS 策略的「操作」圖示。
+. 在出現的選單中，選擇**編輯**。
+. 在「編輯 QoS 策略」對話方塊中，根據需要修改下列屬性：
++
+** 策略名稱
+** 最小 IOPS
+** 最大 IOPS
+** 突發IOPS
+
+
+. 點選「儲存變更」。
+
+
+
+
+== 刪除 QoS 策略
+
+如果不再需要 QoS 策略，您可以將其刪除。刪除 QoS 策略時，與該策略關聯的所有磁碟區將保留 QoS 設置，但會與該策略解除關聯。
+
+
+NOTE: 如果您要嘗試將磁碟區與 QoS 原則解除關聯，則可以將該磁碟區的 QoS 設定變更為自訂。
+
+. 選擇“管理”>“QoS策略”。
+. 按一下要刪除的 QoS 策略旁邊的「操作」圖示。
+. 在出現的選單中，選擇“刪除”。
+. 確認操作。
+
+
+
+
+== 查找更多信息
+
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["移除磁碟區的 QoS 策略關聯"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

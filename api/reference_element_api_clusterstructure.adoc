@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_clusterstructure.html 
+sidebar: sidebar 
+keywords: objects,cluster,structure,clusterStructure,object 
+summary: clusterStructure 物件保存由 GetClusterStructure 方法建立的叢集配置備份資訊。您可以使用 SetClusterStructure 方法將此資訊還原到您正在重建的儲存叢集中。 
+---
+= 簇結構
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterStructure 物件保存由 GetClusterStructure 方法建立的叢集配置備份資訊。您可以使用 SetClusterStructure 方法將此資訊還原到您正在重建的儲存叢集中。
+
+
+
+== 對象成員
+
+此物件包含以下方法的綜合回傳資訊：
+
+* xref:reference_element_api_getclusterinfo.adoc[獲取集群資訊]
+* xref:reference_element_api_listaccounts.adoc[列出帳戶]
+* xref:reference_element_api_listinitiators.adoc[列表發起者]
+* xref:reference_element_api_listvolumes.adoc[清單卷]（包含虛擬卷=false）
+* xref:reference_element_api_listvolumeaccessgroups.adoc[列出卷訪問群組]
+* xref:reference_element_api_liststoragecontainers.adoc[列出儲存容器]
+* xref:reference_element_api_listqospolicies.adoc[列出QoS策略]
+* xref:reference_element_api_getsnmpinfo.adoc[獲取 SNMP 信息]
+* xref:reference_element_api_getntpinfo.adoc[取得NTP訊息]
+* xref:reference_element_api_listvirtualnetworks.adoc[列出虛擬網絡]
+* xref:reference_element_api_listclusteradmins.adoc[列出群集管理員]
+* xref:reference_element_api_listschedules.adoc[列出日程表]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[列出快照鏡像端點]
+* xref:reference_element_api_getfeaturestatus.adoc[取得功能狀態]
+* xref:reference_element_api_getldapconfiguration.adoc[取得LDAP配置]
+* xref:reference_element_api_getremotelogginghosts.adoc[取得遠端日誌主機]
+* xref:reference_element_api_getdefaultqos.adoc[取得預設服務質量]
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[取得卷宗訪問群組 LUN 分配]
+
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getclusterstructure.adoc[取得聚類結構]
+* xref:reference_element_api_setclusterstructure.adoc[集合聚類結構]
+

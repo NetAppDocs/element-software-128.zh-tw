@@ -1,0 +1,43 @@
+---
+permalink: setup/concept_setup_overview.html 
+sidebar: sidebar 
+keywords: element, solidfire, install, setup, node, cluster 
+summary: 在開始之前，您可能需要了解安裝並設定NetApp Element軟體的順序。 
+---
+= 了解如何設定存儲
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此時，您應該已經安裝了硬體。該硬體還包含 Element 軟體。
+
+接下來，您需要為您的環境設定儲存系統。您可以將儲存節點或光纖通道節點安裝到機架單元中並接通電源後，使用 Element 軟體設定叢集並進行管理。
+
+image::../media/sf_and_element_workflow_for_setup_shorter_workflow.png[設定工作流程圖]
+
+.設定儲存的步驟
+. 選擇下列選項之一：
++
+** link:../setup/concept_setup_configure_a_storage_node.html["搭建包含儲存節點的集群"]
++
+在機架單元中安裝並連接儲存節點並通電後，您可以使用 Element 軟體設定叢集並管理該叢集。然後，您可以安裝和設定儲存系統中的其他元件。
+
+** link:../setup/concept_setup_fc_configure_a_fibre_channel_node.html["使用光纖通道節點搭建集群"]
++
+在機架單元中安裝並連接光纖通道節點並通電後，您可以使用 Element 軟體設定一個包含光纖通道節點的叢集並對其進行管理。然後，您可以安裝和設定儲存系統中的其他元件。
+
+
+
+. link:../setup/task_setup_determine_which_solidfire_components_to_install.html["確定要安裝哪些SolidFire組件"]
+. link:../setup/task_setup_gh_redirect_set_up_a_management_node.html["設定管理節點並啟用Active IQ遙測功能"]
+
+
+
+
+== 查找更多信息
+
+* link:../setup/concept_setup_whats_next.html["了解儲存的後續使用步驟"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

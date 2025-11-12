@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-volumes.html 
+summary: 您可以使用混合雲控製卷頁面來監控系統中的磁碟區。 
+keywords: netapp, element, volumes, storage, access groups, initiators, capacity, data protection, QoS 
+---
+= 監控儲存叢集上的捲
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire系統使用磁碟區來設定儲存。磁碟區是可透過網路由 iSCSI 或光纖通道用戶端存取的區塊設備。您可以監控有關存取群組、帳戶、發起程序、已使用容量、快照資料保護狀態、iSCSI 會話數以及與磁碟區關聯的服務品質 (QoS) 策略的詳細資訊。
+
+您也可以查看有關活動捲和已刪除卷的詳細資訊。
+
+在這種視圖下，您可能首先需要監控「已使用容量」列。
+
+只有擁有NetApp Hybrid Cloud Control 管理權限的使用者才能存取此資訊。
+
+.步驟
+. 在網頁瀏覽器中開啟管理節點的IP位址。例如：
++
+[listing]
+----
+https://[management node IP address]
+----
+. 使用SolidFire全快閃儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在左側導覽藍色框中，選擇SolidFire全快閃儲存安裝。
+. 在左側導覽列中，選擇集群，然後選擇「儲存」>「磁碟區」。
++
+image::hcc_volumes_overview_active.png[HCC 卷冊頁面 > 概覽標籤圖片]
+
+. 在「卷」頁面上，使用以下選項：
++
+image::hcc_volumes_icons.png[HCC 卷頁面圖標]
+
++
+.. 選擇“篩選”圖標，篩選結果。
+.. 選擇“隱藏/顯示”圖標，即可隱藏或顯示列。
+.. 點選「刷新」圖示刷新資料。
+.. 點選「下載」圖標，下載 CSV 檔案。
+
+
+. 監控「已使用容量」列。如果達到警告、錯誤或嚴重閾值，顏色表示已使用容量狀態：
++
+.. 警告 - 黃色
+.. 錯誤 - 橙色
+.. 危急 - 紅色
+
+
+. 在「磁碟區」檢視中，選擇標籤以查看有關磁碟區的更多詳細資訊：
++
+.. *存取群組*：您可以檢視從發起程式對應到一組磁碟區以實現安全存取的磁碟區存取群組。
++
+查看相關資訊 link:../concepts/concept_solidfire_concepts_volume_access_groups.html["卷訪問群組"]。
+
+.. *帳戶*：您可以查看使用者帳戶，這些帳戶允許客戶端連接到節點上的磁碟區。建立磁碟區時，會將其指派給特定的使用者帳戶。
++
+查看相關資訊 link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#user-accounts["SolidFire全快閃儲存系統使用者帳戶"]。
+
+.. *發起程式*：您可以檢視磁碟區的 iSCSI 發起程式 IQN 或光纖通道 WWPN。新增至存取群組的每個 IQN 都可以存取群組中的每個捲，而無需 CHAP 驗證。新增至存取群組的每個 WWPN 都允許透過光纖通道網路存取存取群組中的磁碟區。
+.. *QoS策略*：您可以檢視套用於磁碟區的QoS策略。  QoS 策略將最小 IOPS、最大 IOPS 和突發 IOPS 的標準化設定應用於多個磁碟區。
++
+查看相關資訊 link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-performance["效能和QoS策略"]。
+
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 文檔"^]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

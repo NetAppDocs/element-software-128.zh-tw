@@ -1,0 +1,79 @@
+---
+permalink: storage/concept_data_manage_data_management.html 
+sidebar: sidebar 
+keywords: virtual volumes, volumes, manage 
+summary: '您可以透過 Element UI 中的「管理」標籤管理執行 Element 軟體的叢集中的資料。可用的叢集管理功能包括建立和管理資料磁碟區、使用者帳戶、磁碟區存取群組、發起程序和服務品質 (QoS) 原則。' 
+---
+= 了解如何管理磁碟區和虛擬卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以透過 Element UI 中的「管理」標籤管理執行 Element 軟體的叢集中的資料。可用的叢集管理功能包括建立和管理資料磁碟區、磁碟區存取群組、發起程序和服務品質 (QoS) 策略。
+
+
+
+== 使用卷
+
+SolidFire系統使用磁碟區來設定儲存。磁碟區是可透過網路由 iSCSI 或光纖通道用戶端存取的區塊設備。在「管理」標籤的「磁碟區」頁面上，您可以建立、修改、複製和刪除節點上的磁碟區。您也可以查看有關卷帶寬和 I/O 使用情況的統計資料。
+
+link:../storage/concept_data_manage_volumes_quality_of_service_policies.html["了解如何處理卷"]
+
+
+
+== 使用虛擬卷
+
+您可以使用 Element UI 查看虛擬磁碟區及其關聯的儲存容器、協定端點、綁定和主機的資訊並執行相關任務。
+
+NetApp Element軟體儲存系統出廠時預設停用虛擬磁碟區 (VVols) 功能。您必須透過 Element UI 手動啟用 vSphere VVol 功能，此操作為一次性任務。
+
+啟用 VVol 功能後，使用者介面中會出現一個 VVols 選項卡，提供與 VVols 相關的監控和有限的管理選項。此外，一個名為 VASA Provider 的儲存端軟體元件可作為 vSphere 的儲存感知服務。大多數 VVols 命令（例如 VVol 建立、複製和編輯）由 vCenter Server 或 ESXi 主機發起，並由 VASA Provider 轉換為 Element 軟體儲存系統的 Element API。可以使用 Element UI 發起建立、刪除和管理儲存容器以及刪除虛擬磁碟區的命令。
+
+使用 Element 軟體儲存系統的虛擬磁碟區功能所需的大部分設定都在 vSphere 中完成。請參閱《VMware vSphere Virtual Volumes for SolidFire Storage Configuration Guide》以在 vCenter 中註冊 VASA Provider、建立和管理 VVol 資料儲存以及根據策略管理儲存。
+
+
+NOTE: 對於 Element 12.5 及更早版本，請勿向單一 vCenter 執行個體註冊多個NetApp Element VASA 提供者。如果新增了第二個NetApp Element VASA 提供程序，則所有 VVOL 資料儲存都將無法存取。
+
+
+NOTE: 如果您已將 VASA 提供者註冊至 vCenter，則可透過升級修補程式取得多個 vCenter 的 VASA 支援。若要安裝，請從以下位置下載 VASA39 .tar.gz 檔案： https://mysupport.netapp.com/products/element_software/VASA39/index.html["NetApp軟體下載"]前往現場並按照清單上的說明進行操作。 NetApp Element VASA 提供者使用NetApp憑證。透過此補丁，vCenter 可以直接使用未經修改的證書，以支援多個 vCenter 用於 VASA 和 VVols。請勿修改證書。  VASA 不支援自訂 SSL 憑證。
+
+link:../storage/task_data_manage_vvol_enable_virtual_volumes.html["了解如何使用虛擬卷"]
+
+
+
+== 與大量存取群組和發起者合作
+
+您可以使用 iSCSI 發起程序或光纖通道發起程序來訪問問卷訪問群組中定義的磁碟區。
+
+您可以透過對應磁碟區集合中的 iSCSI 啟動程式 IQN 或光纖通道 WWPN 來建立存取群組。新增至存取群組的每個 IQN 都可以存取群組中的每個捲，而無需 CHAP 驗證。
+
+CHAP認證方法有兩種類型：
+
+* 帳戶級 CHAP 認證：您可以為帳戶指派 CHAP 認證。
+* 發起方級 CHAP 驗證：您可以為特定發起方指派唯一的 CHAP 目標和金鑰，而無需在單一帳戶中綁定到單一 CHAP。這種發起方層級的 CHAP 驗證取代了帳戶層級的憑證。
+
+
+（可選）使用每個發起方的 CHAP，您可以強制執行發起方授權和每個發起方的 CHAP 驗證。這些選項可以根據每個發起者進行定義，一個存取群組可以包含具有不同選項的多個發起者。
+
+將每個 WWPN 新增至存取群組，即可啟用對存取群組中磁碟區的光纖通道網路存取。
+
+
+NOTE: 磁碟區存取群組具有以下限制：
+
+* 一個訪問群組中最多允許有 64 個 IQN 或 WWPN。
+* 一個訪問群組最多可以包含 2000 卷。
+* 一個 IQN 或 WWPN 只能屬於一個存取群組。
+* 一個卷冊最多可以屬於四個訪問組。
+
+
+link:../storage/task_data_manage_vol_access_group_create_a_volume_access_group.html["了解如何與大量存取群組和發起者合作"]
+
+
+
+== 更多資訊
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

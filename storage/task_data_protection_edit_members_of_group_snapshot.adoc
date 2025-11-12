@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_edit_members_of_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot members, edit 
+summary: 您可以編輯現有群組快照成員的保留設定。 
+---
+= 編輯群組快照成員
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以編輯現有群組快照成員的保留設定。
+
+. 點選「資料保護」>「快照」。
+. 點選“成員”標籤。
+. 點選要編輯的群組快照成員旁邊的「操作」圖示。
+. 在出現的選單中，選擇“編輯”。
+. 若要變更快照的複製設置，請從下列選項中選擇：
++
+** 點擊「永久保留」可將快照無限期地保留在系統中。
+** 點擊“設定保留期限”，然後使用日期微調框選擇系統保留快照的時間長度。
+
+
+. 點選「儲存變更」。
+

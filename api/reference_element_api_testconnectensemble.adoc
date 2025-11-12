@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_testconnectensemble.html 
+sidebar: sidebar 
+keywords: test,testing,connectivity,ensemble,testconnectensemble 
+summary: 您可以使用 TestConnectEnsemble 方法來驗證與指定資料庫集合的連線性。預設情況下，它使用節點所屬叢集的整合模型。或者，您可以提供不同的組件來測試連接性。 
+---
+= TestConnectEnsemble
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestConnectEnsemble`驗證與指定資料庫集合的連接性的方法。預設情況下，它使用節點所屬叢集的整合模型。或者，您可以提供不同的組件來測試連接性。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+| 合奏 | 用於連接性測試的叢集節點 IP 位址清單（以逗號分隔）。 | 細繩 | 沒有任何 | 不 
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+| 細節  a| 
+傳回的物件：
+
+* `nodes`：（物件）測試中每個整合節點的清單以及測試結果。
+* `duration`（字串）運行測試所需的時間。
+* `result`：（字串）整個測試的結果。
+
+| JSON 物件 
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "TestConnectEnsemble",
+  "params": {},
+  "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+      "details": {
+         "nodes":  {
+            "1:10.10.20.70": "Passed",
+            "2:10.10.20.71": "Passed",
+            "3:10.10.20.72": "Passed",
+            "4:10.10.20.73": "Passed",
+            "5:10.10.20.74": "Passed"
+        }
+      },
+        "duration": "00:00:00:756072",
+        "result": "Passed"
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

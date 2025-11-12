@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_keyproviderkmip.html 
+sidebar: sidebar 
+keywords: key provider,KMIP,keys 
+summary: 'keyProviderKmip 物件描述了金鑰管理互通協定 (KMIP) 金鑰提供者。金鑰提供者既是一種機制，也是一個位置，用於檢索身份驗證金鑰，以便與叢集功能（例如靜態加密）一起使用。' 
+---
+= keyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+keyProviderKmip 物件描述了金鑰管理互通協定 (KMIP) 金鑰提供者。金鑰提供者既是一種機制，也是一個位置，用於檢索身份驗證金鑰，以便與叢集功能（例如靜態加密）一起使用。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+密鑰提供者ID
+ a| 
+KMIP密鑰提供者的ID。這是叢集在建立密鑰提供者時分配的唯一值，無法變更。
+ a| 
+整數
+
+
+
+ a| 
+keyProviderIsActive
+ a| 
+如果 KMIP 金鑰提供者處於活動狀態，則為真。如果存在已建立但尚未刪除的未決金鑰，則假定該金鑰仍在使用，則該提供者被視為活躍提供者。
+ a| 
+布林值
+
+
+
+ a| 
+密鑰提供者名稱
+ a| 
+KMIP密鑰提供者的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+密鑰伺服器 ID
+ a| 
+與此提供者關聯的關鍵伺服器 ID。必須先新增伺服器，該提供者才能啟動。只要該服務提供者處於活動狀態，伺服器就無法移除。每個提供者僅支援一個伺服器 ID。
+ a| 
+整數數組
+
+
+
+ a| 
+kmip能力
+ a| 
+此 KMIP 金鑰提供者的功能，包括底層函式庫、FIPS 合規性、SSL 提供者等詳細資訊。
+ a| 
+細繩
+
+|===

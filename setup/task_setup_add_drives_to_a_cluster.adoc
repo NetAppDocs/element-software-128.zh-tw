@@ -1,0 +1,37 @@
+---
+permalink: setup/task_setup_add_drives_to_a_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 當您向叢集新增節點或在現有節點中安裝新磁碟機時，這些磁碟機會自動註冊為可用。必須先使用 Element UI 或 API 將磁碟機新增至叢集中，然後它們才能參與叢集。 
+---
+= 將驅動器新增至集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您向叢集新增節點或在現有節點中安裝新磁碟機時，這些磁碟機會自動註冊為可用。必須先使用 Element UI 或 API 將磁碟機新增至叢集中，然後它們才能參與叢集。
+
+當存在以下情況時，磁碟機不會顯示在「可用磁碟機」清單中：
+
+* 驅動器處於活動、移除、擦除或故障狀態。
+* 驅動器所屬的節點處於待處理狀態。
+
+
+.步驟
+. 從 Element 使用者介面中，選擇「叢集」>「驅動器」。
+. 點擊「可用」查看可用磁碟機清單。
+. 執行下列操作之一：
++
+** 若要新增單一驅動器，請按一下要新增的驅動器的「動作」圖標，然後按一下「新增」。
+** 若要新增多個驅動器，請選取要新增的磁碟機的複選框，按一下“批次操作”，然後按一下“新增”。
++
+....
+== Find more information
+* https://docs.netapp.com/us-en/element-software/index.html[SolidFire and Element Software Documentation]
+* https://docs.netapp.com/us-en/vcp/index.html[NetApp Element Plug-in for vCenter Server^]
+....
+
+
+

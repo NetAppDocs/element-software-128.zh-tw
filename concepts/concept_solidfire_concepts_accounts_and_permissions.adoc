@@ -1,0 +1,77 @@
+---
+permalink: concepts/concept_solidfire_concepts_accounts_and_permissions.html 
+sidebar: sidebar 
+keywords: solidfire, element, cluster admin, storage, account, authoritative cluster 
+summary: 要管理和提供對系統儲存資源的存取權限，您需要為系統資源設定帳戶。 
+---
+= 帳戶和權限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+要管理和提供對系統儲存資源的存取權限，您需要為系統資源設定帳戶。
+
+使用 Element 存儲，您可以建立和管理以下類型的帳戶：
+
+* <<儲存叢集管理員帳戶,儲存叢集的管理員使用者帳戶>>
+* <<使用者帳戶,用於存取儲存卷的使用者帳戶>>
+* <<權威集群用戶帳戶,NetApp Hybrid Cloud Control 的權威叢集使用者帳戶>>
+
+
+
+
+== 儲存叢集管理員帳戶
+
+在執行NetApp Element軟體的儲存叢集中，可以存在兩種類型的管理員帳戶：
+
+* *主集群管理員帳戶*：此管理員帳戶在建立集群時建立。此帳戶是叢集中具有最高存取權限的主要管理帳戶。該帳號類似於 Linux 系統中的 root 使用者。您可以變更此管理員帳戶的密碼。
+* *叢集管理員帳戶*：您可以授予叢集管理員帳戶有限的管理權限，使其能夠在叢集中執行特定任務。指派給每個叢集管理員帳戶的憑證用於驗證儲存系統中的 API 和 Element UI 請求。
+
+
+
+NOTE: 要透過每個節點的 UI 存取叢集中的活動節點，需要本機（非 LDAP）叢集管理員帳戶。存取尚未加入叢集的節點不需要帳戶憑證。
+
+你可以link:../storage/concept_system_manage_manage_cluster_administrator_users.html["管理叢集管理員帳戶"]透過建立、刪除和編輯叢集管理員帳戶，變更叢集管理員密碼，以及設定 LDAP 設定來管理系統使用者存取權限。
+
+
+
+== 使用者帳戶
+
+使用者帳戶用於控制對NetApp Element軟體網路上儲存資源的存取。在建立磁碟區之前至少需要一個使用者帳戶。
+
+建立磁碟區時，會將其指派給一個帳戶。如果您建立了虛擬卷，則該帳戶就是儲存容器。
+
+以下是一些其他需要考慮的因素：
+
+* 該帳戶包含存取指派給它的磁碟區所需的 CHAP 驗證。
+* 一個帳戶最多可以分配 2000 個卷，但一個卷只能屬於一個帳戶。
+* 使用者帳戶可以透過NetApp Element Management 擴充點進行管理。
+
+
+
+
+== 權威集群用戶帳戶
+
+權威叢集使用者帳戶可以對與NetApp Hybrid Cloud Control 實例的節點和叢集關聯的任何儲存資產進行身份驗證。透過此帳戶，您可以管理所有叢集中的磁碟區、帳戶、存取群組等。
+
+權威使用者帳號可透過NetApp Hybrid Cloud Control 右上角選單中的「使用者管理」選項進行管理。
+
+這link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["權威儲存叢集"]這是NetApp Hybrid Cloud Control 用於驗證使用者身分的儲存叢集。
+
+在權威儲存叢集上建立的所有使用者都可以登入NetApp混合雲控制。在其他儲存叢集上建立的使用者_無法_登入混合雲控制。
+
+* 如果您的管理節點只有一個儲存集群，那麼它就是權威集群。
+* 如果您的管理節點有兩個或多個儲存集群，則其中一個集群將被指定為權威集群，並且只有該集群中的使用者才能登入NetApp Hybrid Cloud Control。
+
+
+雖然NetApp Hybrid Cloud Control 的許多功能可以與多個儲存叢集配合使用，但身份驗證和授權有必要的限制。身份驗證和授權方面的限制是，即使用戶不是其他儲存叢集上的用戶，權威叢集中的用戶也可以對與NetApp Hybrid Cloud Control 關聯的其他叢集執行操作。在開始管理多個儲存叢集之前，您應該確保在權威叢集上定義的使用者在所有其他儲存叢集上都具有相同的權限。您可以透過NetApp Hybrid Cloud Control 管理使用者。
+
+
+
+== 大量帳戶
+
+卷特定帳戶僅適用於建立它們的儲存叢集。這些帳戶可讓您設定網路中特定磁碟區的權限，但對這些磁碟區以外的內容沒有影響。
+
+卷帳戶在NetApp混合雲控製卷表中進行管理。

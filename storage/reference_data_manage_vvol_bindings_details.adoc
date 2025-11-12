@@ -1,0 +1,46 @@
+---
+permalink: storage/reference_data_manage_vvol_bindings_details.html 
+sidebar: sidebar 
+keywords: bindings details, vvols, for each virtual volume, endpoints, 
+summary: VVols 標籤上的「綁定」頁面提供有關每個虛擬磁碟區的綁定資訊。 
+---
+= 裝訂細節
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VVols 標籤上的「綁定」頁面提供有關每個虛擬磁碟區的綁定資訊。
+
+顯示以下資訊：
+
+* *主機 ID*
++
+叢集已知的託管虛擬磁碟區的 ESXi 主機的 UUID。
+
+* *協定端點 ID*
++
+與SolidFire叢集中每個節點對應的協定端點 ID。
+
+* *頻段 ID 中的協定端點*
++
+協定端點的 SCSI NAA 設備 ID。
+
+* *協定端點類型*
++
+協定端點類型。
+
+* *VVol綁定ID*
++
+虛擬卷的綁定 UUID。
+
+* *VVol ID*
++
+虛擬磁碟區的通用唯一識別碼（UUID）。
+
+* *VVol 輔助 ID*
++
+虛擬磁碟區的輔助 ID，即 SCSI 二級 LUN ID。
+
+

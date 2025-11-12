@@ -1,0 +1,47 @@
+---
+permalink: setup/task_post_deploy_access_the_element_software_user_interface.html 
+sidebar: sidebar 
+keywords:  
+summary: '您可以使用主叢集節點的管理虛擬 IP (MVIP) 位址存取 Element UI。' 
+---
+= 存取 Element 軟體使用者介面
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用主叢集節點的管理虛擬 IP (MVIP) 位址存取 Element UI。
+
+您必須確保瀏覽器中的彈出視窗攔截器和 NoScript 設定已停用。
+
+您可以使用 IPv4 或 IPv6 位址存取 UI，具體取決於叢集建立期間的配置。
+
+.步驟
+. 選擇下列選項之一：
++
+** IPv6：輸入 `https://[IPv6_MVIP_address]`。例如：
++
+[listing]
+----
+https://[fd20:8b1e:b256:45a::1234]/
+----
+** IPv4：輸入 `https://[IPv4 MVIP address]`。例如：
++
+[listing]
+----
+https://10.123.456.789/
+----
+
+
+. 對於 DNS，請輸入主機名稱。
+. 點選忽略所有身份驗證憑證訊息。
+
+
+
+
+== 更多資訊
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

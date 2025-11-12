@@ -1,0 +1,26 @@
+---
+permalink: storage/task_replication_perform_remote_replication_between_element_clusters.html 
+sidebar: sidebar 
+keywords: remote replication, clusters, Element software, failover, failback 
+summary: 對於執行 Element 軟體的集群，即時複製可以快速建立磁碟區資料的遠端副本。您可以將一個儲存叢集與最多四個其他儲存叢集配對。對於故障轉移和故障復原場景，您可以從叢集對中的任一叢集同步或非同步複製磁碟區資料。 
+---
+= 在執行NetApp Element軟體的叢集之間執行遠端複製
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於執行 Element 軟體的集群，即時複製可以快速建立磁碟區資料的遠端副本。您可以將一個儲存叢集與最多四個其他儲存叢集配對。對於故障轉移和故障復原場景，您可以從叢集對中的任一叢集同步或非同步複製磁碟區資料。
+
+複製過程包括以下步驟：
+
+image::../media/replication_element_clusters_workflow.gif[複製工作區圖]
+
+* link:task_replication_plan_cluster_and_volume_pairing.html["規劃叢集和磁碟區配對以實現即時複製"]
+* link:task_replication_pair_clusters.html["複製的成對集群"]
+* link:task_replication_pair_volumes.html["對數"]
+* link:task_replication_validate_volume_replication.html["驗證卷複製"]
+* link:task_replication_delete_volume_relationship_after_replication.html["複製完成後刪除卷關係"]
+* link:task_replication_manage_volume_relationships.html["管理交易量關係"]
+

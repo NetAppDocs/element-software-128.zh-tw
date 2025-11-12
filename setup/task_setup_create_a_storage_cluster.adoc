@@ -1,0 +1,75 @@
+---
+permalink: setup/task_setup_create_a_storage_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 配置完所有節點後，即可建立儲存叢集。建立叢集時，系統會自動為您建立一個叢集管理員使用者帳戶。群集管理員有權管理所有群集屬性，並且可以建立其他群集管理員帳戶。 
+---
+= 建立儲存叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+配置完所有節點後，即可建立儲存叢集。建立叢集時，系統會自動為您建立一個叢集管理員使用者帳戶。群集管理員有權管理所有群集屬性，並且可以建立其他群集管理員帳戶。
+
+.你需要什麼
+* 您已安裝管理節點。
+* 您已配置所有節點。
+
+
+.關於此任務
+在新節點配置期間，會為每個節點指派 1G 或 10G 管理 IP (MIP) 位址。您必須使用配置過程中建立的節點 IP 位址之一來開啟「建立新叢集」頁面。您使用的 IP 位址取決於您為叢集管理選擇的網路。
+
+[IMPORTANT]
+====
+如果您想啟用叢集範圍功能，link:../concepts/concept_solidfire_concepts_security.html#encryption-at-rest-software["靜態軟體加密"]對於SolidFire全快閃儲存集群，必須在建立集群期間執行此操作。從 Element 12.5 開始，您必須在建立叢集期間在「建立叢集」使用者介面中啟用靜態軟體加密。對於 Element 12.3.x 及更早版本，您必須使用以下方式建立叢集：link:../api/reference_element_api_createcluster.html["建立集群"] API 方法並將 enableSoftwareEncryptionAtRest 參數變更為 `true`。在叢集上啟用靜態軟體加密後，無法停用。你可以link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["啟用和停用"]集群創建後對靜態資料進行基於硬體的加密。
+
+====
+[NOTE]
+====
+建立新集群時，請考慮以下事項：
+
+* 如果您使用的是位於共用機箱中的儲存節點，則可能需要考慮使用保護域功能來設計機箱級故障保護。
+* 如果共用機箱未使用，您可以定義自訂保護域佈局。
+
+
+====
+.步驟
+. 在瀏覽器視窗中，輸入 `\https://MIP:443`其中 MIP 為管理節點 IP 位址。
+. 在「建立新集群」中，輸入以下資訊：
++
+** 管理 VIP：1GbE 或 10GbE 網路上的可路由虛擬 IP，用於網路管理任務。
++
+
+NOTE: 您可以使用 IPv4 或 IPv6 位址建立新叢集。
+
+** iSCSI（儲存）VIP：10GbE 網路上的虛擬 IP，用於儲存和 iSCSI 發現。
++
+
+NOTE: 建立叢集後，您無法變更 MVIP、SVIP 或叢集名稱。
+
+** 使用者名稱：用於對叢集進行身份驗證存取的主集群管理員使用者名稱。您必須儲存使用者名稱以備將來參考。
++
+
+NOTE: 使用者名稱和密碼可以使用大寫字母、小寫字母、特殊字元和數字。
+
+** 密碼：用於對叢集進行身份驗證存取的密碼。您必須保存密碼以備將來使用。雙向資料保護預設啟用。您無法變更此設定。
+
+
+. 請閱讀最終用戶許可協議，然後選擇“我同意”。
+. *可選*：在節點清單中，確保不應包含在叢集中的節點的複選框未被選取。
+. 選擇“建立集群”。
++
+根據叢集中節點的數量，系統可能需要幾分鐘時間來建立叢集。在配置正確的網路上，一個由五個節點組成的小叢集應該在一分鐘內完成。叢集建立完成後，「建立新叢集」視窗將重定向到叢集的 MVIP URL 位址並顯示 Element UI。
+
+
+
+
+
+== 更多資訊
+
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

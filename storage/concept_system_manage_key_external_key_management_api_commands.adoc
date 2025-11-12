@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_system_manage_key_external_key_management_api_commands.html 
+sidebar: sidebar 
+keywords: ekm, api commands, key providers 
+summary: EKM管理和設定可用API清單。 
+---
+= 外部金鑰管理 API 指令
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EKM管理和設定可用API清單。
+
+用於在叢集和外部客戶擁有的伺服器之間建立信任關係：
+
+* 創建公鑰/私鑰對
+* 取得用戶端憑證簽署請求
+
+
+用於定義外部客戶自有伺服器的具體細節：
+
+* 建立金鑰伺服器Kmip
+* 修改金鑰伺服器Kmip
+* 刪除金鑰伺服器Kmip
+* GetKeyServerKmip
+* ListKeyServersKmip
+* 測試金鑰伺服器Kmip
+
+
+用於建立和維護管理外部密鑰伺服器的密鑰提供者：
+
+* 建立金鑰提供者Kmip
+* 刪除金鑰提供者Kmip
+* AddKeyServerToProviderKmip
+* 從提供者中移除金鑰伺服器Kmip
+* GetKeyProviderKmip
+* ListKeyProvidersKmip
+* 重新金鑰軟體靜態加密主金鑰
+* 測試密鑰提供者Kmip
+
+
+有關 API 方法的信息，請參閱 link:../api/concept_element_api_about_the_api.html["API 參考資訊"]。

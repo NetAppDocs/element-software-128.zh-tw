@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: Element 軟體使用此版本的 ModifySnapMirrorEndpoint 方法來修改非託管SnapMirror端點的儲存叢集名稱或 IP 位址屬性。無法使用 Element SnapMirror API 管理非託管端點。它們必須透過ONTAP管理軟體或 API 進行管理。 
+---
+= ModifySnapMirrorEndpoint（非託管）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element軟體使用此版本的 `ModifySnapMirrorEndpoint`修改非託管SnapMirror端點的儲存叢集名稱或 IP 位址屬性的方法。無法使用 Element SnapMirror API 管理非託管端點。它們必須透過ONTAP管理軟體或 API 進行管理。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+
+
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+SnapMirrorEndpointID
+ a| 
+要修改的SnapMirror端點。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+叢集名稱
+ a| 
+端點的新名稱。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+IP位址
+ a| 
+與此 Element 儲存叢集通訊的ONTAP儲存系統叢集的新 IP 位址清單。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+關於已修改的SnapMirror端點的資訊。
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== 自版本以來的新版本
+
+10.3

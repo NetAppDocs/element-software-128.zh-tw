@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_setdefaultqos.html 
+sidebar: sidebar 
+keywords: qos,value,configure,configuring,default,set,setting,setdefaultqos 
+summary: '您可以使用 SetDefaultQoS 方法為磁碟區配置預設服務品質 (QoS) 值（以每秒輸入和輸出數 (IOPS) 衡量）。' 
+---
+= 設定預設服務質量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetDefaultQoS`配置磁碟區的預設服務品質 (QoS) 值（以每秒輸入和輸出數 (IOPS) 衡量）的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+最小IOPS
+ a| 
+群集向磁碟區提供的最小持續 IOPS 數。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+最大IOPS
+ a| 
+集群向磁碟區提供的最大持續IOPS數。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+突發IOPS
+ a| 
+短時間突發場景下允許的最大 IOPS 數。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+最小IOPS
+ a| 
+群集向磁碟區提供的最小持續 IOPS 數。
+ a| 
+整數
+
+
+
+ a| 
+最大IOPS
+ a| 
+集群向磁碟區提供的最大持續IOPS數。
+ a| 
+整數
+
+
+
+ a| 
+突發IOPS
+ a| 
+短時間突發場景下允許的最大 IOPS 數。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "SetDefaultQoS",
+    "params": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    },
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id":1,
+    "result": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    ​}
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

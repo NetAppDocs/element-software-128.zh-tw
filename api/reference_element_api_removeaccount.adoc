@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_removeaccount.html 
+sidebar: sidebar 
+keywords: account,accounts,remove,removing,deleting,delete,purge,volume,volumes,removeaccount 
+summary: 您可以使用 RemoveAccount 方法刪除現有帳戶。在刪除帳戶之前，必須使用 DeleteVolume 刪除並清除與該帳戶關聯的所有磁碟區。如果帳戶上的磁碟區仍處於待刪除狀態，則無法使用 RemoveAccount 刪除帳戶。 
+---
+= 刪除帳戶
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RemoveAccount`刪除現有帳戶的方法。您必須使用以下命令刪除並清除與該帳戶關聯的所有捲 `DeleteVolume`在你刪除帳戶之前。如果帳戶上的磁碟區仍有待刪除，則您無法使用 `RemoveAccount`刪除帳戶。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+帳戶ID
+ a| 
+要刪除的帳戶 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例。
+
+[listing]
+----
+{
+   "method": "RemoveAccount",
+   "params": {
+     "accountID"  : 25
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+
+{
+ "id" : 1,
+ "result" : { }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_deletevolume.adoc[刪除卷]

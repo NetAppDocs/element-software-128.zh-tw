@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_snapmirror_overview.html 
+sidebar: sidebar 
+keywords: element, ui, overview, snapmirror, snapshots, replication, relationships, oontap 
+summary: 運行NetApp Element軟體的系統支援SnapMirror功能，可複製並恢復NetApp ONTAP系統的快照。 
+---
+= SnapMirror概述
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+運行NetApp Element軟體的系統支援SnapMirror功能，可複製並恢復NetApp ONTAP系統的快照。
+
+運行 Element 的系統可以直接與ONTAP系統 9.3 或更高版本上的SnapMirror通訊。 NetApp Element API 提供了在叢集、磁碟區和快照上啟用SnapMirror功能的方法。此外，Element UI 還包含管理 Element 軟體和ONTAP系統之間SnapMirror關係所需的所有功能。
+
+在特定用例中，您可以將ONTAP產生的磁碟區複製到 Element 卷，但功能有限。有關詳細信息，請參閱 link:element-replication-index.html["Element 軟體與ONTAP （ONTAP CLI）之間的資料複製"]。

@@ -1,0 +1,45 @@
+---
+permalink: concepts/concept_intro_product_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: SolidFire全快閃儲存系統由離散的硬體元件（磁碟機和節點）組成，這些元件組合成一個單一的儲存資源池。此統一叢集作為一個單一的儲存系統供外部客戶端使用，並由NetApp Element軟體進行管理。 
+---
+= 產品概述
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire全快閃儲存系統由獨立的硬體元件（磁碟機和節點）組成，這些元件組合成一個單一的儲存資源池。此統一叢集作為一個單一的儲存系統供外部客戶端使用，並由NetApp Element軟體進行管理。
+
+使用 Element 介面、API 或其他管理工具，您可以監控SolidFire叢集儲存容量和效能，並管理跨多租戶基礎架構的儲存活動。
+
+
+
+== SolidFire功能
+
+Solidfire系統具備以下特色：
+
+* 為您的大規模私有雲基礎設施提供高效能存儲
+* 提供靈活的規模，可滿足您不斷變化的儲存需求。
+* 使用基於 API 的儲存管理 Element 軟體接口
+* 透過服務品質政策保證績效
+* 包括跨叢集所有節點的自動負載平衡。
+* 當新增或刪除節點時，自動重新平衡集群
+
+
+
+
+== SolidFire部署
+
+使用NetApp提供的、與NetApp Element軟體整合的儲存節點。
+
+link:../concepts/concept_solidfire_concepts_solidfire_architecture_overview.html["SolidFire全快閃儲存架構概述"]
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

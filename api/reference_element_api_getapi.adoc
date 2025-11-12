@@ -1,0 +1,432 @@
+---
+permalink: api/reference_element_api_getapi.html 
+sidebar: sidebar 
+keywords: API,method,return,list,methods,GetAPI 
+summary: 您可以使用 GetAPI 方法取得系統中可以使用的所有 API 方法和受支援的 API 端點的清單。 
+---
+= 取得 API
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetAPI`取得系統中所有 API 方法和支援的 API 端點清單的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+<版本>
+ a| 
+此軟體版本支援的所有 API 方法列表，其中 <version> 是此系統目前運行的軟體版本。
+ a| 
+字串數組
+
+
+
+ a| 
+目前版本
+ a| 
+目前儲存叢集軟體版本。
+ a| 
+細繩
+
+
+
+ a| 
+支援的版本
+ a| 
+系統支援的所有 API 端點列表。
+ a| 
+字串數組
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetAPI",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+"id": 1,
+    "result": {
+        "12.0": [
+            "AbortSnapMirrorRelationship",
+            "AddAccount",
+            "AddClusterAdmin",
+            "AddDrives",
+            "AddIdpClusterAdmin",
+            "AddInitiatorsToVolumeAccessGroup",
+            "AddKeyServerToProviderKmip",
+            "AddLdapClusterAdmin",
+            "AddNodes",
+            "AddVirtualNetwork",
+            "AddVolumesToVolumeAccessGroup",
+            "BreakSnapMirrorRelationship",
+            "BreakSnapMirrorVolume",
+            "CancelClone",
+            "CancelGroupClone",
+            "CheckPingOnVlan",
+            "CheckProposedCluster",
+            "CheckProposedNodeAdditions",
+            "ClearClusterFaults",
+            "CloneMultipleVolumes",
+            "CloneVolume",
+            "CompleteClusterPairing",
+            "CompleteVolumePairing",
+            "CopyVolume",
+            "CreateBackupTarget",
+            "CreateClusterInterfacePreference",
+            "CreateClusterSupportBundle",
+            "CreateGroupSnapshot",
+            "CreateIdpConfiguration",
+            "CreateInitiators",
+            "CreateKeyProviderKmip",
+            "CreateKeyServerKmip",
+            "CreatePublicPrivateKeyPair",
+            "CreateQoSPolicy",
+            "CreateSchedule",
+            "CreateSnapMirrorEndpoint",
+            "CreateSnapMirrorEndpointUnmanaged",
+            "CreateSnapMirrorRelationship",
+            "CreateSnapMirrorVolume",
+            "CreateSnapshot",
+            "CreateStorageContainer",
+            "CreateSupportBundle",
+            "CreateVolume",
+            "CreateVolumeAccessGroup",
+            "DeleteAllSupportBundles",
+            "DeleteAuthSession",
+            "DeleteAuthSessionsByClusterAdmin",
+            "DeleteAuthSessionsByUsername",
+            "DeleteClusterInterfacePreference",
+            "DeleteGroupSnapshot",
+            "DeleteIdpConfiguration",
+            "DeleteInitiators",
+            "DeleteKeyProviderKmip",
+            "DeleteKeyServerKmip",
+            "DeleteQoSPolicy",
+            "DeleteSnapMirrorEndpoints",
+            "DeleteSnapMirrorRelationships",
+            "DeleteSnapshot",
+            "DeleteStorageContainers",
+            "DeleteVolume",
+            "DeleteVolumeAccessGroup",
+            "DeleteVolumes",
+            "DisableAutoip",
+            "DisableBmcColdReset",
+            "DisableClusterSsh",
+            "DisableEncryptionAtRest",
+            "DisableIdpAuthentication",
+            "DisableLdapAuthentication",
+            "DisableSnmp",
+            "EnableAutoip",
+            "EnableBmcColdReset",
+            "EnableClusterSsh",
+            "EnableEncryptionAtRest",
+            "EnableFeature",
+            "EnableIdpAuthentication",
+            "EnableLdapAuthentication",
+            "EnableSnmp",
+            "GetAccountByID",
+            "GetAccountByName",
+            "GetAccountEfficiency",
+            "GetActiveTlsCiphers",
+            "GetAsyncResult",
+            "GetBackupTarget",
+            "GetBinAssignmentProperties",
+            "GetClientCertificateSignRequest",
+            "GetClusterCapacity",
+            "GetClusterConfig",
+            "GetClusterFullThreshold",
+            "GetClusterHardwareInfo",
+            "GetClusterInfo",
+            "GetClusterInterfacePreference",
+            "GetClusterMasterNodeID",
+            "GetClusterSshInfo",
+            "GetClusterState",
+            "GetClusterStats",
+            "GetClusterStructure",
+            "GetClusterVersionInfo",
+            "GetCompleteStats",
+            "GetConfig",
+            "GetCurrentClusterAdmin",
+            "GetDefaultQoS",
+            "GetDriveHardwareInfo",
+            "GetDriveStats",
+            "GetFeatureStatus",
+            "GetFipsReport",
+            "GetHardwareConfig",
+            "GetHardwareInfo",
+            "GetIdpAuthenticationState",
+            "GetIpmiConfig",
+            "GetIpmiInfo",
+            "GetKeyProviderKmip",
+            "GetKeyServerKmip",
+            "GetLdapConfiguration",
+            "GetLimits",
+            "GetLldpInfo",
+            "GetLoginBanner",
+            "GetLoginSessionInfo",
+            "GetNetworkConfig",
+            "GetNetworkInterface",
+            "GetNodeFipsDrivesReport",
+            "GetNodeHardwareInfo",
+            "GetNodeStats",
+            "GetNtpInfo",
+            "GetNvramInfo",
+            "GetOntapVersionInfo",
+            "GetOrigin",
+            "GetPendingOperation",
+            "GetProtectionDomainLayout",
+            "GetQoSPolicy",
+            "GetRawStats",
+            "GetRemoteLoggingHosts",
+            "GetSSLCertificate",
+            "GetSchedule",
+            "GetSnapMirrorClusterIdentity",
+            "GetSnmpACL",
+            "GetSnmpInfo",
+            "GetSnmpState",
+            "GetSnmpTrapInfo",
+            "GetStorageContainerEfficiency",
+            "GetSupportedTlsCiphers",
+            "GetSystemStatus",
+            "GetVirtualVolumeCount",
+            "GetVolumeAccessGroupEfficiency",
+            "GetVolumeAccessGroupLunAssignments",
+            "GetVolumeCount",
+            "GetVolumeEfficiency",
+            "GetVolumeStats",
+            "InitializeSnapMirrorRelationship",
+            "ListAccounts",
+            "ListActiveAuthSessions",
+            "ListActiveNodes",
+            "ListActivePairedVolumes",
+            "ListActiveVolumes",
+            "ListAllNodes",
+            "ListAsyncResults",
+            "ListAuthSessionsByClusterAdmin",
+            "ListAuthSessionsByUsername",
+            "ListBackupTargets",
+            "ListBulkVolumeJobs",
+            "ListClusterAdmins",
+            "ListClusterFaults",
+            "ListClusterInterfacePreferences",
+            "ListClusterPairs",
+            "ListDeletedVolumes",
+            "ListDriveHardware",
+            "ListDriveStats",
+            "ListDrives",
+            "ListEvents",
+            "ListFibreChannelPortInfo",
+            "ListFibreChannelSessions",
+            "ListGroupSnapshots",
+            "ListISCSISessions",
+            "ListIdpConfigurations",
+            "ListInitiators",
+            "ListKeyProvidersKmip",
+            "ListKeyServersKmip",
+            "ListNetworkInterfaces",
+            "ListNodeFibreChannelPortInfo",
+            "ListNodeStats",
+            "ListPendingActiveNodes",
+            "ListPendingNodes",
+            "ListProtectionDomainLevels",
+            "ListProtocolEndpoints",
+            "ListQoSPolicies",
+            "ListSchedules",
+            "ListServices",
+            "ListSnapMirrorAggregates",
+            "ListSnapMirrorEndpoints",
+            "ListSnapMirrorLuns",
+            "ListSnapMirrorNetworkInterfaces",
+            "ListSnapMirrorNodes",
+            "ListSnapMirrorPolicies",
+            "ListSnapMirrorRelationships",
+            "ListSnapMirrorSchedules",
+            "ListSnapMirrorVolumes",
+            "ListSnapMirrorVservers",
+            "ListSnapshots",
+            "ListStorageContainers",
+            "ListSyncJobs",
+            "ListTests",
+            "ListUtilities",
+            "ListVirtualNetworks",
+            "ListVirtualVolumeBindings",
+            "ListVirtualVolumeHosts",
+            "ListVirtualVolumeTasks",
+            "ListVirtualVolumes",
+            "ListVolumeAccessGroups",
+            "ListVolumeStats",
+            "ListVolumeStatsByAccount",
+            "ListVolumeStatsByVirtualVolume",
+            "ListVolumeStatsByVolume",
+            "ListVolumeStatsByVolumeAccessGroup",
+            "ListVolumes",
+            "ListVolumesForAccount",
+            "ModifyAccount",
+            "ModifyBackupTarget",
+            "ModifyClusterAdmin",
+            "ModifyClusterFullThreshold",
+            "ModifyClusterInterfacePreference",
+            "ModifyGroupSnapshot",
+            "ModifyInitiators",
+            "ModifyKeyServerKmip",
+            "ModifyQoSPolicy",
+            "ModifySchedule",
+            "ModifySnapMirrorEndpoint",
+            "ModifySnapMirrorEndpointUnmanaged",
+            "ModifySnapMirrorRelationship",
+            "ModifySnapshot",
+            "ModifyStorageContainer",
+            "ModifyVirtualNetwork",
+            "ModifyVolume",
+            "ModifyVolumeAccessGroup",
+            "ModifyVolumeAccessGroupLunAssignments",
+            "ModifyVolumePair",
+            "ModifyVolumes",
+            "PurgeDeletedVolume",
+            "PurgeDeletedVolumes",
+            "QuiesceSnapMirrorRelationship",
+            "RemoveAccount",
+            "RemoveBackupTarget",
+            "RemoveClusterAdmin",
+            "RemoveClusterPair",
+            "RemoveDrives",
+            "RemoveInitiatorsFromVolumeAccessGroup",
+            "RemoveKeyServerFromProviderKmip",
+            "RemoveNodes",
+            "RemoveSSLCertificate",
+            "RemoveVirtualNetwork",
+            "RemoveVolumePair",
+            "RemoveVolumesFromVolumeAccessGroup",
+            "ResetDrives",
+            "ResetNetworkConfig",
+            "ResetNode",
+            "ResetSupplementalTlsCiphers",
+            "RestartNetworking",
+            "RestartServices",
+            "RestoreDeletedVolume",
+            "ResumeSnapMirrorRelationship",
+            "ResyncSnapMirrorRelationship",
+            "RollbackToGroupSnapshot",
+            "RollbackToSnapshot",
+            "SecureEraseDrives",
+            "SetClusterConfig",
+            "SetClusterStructure",
+            "SetConfig",
+            "SetDefaultQoS",
+            "SetLoginBanner",
+            "SetLoginSessionInfo",
+            "SetNetworkConfig",
+            "SetNtpInfo",
+            "SetProtectionDomainLayout",
+            "SetRemoteLoggingHosts",
+            "SetSSLCertificate",
+            "SetSnmpACL",
+            "SetSnmpInfo",
+            "SetSnmpTrapInfo",
+            "SetSupplementalTlsCiphers",
+            "Shutdown",
+            "SnmpSendTestTraps",
+            "StartBulkVolumeRead",
+            "StartBulkVolumeWrite",
+            "StartClusterPairing",
+            "StartVolumePairing",
+            "TestAddressAvailability",
+            "TestConnectEnsemble",
+            "TestConnectMvip",
+            "TestConnectSvip",
+            "TestDrives",
+            "TestHardwareConfig",
+            "TestKeyProviderKmip",
+            "TestKeyServerKmip",
+            "TestLdapAuthentication",
+            "TestLocalConnectivity",
+            "TestLocateCluster",
+            "TestNetworkConfig",
+            "TestPing",
+            "TestRemoteConnectivity",
+            "UpdateBulkVolumeStatus",
+            "UpdateIdpConfiguration",
+            "UpdateSnapMirrorRelationship"
+        ],
+        "currentVersion": "12.0",
+        "supportedVersions": [
+            "1.0",
+            "2.0",
+            "3.0",
+            "4.0",
+            "5.0",
+            "5.1",
+            "6.0",
+            "7.0",
+            "7.1",
+            "7.2",
+            "7.3",
+            "7.4",
+            "8.0",
+            "8.1",
+            "8.2",
+            "8.3",
+            "8.4",
+            "8.5",
+            "8.6",
+            "8.7",
+            "9.0",
+            "9.1",
+            "9.2",
+            "9.3",
+            "9.4",
+            "9.5",
+            "9.6",
+            "10.0",
+            "10.1",
+            "10.2",
+            "10.3",
+            "10.4",
+            "10.5",
+            "10.6",
+            "10.7",
+            "11.0",
+            "11.1",
+            "11.3",
+            "11.5",
+            "11.7",
+            "11.8",
+            "12.0"
+        ]
+    }
+}
+----

@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_manage_vol_access_group_remove_volumes.html 
+sidebar: sidebar 
+keywords: access group, remove volumes from, initiators, chap 
+summary: 從存取群組中移除磁碟區後，該群組將不再擁有對該磁碟區的存取權限。 
+---
+= 從訪問群組移除卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從存取群組中移除磁碟區後，該群組將不再擁有對該磁碟區的存取權限。
+
+修改帳戶中的 CHAP 設定或從存取群組中刪除發起程式或磁碟區可能會導致發起程式意外失去對磁碟區的存取權。為驗證磁碟區存取不會意外遺失，請務必登出受帳戶或存取群組變更影響的 iSCSI 會話，並在完成對啟動器設定和叢集設定的任何變更後，驗證啟動器是否可以重新連線至磁碟區。
+
+. 點選“管理”>“訪問群組”。
+. 按一下要從中刪除磁碟區的存取群組的「操作」圖示。
+. 按一下“*編輯*”。
+. 在「編輯磁碟區存取群組」對話方塊的「新增磁碟區」下，按一下「已附加磁碟區」清單上的箭頭。
+. 從清單中選擇要刪除的捲，然後按一下 *x* 圖示將其從清單中刪除。
++
+重複此步驟可以移除更多磁碟區。
+
+. 點選「儲存變更」。
+

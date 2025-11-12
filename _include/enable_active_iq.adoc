@@ -1,0 +1,92 @@
+= 
+:allow-uri-read: 
+
+
+.開始之前
+* Active IQ中的某些功能（例如服務品質 (QoS)）需要 Element 11.3 或更高版本才能正常運作。為確認您具備使用所有Active IQ功能的能力， NetApp建議您執行以下操作：
++
+** 您的儲存叢集正在執行NetApp Element軟體 11.3 或更高版本。
+** 您已部署執行版本 11.3 或更高版本的管理節點。
+
+
+* 你有網路連線。無法從沒有外部連線的暗網使用Active IQ擷取服務。
+
+
+.步驟
+. 取得安裝的基礎資產 ID：
++
+.. 在管理節點上開啟庫存服務 REST API 使用者介面：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 選擇“授權”，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉視窗。
+
+
+.. 從 REST API UI 中選擇 *GET /installations*。
+.. 選擇*試用*。
+.. 選擇*執行*。
+.. 從 200 錯誤代碼回應正文複製以下內容 `id`用於安裝。
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: 您的安裝具有在安裝或升級過程中建立的基本資產配置。
+
+
+
+. 啟用遙測功能：
++
+.. 在管理節點上，透過輸入管理節點 IP 位址，然後輸入以下內容，即可存取 mnode 服務 API UI： `/mnode` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. 選擇“授權”或任意鎖形圖標，然後完成以下步驟：
++
+... 請輸入叢集使用者名稱和密碼。
+... 請輸入客戶端 ID `mnode-client` 。
+... 選擇“授權”以開始會話。
+... 關閉視窗。
+
+
+.. 配置基礎資產：
++
+... 選擇 *PUT /assets/{asset_id}*。
+... 選擇*試用*。
+... 在 JSON 有效負載中輸入以下內容：
++
+[listing]
+----
+{
+"telemetry_active": true
+"config": {}
+}
+----
+... 在 *asset_ID* 中輸入上一個步驟中的基本 ID。
+... 選擇*執行*。
++
+當資產發生變更時， Active IQ服務會自動重新啟動。修改資源後，設定生效前會有短暫的延遲。
+
+
+
+
+
+

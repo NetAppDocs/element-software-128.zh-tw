@@ -1,0 +1,52 @@
+---
+permalink: storage/reference_data_manage_vvol_protocol_endpoints_details.html 
+sidebar: sidebar 
+keywords: protocol endpoints, details, vvols, state, type, id 
+summary: VVols 標籤上的「協定端點」頁面提供協定端點資訊。 
+---
+= 協議端點詳情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VVols 標籤上的「協定端點」頁面提供協定端點資訊。
+
+* *主提供者 ID*
++
+主協定端點提供者的 ID。
+
+* *輔助提供者 ID*
++
+輔助協定端點提供者的 ID。
+
+* *協定端點 ID*
++
+協定端點的 UUID。
+
+* *協定端點狀態*
++
+協定端點的狀態。可能的值如下：
+
++
+** 已啟動：協定端點正在使用中。
+** 開始：協定端點正在啟動。
+** 故障轉移：協定端點已發生故障轉移。
+** 保留：協定端點已保留。
+
+
+* *提供者類型*
++
+協定端點提供者的類型。可能的值如下：
+
++
+** 基本的
+** 次要
+
+
+* *SCSI NAA 設備 ID*
++
+NAA IEEE 註冊擴充格式中協定端點的全球唯一 SCSI 裝置識別碼。
+
+

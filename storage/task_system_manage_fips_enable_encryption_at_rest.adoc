@@ -1,0 +1,27 @@
+---
+permalink: storage/task_system_manage_fips_enable_encryption_at_rest.html 
+sidebar: sidebar 
+keywords: fips, security, encryption at rest, enable, disable, drives 
+summary: 您可以啟用和停用叢集範圍內的靜態資料加密。此功能預設未啟用。若要支援 FIPS 驅動器，必須啟用靜態加密。 
+---
+= 啟用靜態資料加密
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以啟用和停用叢集範圍內的靜態資料加密。此功能預設未啟用。若要支援 FIPS 驅動器，必須啟用靜態加密。
+
+. 在NetApp Element軟體使用者介面中，按一下「叢集」>「設定」。
+. 點選「啟用靜態資料加密」。
+
+
+
+
+== 查找更多信息
+
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[啟用和停用叢集加密]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

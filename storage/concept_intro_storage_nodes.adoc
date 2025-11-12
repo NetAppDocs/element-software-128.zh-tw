@@ -1,0 +1,23 @@
+---
+permalink: storage/concept_intro_storage_nodes.html 
+sidebar: sidebar 
+keywords: storage nodes, management nodes, block space, metadata space, data management, storage management, Bond10G, network interface, network, metadata, data storage, storage, drives, network interfaces 
+summary: SolidFire儲存節點是一個伺服器，其中包含一組驅動器，這些驅動器透過 Bond10G 網路介面相互通訊。節點中的磁碟機包含用於資料儲存和資料管理的區塊空間和元資料空間。 
+---
+= 儲存節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire儲存節點是一個伺服器，其中包含一組驅動器，這些驅動器透過 Bond10G 網路介面相互通訊。節點中的磁碟機包含用於資料儲存和資料管理的區塊空間和元資料空間。
+
+儲存節點具有以下特點：
+
+* 每個節點都有一個唯一的名稱。如果管理員未指定節點名稱，則預設為 SF-XXXX，其中 XXXX 是系統產生的四個隨機字元。
+* 每個節點都有自己的高效能非揮發性隨機存取記憶體（NVRAM）寫入緩存，以提高整體系統效能並降低寫入延遲。
+* 每個節點都連接到兩個網絡，儲存網路和管理網絡，每個網路都有兩個獨立的鏈路，以實現冗餘和提高效能。每個節點在每個網路上都需要一個IP位址。
+* 您可以建立一個包含新儲存節點的集群，或向現有集群新增儲存節點，以提高儲存容量和效能。
+* 您可以隨時向叢集中新增或刪除節點，而不會中斷服務。
+

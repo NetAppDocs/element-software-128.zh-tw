@@ -1,0 +1,101 @@
+---
+permalink: api/reference_element_api_testdrives.html 
+sidebar: sidebar 
+keywords: drive,drives,test,testing,validating,hardware,testdrives 
+summary: 您可以使用 TestDrives 方法對節點上的所有磁碟機執行硬體驗證。此方法可偵測驅動器上的硬體故障，並在驗證測試結果中報告任何故障。 
+---
+= 試駕
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestDrives`對節點上所有磁碟機運行硬體驗證的方法。此方法可偵測驅動器上的硬體故障，並在驗證測試結果中報告任何故障。
+
+
+
+== 參數
+
+你只能使用 `TestDrives`對叢集中非「活動」節點執行此方法。
+
+
+NOTE: 這項測試大約需要10分鐘。
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+力量
+ a| 
+設定為 true 以測試節點上的磁碟機。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+分分鐘
+ a| 
+指定測試運行的分鐘數。
+ a| 
+整數
+ a| 
+10
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+細節
+ a| 
+有關測試操作成功或失敗的資訊。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "TestDrives",
+   "params": {
+              "force": true,
+              "minutes" : 10
+             },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回一個表格，其中包含節點中每個磁碟機的測試結果。
+
+
+
+== 自版本以來的新版本
+
+9.6

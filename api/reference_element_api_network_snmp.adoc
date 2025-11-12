@@ -1,0 +1,72 @@
+---
+permalink: api/reference_element_api_network_snmp.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: SNMP 網路物件包含有關叢集節點的 SNMP v3 配置的資訊。 
+---
+= 網路（SNMP）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SNMP 網路物件包含有關叢集節點的 SNMP v3 配置的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+使用權
+ a| 
+允許對 SNMP 資訊請求進行存取的類型。可能的值：
+
+* ro：只讀存取權限。
+* rw：讀寫存取權限。
+* rosys：對受限系統資訊的唯讀存取權限。
+
+ a| 
+細繩
+
+
+
+ a| 
+cidr
+ a| 
+CIDR網路遮罩。此網路遮罩必須是大於或等於 0 且小於或等於 32 的整數。它也不能等於 31。
+ a| 
+整數
+
+
+
+ a| 
+社群
+ a| 
+SNMP 團體字串。
+ a| 
+細繩
+
+
+
+ a| 
+網路
+ a| 
+該成員與 cidr 成員一起控制存取字串和團體字串應用於哪個網路。特殊值「default」用於指定適用於所有網路的條目。當此成員為主機名稱或「default」時，將忽略 CIDR 遮罩。
+ a| 
+細繩
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_getsnmpinfo.adoc[獲取 SNMP 信息]

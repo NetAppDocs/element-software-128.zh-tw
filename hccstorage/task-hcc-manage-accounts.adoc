@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-accounts.html 
+summary: 了解如何建立使用者帳戶並將其與磁碟區關聯。 
+keywords: netapp, element, cluster, element, account, user, volume, hybrid cloud control, hcc 
+---
+= 使用NetApp Hybrid Cloud Control 建立和管理使用者帳戶
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在基於元素的儲存系統中，可以建立權威叢集用戶，以便根據您要授予「管理員」或「唯讀」使用者的權限，啟用對NetApp Hybrid Cloud Control 的登入存取權限。除了叢集使用者之外，還有磁碟區帳戶，它允許客戶端連接到儲存節點上的磁碟區。 
+
+管理以下類型的帳戶：
+
+* <<管理權威集群帳戶>>
+* <<管理批量帳戶>>
+
+
+
+
+== 啟用 LDAP
+
+若要將 LDAP 用於任何使用者帳戶，必須先啟用 LDAP。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，選擇右上角的「選項」圖標，然後選擇「使用者管理」。
+. 在「使用者」頁面中，選擇「設定 LDAP」。
+. 配置 LDAP 資料庫。
+. 選擇身份驗證類型，即「搜尋和綁定」或「直接綁定」。
+. 在儲存變更之前，請在頁面頂部選擇“測試 LDAP 登入”，輸入您知道存在的使用者的使用者名稱和密碼，然後選擇“測試”。
+. 選擇*儲存*。
+
+
+
+
+== 管理權威集群帳戶
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#authoritative-cluster-user-accounts["權威用戶帳戶"]可透過NetApp Hybrid Cloud Control 的右上角選單「使用者管理」選項進行管理。這些類型的帳戶可讓您對與NetApp Hybrid Cloud Control 實例的節點和叢集關聯的任何儲存資產進行驗證。透過此帳戶，您可以管理所有叢集中的磁碟區、帳戶、存取群組等。
+
+
+
+=== 建立權威集群帳戶
+
+您可以使用NetApp Hybrid Cloud Control 建立帳戶。
+
+此帳戶可用於登入NetApp Element軟體中的混合雲控制、叢集的每個節點 UI 和儲存叢集。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，選擇右上角的「選項」圖標，然後選擇「使用者管理」。
+. 選擇“建立使用者”。
+. 選擇認證類型，可以是叢集認證或 LDAP 認證。
+. 完成以下其中一項：
++
+** 如果您選擇的是 LDAP，請輸入 DN。
++
+
+TIP: 若要使用 LDAP，必須先啟用 LDAP 或 LDAPS。看<<啟用 LDAP>>。
+
+** 如果您選擇「群集」作為驗證類型，請輸入新帳戶的名稱和密碼。
+
+
+. 選擇管理員權限或唯讀權限。
++
+
+TIP: 若要查看NetApp Element軟體的權限，請選擇「顯示舊版權限」。如果選擇這些權限的子集，則該帳戶將被指派唯讀權限。如果選擇所有舊版權限，則該帳戶將被指派管理員權限。
+
++
+
+TIP: 若要確保群組的所有子群組繼承權限，請在 LDAP 伺服器中建立 DN 組織管理員群組。該群組的所有子帳戶都將繼承這些權限。
+
+. 勾選表示「我已閱讀並接受NetApp最終用戶許可協議」的複選框。
+. 選擇“建立使用者”。
+
+
+
+
+=== 編輯權威集群帳戶
+
+您可以使用NetApp Hybrid Cloud Control 變更使用者帳戶的權限或密碼。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，選擇右上角的圖標，然後選擇「使用者管理」。
+. 您可以選擇 *Cluster*、*LDAP* 或 *Idp* 來篩選使用者帳戶清單。
++
+如果您在儲存叢集上設定了 LDAP 用戶，則這些帳戶的使用者類型將顯示為「LDAP」。如果您在儲存叢集上為使用者配置了 Idp，則這些帳戶的使用者類型將顯示為「Idp」。
+
+. 在表格的「操作」列中，展開帳戶功能表並選擇「編輯」。
+. 根據需要進行修改。
+. 選擇*儲存*。
+. 退出NetApp混合雲控制。
++
+
+NOTE: NetApp Hybrid Cloud Control UI 可能需要最多 2 分鐘才能刷新庫存。若要手動刷新庫存，請造訪 REST API UI 庫存服務。 `https://[management node IP]/inventory/1/`然後跑 `GET /installations​/{id}`針對集群。
+
+. 登入NetApp混合雲控制中心。
+
+
+
+
+=== 刪除權威用戶帳戶
+
+不再需要時，您可以刪除一個或多個帳戶。您可以刪除 LDAP 使用者帳戶。
+
+您無法刪除權威群集的主管理員使用者帳戶。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制台中，選擇右上角的圖標，然後選擇「使用者管理」。
+. 在「使用者」表的「操作」列中，展開帳戶選單並選擇「刪除」。
+. 選擇“是”確認刪除。
+
+
+
+
+== 管理批量帳戶
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#volume-accounts["大量帳戶"]在NetApp混合雲控製卷表中進行管理。這些帳戶僅限於建立它們的儲存叢集。這些類型的帳戶可讓您設定網路中磁碟區的權限，但對這些磁碟區以外的內容沒有影響。
+
+卷帳戶包含存取指派給它的磁碟區所需的 CHAP 驗證。
+
+
+
+=== 建立批量帳戶
+
+為本卷建立一個專屬帳戶。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 從控制台中選擇“儲存”>“磁碟區”。
+. 選擇“帳戶”標籤。
+. 選擇“建立帳戶”按鈕。
+. 請輸入新帳戶的名稱。
+. 在 CHAP 設定部分，輸入以下資訊：
++
+** CHAP節點會話認證的發起方金鑰
+** CHAP節點會話認證的目標金鑰
++
+
+NOTE: 若要自動產生密碼，請將憑證欄位留空。
+
+
+
+. 選擇“建立帳戶”。
+
+
+
+
+=== 編輯批量帳戶
+
+您可以變更 CHAP 訊息，並變更帳戶是處於啟動狀態還是鎖定狀態。
+
+
+IMPORTANT: 刪除或鎖定與管理節點關聯的帳戶會導致管理節點無法存取。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 從控制台中選擇“儲存”>“磁碟區”。
+. 選擇“帳戶”標籤。
+. 在表格的「操作」列中，展開帳戶功能表並選擇「編輯」。
+. 根據需要進行修改。
+. 選擇“是”以確認更改。
+
+
+
+
+=== 刪除卷帳戶
+
+刪除不再需要的帳戶。
+
+在刪除卷宗帳戶之前，請先刪除並清除與該帳戶關聯的所有磁碟區。
+
+
+IMPORTANT: 刪除或鎖定與管理節點關聯的帳戶會導致管理節點無法存取。
+
+
+NOTE: 與管理服務關聯的持久性磁碟區在安裝或升級期間指派給新帳戶。如果您使用的是持久卷，請勿修改或刪除卷或其關聯的帳戶。如果您刪除這些帳戶，可能會導致您的管理節點無法使用。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 從控制台中選擇“儲存”>“磁碟區”。
+. 選擇“帳戶”標籤。
+. 在表格的「操作」列中，展開帳戶選單，然後選擇「刪除」。
+. 選擇“是”確認刪除。
+
+
+[discrete]
+== 查找更多信息
+
+* link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html["了解帳戶"]
+* link:../storage/task_data_manage_accounts_work_with_accounts_task.html["使用 CHAP 處理帳戶"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

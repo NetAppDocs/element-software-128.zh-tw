@@ -1,0 +1,26 @@
+---
+permalink: storage/concept_system_manage_accounts_overview.html 
+sidebar: sidebar 
+keywords: element, chap, cluster, accounts, administrator 
+summary: 在SolidFire儲存系統中，租用戶可以使用帳戶使用戶端能夠連接到叢集上的磁碟區。您也可以管理SolidFire儲存系統的叢集管理員帳戶。 
+---
+= 管理帳戶
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在SolidFire儲存系統中，租用戶可以使用帳戶使用戶端能夠連接到叢集上的磁碟區。建立磁碟區時，會將其指派給特定帳戶。您也可以管理SolidFire儲存系統的叢集管理員帳戶。
+
+* link:task_data_manage_accounts_work_with_accounts_task.html["使用 CHAP 處理帳戶"]
+* link:concept_system_manage_manage_cluster_administrator_users.html["管理叢集管理員使用者帳戶"]
+
+
+
+
+== 更多資訊
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

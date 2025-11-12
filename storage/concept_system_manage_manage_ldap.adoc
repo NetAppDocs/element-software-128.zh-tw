@@ -1,0 +1,352 @@
+---
+permalink: storage/concept_system_manage_manage_ldap.html 
+sidebar: sidebar 
+keywords: element, solidfire, ldap, enable, disable, test, config, addresses, pre-configuration steps, authentication, element api, view ldap details 
+summary: '您可以設定輕量級目錄存取協定 (LDAP)，以啟用對SolidFire儲存的安全性、基於目錄的登入功能。您可以在叢集層級設定 LDAP，並授權 LDAP 使用者和群組。' 
+---
+= 管理 LDAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以設定輕量級目錄存取協定 (LDAP)，以啟用對SolidFire儲存的安全性、基於目錄的登入功能。您可以在叢集層級設定 LDAP，並授權 LDAP 使用者和群組。
+
+管理 LDAP 包括使用現有的 Microsoft Active Directory 環境為SolidFire叢集設定 LDAP 驗證，並測試設定。
+
+
+NOTE: 你可以同時使用 IPv4 位址和 IPv6 位址。
+
+啟用 LDAP 涉及以下幾個主要步驟，詳細描述如下：
+
+. *完成 LDAP 支援的預先設定步驟*。請確認您已具備配置 LDAP 身份驗證所需的所有詳細資訊。
+. *啟用LDAP身份驗證*。可以使用 Element UI 或 Element API。
+. *驗證 LDAP 設定*。  （可選）透過執行 GetLdapConfiguration API 方法或使用 Element UI 檢查 LCAP 配置來檢查叢集是否配置了正確的值。
+. *測試 LDAP 驗證*（使用 `readonly`用戶）。可以透過執行 TestLdapAuthentication API 方法或使用 Element UI 來測試 LDAP 設定是否正確。對於本次初始測試，請使用使用者名稱「`sAMAccountName`」。 `readonly`用戶。這將驗證您的叢集是否已正確配置 LDAP 身份驗證，並驗證… `readonly`憑證和存取權限均正確。如果此步驟失敗，請重複步驟 1 至 3。
+. *測試 LDAP 驗證*（使用要新增的使用者帳戶）。使用要新增為 Element 叢集管理員的使用者帳戶重複步驟 4。複製 `distinguished`名稱（DN）或用戶（或群組）。此 DN 將在步驟 6 中使用。
+. *新增 LDAP 叢集管理員*（從「測試 LDAP 驗證」步驟複製並貼上 DN）。使用 Element UI 或 AddLdapClusterAdmin API 方法，建立一個具有適當存取等級的新叢集管理員使用者。使用者名稱部分，請貼上您在步驟 5 中複製的完整 DN。這樣可以確保 DN 格式正確。
+. *測試集群管理員存取權限*。使用新建立的 LDAP 叢集管理員使用者登入叢集。如果您新增了 LDAP 群組，則可以以該群組中的任何使用者身分登入。
+
+
+
+
+== 完成 LDAP 支援所需的所有預先設定步驟
+
+在 Element 中啟用 LDAP 支援之前，您應該設定 Windows Active Directory 伺服器並執行其他預先設定任務。
+
+.步驟
+. 設定 Windows Active Directory 伺服器。
+. *可選：*啟用 LDAPS 支援。
+. 建立使用者和使用者群組。
+. 建立一個唯讀服務帳戶（例如「`sfreadonly`」），用於搜尋 LDAP 目錄。
+
+
+
+
+== 使用 Element 使用者介面啟用 LDAP 身份驗證
+
+您可以設定儲存系統與現有 LDAP 伺服器的整合。這使得 LDAP 管理員能夠集中管理使用者對儲存系統的存取權限。
+
+您可以使用 Element 使用者介面或 Element API 來設定 LDAP。本流程介紹如何使用 Element UI 設定 LDAP。
+
+本範例展示如何在SolidFire上設定 LDAP 驗證，它使用 `SearchAndBind`作為身份驗證類型。此範例使用單一 Windows Server 2012 R2 Active Directory 伺服器。
+
+.步驟
+. 點選“集群”>“LDAP”。
+. 點選「是」啟用 LDAP 身份驗證。
+. 點選“新增伺服器”。
+. 請輸入*主機名稱/IP位址*。
++
+
+NOTE: 也可以選擇輸入自訂連接埠號碼。
+
++
+例如，若要新增自訂連接埠號，請輸入<主機名稱或 IP 位址>:<連接埠號碼>
+
+. *可選：*選擇「使用 LDAPS 協定」。
+. 請在「常規設定」中輸入所需資訊。
++
+image::../media/element_new_ldap_servers.jpg[常規設定資訊的螢幕截圖]
+
+. 點選“啟用 LDAP”。
+. 如果要測試使用者的伺服器存取權限，請點選「測試使用者驗證」。
+. 複製顯示的專有名稱和使用者群組訊息，以便稍後在建立叢集管理員時使用。
+. 點擊“儲存變更”以儲存所有新設定。
+. 要在此群組中建立使用者以便任何人都可以登錄，請完成以下步驟：
++
+.. 點選“用戶”>“查看”。
++
+image::../media/element_new_cluster_admin.jpg[建立新使用者頁面的螢幕截圖]
+
+.. 對於新用戶，請在“用戶類型”中選擇“*LDAP*”，並將複製的群組貼上到“專有名稱”欄位中。
+.. 選擇權限，通常是所有權限。
+.. 向下捲動至最終用戶許可協議，然後點擊「我接受」。
+.. 點選「建立集群管理員」。
++
+現在您擁有一個具有 Active Directory 群組值的使用者。
+
+
+
+
+
+為了測試這一點，請從 Element UI 登出，然後以該群組中的使用者身分重新登入。
+
+
+
+== 使用 Element API 啟用 LDAP 驗證
+
+您可以設定儲存系統與現有 LDAP 伺服器的整合。這使得 LDAP 管理員能夠集中管理使用者對儲存系統的存取權限。
+
+您可以使用 Element 使用者介面或 Element API 來設定 LDAP。本流程描述如何使用 Element API 設定 LDAP。
+
+若要在SolidFire叢集上使用 LDAP 驗證，首先需要使用下列命令在叢集上啟用 LDAP 驗證： `EnableLdapAuthentication` API 方法。
+
+.步驟
+. 首先在叢集上啟用 LDAP 身份驗證，使用以下命令： `EnableLdapAuthentication` API 方法。
+. 請輸入所需資訊。
++
+[listing]
+----
+{
+     "method":"EnableLdapAuthentication",
+     "params":{
+          "authType": "SearchAndBind",
+          "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+          "groupSearchType": "ActiveDirectory",
+          "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+          "searchBindPassword": "ReadOnlyPW",
+          "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net ",
+          "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))"
+          "serverURIs": [
+               "ldap://172.27.1.189",
+          [
+     },
+  "id":"1"
+}
+----
+. 變更以下參數的值：
++
+[cols="2*"]
+|===
+| 使用的參數 | 描述 
+
+
+ a| 
+authType: SearchAndBind
+ a| 
+指示叢集將使用唯讀服務帳戶首先搜尋正在接受身份驗證的用戶，如果找到並已通過身份驗證，則綁定該用戶。
+
+
+
+ a| 
+groupSearchBaseDN: dc=prodtest,dc=solidfire,dc=net
+ a| 
+指定在 LDAP 樹中開始搜尋群組的位置。在這個例子中，我們使用了樹的根節點。如果您的 LDAP 樹非常大，您可能需要將其設定為更細粒度的子樹，以減少搜尋時間。
+
+
+
+ a| 
+userSearchBaseDN: dc=prodtest,dc=solidfire,dc=net
+ a| 
+指定在 LDAP 樹中開始搜尋使用者的位置。在這個例子中，我們使用了樹的根節點。如果您的 LDAP 樹非常大，您可能需要將其設定為更細粒度的子樹，以減少搜尋時間。
+
+
+
+ a| 
+groupSearchType: Active Directory
+ a| 
+使用 Windows Active Directory 伺服器作為 LDAP 伺服器。
+
+
+
+ a| 
+[listing]
+----
+userSearchFilter:
+“(&(objectClass=person)(sAMAccountName=%USERNAME%))”
+----
+若要使用使用者主體名稱（登入信箱位址），您可以將使用者搜尋篩選器變更為：
+
+[listing]
+----
+“(&(objectClass=person)(userPrincipalName=%USERNAME%))”
+----
+或者，要同時搜尋 userPrincipalName 和 sAMAccountName，您可以使用以下 userSearchFilter：
+
+[listing]
+----
+“(&(objectClass=person)(
+----| (sAMAccountName=%USERNAME%)(userPrincipalName=%USERNAME%)))」 ---- 
+
+
+ a| 
+使用 sAMAccountName 作為登入SolidFire叢集的使用者名稱。這些設定告訴 LDAP 在 sAMAccountName 屬性中搜尋登入期間指定的使用者名，並將搜尋範圍限制為 objectClass 屬性值為「person」的項目。
+ a| 
+搜尋綁定DN
+
+
+
+ a| 
+這是用於搜尋 LDAP 目錄的唯讀使用者的專有名稱。對於活動目錄，通常最簡單的方法是使用使用者主體名稱（電子郵件地址格式）。
+ a| 
+搜尋綁定密碼
+
+|===
+
+
+為了測試這一點，請從 Element UI 登出，然後以該群組中的使用者身分重新登入。
+
+
+
+== 查看 LDAP 詳細信息
+
+在「叢集」標籤的 LDAP 頁面上查看 LDAP 資訊。
+
+
+NOTE: 您必須啟用 LDAP 才能查看這些 LDAP 設定設定。
+
+. 要使用 Element UI 查看 LDAP 詳細信息，請按一下 *叢集* > *LDAP*。
++
+** *主機名稱/IP位址*：LDAP或LDAPS目錄伺服器的位址。
+** *身份驗證類型*：使用者身份驗證方法。可能的值：
++
+*** 直接綁定
+*** 搜尋和綁定
+
+
+** *搜尋綁定 DN*：用於登入以執行 LDAP 使用者搜尋的完整 DN（需要對 LDAP 目錄具有綁定級存取權限）。
+** *搜尋綁定密碼*：用於驗證對 LDAP 伺服器存取權限的密碼。
+** *使用者搜尋基準 DN*：用於啟動使用者搜尋的樹的基準 DN。系統從指定位置開始搜尋子樹。
+** *使用者搜尋篩選條件*：請使用您的網域輸入以下內容：
++
+`(&(objectClass=person)(|(sAMAccountName=%USERNAME%)(userPrincipalName=%USERNAME%)))`
+
+** *群組搜尋類型*：控制使用的預設群組搜尋篩選器的搜尋類型。可能的值：
++
+*** Active Directory：使用者所有 LDAP 群組的巢狀成員關係。
+*** 無群組：不提供群組支援。
+*** 成員 DN：成員 DN 風格的群組（單級）。
+
+
+** *群組搜尋基本 DN*：啟動群組搜尋的樹的基本 DN。系統從指定位置開始搜尋子樹。
+** *測試使用者驗證*：LDAP 設定完成後，使用此功能測試 LDAP 伺服器的使用者名稱和密碼驗證。輸入一個已存在的帳戶進行測試。此處會顯示專有名稱和使用者群組資訊，您可以複製這些資訊以備日後建立叢集管理員時使用。
+
+
+
+
+
+
+== 測試 LDAP 配置
+
+配置 LDAP 後，您應該使用 Element UI 或 Element API 對其進行測試。 `TestLdapAuthentication`方法。
+
+.步驟
+. 若要使用 Element UI 測試 LDAP 配置，請執行下列操作：
++
+.. 點選“集群”>“LDAP”。
+.. 點選「測試 LDAP 身份驗證」。
+.. 請使用下表中的資訊解決任何問題：
++
+[cols="2*"]
+|===
+| 錯誤訊息 | 描述 
+
+
+ a| 
+ xLDAPUserNotFound a| 
+*** 在已配置的資料庫中找不到被測用戶。 `userSearchBaseDN`子樹。
+*** 這 `userSearchFilter`配置錯誤。
+
+
+
+
+ a| 
+ xLDAPBindFailed (Error: Invalid credentials) a| 
+*** 被測試的用戶名稱是有效的 LDAP 用戶，但提供的密碼不正確。
+*** 被測試的用戶名是有效的 LDAP 用戶，但該帳戶目前已被停用。
+
+
+
+
+ a| 
+ xLDAPSearchBindFailed (Error: Can't contact LDAP server) a| 
+LDAP 伺服器 URI 不正確。
+
+
+
+ a| 
+ xLDAPSearchBindFailed (Error: Invalid credentials) a| 
+只讀使用者名稱或密碼設定錯誤。
+
+
+
+ a| 
+ xLDAPSearchFailed (Error: No such object) a| 
+這 `userSearchBaseDN`在 LDAP 樹中不是有效位置。
+
+
+
+ a| 
+ xLDAPSearchFailed (Error: Referral) a| 
+*** 這 `userSearchBaseDN`在 LDAP 樹中不是有效位置。
+*** 這 `userSearchBaseDN`和 `groupSearchBaseDN`位於嵌套的組織單元中。這可能會導致權限問題。解決方法是將組織單元 (OU) 包含在使用者和群組的基本 DN 條目中（例如： `ou=storage, cn=company, cn=com` ）
+
+
+|===
+
+
+. 若要使用 Element API 測試 LDAP 配置，請執行下列操作：
++
+.. 呼叫 TestLdapAuthentication 方法。
++
+[listing]
+----
+{
+  "method":"TestLdapAuthentication",
+     "params":{
+        "username":"admin1",
+        "password":"admin1PASS
+      },
+      "id": 1
+}
+----
+.. 查看結果。如果 API 呼叫成功，則結果包括指定使用者的專有名稱和使用者所屬的群組清單。
++
+[listing]
+----
+{
+"id": 1
+     "result": {
+         "groups": [
+              "CN=StorageMgmt,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+         ],
+         "userDN": "CN=Admin1 Jones,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+     }
+}
+----
+
+
+
+
+
+
+== 禁用 LDAP
+
+您可以使用 Element UI 停用 LDAP 整合。
+
+開始之前，您應該記下所有配置設置，因為停用 LDAP 會清除所有設定。
+
+.步驟
+. 點選“集群”>“LDAP”。
+. 點選“否”。
+. 點選“禁用 LDAP”。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

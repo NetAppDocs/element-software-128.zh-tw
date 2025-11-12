@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_listnodestats.html 
+sidebar: sidebar 
+keywords: node,nodes,stats,list,listing,listnodestats 
+summary: 您可以使用 ListNodeStats 方法查看儲存叢集中所有儲存節點的高階活動測量值。 
+---
+= 列出節點統計資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListNodeStats`查看儲存叢集中所有儲存節點的進階活動測量的方法。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+節點統計
+ a| 
+儲存節點活動資訊。
+ a| 
+xref:reference_element_api_nodestats.adoc[節點統計]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListNodeStats",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "nodeStats": {
+       "nodes": [
+         {
+           "cBytesIn": 223022159806,
+           "cBytesOut": 206324217921,
+           "count": 17274,
+           "cpu": 0,
+           "cpuTotal": 9796,
+           "mBytesIn": 608219007,
+           "mBytesOut": 3487659798,
+           "networkUtilizationCluster": 0,
+           "networkUtilizationStorage": 0,
+           "nodeHeat": {
+             "primaryTotalHeat": 0.00028,
+             "recentPrimaryTotalHeat": 0.0,
+             "recentTotalHeat": 0.00097,
+             "totalHeat": 0.00138
+           },
+           "nodeID": 1,
+           "readLatencyUSecTotal": 8964,
+           "readOps": 29544,
+           "sBytesIn": 223022159806,
+           "sBytesOut": 206324217921,
+           "ssLoadHistogram": {
+             "Bucket0": 5083,
+             "Bucket1To19": 5637426,
+             "Bucket20To39": 19389,
+             "Bucket40To59": 156,
+             "Bucket60To79": 0,
+             "Bucket80To100": 0
+           },
+           "timestamp": "2024-02-27T18:21:26.183659Z",
+           "usedMemory": 104828780544,
+           "writeLatencyUSecTotal": 271773335,
+           "writeOps": 23898
+         }
+       ]
+     }
+ }
+----
+
+
+== 自版本以來的新版本
+
+9.6

@@ -1,0 +1,71 @@
+---
+permalink: hardware/task_sfseries_psurepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, power supply replacement, sf-series nodes 
+summary: 每個SolidFire機箱包含兩個電源單元，以實現電源冗餘。如果電源單元發生故障，應盡快更換，以確保機殼有冗餘電源。 
+---
+= 更換電源單元
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個SolidFire機箱包含兩個電源單元，以實現電源冗餘。如果電源單元發生故障，應盡快更換，以確保機殼有冗餘電源。
+
+.你需要什麼
+* 您已確定需要更換電源單元。
+* 您已收到替換電源。
+* 您已確認第二個電源裝置正在運作。
+* 您配戴了靜電放電 (ESD) 腕帶，或採取了其他防靜電措施。
+
+
+.關於此任務
+如果您使用的是具有以下任一節點的 1U 機架式機箱，則適用以下說明：
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+根據您的 Element 軟體版本，以下節點不受支援：
+
+* 從 Element 12.8、SF4805、SF9605、SF19210 和 SF38410 儲存節點開始。
+* 從 Element 12.7、SF2405 和 SF9608 儲存節點以及 FC0025 和 SF-FCN-01 FC 節點開始。
+* 從 Element 12.0、SF3010、SF6010 和 SF9010 儲存節點開始。
+
+
+====
+.步驟
+. 將電源線從要更換的電源裝置上拔下來。
+. 按下釋放按鈕，將電源供應器從機殼中滑出。
++
+
+IMPORTANT: 請務必雙手托住電源轉接器的重量。
+
+. 雙手握住替換電源單元的邊緣，將其與機箱開口對齊，然後輕輕地將電源單元推入機箱。
++
+
+IMPORTANT: 將電源單元滑入機殼時，請勿用力過度，以免損壞硬體。
+
+. 插入電源線。
+. 請依照包裝盒內的說明，將故障設備退回給NetApp 。
++
+您可以聯絡NetApp支援部門尋求更換流程的協助。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

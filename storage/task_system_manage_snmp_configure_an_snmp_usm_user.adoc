@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_snmp_configure_an_snmp_usm_user.html 
+sidebar: sidebar 
+keywords: snmp, usm user, config, requests 
+summary: 啟用 SNMP 版本 3 時，需要設定一個 USM 使用者來接收授權的 SNMP 請求。 
+---
+= 設定 SNMP USM 用戶
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+啟用 SNMP 版本 3 時，需要設定一個 USM 使用者來接收授權的 SNMP 請求。
+
+. 點選“集群”>“SNMP”。
+. 在「常規 SNMP 設定」下，按一下「是」以啟用 SNMP。
+. 從“版本”清單中選擇“版本 3”。
+. 在「*USM 使用者*」部分，輸入使用者名稱、密碼和密碼短語。
+. *可選：*要新增另一個 USM 用戶，請點擊*新增 USM 用戶*並輸入名稱、密碼和密碼短語。
+. 點選「儲存變更」。
+

@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_binding_vvols.html 
+sidebar: sidebar 
+keywords: binding,object,objects,volume,volumes,virtual 
+summary: 綁定物件包含有關虛擬磁碟區綁定的資訊。您可以使用 ListVirtualVolumeBindings API 方法檢索所有虛擬磁碟區的此資訊清單。 
+---
+= 裝訂（虛擬卷）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+綁定物件包含有關虛擬磁碟區綁定的資訊。您可以使用以下命令檢索所有虛擬卷的此資訊清單： `ListVirtualVolumeBindings` API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+`protocolEndpointID`
+ a| 
+協定端點的唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+`protocolEndpointInBandID`
+ a| 
+協定端點的 scsiNAADeviceID。
+ a| 
+細繩
+
+
+
+ a| 
+`protocolEndpointType`
+ a| 
+協定端點的類型。  SCSI 是協定端點類型傳回的唯一值。
+ a| 
+細繩
+
+
+
+ a| 
+`virtualVolumeBindingID`
+ a| 
+虛擬磁碟區綁定物件的唯一 ID。
+ a| 
+整數
+
+
+
+ a| 
+`virtualVolumeHostID`
+ a| 
+虛擬磁碟區主機的唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+`virtualVolumeID`
+ a| 
+虛擬卷的唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+`virtualVolumeSecondaryID`
+ a| 
+虛擬磁碟區的輔助 ID。
+ a| 
+細繩
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listvirtualvolumebindings.adoc[列出虛擬卷綁定]
+* xref:reference_element_api_protocolendpoint.adoc[協定端點]
+

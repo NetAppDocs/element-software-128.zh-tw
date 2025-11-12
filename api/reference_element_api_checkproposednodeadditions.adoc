@@ -1,0 +1,121 @@
+---
+permalink: api/reference_element_api_checkproposednodeadditions.html 
+sidebar: sidebar 
+keywords: proposed,node,additions,CheckProposedNodeAdditions,storage,checking 
+summary: 您可以使用 CheckProposedNodeAdditions 方法測試一組儲存節點，以查看是否可以將它們新增至儲存叢集而不會出現錯誤或違反最佳實務的情況。 
+---
+= 檢查擬議節點添加
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CheckProposedNodeAdditions`測試一組儲存節點的方法，以查看是否可以將它們新增至儲存叢集而不會出現錯誤或違反最佳實踐的情況。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+節點
+ a| 
+儲存叢集中已準備好新增的儲存節點的儲存 IP 位址清單。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+提議的集群有效性
+ a| 
+指示所提議的儲存節點是否可以構成有效的儲存叢集。可能的值：
+
+* 真的
+* 錯誤的
+
+ a| 
+布林值
+
+
+
+ a| 
+提議的聚類錯誤
+ a| 
+使用建議的儲存節點建立儲存叢集時將會出現的錯誤。可能的錯誤代碼：
+
+* `nodesNoCapacity`節點沒有任何可用容量。
+* `nodesTooLarge`：節點在叢集容量中所佔比例過大，不適合主動保護方案。
+* `nodesConnectFailed`無法連接到節點以查詢硬體配置。
+* `nodesQueryFailed`無法查詢節點的硬體配置。
+* `nodesClusterMember`叢集中節點的 IP 位址已被佔用。
+* `nonFipsNodeCapable`啟用 FIPS 140-2 磁碟機加密功能時，無法將不支援 FIPS 的節點新增至儲存叢集。
+* `nonFipsDrivesCapable`啟用 FIPS 140-2 磁碟機加密功能時，無法將具有非 FIPS 功能磁碟機的節點新增至叢集。
+
+ a| 
+字串數組
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+	"method": "CheckProposedNodeAdditions",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== 自版本以來的新版本
+
+11.0

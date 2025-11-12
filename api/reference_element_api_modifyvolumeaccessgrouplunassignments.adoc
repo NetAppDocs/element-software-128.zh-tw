@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_modifyvolumeaccessgrouplunassignments.html 
+sidebar: sidebar 
+keywords: volumes,volume,defining,define,modify,modifying,edit,editing,change,changing,modifyvolumeaccessgrouplunassignments,access,group,lun,assignment 
+summary: 您可以使用 ModifyVolumeAccessGroupLunAssignments 方法為特定磁碟區定義自訂 LUN 指派。 
+---
+= 修改卷訪問群組 LUN 分配
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyVolumeAccessGroupLunAssignments`為特定磁碟區定義自訂 LUN 指派的方法。
+
+此方法僅變更磁碟區存取群組中 lunAssignments 參數設定的 LUN 值。其他所有 LUN 分配保持不變。
+
+同一磁碟區存取群組中的磁碟區的 LUN 指派值必須是唯一的。不能在磁碟區存取群組中定義重複的 LUN 值。但是，您可以在不同的磁碟區存取群組中再次使用相同的 LUN 值。
+
+
+NOTE: 有效的 LUN 值為 0 到 16383。如果傳遞的 LUN 值超出此範圍，系統將產生異常。如果發生例外情況，則不會修改任何指定的 LUN 分配。
+
+警告：
+
+如果變更具有活動 I/O 的磁碟區的 LUN 分配，則 I/O 可能會中斷。在變更磁碟區 LUN 分配之前，應先變更伺服器配置。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+
+
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+卷訪問群組ID
+ a| 
+若要修改 LUN 指派的唯一磁碟區存取群組 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+lunAssignments
+ a| 
+具有新指派的 LUN 值的磁碟區 ID。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+卷訪問群組 LUN 分配
+ a| 
+包含已修改磁碟區存取群組 LUN 指派詳細資訊的物件。
+ a| 
+JSON 物件
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ModifyVolumeAccessGroupLunAssignments",
+   "params": {
+       "volumeAccessGroupID" : 218,
+       "lunAssignments" : [
+           {"volumeID" : 832, "lun" : 0},
+           {"volumeID" : 834, "lun" : 1}
+        ]
+    },
+    "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroupLunAssignments": {
+      "deletedLunAssignments": [],
+      "lunAssignments": [
+        {
+          "lun": 0,
+          "volumeID": 832
+        },
+        {
+          "lun": 1,
+          "volumeID": 834
+        }
+      ],
+      "volumeAccessGroupID": 218
+    }
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

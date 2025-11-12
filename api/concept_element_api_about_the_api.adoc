@@ -1,0 +1,237 @@
+---
+permalink: api/concept_element_api_about_the_api.html 
+sidebar: sidebar 
+keywords: SolidFire,API,overview,about,Element 
+summary: Element API 是基於 HTTPS 上的 JSON-RPC 協定。 JSON-RPC 是一種基於輕量級 JSON 資料交換格式的簡單文字 RPC 協定。所有主流程式語言都有對應的客戶端程式庫。 
+---
+= 了解如何使用 Element API 管理存儲
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element API 是基於 HTTPS 上的 JSON-RPC 協定。 JSON-RPC 是一種基於輕量級 JSON 資料交換格式的簡單文字 RPC 協定。所有主流程式語言都有對應的客戶端程式庫。
+
+您可以透過 HTTPS POST 請求向 API 端點發出 API 請求。 POST 請求的主體是一個 JSON-RPC 請求物件。該 API 目前不支援批次請求（單一 POST 請求中包含多個請求物件）。提交 API 請求時，必須使用「application/json-rpc」作為請求的內容類型，並確保請求體未進行表單編碼。
+
+
+NOTE: Element Web UI 使用了本文檔中所述的 API 方法。您可以透過啟用 API 日誌在使用者介面中監控 API 操作；這樣您就可以看到向系統發出的方法。您可以同時啟用請求和回應，以查看系統如何回應發出的方法。
+
+除非另有說明，API 回應中的所有日期字串均為 UTC+0 格式。
+
+
+NOTE: 當儲存叢集負載過重或您連續提交多個 API 請求而沒有間隔時，方法可能會失敗並傳回錯誤「xDBVersionMismatch」。如果發生這種情況，請重試方法呼叫。
+
+
+
+== 常見物品
+
+Element軟體API使用JSON物件來表示組織化的資料概念。這些 API 方法中有很多都利用這些物件進行資料輸入和輸出。本節介紹這些常用物件；僅在單一方法中使用的物件將與該方法一起進行文件說明，而不是在本節中說明。
+
+link:../api/reference_element_api_account.html["了解常見物品"]
+
+
+
+== 常用方法
+
+常用方法是指用於檢索有關儲存叢集、API 本身或正在進行的 API 操作的資訊的方法。
+
+link:../api/reference_element_api_getapi.html["了解常用方法"]
+
+
+
+== 帳戶 API 方法
+
+帳戶管理功能可讓您新增、刪除、檢視及修改帳戶及安全資訊。
+
+link:../api/reference_element_api_addaccount.html["了解帳戶 API 方法"]
+
+
+
+== 管理員 API 方法
+
+您可以使用管理員 API 方法建立、修改、檢視和刪除儲存叢集管理員，並為有權存取儲存叢集的使用者指派存取等級和權限。
+
+link:../api/reference_element_api_addclusteradmin.html["了解管理員 API 方法"]
+
+
+
+== 叢集 API 方法
+
+Element 軟體叢集 API 方法可讓您管理儲存叢集及其所屬節點的配置和拓撲。
+
+某些叢集 API 方法在屬於叢集的節點上操作，或在已配置為加入叢集的節點上操作。您可以為新叢集或現有叢集新增節點。準備新增到叢集中的節點處於「待處理」狀態，這表示它們已經配置好，但尚未新增到叢集中。
+
+link:../api/reference_element_api_addnodes.html["了解叢集 API 方法"]
+
+
+
+== 叢集建立 API 方法
+
+您可以使用這些 API 方法建立儲存叢集。所有這些方法都需要在單一節點上針對 API 端點使用。
+
+link:../api/reference_element_api_checkproposedcluster.html["了解叢集建立 API 方法"]
+
+
+
+== 驅動 API 方法
+
+您可以使用磁碟機 API 方法新增和管理儲存叢集中可用的磁碟機。當您為儲存叢集新增儲存節點或在現有儲存節點中安裝新磁碟機時，這些磁碟機即可新增至儲存叢集。
+
+link:../api/reference_element_api_adddrives.html["了解驅動 API 方法"]
+
+
+
+== 光纖通道 API 方法
+
+您可以使用光纖通道 API 方法新增、修改或刪除儲存叢集的光纖通道節點成員。
+
+link:../api/reference_element_api_getvolumeaccessgrouplunassignments.html["了解光纖通道 API 方法"]
+
+
+
+== 發起方 API 方法
+
+啟動器方法可讓您新增、刪除、檢視和修改 iSCSI 啟動器對象，這些對象處理儲存系統和外部儲存用戶端之間的通訊。
+
+link:../api/reference_element_api_createinitiators.html["了解發起方 API 方法"]
+
+
+
+== LDAP API 方法
+
+您可以使用輕量級目錄存取協定 (LDAP) 對 Element 儲存進行驗證。本節介紹的 LDAP API 方法可讓您設定對儲存叢集的 LDAP 存取。
+
+link:../api/reference_element_api_addldapclusteradmin.html["了解 LDAP API 方法"]
+
+
+
+== 多因素身份驗證 API 方法
+
+您可以使用多因素身份驗證 (MFA) 透過安全性斷言標記語言 (SAML) 使用第三方身分提供者 (IdP) 來管理使用者會話。
+
+link:../api/reference_element_api_addidpclusteradmin.html["了解多因素身份驗證 API 方法"]
+
+
+
+== 會話身份驗證 API 方法
+
+您可以使用基於會話的身份驗證來管理使用者會話。
+
+link:../api/reference_element_api_listauthsessionbyclusteradmin.html["了解會話身份驗證 API 方法"]
+
+
+
+== Node API 方法
+
+您可以使用節點 API 方法來配置各個節點。這些方法適用於需要配置的單一節點、已配置但尚未加入叢集的節點，或正在積極加入叢集的節點。節點 API 方法可讓您查看和修改單一節點以及用於與節點通訊的叢集網路的設定。必須針對單一節點運行這些方法；不能針對叢集的位址運行每個節點的 API 方法。
+
+link:../api/reference_element_api_checkpingonvlan.html["了解節點 API 方法"]
+
+
+
+== 複製 API 方法
+
+複製 API 方法可讓您連接兩個叢集以實現持續資料保護 (CDP)。連接兩個集群後，集群內的活動卷可以持續複製到第二個集群，從而實現資料恢復。透過配對卷進行複製，您可以保護資料免受可能導致資料無法存取的事件的影響。
+
+link:../api/reference_element_api_cluster_pairing_order_of_operations.html["了解複製 API 方法"]
+
+
+
+== 安全 API 方法
+
+您可以將 Element 軟體與外部安全相關服務（例如外部金鑰管理伺服器）整合。這些與安全性相關的方法可讓您設定 Element 的安全功能，例如靜態加密的外部金鑰管理。
+
+link:../api/reference_element_api_addkeyservertoproviderkmip.html["了解安全 API 方法"]
+
+
+
+== SnapMirror API 方法
+
+Element Web UI 使用SnapMirror API 方法來管理與遠端ONTAP系統鏡像的快照。這些方法僅供 Element Web UI 使用。如果您需要使用 API 存取SnapMirror功能，請使用ONTAP API。  SnapMirror API 方法未提供請求和傳回範例。
+
+link:../api/reference_element_api_abortsnapmirrorrelationship.html["了解SnapMirror API 方法"]
+
+
+
+== 系統配置 API 方法
+
+系統配置 API 方法可讓您取得和設定適用於叢集中所有節點的配置值。
+
+link:../api/reference_element_api_disablebmccoldreset.html["了解系統配置 API 方法"]
+
+
+
+== 多租用戶網路 API 方法
+
+Element 儲存叢集中的多租戶網路允許位於不同邏輯網路上的多個客戶端之間的流量連接到同一個 Element 儲存集群，而無需第 3 層路由。
+
+透過使用 VLAN 標記，與儲存叢集的連接在網路堆疊中進行了隔離。
+
+
+
+=== 建立多租戶虛擬網路的前提條件
+
+* 您必須已經確定要指派給儲存節點上虛擬網路的用戶端網路 IP 位址區塊。
+* 您必須確定一個用戶端儲存網路 IP (SVIP) 位址，該位址將用作所有儲存流量的端點。
+
+
+
+
+=== 虛擬網路操作順序
+
+. 使用 AddVirtualNetwork 方法批次設定您輸入的 IP 位址。
++
+新增虛擬網路後，叢集會自動執行以下操作：
+
++
+** 每個儲存節點都會建立一個虛擬網路介面。
+** 每個儲存節點都被指派一個 VLAN 位址，可以使用虛擬 SVIP 進行路由。
+** 即使節點重啟，VLAN IP 位址也會保留在每個節點上。
+
+
+. 指派虛擬網路介面和 VLAN 位址後，即可將用戶端網路流量指派給虛擬 SVIP。
+
+
+link:../api/concept_element_api_virtual_network_naming_conventions.html["了解多租戶網路 API 方法"]
+
+
+
+== 容量 API 方法
+
+Element 軟體磁碟區 API 方法可讓您管理位於儲存節點上的磁碟區。您可以使用這些方法建立、修改、複製和刪除磁碟區。您也可以使用磁碟區 API 方法來收集和顯示磁碟區的資料測量結果。
+
+link:../api/reference_element_api_cancelclone.html["了解卷宗 API 方法"]
+
+
+
+== 磁碟區存取群組 API 方法
+
+磁碟區存取群組方法可讓您新增、刪除、檢視和修改磁碟區存取群組，磁碟區存取群組是使用者可以使用 iSCSI 或光纖通道啟動程式存取的磁碟區的集合。
+
+link:../api/reference_element_api_addinitiatorstovolumeaccessgroup.html["了解卷宗存取組 API 方法"]
+
+
+
+== 磁碟區快照 API 方法
+
+Element 軟體磁碟區快照 API 方法可讓您管理磁碟區快照。您可以使用磁碟區快照 API 方法建立、修改、複製和刪除磁碟區快照。
+
+link:../api/concept_element_api_snapshots_overview.html["了解卷宗快照 API 方法"]
+
+
+
+== 虛擬卷 API 方法
+
+Element 軟體虛擬磁碟區 API 方法可讓您管理虛擬磁碟區 (VVol)。您可以使用這些 API 方法查看現有的 VVol，以及建立、修改和刪除虛擬磁碟區儲存容器。雖然你不能使用這些方法來操作普通卷，但你可以使用普通卷 API 方法來列出有關 VVols 的資訊。
+
+link:../api/reference_element_api_createstoragecontainer.html["了解虛擬卷 API 方法"]
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

@@ -1,0 +1,40 @@
+---
+permalink: storage/task_snapmirror_perform_failback_when_source_volume_exists.html 
+sidebar: sidebar 
+keywords: element, ui, failback, perform, source volume, snapmirror 
+summary: 您可以使用NetApp Element UI 重新同步原始來源磁碟區並進行故障復原。此程式適用於原始來源磁碟區仍然存在的情況。 
+---
+= 如果來源磁碟區仍然存在，則執行故障復原。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Element UI 重新同步原始來源磁碟區並進行故障復原。此程式適用於原始來源磁碟區仍然存在的情況。
+
+. 在 Element UI 中，找到您為了執行故障轉移而斷開的關係。
+. 點擊操作圖標，然後點擊*反向重新同步*。
+. 確認操作。
++
+
+NOTE: 反向同步操作會建立一個新的關係，其中原始來源磁碟區和目標磁碟區的角色互換（這將導致兩個關係，因為原始關係仍然存在）。作為反向重新同步操作的一部分，來自原始目標磁碟區的任何新資料都會傳輸到原始來源磁碟區。您可以繼續存取目標端的活動磁碟區並向其寫入數據，但您需要中斷所有主機與來源磁碟區的連接，並在重新導向回原始主磁碟區之前執行SnapMirror更新。
+
+. 點擊剛剛建立的反向關係的「操作」圖標，然後點擊「更新」。
++
+現在您已完成反向同步，並確保目標端的磁碟區上沒有活動會話，且最新資料位於原始主磁碟區上，您可以執行下列步驟來完成故障復原並重新啟動原始主磁碟區：
+
+. 點擊反向關係的「操作」圖標，然後點擊「斷開」。
+. 點擊原始關係的操作圖標，然後點擊「重新同步」。
++
+
+NOTE: 現在可以掛載原始主卷，以恢復原始主磁碟區上的生產工作負載。原始SnapMirror複製將根據為該關係配置的政策和計劃恢復。
+
+. 確認原始關係狀態為「已同步」後，點選反向關係的「操作」圖標，然後點選「刪除」。
+
+
+
+
+== 查找更多信息
+
+xref:concept_snapmirror_failback_scenarios.adoc[SnapMirror故障恢復場景]

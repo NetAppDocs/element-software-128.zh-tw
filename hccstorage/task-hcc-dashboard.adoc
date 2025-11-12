@@ -1,0 +1,138 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-dashboard.html 
+summary: 您可以在NetApp混合雲控制儀表板上查看儲存資源。此外，您還可以監控儲存容量和儲存效能。 
+keywords: netapp, element, hcc, hybrid cloud control, storage, storage performance, capacity 
+---
+= 在混合雲控制儀表板上監控儲存資源
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+透過NetApp混合雲端控制儀表板，您可以一目了然地查看所有儲存資源。此外，您還可以監控儲存容量和儲存效能。
+
+
+NOTE: 首次啟動新的NetApp Hybrid Cloud Control 會話時，如果管理節點正在管理多個集群，則載入NetApp Hybrid Cloud Control 儀表板視圖可能會有延遲。載入時間取決於管理節點正在積極管理的叢集數量。後續啟動時，您將體驗到更快的載入速度。
+
+* <<存取NetApp HCC 控制面板>>
+* <<監控儲存資源>>
+* <<監控儲存容量>>
+* <<監控儲存效能>>
+
+
+
+
+== 存取NetApp HCC 控制面板
+
+. 在網頁瀏覽器中開啟管理節點的IP位址。例如：
++
+[listing]
+----
+https://[management node IP address]
+----
+. 使用SolidFire全快閃儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 查看混合雲控制儀表板。
+
+
+image::hcc_dashboard_all.PNG[HCC 儀表板]
+
+
+
+== 監控儲存資源
+
+使用「儲存」窗格查看您的整個儲存環境。您可以監控儲存叢集數量、儲存節點數量和總卷數。
+
+若要查看詳細信息，請在「儲存」窗格中選擇「顯示詳細資料」。
+
+image::hcc_dashboard_storage_node_number.PNG[儲存視圖]
+
+
+NOTE: 儲存節點總數不包括雙節點儲存叢集中的見證節點。見證節點包含在該叢集詳細資訊部分的節點數中。
+
+
+TIP: 若要查看最新的儲存叢集數據，請使用「儲存叢集」頁面，該頁面的輪詢頻率比「儀表板」更高。
+
+
+
+== 監控儲存容量
+
+監控環境的儲存容量至關重要。使用「儲存容量」窗格，您可以確定啟用或不啟用壓縮、重複資料刪除和精簡配置功能時，儲存容量效率的提升。
+
+您可以在 *RAW* 標籤上查看叢集中可用的實體儲存空間總量，在 *EFLECTIVE* 標籤上查看已配置儲存的資訊。
+
+image::hcc_dashboard_storage_capacity_effective.png[HCC 控制台 > 儲存容量窗格]
+
+.步驟
+. 選擇“RAW”選項卡，查看叢集中已使用和可用的實體儲存空間總量。
++
+查看垂直線，以確定您的已使用容量是否小於總容量，或小於警告、錯誤或嚴重閾值。將滑鼠懸停在線條上即可查看詳細資訊。
+
++
+
+NOTE: 您可以設定警告閾值，預設值為比錯誤閾值低 3%。錯誤閾值和嚴重閾值是預設的，設計上不可設定。錯誤閾值表示叢集中剩餘的可用節點不足一個。有關設定閾值的步驟，請參閱link:../storage/task_system_manage_cluster_set_the_cluster_full_threshold.html["設定集群滿閾值"]。
+
++
+
+TIP: 有關相關聚類閾值元素 API 的詳細信息，請參閱link:../api/reference_element_api_getclusterfullthreshold.html["“getClusterFullThreshold”"]在_Element軟體API文件_中。要查看有關區塊和元資料容量的詳細信息，請參閱link:../storage/concept_monitor_understand_cluster_fullness_levels.html["了解集群飽滿度"]在 Element 軟體文件中。
+
+. 選擇「有效」選項卡，查看有關分配給已連接主機的總儲存容量的資訊以及效率評級。
++
+.. （可選）勾選「包含精簡配置」以在有效容量條形圖中查看精簡配置效率率。
+.. *有效容量長條圖*：查看垂直線，以確定您的已使用容量是否小於總容量，或小於警告、錯誤或嚴重閾值。與「原始資料」標籤類似，您可以將滑鼠懸停在垂直線上以查看詳細資訊。
+.. *效率*：查看這些評級，以確定啟用壓縮、重複資料刪除和精簡配置功能後，您的儲存容量效率可獲得的提升。例如，如果壓縮顯示為“1.3x”，則表示啟用壓縮後的儲存效率比不啟用壓縮時高出 1.3 倍。
++
+
+NOTE: 總效率等於（最大已使用空間 * 效率因子）/ 2，其中效率因子 =（精簡配置因子 * 重複資料刪除因子 * 壓縮因子）。如果未選取“精簡配置”，則不將其計入總效率。
+
+.. 如果有效儲存容量接近錯誤或嚴重閾值，請考慮清除系統上的資料。
+
+
+. 如需進一步分析和了解歷史背景，請參閱… https://activeiq.solidfire.com/["NetApp SolidFire Active IQ詳情"^] 。
+
+
+
+
+== 監控儲存效能
+
+您可以使用「儲存效能」窗格來查看在不超出該資源有效性的情況下，您可以從叢集中獲得多少 IOPS 或吞吐量。儲存效能是指在延遲成為問題之前，儲存利用率達到最大值的點。
+
+「儲存效能」窗格可協助您確定效能是否已達到如果工作負載增加效能可能會下降的程度。
+
+此窗格中的資訊每 10 秒刷新一次，並顯示圖表上所有點的平均值。
+
+有關相關元素 API 方法的詳細信息，請參閱link:../api/reference_element_api_getclusterstats.html["獲取集群統計信息"]_Element 軟體 API 文件_ 中的方法。
+
+.步驟
+. 查看「儲存效能」窗格。如需查看詳細信息，請將滑鼠懸停在圖表中的點上。
++
+.. *IOPS*選項卡：查看目前每秒操作數。尋找數據中的趨勢或峰值。例如，如果您發現最大 IOPS 為 160K，其中 100K 是空閒或可用的 IOPS，則可以考慮向此叢集新增更多工作負載。另一方面，如果您發現只有 140K 可用，您可以考慮卸載工作負載或擴充系統。
++
+image::hcc_dashboard_storage_perform_iops.png[儲存效能 > IOPS 選項卡]
+
+.. *吞吐量*選項卡：監控吞吐量的模式或峰值。此外，還要監控持續的高吞吐量值，這可能表示您已接近資源的最大可用性能。
++
+image::hcc_dashboard_storage_perform_throughput.png[儲存效能 > 吞吐量選項卡]
+
+.. *利用率*標籤：監控叢集層級 IOPS 利用率與可用總 IOPS 之比。
++
+image::hcc_dashboard_storage_perform_utlization.png[儲存效能 > 使用率選項卡]
+
+
+
+. 如需進一步分析，請使用NetApp Element插件 for vCenter Server 查看儲存效能。
++
+https://docs.netapp.com/us-en/vcp/vcp_task_reports_volume_performance.html["NetApp Element vCenter Server 外掛程式的效能表現"^]。
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

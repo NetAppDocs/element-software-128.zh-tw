@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_create_an_endpoint.html 
+sidebar: sidebar 
+keywords: element, endpoints, create, snapmirror, ui 
+summary: 必須先在NetApp Element UI 中建立SnapMirror端點，然後才能建立關係。 
+---
+= 創建SnapMirror端點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須先在NetApp Element UI 中建立SnapMirror端點，然後才能建立關係。
+
+SnapMirror端點是一個ONTAP集群，它充當運行 Element 軟體的集群的複製目標。在創建SnapMirror關係之前，您需要先建立SnapMirror端點。
+
+在執行 Element 軟體的儲存叢集上，您可以建立和管理最多四個SnapMirror端點。
+
+
+NOTE: 如果最初使用 API 建立了現有端點，但沒有儲存憑證，則可以在 Element UI 中看到該端點並驗證其存在性，但無法使用 Element UI 進行管理。此端點只能使用 Element API 進行管理。
+
+有關 API 方法的詳細信息，請參閱 link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]。
+
+.你需要什麼
+* 您應該在儲存叢集的 Element UI 中啟用SnapMirror 。
+* 您知道該終端的ONTAP憑證。
+
+
+.步驟
+. 點選「資料保護」>「SnapMirror端點」。
+. 點選「建立端點」。
+. 在「建立新端點」對話方塊中，輸入ONTAP系統的叢集管理 IP 位址。
+. 輸入與該終端相關的ONTAP管理員憑證。
+. 查看更多詳情：
++
+** LIFs：列出用於與 Element 通訊的ONTAP集群間邏輯介面。
+** 狀態：顯示SnapMirror端點的目前狀態。可能的值有：已連線、已中斷連線和未管理。
+
+
+. 點選「建立端點」。
+

@@ -1,0 +1,28 @@
+---
+permalink: api/reference_element_api_getrawstats.html 
+sidebar: sidebar 
+keywords:  
+summary: NetApp工程團隊使用 GetRawStats API 方法來測試新功能。 GetRawStats 傳回的資料沒有文件說明，經常變化，並且不能保證其準確性。您不應該使用 GetRawStats 來收集效能資料或與執行 Element 軟體的儲存叢集進行任何其他管理整合。 
+---
+= 取得原始統計數據
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp工程部門使用 `GetRawStats`用於測試新功能的 API 方法。傳回的數據 `GetRawStats`沒有書面記錄，經常變化，而且不能保證準確。你不應該使用 `GetRawStats`用於收集效能資料或與執行 Element 軟體的儲存叢集進行任何其他管理整合。
+
+請使用以下受支援的 API 方法檢索統計資訊：
+
+* xref:reference_element_api_getvolumestats.adoc[獲取成交量統計信息]
+* xref:reference_element_api_getclusterstats.adoc[獲取集群統計信息]
+* xref:reference_element_api_getnodestats.adoc[取得節點統計資訊]
+* xref:reference_element_api_getdrivestats.adoc[取得駕駛統計數據]
+
+
+
+
+== 自版本以來的新版本
+
+9.6

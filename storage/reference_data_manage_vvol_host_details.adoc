@@ -1,0 +1,42 @@
+---
+permalink: storage/reference_data_manage_vvol_host_details.html 
+sidebar: sidebar 
+keywords: host details, vvols, ESXi host details, virtual volumes, bindings, endpoints 
+summary: VVols 標籤上的「主機」頁面提供有關託管虛擬磁碟區的 VMware ESXi 主機的資訊。 
+---
+= 房東詳情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VVols 標籤上的「主機」頁面提供有關託管虛擬磁碟區的 VMware ESXi 主機的資訊。
+
+顯示以下資訊：
+
+* *主機 ID*
++
+叢集已知的託管虛擬磁碟區的 ESXi 主機的 UUID。
+
+* 主機位址
++
+ESXi主機的IP位址或DNS名稱。
+
+* *裝訂*
++
+ESXi 主機綁定的所有虛擬磁碟區的綁定 ID。
+
+* *ESX 集群 ID*
++
+vSphere 主機叢集 ID 或 vCenter GUID。
+
+* *發起者IQN*
++
+虛擬磁碟區主機的啟動器 IQN。
+
+* * SolidFire協定端點 ID*
++
+目前對 ESXi 主機可見的協定端點。
+
+

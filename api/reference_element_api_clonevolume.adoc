@@ -1,0 +1,299 @@
+---
+permalink: api/reference_element_api_clonevolume.html 
+sidebar: sidebar 
+keywords: volumes,volume,cloning,clone,CloneVolume 
+summary: 您可以使用 CloneVolume 方法建立磁碟區的副本。此方法是異步的，完成時間可能不固定。 
+---
+= 複製卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CloneVolume`建立卷宗副本的方法。此方法是異步的，完成時間可能不固定。
+
+克隆過程在你創建文件後立即開始。 `CloneVolume`請求並代表發出 API 方法時的容量狀態。你可以使用xref:reference_element_api_getasyncresult.adoc[取得非同步結果]確定克隆過程何時完成且新磁碟區可用於連接的方法。您可以使用xref:reference_element_api_listsyncjobs.adoc[清單同步作業]查看克隆創建的進度。磁碟區的初始屬性和服務品質設定繼承自被複製的磁碟區。您可以使用以下命令變更這些設定：xref:reference_element_api_modifyvolume.adoc[修改音量] 。
+
+
+NOTE: 複製磁碟區不會繼承來源磁碟區的磁碟區存取群組成員身分。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+使用權
+ a| 
+已允許存取新卷。如果未指定值，則存取值不會改變。可能的值：
+
+* `readOnly`（可選）僅允許讀取操作。
+* `readWrite`（可選）允許讀寫操作。
+* `locked`（可選）不允許任何讀取或寫入操作。如果未指定，則使用被複製卷的存取值。
+* `replicationTarget`（可選）將一個體積指定為一組成對體積的目標體積。如果磁碟區未配對，則存取狀態將被鎖定。
+
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+enable512e
+ a| 
+指定新磁碟區是否應使用 512 位元組磁區模擬。如果未指定，則使用被複製卷的設定。
+ a| 
+布林值
+ a| 
+原音量設定
+ a| 
+不
+
+
+
+ a| 
+啟用 SnapMirror 複製
+ a| 
+確定該磁碟區是否可用於與SnapMirror端點進行複製。可能的值：
+
+* 真的
+* 錯誤的
+
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+姓名
+ a| 
+新克隆卷的名稱；長度必須為 1 到 64 個字元。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+新帳戶ID
+ a| 
+新磁碟區所有者的帳戶ID。如果未指定，則使用被複製磁碟區的擁有者的帳戶 ID。
+ a| 
+整數
+ a| 
+原始磁碟區擁有者的帳戶 ID
+ a| 
+不
+
+
+
+ a| 
+新尺寸
+ a| 
+卷的新大小，以位元組為單位。可能大於或小於被複製卷的大小。如果未指定，則磁碟區大小保持不變。檔案大小向上取整至最接近的 1MB。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+snapshotID
+ a| 
+用作克隆來源的快照 ID。如果沒有提供 ID，則使用目前活動磁碟區。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+卷 ID
+ a| 
+要複製的磁碟區的磁碟區 ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+用於取得運算結果的句柄值。
+ a| 
+整數
+
+
+
+ a| 
+複製ID
+ a| 
+新克隆卷的 cloneID。
+ a| 
+整數
+
+
+
+ a| 
+曲線
+ a| 
+應用於克隆體的QoS曲線值。
+ a| 
+JSON 物件
+
+
+
+ a| 
+體積
+ a| 
+包含有關新克隆卷的資訊的物件。
+ a| 
+xref:reference_element_api_volume.adoc[體積]
+
+
+
+ a| 
+卷 ID
+ a| 
+新克隆卷的磁碟區 ID。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "CloneVolume",
+   "params": {
+      "volumeID" : 5,
+      "name"  : "mysqldata-snapshot1",
+      "access" : "readOnly"
+   },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+      "asyncHandle": 42,
+      "cloneID": 37,
+      "volume": {
+          "access": "readOnly",
+          "accountID": 1,
+          "attributes": {},
+          "blockSize": 4096,
+          "createTime": "2016-03-31T22:26:03Z",
+          "deleteTime": "",
+          "enable512e": true,
+          "iqn": "iqn.2010-01.com.solidfire:jyay.mysqldata-snapshot1.680",
+          "name": "mysqldata-snapshot1",
+          "purgeTime": "",
+          "qos": {
+              "burstIOPS": 100,
+              "burstTime": 60,
+              "curve": {
+                  "4096": 100,
+                  "8192": 160,
+                  "16384": 270,
+                  "32768": 500,
+                  "65536": 1000,
+                  "131072": 1950,
+                  "262144": 3900,
+                  "524288": 7600,
+                  "1048576": 15000
+              },
+              "maxIOPS": 100,
+              "minIOPS": 50
+          },
+          "scsiEUIDeviceID": "6a796179000002a8f47acc0100000000",
+          "scsiNAADeviceID": "6f47acc1000000006a796179000002a8",
+          "sliceCount": 0,
+          "status": "init",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeAccessGroups": [],
+          "volumeID": 680,
+          "volumePairs": []
+      },
+      "volumeID": 680
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[取得非同步結果]
+* xref:reference_element_api_listsyncjobs.adoc[清單同步作業]
+* xref:reference_element_api_modifyvolume.adoc[修改音量]
+

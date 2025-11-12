@@ -1,0 +1,108 @@
+---
+permalink: storage/task-element-replication-define-rule-policy.html 
+sidebar: sidebar 
+keywords: ontap, cli, define, rule, policy 
+summary: 對於「mirror-vault」策略類型的自訂策略，您必須至少定義一條規則來決定在初始化和更新期間傳輸哪些快照副本。您也可以為「mirror-vault」策略類型定義預設策略規則。 
+---
+= 為策略定義規則
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+對於「`mirror-vault`」策略類型的自訂策略，您必須至少定義一條規則來決定在初始化和更新期間傳輸哪些快照副本。您也可以使用「`mirror-vault`」策略類型定義預設策略的規則。
+
+.關於此任務
+所有具有「`mirror-vault`」策略類型的策略都必須有一條規則，指定要複製哪些快照副本。例如，「`bi-monthly`」規則表示只有分配了SnapMirror標籤「`bi-monthly`」的快照副本才應該被複製。配置元素快照副本時，您可以指派SnapMirror標籤。
+
+每種策略類型都與一條或多條系統定義的規則相關聯。當您指定策略類型時，這些規則會自動指派給該策略。下表顯示了系統定義的規則。
+
+|===
+
+
+| 系統定義的規則 | 用於政策類型 | 結果 
+
+
+ a| 
+sm_created
+ a| 
+非同步鏡像，鏡像庫
+ a| 
+SnapMirror建立的快照副本會在初始化和更新時傳輸。
+
+
+
+ a| 
+日常的
+ a| 
+鏡庫
+ a| 
+初始化和更新時，來源上帶有SnapMirror標籤「`daily`」的新快照副本將會傳輸。
+
+
+
+ a| 
+每週
+ a| 
+鏡庫
+ a| 
+初始化和更新時，來源上帶有SnapMirror標籤「`weekly`」的新快照副本將會傳輸。
+
+
+
+ a| 
+每月
+ a| 
+鏡庫
+ a| 
+初始化和更新時，來源上帶有SnapMirror標籤「`monthly`` 的新快照副本將會傳輸。
+
+|===
+您可以根據需要為預設策略或自訂策略指定其他規則。例如：
+
+* 預設情況下 `MirrorAndVault`策略方面，您可以建立一個名為「`bi-monthly`」的規則，將來源上的快照副本與帶有「`bi-monthly`」 SnapMirror標籤的副本進行比對。
+* 對於具有「`mirror-vault`」策略類型的自訂策略，您可以建立一個名為「`bi-weekly`」的規則，以符合來源上帶有「`bi-weekly`」 SnapMirror標籤的快照副本。
+
+
+.步
+. 為策略定義規則：
++
+`snapmirror policy add-rule -vserver _SVM_ -policy _policy_for_rule_ -snapmirror-label _snapmirror-label_ -keep _retention_count_`
+
++
+有關完整的命令語法，請參閱手冊頁。
+
++
+以下範例新增了一條帶有SnapMirror標籤的規則 `bi-monthly`恢復預設設定 `MirrorAndVault`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy MirrorAndVault -snapmirror-label bi-monthly -keep 6
+----
++
+以下範例新增了一條帶有SnapMirror標籤的規則 `bi-weekly`按照習俗 `my_snapvault`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy my_snapvault -snapmirror-label bi-weekly -keep 26
+----
++
+以下範例新增了一條帶有SnapMirror標籤的規則 `app_consistent`按照習俗 `Sync`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy Sync -snapmirror-label app_consistent -keep 1
+----
++
+然後，您可以從來源叢集複製與此SnapMirror標籤相符的快照副本：
+
++
+[listing]
+----
+cluster_src::> snapshot create -vserver vs1 -volume vol1 -snapshot snapshot1 -snapmirror-label app_consistent
+----
+

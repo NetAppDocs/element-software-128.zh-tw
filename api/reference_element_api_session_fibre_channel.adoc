@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_session_fibre_channel.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: 會話物件包含叢集中可見的每個光纖通道會話的訊息，以及該會話在哪些目標連接埠上可見。您可以使用 ListFibreChannelSessions API 方法檢索此資訊。 
+---
+= 會話（光纖通道）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+會話物件包含叢集中可見的每個光纖通道會話的訊息，以及該會話在哪些目標連接埠上可見。您可以使用以下方式檢索此資訊： `ListFibreChannelSessions` API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+發起人WWPN
+ a| 
+已登入目標連接埠的發起程序的全球連接埠名稱 (WWPN)。
+ a| 
+細繩
+
+
+
+ a| 
+節點ID
+ a| 
+擁有光纖通道會話的節點。
+ a| 
+整數
+
+
+
+ a| 
+發起者
+ a| 
+關於此光纖通道會話的伺服器啟動程式的資訊。成員：
+
+* 別名：分配給發起者的友善名稱。
+* 屬性：此發起者的屬性。
+* initiatorID：此發起者的 ID。
+* initiatorName：此發起者的名稱。
+* volumeAccessGroups：與此啟動器關聯的磁碟區存取群組清單。
+
+ a| 
+JSON 物件
+
+
+
+ a| 
+服務ID
+ a| 
+本次會話涉及的目標連接埠的服務 ID。
+ a| 
+整數
+
+
+
+ a| 
+targetWWPN
+ a| 
+本次會話涉及的目標連接埠的 WWPN。
+ a| 
+細繩
+
+
+
+ a| 
+卷訪問群組ID
+ a| 
+發起方WWPN所屬的磁碟區存取群組的ID。如果該值不在磁碟區存取群組中，則為空。
+ a| 
+整數
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listfibrechannelsessions.adoc[列出光纖通道會話]

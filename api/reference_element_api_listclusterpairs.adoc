@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_listclusterpairs.html 
+sidebar: sidebar 
+keywords: cluster,pair,pairs,paired,list,listing,listclusterpairs 
+summary: 您可以使用 ListClusterPairs 方法列出與目前叢集配對的所有叢集。此方法傳回有關活動和待處理集群配對的信息，例如當前配對的統計信息以及集群配對的連接性和延遲（以毫秒為單位）。 
+---
+= 列出聚類對
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListClusterPairs`列出與目前聚類配對的所有聚類的方法。此方法傳回有關活動和待處理集群配對的信息，例如當前配對的統計信息以及集群配對的連接性和延遲（以毫秒為單位）。
+
+
+
+== 範圍
+
+此方法沒有輸入參數：
+
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+聚類對
+ a| 
+關於每個配對簇的資訊。
+ a| 
+xref:reference_element_api_clusterpair.adoc[clusterPair]大批
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListClusterPairs",
+   "params": {
+      },
+   "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+   "clusterPairs": [
+     {
+      "clusterName": "cluster2",
+      "clusterPairID": 3,
+      "clusterPairUUID": "9866fbeb-c2f8-4df3-beb9-58a5c4e49c9b",
+      "clusterUUID": 5487,
+      "latency": 1,
+      "mvip": "172.1.1.5",
+      "status": "Connected"
+      "version": "8.0.0.1361"
+     },
+     {
+      "clusterName": "cluster3",
+      "clusterPairID": 2,
+      "clusterPairUUID": "8132a699-ce82-41e0-b406-fb914f976042",
+      "clusterUUID": 1383,
+      "latency": 1,
+      "mvip": "172.1.1.6",
+      "status": "Connected"
+      "version": "8.0.0.1361"
+     }
+   ]
+ }
+----
+
+
+== 自版本以來的新版本
+
+9.6

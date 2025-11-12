@@ -1,0 +1,219 @@
+---
+permalink: setup/task_setup_configure_fqdn_web_ui_access.html 
+sidebar: sidebar 
+keywords: netapp, element, fqdn, ui, access, web, administration 
+summary: 了解如何設定、移除和排除系統 FQDN Web UI 存取故障。 
+---
+= 配置完全限定域名 (FQDN) Web UI 訪問
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire全快閃儲存配合NetApp Element軟體 12.2 或更高版本，讓您能夠使用完全限定網域名稱 (FQDN) 存取儲存叢集 Web 介面。如果您想使用 FQDN 存取 Element Web UI、每個節點 UI 或管理節點 UI 等 Web 使用者介面，則必須先新增儲存叢集設定以標識叢集使用的 FQDN。
+
+該流程使叢集能夠正確重定向登入會話，並改善與外部服務（例如金鑰管理器和身分提供者）的集成，以實現多因素身份驗證。
+
+.你需要什麼
+* 此功能需要 Element 12.2 或更高版本。
+* 使用NetApp Hybrid Cloud Control REST API 配置此功能需要管理服務 2.15 或更高版本。
+* 使用NetApp Hybrid Cloud Control UI 設定此功能需要管理服務 2.19 或更高版本。
+* 若要使用 REST API，您必須部署執行 11.5 或更高版本的管理節點。
+* 您需要為管理節點和每個儲存叢集配置完全限定域名，這些域名能夠正確解析為管理節點 IP 位址和每個儲存叢集 IP 位址。
+
+
+您可以使用NetApp Hybrid Cloud Control 和 REST API 配置或刪除 FQDN Web UI 存取權。您也可以排查配置錯誤的 FQDN 問題。
+
+* <<使用NetApp Hybrid Cloud Control 配置 FQDN Web UI 訪問>>
+* <<使用 REST API 設定 FQDN Web UI 訪問>>
+* <<使用NetApp Hybrid Cloud Control 移除 FQDN Web UI 存取權限>>
+* <<使用 REST API 移除 FQDN Web UI 存取權限>>
+* <<故障排除>>
+
+
+
+
+== 使用NetApp Hybrid Cloud Control 配置 FQDN Web UI 訪問
+
+.步驟
+. 在網頁瀏覽器中開啟管理節點的IP位址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 使用儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 選擇頁面右上角的選單圖示。
+. 選擇“配置”。
+. 在「完全限定網域」窗格中，選擇「設定」。
+. 在彈出的視窗中，輸入管理節點和每個儲存叢集的 FQDN。
+. 選擇*儲存*。
++
+「完全限定網域」窗格列出了每個儲存叢集及其關聯的 MVIP 和 FQDN。
+
++
+
+NOTE: 只有設定了 FQDN 的連線儲存叢集才會列在「完全限定網域名稱」窗格中。
+
+
+
+
+
+== 使用 REST API 設定 FQDN Web UI 訪問
+
+.步驟
+. 確保 Element 儲存節點和 mNode 已針對網路環境正確配置 DNS，以便能夠解析環境中的 FQDN。若要設定 DNS，請前往儲存節點的每個節點 UI 和管理節點，然後選擇「網路設定」>「管理網路」。
++
+.. 每個儲存節點的使用者介面： `https://<storage_node_management_IP>:442`
+.. 每個管理節點的使用者介面： `https://<management_node_IP>:442`
+
+
+. 使用 Element API 變更儲存叢集設定。
++
+.. 存取 Element API 並使用以下方式建立叢集介面首選項：link:../api/reference_element_api_createclusterinterfacepreference.html["建立叢集介面首選項"] API 方法，插入叢集 MVIP FQDN 作為優先權值：
++
+*** 姓名： `mvip_fqdn`
+*** 價值： `Fully Qualified Domain Name for the Cluster MVIP`
++
+在這個例子中，FQDN=storagecluster.my.org：
+
++
+[listing]
+----
+https://<Cluster_MVIP>/json-rpc/12.2?
+method=CreateClusterInterfacePreference&name=mvip_fqdn&value=storagecluster.my.org
+----
+
+
+
+
+. 使用管理節點上的 REST API 變更管理節點設定：
++
+.. 透過輸入管理節點 IP 位址，然後輸入以下內容，即可存取管理節點的 REST API 使用者介面： `/mnode/2/`
++
+例如：
+
++
+`https://<management_node_IP>/mnode/2/`
+
+.. 點擊「授權」或任何鎖形圖標，然後輸入叢集使用者名稱和密碼。
+.. 請輸入客戶端 ID `mnode-client` 。
+.. 點擊「授權」開始會話，然後關閉視窗。
+.. 從伺服器清單中選擇 `mnode2`。
+.. 點擊 *GET /settings*。
+.. 點選“立即試用”。
+.. 點選“執行”。
+.. 記錄回應正文中報告的任何代理設定。
+.. 點選*PUT/設定*。
+.. 點選“立即試用”。
+.. 在請求正文區域中，輸入管理節點的 FQDN 作為值。 `mnode_fqdn`範圍。
+.. 將您之前記錄的任何代理設定值輸入到請求正文的其餘參數中。如果將代理參數留空或未將其包含在請求正文中，則現有的代理設定將被刪除。
+.. 點選“執行”。
+
+
+
+
+
+
+== 使用NetApp Hybrid Cloud Control 移除 FQDN Web UI 存取權限
+
+您可以使用此程序刪除管理節點和儲存叢集的 FQDN Web 存取權限。
+
+.步驟
+. 在「完全限定網域」窗格中，選擇「編輯」。
+. 在彈出的視窗中，刪除 *FQDN* 文字欄位中的內容。
+. 選擇*儲存*。
++
+視窗關閉，FQDN 不再列在「完全限定網域名稱」窗格中。
+
+
+
+
+
+== 使用 REST API 移除 FQDN Web UI 存取權限
+
+.步驟
+. 使用 Element API 變更儲存叢集設定。
++
+.. 存取 Element API 並使用以下命令刪除以下叢集介面首選項： `DeleteClusterInterfacePreference` API 方法：
++
+*** 姓名： `mvip_fqdn`
++
+例如：
+
++
+[listing]
+----
+https://<Cluster_MVIP>/json-rpc/12.2?method=DeleteClusterInterfacePreference&name=mvip_fqdn
+----
+
+
+
+
+. 使用管理節點上的 REST API 變更管理節點設定：
++
+.. 透過輸入管理節點 IP 位址，然後輸入以下內容，即可存取管理節點的 REST API 使用者介面： `/mnode/2/` 。例如：
++
+[listing]
+----
+https://<management_node_IP>/mnode/2/
+----
+.. 選擇「授權」或任何鎖定圖標，然後輸入 Element 叢集使用者名稱和密碼。
+.. 請輸入客戶端 ID `mnode-client` 。
+.. 選擇“授權”以開始會話。
+.. 關閉視窗。
+.. 選擇 *PUT /settings*。
+.. 選擇*試用*。
+.. 在請求正文區域中，不要輸入值。 `mnode_fqdn`範圍。此外，也要指定是否應該使用代理程式。(`true`或者 `false`）為了 `use_proxy`範圍。
++
+[listing]
+----
+{
+ "mnode_fqdn": "",
+ "use_proxy": false
+}
+----
+.. 選擇*執行*。
+
+
+
+
+
+
+== 故障排除
+
+如果 FQDN 配置不正確，則在存取管理節點、儲存叢集或兩者都時可能會遇到問題。請使用以下資訊來幫助解決問題。
+
+[cols="3*"]
+|===
+| 問題 | 原因 | 解決 
+
+
+ a| 
+* 使用 FQDN 存取管理節點或儲存叢集時，瀏覽器會報錯。
+* 您無法使用 IP 位址登入管理節點或儲存叢集。
+
+| 管理節點 FQDN 和儲存叢集 FQDN 配置均不正確。 | 請使用本頁上的 REST API 說明刪除管理節點和儲存叢集 FQDN 設置，然後重新配置它們。 
+
+
+ a| 
+* 嘗試存取儲存叢集 FQDN 時，瀏覽器出現錯誤。
+* 您無法使用 IP 位址登入管理節點或儲存叢集。
+
+| 管理節點 FQDN 配置正確，但儲存叢集 FQDN 配置錯誤。 | 請使用此頁面上的 REST API 說明刪除儲存叢集 FQDN 設定並重新配置它們。 
+
+
+ a| 
+* 嘗試存取管理節點 FQDN 時，瀏覽器出現錯誤。
+* 您可以使用 IP 位址登入管理節點和儲存叢集。
+
+| 管理節點 FQDN 設定錯誤，但儲存叢集 FQDN 配置正確。 | 登入NetApp Hybrid Cloud Control，在 UI 中修正管理節點 FQDN 設置，或使用此頁面上的 REST API 說明修正設定。 
+|===
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

@@ -1,0 +1,36 @@
+---
+permalink: storage/task_monitor_volume_performance.html 
+sidebar: sidebar 
+keywords: volume performance, view, view alerts 
+summary: 您可以查看集群中所有磁碟區的詳細效能資訊。您可以按磁碟區 ID 或任何效能列對資訊進行排序。您也可以按特定條件篩選資訊。 
+---
+= 查看音量表現
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看集群中所有磁碟區的詳細效能資訊。您可以按磁碟區 ID 或任何效能列對資訊進行排序。您也可以按特定條件篩選資訊。
+
+您可以透過點擊「刷新間隔」清單並選擇不同的值來變更系統重新整理頁面上效能資訊的頻率。如果群集的磁碟區少於 1000 個，則預設刷新間隔為 10 秒；否則，預設刷新間隔為 60 秒。如果選擇“從不”，則停用自動頁面重新整理。
+
+您可以點選「*開啟自動刷新*」重新啟用自動刷新功能。
+
+. 在 Element UI 中，選擇「報告」>「音量效能」。
+. 在音量清單中，按一下音量對應的「操作」圖示。
+. 按一下“查看詳細資料”。
++
+頁面底部會顯示一個托盤，其中包含有關該卷的一般資訊。
+
+. 要查看有關銷量的更多詳細信息，請點擊*查看更多詳情*。
++
+系統會顯示詳細資訊以及音量效能圖表。
+
+
+
+
+
+== 查找更多信息
+
+xref:reference_monitor_volume_performance_details.adoc[銷量表現詳情]

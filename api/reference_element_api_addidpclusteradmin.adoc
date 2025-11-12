@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_addidpclusteradmin.html 
+sidebar: sidebar 
+keywords: IdP,idp,cluster,admin,add,adding,addIdpclusteradmin 
+summary: '您可以使用 AddIpdClusterAdmin 方法新增由第三方身分提供者 (IdP) 進行驗證的叢集管理員使用者。 IdP 叢集管理員帳戶是根據 IdP 的 SAML 斷言中提供的與使用者關聯的 SAML 屬性值資訊進行配置的。如果使用者成功透過身分識別提供者 (IdP) 的驗證，且 SAML 斷言中的 SAML 屬性語句與多個 IdP 叢集管理員帳戶相符，則該使用者將擁有與這些相符的 IdP 叢集管理員帳戶的合併存取等級。' 
+---
+= 新增IDP叢集管理員
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddIpdClusterAdmin`新增由第三方身分提供者 (IdP) 進行驗證的叢集管理員使用者的方法。 IdP 叢集管理員帳戶是根據 IdP 的 SAML 斷言中提供的與使用者關聯的 SAML 屬性值資訊進行配置的。如果使用者成功透過身分識別提供者 (IdP) 的驗證，且 SAML 斷言中的 SAML 屬性語句與多個 IdP 叢集管理員帳戶相符，則該使用者將擁有與這些相符的 IdP 叢集管理員帳戶的合併存取等級。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+使用權
+ a| 
+控制此身分提供者群集管理員可以使用的方法。
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+接受最終用戶許可協議
+ a| 
+接受最終用戶許可協議。設定為 true 可向系統中新增叢集管理員帳戶。如果省略或設為 false，則方法呼叫失敗。
+ a| 
+布林值
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+使用者名稱
+ a| 
+將 SAML 屬性值對應到 IdP 叢集管理員（例如，email=test@example.com）。這可以透過使用特定的 SAML 主題來定義。 `NameID`或作為 SAML 屬性語句中的一個條目，例如 `eduPersonAffiliation`。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+叢集管理員ID
+ a| 
+新建立的叢集管理員的唯一識別碼。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "AddIdpClusterAdmin",
+    "params": {
+        "username": "email=test@example.com",
+        "acceptEula": true,
+        "access": ["administrator"]
+    }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "result": {
+        "clusterAdminID": 13
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

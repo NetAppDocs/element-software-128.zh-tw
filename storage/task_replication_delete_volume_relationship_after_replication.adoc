@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_relationship_after_replication.html 
+sidebar: sidebar 
+keywords: volume pair, delete, replication 
+summary: 複製完成後，如果您不再需要卷對關係，則可以刪除卷關係。 
+---
+= 複製完成後刪除卷關係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+複製完成後，如果您不再需要卷對關係，則可以刪除卷關係。
+
+. 選擇“資料保護”>“卷對”。
+. 點選要刪除的捲對旁邊的「操作」圖示。
+. 按一下“*刪除*”。
+. 確認訊息。
+

@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_enablemaintenancemode.html 
+sidebar: sidebar 
+keywords: maintenance,enable,mode 
+summary: 您可以使用 EnableMaintenanceMode 方法來準備對儲存節點進行維護。維護場景包括任何需要關閉節點電源或重新啟動節點的任務。 
+---
+= 啟用維護模式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableMaintenanceMode`用於準備儲存節點以進行維護的方法。維護場景包括任何需要關閉節點電源或重新啟動節點的任務。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+forceWithUnresolvedFaults
+ a| 
+即使存在阻塞叢集故障，也強制為此節點啟用維護模式。
+ a| 
+布林值
+ a| 
+錯誤的
+ a| 
+不
+
+
+
+ a| 
+節點
+ a| 
+若要置於維護模式的節點 ID 清單。一次只能支援一個節點。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+每分鐘主交換限額
+ a| 
+每分鐘要交換的主切片數量。如果未指定，則所有主切片將一次交換。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+暫停
+ a| 
+指定維護模式在自動停用前應保持啟用狀態的時間。格式為時間字串（例如，HH:mm:ss）。如果未指定，維護模式將保持啟用狀態，直到明確停用為止。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+您可以使用 GetAsyncResult 方法來檢索此 asyncHandle，並確定維護模式轉換何時完成。
+ a| 
+整數
+
+
+
+ a| 
+目前模式
+ a| 
+節點的當前維護模式狀態。可能的值：
+
+* 已停用：未收到維護請求。
+* 恢復失敗：節點未能從維護模式恢復。
+* 正在從維護模式中恢復：節點正在從維護模式中恢復。
+* 維護準備：正在採取措施準備對節點進行維護。
+* 準備維護：該節點已準備好執行維護。
+
+ a| 
+維護模式（字串）
+
+
+
+ a| 
+請求模式
+ a| 
+請求節點的維護模式狀態。可能的值：
+
+* 已停用：未收到維護請求。
+* 恢復失敗：節點未能從維護模式恢復。
+* 正在從維護模式中恢復：節點正在從維護模式中恢復。
+* 維護準備：正在採取措施準備對節點進行維護。
+* 準備維護：該節點已準備好執行維護。
+
+ a| 
+維護模式（字串）
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "EnableMaintenanceMode",
+  "params": {
+    "forceWithUnresolvedFaults": False,
+    "nodes": [6],
+    "perMinutePrimarySwapLimit" : 40,
+    "timeout" : "01:00:05"
+  },
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "ReadyForMaintenance",
+        "asyncHandle": 1,
+        "currentMode": "Disabled"
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.2
+
+
+
+== 查找更多信息
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["NetApp HCI儲存維護模式概念"^]

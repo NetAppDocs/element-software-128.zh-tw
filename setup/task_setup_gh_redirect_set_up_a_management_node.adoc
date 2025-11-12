@@ -1,0 +1,29 @@
+---
+permalink: setup/task_setup_gh_redirect_set_up_a_management_node.html 
+sidebar: sidebar 
+keywords: install management node,install mNode,install Active IQ,install AIQ 
+summary: '您可以安裝NetApp Element軟體管理節點 (mNode) 來升級和提供系統服務、管理叢集資產和設定、運行系統測試和實用程序，並啟用NetApp支援存取權限以進行故障排除。' 
+---
+= 設定管理節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以安裝NetApp Element軟體管理節點 (mNode) 來升級和提供系統服務、管理叢集資產和設定、運行系統測試和實用程序，並啟用NetApp支援存取權限以進行故障排除。
+
+. 參見link:../mnode/task_mnode_install.html["安裝管理節點"]文件.
++
+
+NOTE: 若要設定Active IQ，請使用以下方法： `--telemetry_active`設定腳本中的參數，用於啟用Active IQ的資料收集以進行分析。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

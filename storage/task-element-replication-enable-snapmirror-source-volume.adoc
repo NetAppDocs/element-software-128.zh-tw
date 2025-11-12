@@ -1,0 +1,32 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-source-volume.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, source, volume 
+summary: 必須先在 Element 來源磁碟區上啟用SnapMirror ，然後才能建立複製關係。您只能在 Element 軟體 Web UI 中或使用 API 方法執行此任務。 
+---
+= 在 Element 來源磁碟區上啟用SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須先在 Element 來源磁碟區上啟用SnapMirror ，然後才能建立複製關係。您只能在 Element 軟體的 Web 使用者介面或使用以下方式執行此任務：link:../api/reference_element_api_modifyvolume.html["修改音量"]和link:../api/reference_element_api_modifyvolumes.html["修改卷"]API 方法。
+
+.開始之前
+* 您必須在 Element 叢集上啟用SnapMirror 。
+* 卷塊大小必須為 512 位元組。
+* 該卷不得參與 Element 遠端複製。
+* 卷存取類型不能是「複製目標」。
+
+
+.關於此任務
+以下步驟假設磁碟區已存在。建立或複製磁碟區時，也可以啟用SnapMirror 。
+
+.步驟
+. 選擇“管理”>“卷”。
+. 選擇image:../media/action-icon.gif["操作圖示"]音量按鈕。
+. 在下拉式選單中，選擇“編輯”。
+. 在「編輯卷」對話方塊中，選擇「啟用SnapMirror」。
+. 選擇“儲存變更”。
+

@@ -1,0 +1,34 @@
+---
+permalink: storage/task_system_manage_fips_troubleshoot_the_fips_drive_feature.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2 
+summary: 使用NetApp Element軟體使用者介面，您可以查看與 FIPS 驅動器功能相關的系統叢集故障或錯誤訊息的警報。 
+---
+= 排查 FIPS 驅動器功能故障
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用NetApp Element軟體使用者介面，您可以查看與 FIPS 驅動器功能相關的系統叢集故障或錯誤訊息的警報。
+
+. 使用 Element UI，選擇“報告”>“警報”。
+. 尋找集群故障，包括：
++
+** FIPS驅動程式不符
+** FIPS 導致不合規
+
+
+. 有關解決方法建議，請參閱群集故障碼資訊。
+
+
+
+
+== 查找更多信息
+
+* xref:reference_monitor_cluster_fault_codes.adoc[叢集故障碼]
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存儲"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

@@ -1,0 +1,131 @@
+---
+permalink: api/reference_element_api_getaccountefficiency.html 
+sidebar: sidebar 
+keywords: accounts,account,efficiency,get,getting,GetAccountEfficiency 
+summary: 您可以使用 GetAccountEfficiency 取得有關大額帳戶的效率統計資料。此方法僅傳回您作為參數提供的帳戶的效率資訊。 
+---
+= 取得帳戶效率
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `GetAccountEfficiency`取得大量帳戶的效率統計資料。此方法僅傳回您作為參數提供的帳戶的效率資訊。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+帳戶ID
+ a| 
+指定要傳回效率統計資料的磁碟區帳戶。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+壓縮
+ a| 
+帳戶中所有磁碟區透過資料壓縮節省的空間量。以比率表示，其中「1」表示資料儲存時未進行壓縮。
+ a| 
+漂浮
+
+
+
+ a| 
+去重
+ a| 
+帳戶中所有磁碟區的資料不重複，從而節省的空間量。以比率形式表示。
+ a| 
+漂浮
+
+
+
+ a| 
+缺失捲
+ a| 
+無法查詢效率資料的磁碟區。磁碟區遺失可能是由於垃圾回收 (GC) 週期不到一小時、網路連線暫時中斷或 GC 週期後重新啟動服務造成的。
+ a| 
+整數數組
+
+
+
+ a| 
+精簡配置
+ a| 
+已用空間與指派給資料儲存的空間之比。以比率形式表示。
+ a| 
+漂浮
+
+
+
+ a| 
+時間戳
+ a| 
+最後一次時間效率資料是在垃圾回收（GC）之後收集的，格式為 UTC+0。
+ a| 
+ISO 8601 日期字串
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetAccountEfficiency",
+   "params": {
+     "accountID": 3
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.020468042933262,
+       "deduplication": 2.042488619119879,
+       "missingVolumes": [],
+       "thinProvisioning": 1.010087163391013,
+       "timestamp": "2014-03-10T14:06:02Z"
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

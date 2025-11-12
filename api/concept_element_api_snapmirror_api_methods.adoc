@@ -1,0 +1,53 @@
+---
+permalink: api/concept_element_api_snapmirror_api_methods.html 
+sidebar: sidebar 
+keywords: SnapMirror,API,method 
+summary: Element Web UI 使用SnapMirror API 方法來管理與遠端ONTAP系統鏡像的快照。這些方法僅供 Element Web UI 使用。如果您需要使用 API 存取SnapMirror功能，請使用ONTAP API。  SnapMirror API 方法未提供請求和傳回範例。 
+---
+= SnapMirror API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element Web UI 使用SnapMirror API 方法來管理與遠端ONTAP系統鏡像的快照。這些方法僅供 Element Web UI 使用。如果您需要使用 API 存取SnapMirror功能，請使用ONTAP API。  SnapMirror API 方法未提供請求和傳回範例。
+
+* xref:reference_element_api_abortsnapmirrorrelationship.adoc[中止快照鏡像關係]
+* xref:reference_element_api_breaksnapmirrorrelationship.adoc[BreakSnapMirror關係]
+* xref:reference_element_api_breaksnapmirrorvolume.adoc[BreakSnapMirrorVolume]
+* xref:reference_element_api_createsnapmirrorendpoint.adoc[建立快照鏡像端點]
+* xref:reference_element_api_createsnapmirrorendpoint_unmanaged.adoc[建立快照鏡像端點（非託管）]
+* xref:reference_element_api_createsnapmirrorrelationship.adoc[建立快照鏡像關係]
+* xref:reference_element_api_createsnapmirrorvolume.adoc[建立快照鏡像磁碟區]
+* xref:reference_element_api_deletesnapmirrorendpoints.adoc[刪除SnapMirror端點]
+* xref:reference_element_api_deletesnapmirrorrelationships.adoc[刪除快照鏡像關係]
+* xref:reference_element_api_getontapversioninfo.adoc[獲取 OnTap 版本信息]
+* xref:reference_element_api_getsnapmirrorclusteridentity.adoc[取得SnapMirror叢集標識]
+* xref:reference_element_api_initializesnapmirrorrelationship.adoc[初始化快照鏡像關係]
+* xref:reference_element_api_listsnapmirroraggregates.adoc[清單快照鏡像聚合]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[列出快照鏡像端點]
+* xref:reference_element_api_listsnapmirrorluns.adoc[列表快照鏡像Luns]
+* xref:reference_element_api_listsnapmirrornetworkinterfaces.adoc[列出SnapMirror網路接口]
+* xref:reference_element_api_listsnapmirrornodes.adoc[列出快照鏡像節點]
+* xref:reference_element_api_listsnapmirrorpolicies.adoc[列出SnapMirror策略]
+* xref:reference_element_api_listsnapmirrorschedules.adoc[列出快照鏡像計劃]
+* xref:reference_element_api_listsnapmirrorrelationships.adoc[ListSnapMirror關係]
+* xref:reference_element_api_listsnapmirrorvolumes.adoc[列出快照鏡像卷]
+* xref:reference_element_api_listsnapmirrorvservers.adoc[列出快照鏡像虛擬伺服器]
+* xref:reference_element_api_modifysnapmirrorendpoint.adoc[修改快照鏡像端點]
+* xref:reference_element_api_modifysnapmirrorendpoint_unmanaged.adoc[ModifySnapMirrorEndpoint（非託管）]
+* xref:reference_element_api_modifysnapmirrorrelationship.adoc[修改快照鏡像關係]
+* xref:reference_element_api_updatesnapmirrorrelationship.adoc[更新SnapMirror關係]
+* xref:reference_element_api_quiescesnapmirrorrelationship.adoc[QuiesceSnapMirror關係]
+* xref:reference_element_api_resumesnapmirrorrelationship.adoc[ResumeSnapMirror關係]
+* xref:reference_element_api_resyncsnapmirrorrelationship.adoc[重新同步快照鏡像關係]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

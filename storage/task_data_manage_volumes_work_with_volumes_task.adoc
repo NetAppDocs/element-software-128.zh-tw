@@ -1,0 +1,31 @@
+---
+permalink: storage/task_data_manage_volumes_work_with_volumes_task.html 
+sidebar: sidebar 
+keywords: volumes, work, storage, iscsi, fc, cluster data management, overview of functions 
+summary: SolidFire系統使用磁碟區來設定儲存。磁碟區是可透過網路由 iSCSI 或光纖通道用戶端存取的區塊設備。在「管理」標籤的「磁碟區」頁面上，您可以建立、修改、複製和刪除節點上的磁碟區。您也可以查看有關卷帶寬和 I/O 使用情況的統計資料。 
+---
+= 使用卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire系統使用磁碟區來設定儲存。磁碟區是可透過網路由 iSCSI 或光纖通道用戶端存取的區塊設備。在「管理」標籤的「磁碟區」頁面上，您可以建立、修改、複製和刪除節點上的磁碟區。您也可以查看有關卷帶寬和 I/O 使用情況的統計資料。
+
+
+
+== 查找更多信息
+
+* link:concept_data_manage_volumes_quality_of_service_policies.html["管理服務品質政策"]
+* link:task_data_manage_volumes.html#create-a-volume["創建卷"]
+* link:task_data_manage_volumes.html#view-volume-details["查看各銷量表現詳情"]
+* link:task_data_manage_volumes.html#edit-active-volumes["編輯活動卷"]
+* link:task_data_manage_volumes.html#delete-a-volume["刪除卷"]
+* link:task_data_manage_volumes.html#restore-a-deleted-volume["恢復已刪除的捲"]
+* link:task_data_manage_volumes.html#purge-a-volume["清除卷"]
+* link:task_data_manage_volumes.html#clone-a-volume["複製卷"]
+* link:task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html["將 LUN 分配給光纖通道卷"]
+* link:task_data_manage_volumes_apply_a_qos_policy.html["對卷應用QoS策略"]
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["移除磁碟區的 QoS 策略關聯"]
+

@@ -1,0 +1,241 @@
+---
+permalink: storage/element-replication-index.html 
+sidebar: sidebar 
+keywords: ontap, cli, replication, element, software, ontap, business continuity, snapmirror, replicate, snapshot, copies, volume 
+summary: 您可以使用SnapMirror將 Element 磁碟區的快照副本複製到ONTAP目標，從而確保 Element 系統上的業務連續性。 
+---
+= NetApp Element軟體與ONTAP之間的複製概覽（ONTAP CLI）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用SnapMirror將 Element 磁碟區的快照副本複製到ONTAP目標，從而確保 Element 系統上的業務連續性。如果 Element 網站發生災難，您可以從ONTAP系統向用戶端提供數據，然後在服務恢復後重新啟動 Element 系統。
+
+從ONTAP 9.4 開始，您可以將ONTAP節點上建立的 LUN 快照副本複製回 Element 系統。您可能在 Element 網站發生故障期間建立了 LUN，或者您可能正在使用 LUN 將資料從ONTAP遷移到 Element 軟體。
+
+如果符合以下條件，您應該使用 Element 進行ONTAP備份：
+
+* 你應該採用最佳實踐，而不是探索所有可行的方案。
+* 您應該使用ONTAP命令列介面 (CLI)，而不是系統管理員或自動腳本工具。
+* 您正在使用 iSCSI 向客戶端提供資料。
+
+
+如果您需要更多關於SnapMirror配置或概念方面的信息，請參閱link:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["資料保護概述"^]。
+
+
+
+== 關於 Element 和ONTAP之間的複製
+
+從ONTAP 9.3 開始，您可以使用SnapMirror將 Element 磁碟區的快照副本複製到ONTAP目標。如果 Element 網站發生災難，您可以從ONTAP系統向用戶端提供數據，然後在服務復原後重新啟動 Element 來源磁碟區。
+
+從ONTAP 9.4 開始，您可以將ONTAP節點上建立的 LUN 快照副本複製回 Element 系統。您可能在 Element 網站發生故障期間建立了 LUN，或者您可能正在使用 LUN 將資料從ONTAP遷移到 Element 軟體。
+
+
+
+=== 資料保護關係類型
+
+SnapMirror提供兩種資料保護關係。對於每種類型， SnapMirror會在初始化或更新關係之前建立 Element 來源磁碟區的快照副本：
+
+* 在災難復原 (DR) 資料保護關係中，目標磁碟區僅包含SnapMirror建立的快照副本，在主站點發生災難時，您可以從中繼續提供資料。
+* 在長期保留資料保護關係中，目標磁碟區包含 Element 軟體建立的時間點快照副本，以及SnapMirror建立的快照副本。例如，您可能想要保留 20 年間建立的每月快照副本。
+
+
+
+
+=== 預設策略
+
+首次呼叫SnapMirror時，它會執行從來源磁碟區到目標磁碟區的_基線傳輸_。  _SnapMirror 策略_ 定義了基線的內容以及任何更新。
+
+建立資料保護關係時，您可以使用預設策略或自訂策略。策略類型決定了要包含哪些快照副本以及要保留多少個副本。
+
+下表顯示了預設策略。使用 `MirrorLatest`制定建立傳統DR關係的政策。使用 `MirrorAndVault`或者 `Unified7year`建立統一複製關係的策略，其中災難復原和長期保留配置在同一目標磁碟區上。
+
+[cols="25,25,50"]
+|===
+
+
+| 政策 | 保單類型 | 更新行為 
+
+
+ a| 
+Mirror最新
+ a| 
+非同步鏡像
+ a| 
+傳輸由SnapMirror建立的快照副本。
+
+
+
+ a| 
+MirrorAndVault
+ a| 
+鏡庫
+ a| 
+傳輸由SnapMirror創建的快照副本以及自上次更新以來創建的任何較舊的快照副本，前提是它們帶有SnapMirror標籤“`daily`”或“`weekly`”。
+
+
+
+ a| 
+Unified7year
+ a| 
+鏡庫
+ a| 
+傳輸由SnapMirror創建的快照副本以及自上次更新以來創建的任何較舊的快照副本，前提是它們帶有SnapMirror標籤“`daily`”、“`weekly`”或“`monthly`”。
+
+|===
+[NOTE]
+====
+有關SnapMirror策略的完整背景信息，包括使用哪種策略的指南，請參閱link:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["資料保護概述"^]。
+
+====
+
+
+=== 了解SnapMirror標籤
+
+所有具有「`mirror-vault`」策略類型的策略都必須有一條規則，指定要複製哪些快照副本。例如，「`daily`」規則表示只有被賦予SnapMirror標籤「`daily`」的快照副本才應該被複製。配置元素快照副本時，您可以指派SnapMirror標籤。
+
+
+
+=== 從 Element 來源集群到ONTAP目標集群的複製
+
+您可以使用SnapMirror將 Element 磁碟區的快照副本複製到ONTAP目標系統。如果 Element 網站發生災難，您可以從ONTAP系統向用戶端提供數據，然後在服務復原後重新啟動 Element 來源磁碟區。
+
+Element 容量大致相當於ONTAP LUN。當 Element 軟體和ONTAP之間建立資料保護關係時， SnapMirror會建立一個與 Element 磁碟區同名的 LUN。如果 LUN 符合 Element 到ONTAP複製的要求， SnapMirror會將資料複製到現有 LUN。
+
+複製規則如下：
+
+* 一個ONTAP磁碟區只能包含來自一個 Element 卷的資料。
+* 您無法將ONTAP磁碟區中的資料複製到多個 Element 磁碟區。
+
+
+
+
+=== 從ONTAP來源集群複製到 Element 目標集群
+
+從ONTAP 9.4 開始，您可以將ONTAP系統上建立的 LUN 快照副本複製回 Element 磁碟區：
+
+* 如果 Element 來源和ONTAP目標之間已經存在SnapMirror關係，則在從目標提供資料時建立的 LUN 會在來源重新啟動時自動複製。
+* 否則，您必須在ONTAP來源叢集和 Element 目標叢集之間建立並初始化SnapMirror關係。
+
+
+複製規則如下：
+
+* 複製關係必須具有「`async-mirror`」類型的策略。
++
+不支援類型為“`mirror-vault`”的策略。
+
+* 僅支援 iSCSI LUN。
+* 一次只能將ONTAP磁碟區中的單一 LUN 複製到 Element 磁碟區。
+* 您無法將ONTAP磁碟區中的 LUN 複製到多個 Element 磁碟區。
+
+
+
+
+=== 先決條件
+
+在配置 Element 和ONTAP之間的資料保護關係之前，您必須完成以下任務：
+
+* Element 叢集必須執行NetApp Element軟體版本 10.1 或更高版本。
+* ONTAP叢集必須運作ONTAP 9.3 或更高版本。
+* SnapMirror必須已在ONTAP叢集上取得許可。
+* 您必須在 Element 和ONTAP叢集上配置足夠大的捲，以處理預期的資料傳輸。
+* 如果您使用的是「`mirror-vault`」政策類型，則必須設定SnapMirror標籤才能複製 Element 快照副本。
++
+[NOTE]
+====
+你只能在以下情況下執行此任務：link:concept_snapmirror_labels.html["Element 軟體 Web 使用者介面"]或使用link:../api/concept_element_api_snapshots_overview.html["API 方法"]。
+
+====
+* 您必須確保連接埠 5010 可用。
+* 如果您預見到可能需要移動目標卷，則必須確保來源和目標之間存在全網狀連接。  Element 來源叢集上的每個節點都必須能夠與ONTAP目標叢集上的每個節點通訊。
+
+
+
+
+=== 支持詳情
+
+下表顯示了 Element 到ONTAP備份的支援詳情。
+
+[cols="25,75"]
+|===
+
+
+| 資源或功能 | 支持詳情 
+
+
+ a| 
+SnapMirror
+ a| 
+* 不支援SnapMirror恢復功能。
+* 這 `MirrorAllSnapshots`和 `XDPDefault`不支援策略。
+* 不支援“`vault`”策略類型。
+* 系統定義的規則「`all_source_snapshots`」不受支援。
+* 「`mirror-vault`」策略類型僅支援從Element軟體複製到ONTAP。使用「`async-mirror`」將ONTAP複製到 Element 軟體。
+* 這 `-schedule`和 `-prefix`選項 `snapmirror policy add-rule`不支援。
+* 這 `-preserve`和 `-quick-resync`選項 `snapmirror resync`不支援。
+* 儲存效率無法維持。
+* 不支援扇出式和級聯式資料保護部署。
+
+
+
+
+ a| 
+ONTAP
+ a| 
+* ONTAP Select從ONTAP 9.4 和 Element 10.3 開始支援。
+* 從ONTAP 9.5 和 Element 11.0 開始支援Cloud Volumes ONTAP 。
+
+
+
+
+ a| 
+元素
+ a| 
+* 體積大小限制為 8 TiB。
+* 卷塊大小必須為 512 位元組。不支援 4K 位元組的區塊大小。
+* 卷大小必須是 1 MiB 的倍數。
+* 容量屬性未被保留。
+* 要複製的快照副本最大數量為 30。
+
+
+
+
+ a| 
+網路
+ a| 
+* 每次傳輸只允許建立一個 TCP 連線。
+* 元素節點必須指定為 IP 位址。不支援DNS主機名查找。
+* 不支援IP空間。
+
+
+
+
+ a| 
+SnapLock
+ a| 
+不支援SnapLock磁碟區。
+
+
+
+ a| 
+FlexGroup
+ a| 
+不支援FlexGroup磁碟區。
+
+
+
+ a| 
+支援向量機預測
+ a| 
+SVM DR 配置中的ONTAP磁碟區不受支援。
+
+
+
+ a| 
+MetroCluster
+ a| 
+MetroCluster配置中的ONTAP磁碟區不受支援。
+
+|===

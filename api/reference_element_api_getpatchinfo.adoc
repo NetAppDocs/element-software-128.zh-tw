@@ -1,0 +1,95 @@
+---
+permalink: api/reference_element_api_getpatchinfo.html 
+sidebar: sidebar 
+keywords: get,patch,info,patches,getpatchinfo 
+summary: 您可以使用 GetPatchInfo 方法來取得節點上已安裝修補程式的資訊。 
+---
+= 獲取補丁信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetPatchInfo`取得有關儲存節點上已安裝的 Element 軟體修補程式的資訊的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+| `force`  a| 
+強制該方法在儲存叢集中的所有節點上運行。只有當向叢集 IP 位址而不是單一節點發出 API 請求時才需要這樣做。可能的值：
+
+* `true`
+* `false`
+
+| 布林值 | `false` | 不 
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+| 補丁 | 包含有關此節點上已安裝補丁程式資訊的物件。 | JSON 物件 
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "GetPatchInfo",
+   "params": {
+      "force": false,
+      },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "patches": {
+          "SUST936": {
+          "date": "Wed 09 Dec 2020 10:41:59 PM UTC",
+          "description": "BMC fixes",
+          "newFiles": [
+              "None"
+          ],
+          "patchedFiles": [
+              "Patched_file_1.bin",
+              "Patched_file_2.dat",
+              "Patched_file_3.tgz"
+          ]
+          }
+        }
+    }
+}
+
+----
+
+
+== 自版本以來的新版本
+
+12.3

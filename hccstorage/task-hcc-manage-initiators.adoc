@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-initiators.html 
+summary: 了解如何新增、建立和管理啟動器，以實現外部用戶端與 Element 儲存磁碟區之間的通訊。 
+keywords: netapp, initiator, storage, element, access group 
+---
+= 建立和管理發起者
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用link:../concepts/concept_solidfire_concepts_initiators.html["發起者"]用於基於 CHAP 而不是基於帳戶的捲存取。您可以建立和刪除啟動器，並為它們指定友善的別名，以簡化管理和大量存取。將啟動器新增至磁碟區存取群組時，該啟動器將啟用對群組中所有磁碟區的存取。
+
+.你需要什麼
+* 您擁有叢集管理員憑證。
+* 您的管理服務已升級至至少 2.17 版本。  NetApp Hybrid Cloud Control 啟動器管理在早期服務套件版本中不可用。
+
+
+.選項
+* <<建立發起者>>
+* <<將發起程序新增至磁碟區存取群組>>
+* <<更改發起程式別名>>
+* <<刪除發起者>>
+
+
+
+
+== 建立發起者
+
+您可以建立 iSCSI 或光纖通道發起程序，並可選擇為其指派別名。
+
+.關於此任務
+發起方 IQN 的可接受格式為： `iqn.yyyy-mm`其中 y 和 m 是數字，後面緊跟著一段文本，只能包含數字、小寫字母和句點。(`.` ）， 冒號(`:`) 或破折號(`-`）。格式範例如下：
+
+[listing]
+----
+iqn.2010-01.com.solidfire:c2r9.fc0.2100000e1e09bb8b
+----
+光纖通道發起方 WWPN 的可接受格式為： `:Aa:bB:CC:dd:11:22:33:44`或者 `AabBCCdd11223344`。格式範例如下：
+
+[listing]
+----
+5f:47:ac:c0:5c:74:d4:02
+----
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制面板中，展開左側導覽選單中的儲存叢集名稱。
+. 選擇*卷*。
+. 選擇“發起者”標籤。
+. 選擇“建立發起者”按鈕。
++
+|===
+| 選項 | 步驟 
+
+
+| 建立一個或多個發起者  a| 
+.. 在 *IQN/WWPN* 欄位中輸入發起人的 IQN 或 WWPN。
+.. 在「別名」欄位中輸​​入發起者的友善名稱。
+.. （可選）選擇「新增發起人」以開啟新的發起人字段，或改用批次建立選項。
+.. 選擇“建立發起者”。
+
+
+
+
+| 大量建立啟動器  a| 
+.. 選擇*批次新增IQN/WWPN*。
+.. 在文字方塊中輸入 IQN 或 WWPN 清單。每個 IQN 或 WWPN 必須以逗號或空格分隔，或單獨佔一行。
+.. 選擇*新增IQN/WWPN*。
+.. （可選）為每個發起者新增唯一別名。
+.. 從清單中刪除安裝中可能已存在的任何啟動器。
+.. 選擇“建立發起者”。
+
+
+|===
+
+
+
+
+== 將發起程序新增至磁碟區存取群組
+
+您可以將發起程式新增至磁碟區存取群組。將啟動器新增至磁碟區存取群組時，該啟動器將啟用對該磁碟區存取群組中所有磁碟區的存取。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制面板中，展開左側導覽選單中的儲存叢集名稱。
+. 選擇*卷*。
+. 選擇“發起者”標籤。
+. 選擇要新增的一個或多個發起者。
+. 選擇“操作”>“新增到訪問組”。
+. 選擇訪問群組。
+. 請選擇「新增發起人」以確認您的變更。
+
+
+
+
+== 更改發起程式別名
+
+您可以變更現有發起程式的別名，或在別名尚不存在時新增別名。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制面板中，展開左側導覽選單中的儲存叢集名稱。
+. 選擇*卷*。
+. 選擇“發起者”標籤。
+. 在「操作」列中，展開發起者的選項功能表。
+. 選擇*編輯*。
+. 對別名進行必要的更改或新增別名。
+. 選擇*儲存*。
+
+
+
+
+== 刪除發起者
+
+您可以刪除一個或多個發起者。刪除啟動器時，系統會將其從所有關聯的磁碟區存取群組中移除。使用該發起程序建立的任何連線都將保持有效，直到連線重設為。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制面板中，展開左側導覽選單中的儲存叢集名稱。
+. 選擇*卷*。
+. 選擇“發起者”標籤。
+. 刪除一個或多個發起者：
++
+.. 選擇要刪除的一個或多個發起者。
+.. 選擇“操作”>“刪除”。
+.. 確認刪除操作，並選擇「是」。
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* link:../concepts/concept_solidfire_concepts_initiators.html["了解發起者"]
+* link:../concepts/concept_solidfire_concepts_volume_access_groups.html["了解卷訪問群組"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+

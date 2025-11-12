@@ -1,0 +1,303 @@
+---
+permalink: api/reference_element_api_volume.html 
+sidebar: sidebar 
+keywords: object,objects,volume 
+summary: 磁碟區物件包含有關未配對或已配對磁碟區的設定資訊。它不包含運行時或使用情況信息，也不包含有關虛擬卷的信息。 
+---
+= 體積
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+磁碟區物件包含有關未配對或已配對磁碟區的設定資訊。它不包含運行時或使用情況信息，也不包含有關虛擬卷的信息。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+使用權
+ a| 
+此存取類型允許存取該磁碟區。可能的值：
+
+* `readOnly`只允許讀取操作。
+* `readWrite`允許讀寫操作。
+* `locked`不允許任何讀取或寫入操作。
+* `replicationTarget`：被指定為複製卷對中的目標卷。
+
+ a| 
+細繩
+
+
+
+ a| 
+帳戶ID
+ a| 
+包含該磁碟區的帳戶的帳戶ID。
+ a| 
+整數
+
+
+
+ a| 
+屬性
+ a| 
+JSON 物件格式的名稱-值對清單。
+ a| 
+JSON 物件
+
+
+
+ a| 
+區塊大小
+ a| 
+體積上塊的大小。
+ a| 
+整數
+
+
+
+ a| 
+創建時間
+ a| 
+卷創建時間（UTC+0格式）。
+ a| 
+ISO 8601字串
+
+
+
+ a| 
+目前保護方案
+ a| 
+本卷採用的保護方案。如果某筆交易從一種保護方案轉換到另一種保護方案，則該成員反映該筆交易轉換到的保護方案。
+ a| 
+細繩
+
+
+
+ a| 
+刪除時間
+ a| 
+卷被刪除的 UTC+0 格式時間。
+ a| 
+ISO 8601字串
+
+
+
+ a| 
+enable512e
+ a| 
+如果設定為 true，則該磁碟區提供 512 位元組磁區模擬。
+ a| 
+布林值
+
+
+
+ a| 
+啟用 SnapMirror 複製
+ a| 
+該磁碟區是否可用於與SnapMirror端點進行複製。
+ a| 
+布林值
+
+
+
+| 先進先出大小 | 指定在使用先進先出 (FIFO) 快照保留模式時，要同時維護的磁碟區快照的最大數量。 | 整數 
+
+
+ a| 
+iqn
+ a| 
+卷的 iSCSI 限定名稱。
+ a| 
+細繩
+
+
+
+ a| 
+最後訪問時間
+ a| 
+最後一次對該卷進行任何訪問（包括 I/O）的時間（格式為 UTC+0）。如果不知道上次造訪時間，則此值為空。
+ a| 
+ISO 8601字串
+
+
+
+ a| 
+lastAccessTimeIO
+ a| 
+最後一次對此磁碟區進行 I/O 操作的時間（格式為 UTC+0）。如果不知道上次造訪時間，則此值為空。
+ a| 
+ISO 8601字串
+
+
+
+| 最小FIFO大小 | 指定使用先進先出 (FIFO) 快照保留模式時，磁碟區同時保留的先進先出 (FIFO) 快照槽的最小數量。 | 整數 
+
+
+ a| 
+姓名
+ a| 
+建立時提供的磁碟區名稱。
+ a| 
+細繩
+
+
+
+ a| 
+先前的保護方案
+ a| 
+如果某筆交易從一種保護方案轉換到另一種保護方案，則該成員反映該筆交易轉換前的保護方案。該成員只有在轉換開始時才會發生變化。如果卷從未轉換過，則此成員為空。
+ a| 
+細繩
+
+
+
+ a| 
+清除時間
+ a| 
+磁碟區從系統中清除的時間（UTC+0 格式）。
+ a| 
+ISO 8601字串
+
+
+
+ a| 
+服務品質
+ a| 
+本卷的服務品質設定。
+ a| 
+xref:reference_element_api_qos.adoc[服務品質]
+
+
+
+ a| 
+qosPolicyID
+ a| 
+與磁碟區關聯的QoS策略ID。如果磁碟區未與策略關聯，則該值為空。
+ a| 
+整數
+
+
+
+ a| 
+scsiEUI設備ID
+ a| 
+全域唯一的 SCSI 設備標識符，採用基於 EUI-64 的 16 位元組格式，用於識別磁碟區。
+ a| 
+細繩
+
+
+
+ a| 
+scsiNAA設備ID
+ a| 
+以 NAA IEEE 註冊擴展格式表示的全球唯一 SCSI 設備識別碼。
+ a| 
+細繩
+
+
+
+ a| 
+切片計數
+ a| 
+此體積上的切片數量。該值始終為“1”。
+ a| 
+整數
+
+
+
+ a| 
+地位
+ a| 
+該卷的當前狀態。可能的值：
+
+* init：正在初始化但尚未準備好接受連線的磁碟區。
+* 活動卷：已準備好接受連結的活動卷。
+* 已刪除：已標記為刪除但尚未清除的磁碟區。
+
+ a| 
+細繩
+
+
+
+ a| 
+總大小
+ a| 
+已配置容量的總位元組數。
+ a| 
+整數
+
+
+
+ a| 
+虛擬磁碟區 ID
+ a| 
+磁碟區關聯的唯一虛擬磁碟區 ID（如有）。
+ a| 
+唯一識別符
+
+
+
+ a| 
+卷訪問群組
+ a| 
+卷所屬卷存取群組的 ID 清單。如果磁碟區不屬於任何磁碟區存取群組，則此值為空清單。
+ a| 
+整數數組
+
+
+
+ a| 
+volumeConsistencyGroupUUID
+ a| 
+卷所屬卷一致性群組的通用唯一識別碼。
+ a| 
+唯一識別符
+
+
+
+ a| 
+卷 ID
+ a| 
+磁碟區的唯一磁碟區 ID。
+ a| 
+整數
+
+
+
+ a| 
+銷量對
+ a| 
+關於配對卷的資訊。僅當與某個音量配對時才可見。如果卷未配對，則此值為空列表。
+ a| 
+xref:reference_element_api_volumepair.adoc[體積對]大批
+
+
+
+ a| 
+卷 UUID
+ a| 
+磁碟區的通用唯一識別碼。
+ a| 
+唯一識別符
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listactivevolumes.adoc[列出活動卷]
+* xref:reference_element_api_listdeletedvolumes.adoc[列出已刪除卷]
+* xref:reference_element_api_listvolumes.adoc[清單卷]
+* xref:reference_element_api_listvolumesforaccount.adoc[ListVolumesForAccount]
+* xref:reference_element_api_qos.adoc[服務品質]
+

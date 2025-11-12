@@ -1,0 +1,69 @@
+---
+permalink: storage/concept_system_manage_drives_managing_drives.html 
+sidebar: sidebar 
+keywords: drives, manage, cluster, element ui, remove drives 
+summary: 每個節點包含一個或多個實體驅動器，用於儲存叢集的一部分資料。將硬碟成功加入叢集後，叢集即可利用硬碟的容量和效能。您可以使用 Element UI 來管理驅動器。 
+---
+= 管理驅動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個節點包含一個或多個實體驅動器，用於儲存叢集的一部分資料。將硬碟成功加入叢集後，叢集即可利用硬碟的容量和效能。您可以使用 Element UI 來管理驅動器。
+
+
+
+== 驅動細節
+
+「叢集」標籤上的「磁碟機」頁面提供了叢集中活動磁碟機的清單。您可以透過選擇「活動」、「可用」、「移除」、「擦除」和「失敗」標籤來篩選頁面。
+
+首次初始化叢集時，活動磁碟機清單為空。建立新的SolidFire叢集後，您可以新增未指派給叢集且列在「可用」標籤中的磁碟機。
+
+活動磁碟機清單中包含下列元素。
+
+* *驅動器 ID*
++
+分配給硬碟的順序編號。
+
+* *節點 ID*
++
+節點新增到叢集時分配的節點編號。
+
+* *節點名稱*
++
+存放驅動器的節點的名稱。
+
+* *投幣口*
++
+硬碟實際所在的插槽編號。
+
+* *容量*
++
+硬碟容量，單位為 GB。
+
+* *序號*
++
+硬碟的序號。
+
+* *剩餘磨損量*
++
+磨損程度指示器。
+
++
+儲存系統會報告每個固態硬碟 (SSD) 可用於寫入和擦除資料的大致磨損量。硬碟使用完其設計寫入和擦除週期的 5% 後，報告剩餘磨損量為 95%。系統不會自動刷新硬碟磨損資訊；您可以刷新或關閉並重新載入頁面來刷新資訊。
+
+* *類型*
++
+驅動類型。類型可以是區塊或元資料。
+
+
+
+
+
+== 更多資訊
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

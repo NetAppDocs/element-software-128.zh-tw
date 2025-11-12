@@ -1,0 +1,29 @@
+---
+permalink: concepts/concept_solidfire_concepts_volumes.html 
+sidebar: sidebar 
+keywords: what is, element, volume, storage volume, persistent volume 
+summary: NetApp SolidFire儲存系統使用磁碟區來設定儲存。磁碟區是可透過網路由 iSCSI 或光纖通道用戶端存取的區塊設備。 
+---
+= 卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element儲存系統使用磁碟區來設定儲存。磁碟區是可透過網路由 iSCSI 或光纖通道用戶端存取的區塊設備。
+
+Element 儲存空間可讓您為使用者帳戶建立、檢視、編輯、刪除、複製、備份或還原磁碟區。您還可以管理叢集上的每個卷，並在卷存取組中新增或刪除卷。
+
+
+
+== 持續性卷
+
+持久性磁碟區允許將管理節點配置資料儲存在指定的儲存叢集上，而不是儲存在本機虛擬機器上，以便在管理節點遺失或移除時可以保留資料。持久性磁碟區是管理節點上可選但建議的配置。
+
+安裝和升級腳本中包含啟用持久卷的選項link:../mnode/task_mnode_install.html["部署新的管理節點"]。持久卷是 Element 軟體儲存叢集上的捲，其中包含主機管理節點 VM 的管理節點配置訊息，這些資訊在 VM 生命週期結束後仍然存在。如果管理節點遺失，替代的管理節點虛擬機器可以重新連接到遺失的虛擬機器並還原其配置資料。
+
+如果在安裝或升級過程中啟用持久性磁碟區功能，則會自動建立多個磁碟區。這些磁碟區與任何基於 Element 軟體的磁碟區一樣，可以使用 Element 軟體 Web UI、 NetApp Element vCenter Server 外掛程式或 API 查看，具體取決於您的偏好和安裝情況。持久性磁碟區必須透過 iSCSI 連接到管理節點並正常運行，才能維護可用於復原的最新設定資料。
+
+
+NOTE: 在安裝或升級過程中，會建立與管理服務關聯的持久性磁碟區並將其指派給新帳戶。如果您使用的是持久性卷，請勿修改或刪除該卷或其關聯的帳戶。

@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_listasyncresults.html 
+sidebar: sidebar 
+keywords: async,asynchronous,result,results,get,list,listing,listasyncresults 
+summary: 您可以使用 ListAsyncResults 列出系統上所有目前正在執行和已完成的非同步方法的結果。使用 ListAsyncResults 查詢非同步結果不會導致已完成的 asyncHandles 過期；您可以使用 GetAsyncResult 查詢 ListAsyncResults 傳回的任何 asyncHandles。 
+---
+= ListAsyncResults
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `ListAsyncResults`列出系統中所有目前正在運行和已完成的非同步方法的結果。使用以下方式查詢非同步結果 `ListAsyncResults`不會導致已完成的 asyncHandles 過期；您可以使用 `GetAsyncResult`查詢由傳回的任何 asyncHandle `ListAsyncResults` 。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+非同步結果類型
+ a| 
+可選的結果類型清單。您可以使用此清單將結果限制為僅這些類型的操作。可能的值：
+
+* DriveAdd：將磁碟機新增至叢集的系統操作。
+* BulkVolume：磁碟區之間的複製操作，例如備份或還原。
+* 克隆：卷克隆操作。
+* 驅動器移除：系統從驅動器複製數據，準備將其從集群中移除的操作。
+* RtfiPendingNode：在將節點新增至叢集之前，系統會在該節點上安裝相容軟體的操作。
+
+ a| 
+字串數組
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+一個序列化的非同步方法結果陣列。
+ a| 
+JSON 物件數組
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+   "method": "ListAsyncResults",
+   "params": {
+   },
+   "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "asyncHandles": [
+       {
+         "asyncResultID": 47,
+         "completed": true,
+         "createTime": "2016-01-01T22:29:19Z",
+         "data": {
+           "cloneID": 26,
+           "message": "Clone complete.",
+           "volumeID": 48
+         },
+         "lastUpdateTime": "2016-01-01T22:45:43Z",
+         "resultType": "Clone",
+         "success": true
+      },
+      ...]
+   }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_getasyncresult.adoc[取得非同步結果]

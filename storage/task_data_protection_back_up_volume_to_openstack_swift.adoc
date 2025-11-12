@@ -1,0 +1,32 @@
+---
+permalink: storage/task_data_protection_back_up_volume_to_openstack_swift.html 
+sidebar: sidebar 
+keywords: volume backup, openstack swift object store 
+summary: 您可以將磁碟區備份到與 OpenStack Swift 相容的外部物件儲存。 
+---
+= 將磁碟區備份到 OpenStack Swift 物件存儲
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將磁碟區備份到與 OpenStack Swift 相容的外部物件儲存。
+
+. 點選“管理”>“磁碟區”。
+. 按一下要備份的磁碟區的「操作」圖示。
+. 在出現的選單中，按一下「備份到」。
+. 在「整合備份」對話方塊的「備份到」下，選擇「Swift」。
+. 在「資料格式」下選擇資料格式：
++
+** *原生格式*：一種只能被SolidFire儲存系統讀取的壓縮格式。
+** *未壓縮*：一種與其他系統相容的未壓縮格式。
+
+
+. 在 *URL* 欄位中輸入用於存取物件儲存的 URL。
+. 請在「使用者名稱」欄位中輸​​入帳戶的使用者名稱。
+. 在「身份驗證金鑰」欄位中輸​​入帳戶的身份驗證金鑰。
+. 在「容器」欄位中輸​​入要儲存備份的容器。
+. *可選*：在 *Nametag* 欄位中輸入要附加到前綴的名稱標籤。
+. 點擊“開始閱讀”。
+

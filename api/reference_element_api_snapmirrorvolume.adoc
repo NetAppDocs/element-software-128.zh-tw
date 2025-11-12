@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_snapmirrorvolume.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolume 
+summary: snapMirrorVolume 物件包含有關ONTAP磁碟區的資訊。 
+---
+= snapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVolume 物件包含有關ONTAP磁碟區的資訊。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目標ONTAP系統的 ID。
+ a| 
+整數
+
+
+
+ a| 
+姓名
+ a| 
+卷名。
+ a| 
+細繩
+
+
+
+ a| 
+類型
+ a| 
+音量類型。可能的值：
+
+* rw：讀寫卷
+* ls：負載平衡卷
+* dp：資料保護卷
+
+ a| 
+細繩
+
+
+
+ a| 
+虛擬伺服器
+ a| 
+擁有此卷的虛擬伺服器的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+聚合名稱
+ a| 
+包含聚合的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+狀態
+ a| 
+體積狀態。可能的值：
+
+* 在線的
+* 受限制的
+* 離線
+* 混合
+
+ a| 
+細繩
+
+
+
+ a| 
+尺寸
+ a| 
+卷的檔案系統總大小（以位元組為單位）。
+ a| 
+細繩
+
+
+
+ a| 
+可用尺寸
+ a| 
+卷中可用空間的大小（以位元組為單位）。
+ a| 
+細繩
+
+|===

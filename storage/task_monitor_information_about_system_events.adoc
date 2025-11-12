@@ -1,0 +1,88 @@
+---
+permalink: storage/task_monitor_information_about_system_events.html 
+sidebar: sidebar 
+keywords: system events, monitor, view event log 
+summary: 您可以查看系統中偵測到的各種事件的相關資訊。系統每 30 秒刷新一次事件訊息。事件日誌顯示叢集的關鍵事件。 
+---
+= 查看系統事件資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看系統中偵測到的各種事件的相關資訊。系統每 30 秒刷新一次事件訊息。事件日誌顯示叢集的關鍵事件。
+
+. 在 Element UI 中，選擇「報告」>「事件日誌」。
++
+對於每個事件，您都會看到以下資訊：
+
++
+|===
+
+
+| 物品 | 描述 
+
+
+ a| 
+ID
+ a| 
+每個事件都關聯一個唯一的ID。
+
+
+
+ a| 
+事件類型
+ a| 
+記錄的事件類型，例如 API 事件或複製事件。
+
+
+
+ a| 
+訊息
+ a| 
+與該事件相關的訊息。
+
+
+
+ a| 
+細節
+ a| 
+有助於確定事件發生原因的資訊。
+
+
+
+ a| 
+服務 ID
+ a| 
+報告該事件的服務（如適用）。
+
+
+
+ a| 
+節點
+ a| 
+報告事件的節點（如果適用）。
+
+
+
+ a| 
+磁碟機 ID
+ a| 
+報告該事件的磁碟機（如果適用）。
+
+
+
+ a| 
+事件時間
+ a| 
+事件發生的時間。
+
+|===
+
+
+
+
+== 查找更多信息
+
+xref:reference_monitor_event_types.adoc[事件類型]

@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_protection_using_volume_snapshots.html 
+sidebar: sidebar 
+keywords: data protection, volume snapshots, roll back volume, replicate snapshots 
+summary: 卷快照是磁碟區在特定時間點的副本。您可以對磁碟區進行快照，並在以後需要將磁碟區回滾到建立快照時的狀態時使用該快照。 
+---
+= 使用磁碟區快照進行資料保護
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+卷快照是磁碟區在特定時間點的副本。您可以對磁碟區進行快照，並在以後需要將磁碟區回滾到建立快照時的狀態時使用該快照。
+
+快照類似於磁碟區克隆。但是，快照只是卷元資料的副本，因此您無法掛載或寫入它們。建立磁碟區快照也只需要少量系統資源和空間，因此快照建立速度比複製更快。
+
+您可以對單一磁碟區或一組磁碟區進行快照。
+
+（可選）將快照複製到遠端叢集，並將其用作磁碟區的備份副本。這樣，您就可以使用複製的快照將磁碟區回滾到特定的時間點。或者，您可以從複製的快照建立磁碟區的複製。
+
+
+
+== 查找更多信息
+
+* xref:task_data_protection_use_individual_volume_snapshots.adoc[使用單一磁碟區快照進行資料保護]
+* xref:task_data_protection_use_group_snapshots_for_data_protection.adoc[使用群組快照進行資料保護任務]
+* xref:task_data_protection_schedule_a_snapshot_task.adoc[安排快照]
+

@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_deleteauthsession.html 
+sidebar: sidebar 
+keywords: authentication sessions,delete 
+summary: 您可以使用 DeleteAuthSession 方法刪除單一驗證工作階段。如果呼叫使用者不在 ClusterAdmins / Administrator AccessGroup 中，則只能刪除屬於呼叫使用者的驗證工作階段。 
+---
+= 刪除授權會話
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `DeleteAuthSession`刪除單一使用者身份驗證會話的方法。如果呼叫使用者不在 ClusterAdmins / Administrator AccessGroup 中，則只能刪除屬於呼叫使用者的驗證工作階段。
+
+
+
+== 參數
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+會話ID
+ a| 
+要刪除的身份驗證會話的唯一識別碼。
+ a| 
+唯一識別符
+ a| 
+沒有任何
+ a| 
+是的
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+會議
+ a| 
+刪除身份驗證會話的會話資訊。
+ a| 
+link:reference_element_api_authsessioninfo.html["authSessionInfo"]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+    "method": "DeleteAuthSession",
+    "params": {
+        "sessionID": "a862a8bb-2c5b-4774-a592-2148e2304713"
+    },
+    "id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "session": {
+            "accessGroupList": [
+                "administrator"
+            ],
+            "authMethod": "Cluster",
+            "clusterAdminIDs": [
+                1
+            ],
+            "finalTimeout": "2020-04-09T17:51:30Z",
+            "idpConfigVersion": 0,
+            "lastAccessTimeout": "2020-04-06T18:21:33Z",
+            "sessionCreationTime": "2020-04-06T17:51:30Z",
+            "sessionID": "a862a8bb-2c5b-4774-a592-2148e2304713",
+            "username": "admin"
+        }
+    }
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

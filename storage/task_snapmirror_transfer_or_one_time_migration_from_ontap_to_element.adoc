@@ -1,0 +1,79 @@
+---
+permalink: storage/task_snapmirror_transfer_or_one_time_migration_from_ontap_to_element.html 
+sidebar: sidebar 
+keywords: element, ui, transfer, perform, source, volume, snapmirror, dr, disaster, recovery, one-time, migration 
+summary: 通常情況下，當您使用SnapMirror從執行NetApp Element軟體的SolidFire儲存叢集向ONTAP軟體進行災難復原時，Element 是來源， ONTAP是目標。然而，在某些情況下， ONTAP儲存系統可以作為來源，而 Element 作為目標。 
+---
+= 從ONTAP到 Element 執行傳輸或一次遷移
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通常情況下，當您使用SnapMirror從執行NetApp Element軟體的SolidFire儲存叢集向ONTAP軟體進行災難復原時，Element 是來源， ONTAP是目標。然而，在某些情況下， ONTAP儲存系統可以作為來源，而 Element 作為目標。
+
+* 有兩種情況：
++
+** 此前不存在災難復原合作關係。請按照此流程中的所有步驟操作。
+** 之前確實存在災難復原關係，但與用於此次緩解的捲之間不存在這種關係。在這種情況下，只需按照以下步驟 3 和 4 操作即可。
+
+
+
+
+.你需要什麼
+* 元素目標節點必須已對ONTAP開放。
+* Element 磁碟區必須已啟用SnapMirror複製功能。
+
+
+您必須以 hostip:/lun/<id_number> 的形式指定 Element 目標路徑，其中 lun 是實際字串“`lun`”，id_number 是 Element 磁碟區的 ID。
+
+.步驟
+. 使用ONTAP建立與元素集群的關係：
++
+[listing]
+----
+snapmirror create -source-path SVM:volume|cluster://SVM/volume
+-destination-path hostip:/lun/name -type XDP -schedule schedule -policy
+    policy
+----
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path svm_1:volA_dst
+-destination-path 10.0.0.11:/lun/0005 -type XDP -schedule my_daily -policy MirrorLatest
+----
+. 使用ONTAP snapmirror show 指令驗證SnapMirror關係是否已建立。
++
+有關建立複製關係的信息，請參閱ONTAP文件；有關完整的命令語法，請參閱ONTAP手冊頁。
+
+. 使用 `ElementCreateVolume`使用 API 建立目標磁碟區並將目標磁碟區存取模式設為SnapMirror：
++
+使用 Element API 建立 Element 體積
+
++
+[listing]
+----
+{
+   "method": "CreateVolume",
+   "params": {
+        "name": "SMTargetVolumeTest2",
+        "accountID": 1,
+        "totalSize": 100000000000,
+        "enable512e": true,
+        "attributes": {},
+        "qosPolicyID": 1,
+        "enableSnapMirrorReplication": true,
+        "access": "snapMirrorTarget"
+    },
+    "id": 1
+}
+----
+. 使用ONTAP初始化複製關係 `snapmirror initialize`命令：
++
+[listing]
+----
+snapmirror initialize -source-path hostip:/lun/name
+-destination-path SVM:volume|cluster://SVM/volume
+----
+

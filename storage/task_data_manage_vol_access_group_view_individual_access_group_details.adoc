@@ -1,0 +1,37 @@
+---
+permalink: storage/task_data_manage_vol_access_group_view_individual_access_group_details.html 
+sidebar: sidebar 
+keywords: access group details, view, view details, initiators 
+summary: 您可以以圖形格式查看單一存取群組的詳細信息，例如附加的磁碟區和啟動器。 
+---
+= 查看個人訪問群組詳情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以以圖形格式查看單一存取群組的詳細信息，例如附加的磁碟區和啟動器。
+
+. 點選“管理”>“訪問群組”。
+. 點選訪問群組的「操作」圖示。
+. 按一下“查看詳細資料”。
+
+
+
+
+== 卷訪問組詳細信息
+
+「管理」標籤上的「訪問群組」頁面提供了有關磁碟區存取群組的資訊。
+
+顯示以下資訊：
+
+* *ID*：系統產生的存取群組 ID。
+* *名稱*：建立存取群組時賦予該群組的名稱。
+* *活動卷*：訪問組中的活動卷數。
+* *壓縮*：訪​​問群組的壓縮效率得分。
+* *去重*：訪問組的去重效率得分。
+* *精簡配置*：訪問群組的精簡配置效率得分。
+* *整體效率*：訪問組的整體效率得分。
+* *發起者*：連線到存取群組的發起者數量。
+

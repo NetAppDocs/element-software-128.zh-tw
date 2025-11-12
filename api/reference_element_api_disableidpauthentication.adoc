@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_disableidpauthentication.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,disable 
+summary: '您可以使用 DisableIdpAuthentication 方法來停用叢集使用第三方 IdP 進行驗證的支援。一旦停用，透過第三方身分提供者 (IdP) 進行身份驗證的使用者將無法再存取集群，並且任何活動的已驗證會話都將失效/斷開連接。  LDAP 和叢集管理員可以透過支援的使用者介面存取叢集。' 
+---
+= 禁用身份提供者身份驗證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `DisableIdpAuthentication`停用叢集使用第三方身分提供者進行身分驗證支援的方法。一旦停用，透過第三方身分提供者 (IdP) 進行身份驗證的使用者將無法再存取集群，並且任何活動的已驗證會話都將失效/斷開連接。  LDAP 和叢集管理員可以透過支援的使用者介面存取叢集。
+
+
+
+== 參數
+
+此方法沒有輸入參數。
+
+
+
+== 傳回值
+
+此方法沒有傳回值。
+
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "DisableIdpAuthentication",
+  "params": {}
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+"result": {}
+}
+----
+
+
+== 自版本以來的新版本
+
+12.0

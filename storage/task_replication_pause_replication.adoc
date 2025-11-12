@@ -1,0 +1,25 @@
+---
+permalink: storage/task_replication_pause_replication.html 
+sidebar: sidebar 
+keywords: replication, pause, volume pairs 
+summary: 如果需要暫時停止 I/O 處理，可以手動暫停複製。如果 I/O 處理量激增，而您希望降低處理負載，則可以暫停複製。 
+---
+= 暫停複製
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果需要暫時停止 I/O 處理，可以手動暫停複製。如果 I/O 處理量激增，而您希望降低處理負載，則可以暫停複製。
+
+. 選擇“資料保護”>“卷對”。
+. 點選音量對對應的操作圖示。
+. 按一下“*編輯*”。
+. 在「編輯卷對」窗格中，手動暫停複製過程。
++
+
+IMPORTANT: 手動暫停或恢復磁碟區複製會導致資料傳輸停止或復原。請務必協調好兩個站點上的這些變更。
+
+. 點選「儲存變更」。
+

@@ -1,0 +1,243 @@
+---
+permalink: api/reference_element_api_getipmiconfig.html 
+sidebar: sidebar 
+keywords: hardware,sensor,config,configuration,get,getting,getipmiconfig 
+summary: 您可以使用 GetIpmiConfig 方法從節點中的感測器檢索硬體感測器資訊。 
+---
+= 取得 IPMI 配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetIpmiConfig`從節點中的感測器檢索硬體感測器資訊的方法。
+
+
+
+== 範圍
+
+此方法具有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+底盤類型
+ a| 
+用於顯示每個節點機箱類型的資訊。可能的值：
+
+* 全部：傳回每種底盤類型的感測器資訊。
+* {chassis type}：傳回指定底盤類型的感測器資訊。
+
+ a| 
+細繩
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+感測器名稱
+ a| 
+已找到的感測器的名稱。
+ a| 
+細繩
+
+
+
+ a| 
+唯一感測器ID
+ a| 
+感測器的唯一識別碼。
+ a| 
+細繩
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "GetIpmiConfig",
+  "params": {
+     "chassisType"; "all"
+     },
+  "id" : 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+ "id": 1,
+   "result": {
+     "nodes": [
+         {
+           "nodeID": 1,
+           "result": {
+             "ipmiConfig": {
+                "C220M4": [
+                    {
+                     "sensorName": "Fan1A RPM",
+                     "uniqueSensorID": "29.1:0xf"
+                    },
+                    {
+                      "sensorName": "Fan1B RPM",
+                      "uniqueSensorID": "29.1:0x10"
+                    },
+                    {
+                      "sensorName": "Fan2A RPM",
+                      "uniqueSensorID": "29.2:0x11"
+                    },
+                    {
+                      "sensorName": "Fan2B RPM",
+                      "uniqueSensorID": "29.2:0x12"
+                    },
+                    {
+                      "sensorName": "Fan3A RPM",
+                      "uniqueSensorID": "29.3:0x13"
+                    },
+                    {
+                      "sensorName": "Fan3B RPM",
+                      "uniqueSensorID": "29.3:0x14"
+                    },
+                    {
+                      "sensorName": "Fan4A RPM",
+                      "uniqueSensorID": "29.4:0x15"
+                    },
+                    {
+                      "sensorName": "Fan4B RPM",
+                      "uniqueSensorID": "29.4:0x16"
+                    },
+                    {
+                      "sensorName": "Fan5A RPM",
+                      "uniqueSensorID": "29.5:0x17"
+                    },
+                    {
+                      "sensorName": "Fan5B RPM",
+                      "uniqueSensorID": "29.5:0x18"
+                    },
+                    {
+                      "sensorName": "Fan6A RPM",
+                      "uniqueSensorID": "29.6:0x19"
+                    },
+                    {
+                      "sensorName": "Fan6B RPM",
+                      "uniqueSensorID": "29.6:0x1a"
+                    },
+                    {
+                      "sensorName": "Exhaust Temp",
+                      "uniqueSensorID": "7.1:0x1"
+                    },
+                    {
+                      "sensorName": "Inlet Temp",
+                      "uniqueSensorID": "7.1:0x4"
+                    },
+                    {
+                      "sensorName": "PS1",
+                      "uniqueSensorID": "10.1:0x26"
+                    },
+                    {
+                      "sensorName": "PS2",
+                      "uniqueSensorID": "10.2:0x2c"
+                    }
+                ],
+                "R620": [
+                    {
+                      "sensorName": "Fan1A RPM",
+                      "uniqueSensorID": "7.1:0x30"
+                    },
+                    {
+                      "sensorName": "Fan1B RPM",
+                      "uniqueSensorID": "7.1:0x31"
+                    },
+                    {
+                      "sensorName": "Fan2A RPM",
+                      "uniqueSensorID": "7.1:0x32"
+                    },
+                    {
+                      "sensorName": "Fan2B RPM",
+                      "uniqueSensorID": "7.1:0x33"
+                    },
+                    {
+                      "sensorName": "Fan3A RPM",
+                      "uniqueSensorID": "7.1:0x34"
+                    },
+                    {
+                      "sensorName": "Fan3B RPM",
+                      "uniqueSensorID": "7.1:0x35"
+                    },
+                    {
+                      "sensorName": "Fan4A RPM",
+                      "uniqueSensorID": "7.1:0x36"
+                    },
+                    {
+                      "sensorName": "Fan4B RPM",
+                      "uniqueSensorID": "7.1:0x37"
+                    },
+                    {
+                      "sensorName": "Fan5A RPM",
+                      "uniqueSensorID": "7.1:0x38"
+                    },
+                    {
+                      "sensorName": "Fan5B RPM",
+                      "uniqueSensorID": "7.1:0x39"
+                    },
+                    {
+                      "sensorName": "Fan6A RPM",
+                      "uniqueSensorID": "7.1:0x3a"
+                    },
+                    {
+                      "sensorName": "Fan6B RPM",
+                      "uniqueSensorID": "7.1:0x3b"
+                    },
+                    {
+                      "sensorName": "Fan7A RPM",
+                      "uniqueSensorID": "7.1:0x3c"
+                    },
+                    {
+                      "sensorName": "Fan7B RPM",
+                      "uniqueSensorID": "7.1:0x3d"
+                    },
+                    {
+                      "sensorName": "Exhaust Temp",
+                      "uniqueSensorID": "7.1:0x1"
+                    },
+                    {
+                      "sensorName": "Inlet Temp",
+                      "uniqueSensorID": "7.1:0x4"
+                    },
+                    {
+                      "sensorName": "PS1",
+                      "uniqueSensorID": "10.1:0x62"
+                    },
+                    {
+                      "sensorName": "PS2",
+                      "uniqueSensorID": "10.2:0x63"
+                    }
+               ],
+          }
+----
+
+
+== 自版本以來的新版本
+
+9.6

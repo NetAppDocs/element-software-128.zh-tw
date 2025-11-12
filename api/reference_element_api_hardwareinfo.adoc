@@ -1,0 +1,200 @@
+---
+permalink: api/reference_element_api_hardwareinfo.html 
+sidebar: sidebar 
+keywords: object,objects,hardwareInfo 
+summary: hardwareInfo 物件包含叢集中每個節點的硬體和狀態的詳細資訊。您可以使用 GetHardwareInfo API 方法檢索此資訊。 
+---
+= 硬體資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+hardwareInfo 物件包含叢集中每個節點的硬體和狀態的詳細資訊。您可以使用以下方式檢索此資訊： `GetHardwareInfo` API 方法。
+
+
+
+== 對象成員
+
+該物件包含以下成員：
+
+|===
+| Name | 描述 | 類型 
+
+
+ a| 
+板串口
+ a| 
+DMI板序號。
+ a| 
+細繩
+
+
+
+ a| 
+公車
+ a| 
+主機板媒體總線資訊。
+ a| 
+JSON 物件
+
+
+
+ a| 
+底盤序號
+ a| 
+機箱序號。
+ a| 
+細繩
+
+
+
+ a| 
+驅動硬體
+ a| 
+節點中每個磁碟機的資訊列表。
+ a| 
+JSON 物件數組
+
+
+
+ a| 
+光纖通道連接埠
+ a| 
+節點上的光纖通道連接埠清單。
+ a| 
+整數數組
+
+
+
+ a| 
+硬體配置
+ a| 
+主機板週邊配置資訊。
+ a| 
+JSON 物件
+
+
+
+ a| 
+核心崩潰轉儲狀態
+ a| 
+作業系統核心的崩潰轉儲配置。
+ a| 
+細繩
+
+
+
+ a| 
+記憶
+ a| 
+韌體和系統記憶體硬體資訊。
+ a| 
+JSON 物件
+
+
+
+ a| 
+網路
+ a| 
+對各節點網路介面的硬體進行說明。
+ a| 
+JSON 物件
+
+
+
+ a| 
+網路介面
+ a| 
+節點網路介面的狀態。
+ a| 
+JSON 物件
+
+
+
+ a| 
+節點槽
+ a| 
+對於 HCI 平台，此節點所在的機箱插槽對應的字母（「A」、「B」、「C」或「D」）。對於儲存平台，此值為空。
+ a| 
+細繩
+
+
+
+ a| 
+nvram
+ a| 
+節點的NVRAM統計資訊。
+ a| 
+JSON 物件
+
+
+
+ a| 
+起源
+ a| 
+主機板供應商。
+ a| 
+細繩
+
+
+
+ a| 
+平台
+ a| 
+底盤平台描述。
+ a| 
+JSON 物件
+
+
+
+ a| 
+序號
+ a| 
+產品的序號。
+ a| 
+細繩
+
+
+
+ a| 
+貯存
+ a| 
+儲存控制器資訊。
+ a| 
+JSON 物件
+
+
+
+ a| 
+系統記憶體
+ a| 
+作業系統記憶體使用情況和效能資訊。
+ a| 
+JSON 物件
+
+
+
+ a| 
+系統
+ a| 
+節點機箱類型。
+ a| 
+JSON 物件
+
+
+
+ a| 
+UUID
+ a| 
+節點的唯一識別碼。
+ a| 
+唯一識別符
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_gethardwareinfo.adoc[取得硬體資訊]

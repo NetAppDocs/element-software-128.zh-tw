@@ -1,0 +1,184 @@
+---
+permalink: api/reference_element_api_listvirtualnetworks.html 
+sidebar: sidebar 
+keywords: virtual,network,networks,listing,list,listvirtualnetworks 
+summary: 您可以使用 ListVirtualNetworks 方法列出叢集中所有已設定的虛擬網路。 
+---
+= 列出虛擬網絡
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListVirtualNetworks`列出叢集中所有已配置虛擬網路的方法。
+
+您可以使用此方法驗證叢集中的虛擬網路設定。此方法沒有必需參數。但是，要篩選結果，您可以傳遞一個或多個 virtualNetworkID 或 virtualNetworkTag 值。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+虛擬網路 ID
+ a| 
+使用網路 ID 篩選單一虛擬網路的清單。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+虛擬網路標籤
+ a| 
+網路標籤，用於篩選單一虛擬網路的清單。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+虛擬網路 ID
+ a| 
+要包含在清單中的網路 ID。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+虛擬網路標籤
+ a| 
+若要新增至清單中的網路標籤。
+ a| 
+整數數組
+ a| 
+沒有任何
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+虛擬網路
+ a| 
+包含虛擬網路IP位址的物件。
+ a| 
+xref:reference_element_api_virtualnetwork.adoc[虛擬網路]
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "method": "ListVirtualNetworks",
+  "params": {
+     "virtualNetworkIDs": [5,6]
+   },
+"id": 1
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "virtualNetworks": [
+   {
+    "addressBlocks": [
+   {
+    "available": "11000000",
+    "size": 8,
+    "start": "10.26.250.207"
+   }
+ ],
+    "attributes": null,
+    "gateway": "10.26.250.254",
+    "name": "2250",
+    "namespace": false,
+    "netmask": "255.255.255.0",
+    "svip": "10.26.250.200",
+    "virtualNetworkID": 2250
+   },
+   {
+     "addressBlocks": [
+   {
+     "available": "11000000",
+     "size": 8,
+     "start": "10.26.241.207"
+   }
+  ],
+     "attributes": null,
+     "gateway": "10.26.241.254",
+     "name": "2241",
+     "namespace": false,
+     "netmask": "255.255.255.0",
+     "svip": "10.26.241.200",
+     "virtualNetworkID": 2241
+   },
+  {
+     "addressBlocks": [
+  {
+     "available": "11000000",
+     "size": 8,
+     "start": "10.26.240.207"
+   }
+  ],
+     "attributes": null,
+     "gateway": "10.26.240.254",
+     "name": "2240",
+     "namespace": false,
+     "netmask": "255.255.255.0",
+     "svip": "10.26.240.200",
+     "virtualNetworkID": 2240
+    },
+   {
+  }
+ ]
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6

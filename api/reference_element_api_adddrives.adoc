@@ -1,0 +1,126 @@
+---
+permalink: api/reference_element_api_adddrives.html 
+sidebar: sidebar 
+keywords: drives,adding,cluster,drive,add,adddrives 
+summary: 您可以使用 AddDrives 方法為叢集新增一個或多個可用驅動器，使這些驅動器能夠託管叢集的一部分資料。 
+---
+= AddDrives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddDrives`在叢集中新增一個或多個可用磁碟機的方法，使這些磁碟機能夠託管叢集的一部分資料。
+
+當您向叢集新增儲存節點或在現有節點中安裝新磁碟機時，新磁碟機將被標記為可用，必須透過 AddDrives 新增它們才能使用。使用xref:reference_element_api_listdrives.adoc[清單驅動器]顯示可新增驅動器的方法。新增硬碟時，系統會自動決定硬碟類型。
+
+此方法為非同步方法，一旦叢集中磁碟機重新平衡進程啟動，該方法就會返回。但是，使用新新增的磁碟機重新平衡叢集中的資料可能需要更多時間；即使在 AddDrives 方法呼叫完成後，重新平衡仍會繼續進行。你可以使用xref:reference_element_api_getasyncresult.adoc[取得非同步結果]查詢方法傳回的 asyncHandle 的方法。  AddDrives 方法返回後，您可以使用xref:reference_element_api_listsyncjobs.adoc[清單同步作業]用於查看新硬碟資料重新平衡進度的方法。
+
+
+NOTE: 當新增多個磁碟機時，使用單一 AddDrives 方法呼叫來新增它們比使用多個單獨的方法分別新增一個磁碟機要高效得多。這樣可以減少為穩定叢集上的儲存負載而必須進行的資料平衡量。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+驅動
+ a| 
+若要新增至叢集中的每個磁碟機的資訊。可能的值：
+
+* driveID：要新增的磁碟機的 ID（整數）。
+* type: 要新增的磁碟機類型（字串）。有效值為“slice”、“block”或“volume”。如果省略，系統將分配正確的類型。
+
+ a| 
+JSON 物件數組
+ a| 
+沒有任何
+ a| 
+是的（類型可選）
+
+|===
+
+
+== 傳回值
+
+此方法傳回以下值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+非同步句柄
+ a| 
+用於取得運算結果的句柄值。
+ a| 
+整數
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "AddDrives",
+  "params": {
+    "drives": [
+      {
+        "driveID": 1,
+        "type": "slice"
+      },
+      {
+        "driveID": 2,
+        "type": "block"
+      },
+      {
+        "driveID": 3,
+        "type": "block"
+      }
+    ]
+  }
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+  "id": 1,
+  "result" : {
+    "asyncHandle": 1
+  }
+}
+----
+
+
+== 自版本以來的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[取得非同步結果]
+* xref:reference_element_api_listdrives.adoc[清單驅動器]
+* xref:reference_element_api_listsyncjobs.adoc[清單同步作業]
+

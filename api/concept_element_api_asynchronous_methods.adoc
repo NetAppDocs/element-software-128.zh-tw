@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_asynchronous_methods.html 
+sidebar: sidebar 
+keywords: async,asynchronous,methods,API 
+summary: 有些 API 方法是非同步的，這意味著當方法傳回時，它們執行的操作可能尚未完成。非同步方法傳回一個句柄，您可以查詢該句柄以查看操作狀態；某些操作的狀態資訊可能包括完成百分比。 
+---
+= 非同步方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+有些 API 方法是非同步的，這意味著當方法傳回時，它們執行的操作可能尚未完成。非同步方法傳回一個句柄，您可以查詢該句柄以查看操作狀態；某些操作的狀態資訊可能包括完成百分比。
+
+查詢非同步操作時，其結果可以是以下幾種類型之一：
+
+* `DriveAdd`系統正在向叢集添加驅動器。
+* `BulkVolume`系統正在磁碟區之間執行複製操作，例如備份或還原。
+* `Clone`系統正在克隆一個磁碟區。
+* `DriveRemoval`系統正在從磁碟機複製數據，準備將其從叢集中刪除。
+* `RtfiPendingNode`系統在將節點新增至叢集之前，會在節點上安裝相容的軟體。
+
+
+使用非同步方法或取得正在運行的非同步操作的狀態時，請注意以下幾點：
+
+* 非同步方法會在各個方法的文檔中註明。
+* 非同步方法傳回一個“`asyncHandle`”，這是一個由發出 API 方法所知的句柄。你可以使用該句柄輪詢非同步操作的狀態或結果。
+* 您可以使用 GetAsyncResult 方法來取得各個非同步方法的結果。當您使用 GetAsyncResult 查詢已完成的操作時，系統會傳回結果並自動從系統中清除該結果。當您使用 GetAsyncResult 查詢未完成的操作時，系統會傳回結果，但不會將其清除。
+* 您可以使用 ListAsyncResults 方法來取得所有正在執行或已完成的非同步方法的狀態和結果。在這種情況下，系統不會清除已完成操作的結果。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

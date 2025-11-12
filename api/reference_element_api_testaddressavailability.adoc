@@ -1,0 +1,143 @@
+---
+permalink: api/reference_element_api_testaddressavailability.html 
+sidebar: sidebar 
+keywords: ip,address,availability,test,testing,ensemble,cluster,testaddressavailability 
+summary: 您可以使用 TestAddressAvailability 方法來檢查儲存叢集中的介面是否正在使用某個 IP 位址。 
+---
+= 測試地址可用性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestAddressAvailability`檢查儲存叢集中某個介面上是否正在使用某個 IP 位址的方法。
+
+
+
+== 參數
+
+此方法有以下輸入參數：
+
+|===
+| Name | 描述 | 類型 | 預設值 | 必需的 
+
+
+ a| 
+介面
+ a| 
+目標網路介面（例如 eth0、Bond10G 等）。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+地址
+ a| 
+要掃描的目標介面上的 IP 位址。
+ a| 
+細繩
+ a| 
+沒有任何
+ a| 
+是的
+
+
+
+ a| 
+虛擬網路標籤
+ a| 
+目標VLAN ID。
+ a| 
+整數
+ a| 
+沒有任何
+ a| 
+不
+
+
+
+ a| 
+暫停
+ a| 
+測試目標位址的超時時間（秒）。
+ a| 
+整數
+ a| 
+5
+ a| 
+不
+
+|===
+
+
+== 傳回值
+
+此方法具有以下傳回值：
+
+|===
+
+
+| Name | 描述 | 類型 
+
+
+ a| 
+地址
+ a| 
+測試的IP位址。
+ a| 
+細繩
+
+
+
+ a| 
+可用的
+ a| 
+如果請求的 IP 位址正在使用，則傳回 true；否則傳回 false。
+ a| 
+布林值
+
+|===
+
+
+== 請求範例
+
+該方法的請求類似於以下範例：
+
+[listing]
+----
+{
+	"method": "TestAddressAvailability",
+	"params": {
+		"interface": "Bond10G",
+		"address": "10.0.0.1",
+		"virtualNetworkTag": 1234
+	}
+}
+----
+
+
+== 回應範例
+
+此方法傳回類似以下範例的回應：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"address":"10.0.0.1",
+		"available": true
+	}
+}
+----
+
+
+== 自版本以來的新版本
+
+11.0

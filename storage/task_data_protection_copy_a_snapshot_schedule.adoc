@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_protection_copy_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, copy, maintain, schedule attributes 
+summary: 您可以複製日程表並保留其現有屬性。 
+---
+= 複製快照日程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以複製日程表並保留其現有屬性。
+
+. 點選“資料保護”>“日程安排”。
+. 點選要複製的日程表旁的「操作」圖示。
+. 在出現的選單中，按一下「製作副本」。
++
+此時會跳出「建立日程」對話框，其中填入了日程的目前屬性。
+
+. *可選：*請輸入新行程的名稱和更新後的屬性。
+. 點選「建立日程」。
+

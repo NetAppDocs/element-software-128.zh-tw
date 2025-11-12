@@ -1,0 +1,99 @@
+= 執行 RTFI 流程
+:allow-uri-read: 
+
+
+您可以透過在系統啟動之前出現的文字控制台提示與節點進行交互，從而開始恢復出廠設定 (RTFI) 程序。
+
+
+WARNING: RTFI 過程會破壞數據，安全地擦除節點上的所有數據和配置詳細信息，並安裝新的作業系統。確認用於 RTFI 過程的節點未作為群集的一部分處於活動狀態。
+
+image::../media/rtfi_warning.PNG[SolidFire警告，繼續操作前請注意]
+
+RTFI 流程執行以下進階操作：
+
+. 用戶確認後開始安裝並驗證鏡像。
+. 解鎖節點上的所有磁碟機。
+. 驗證並刷新韌體。
+. 檢查硬體。
+. 測試硬體。
+. 安全擦除所有選取的磁碟機。
+. 對根驅動器進行分割並建立檔案系統。
+. 掛載並解壓縮鏡像。
+. 設定主機名稱、網路（動態主機設定協定）、預設叢集配置和 GRUB 引導程式。
+. 停止所有服務，收集日誌，然後重新啟動。
+
+
+若要在 RTFI 流程成功完成後設定節點，請參閱下列內容： https://docs.netapp.com/us-en/element-software/index.html["Element 軟體版本的文檔"^] 。節點成功完成 RTFI 過程後，預設會轉換到 _available_（未配置）狀態。
+
+
+
+== 執行 RTFI 流程
+
+請使用以下步驟恢復SolidFire節點上的 Element 軟體。
+
+有關建立 USB 金鑰或使用BMC執行 RTFI 過程的信息，請參閱xref:task_rtfi_deployment_and_install_options.adoc[RTFI部署與安裝選項]。
+
+.開始之前
+請確認您符合以下要求：
+
+* 您可以存取SolidFire節點的控制台。
+* 執行 RTFI 過程的節點已通電並連接到網路。
+* 執行 RTFI 過程的節點不屬於活動叢集。
+* 您可以存取包含適用於您配置的相關 Element 軟體版本映像的可啟動安裝媒體。
+
+
+如果您在執行 RTFI 流程之前有任何疑問，請聯絡NetApp支援。
+
+.步驟
+. 將顯示器和鍵盤連接到節點的背面，或連接到BMC IP UI，然後從 UI 中的「遠端控制」標籤開啟 *iKVM/HTML5* 控制台。
+. 將裝有合適影像的USB插槽插入節點背面的兩個USB插槽之一。
+. 開啟節點電源或重新啟動節點電源。啟動過程中，按 *F11* 選擇啟動裝置：
++
+
+NOTE: 由於啟動裝置畫面快速閃過，您必須快速連續多次選擇 *F11*。
+
+. 在啟動裝置選擇選單中，選取 USB 選項。
++
+顯示的選項取決於您使用的 USB 品牌。
+
++
+[NOTE]
+====
+如果沒有列出任何 USB 設備，請進入 BIOS，確認 USB 設備已列入啟動順序，重新啟動後再試一次。
+
+如果這樣還不能解決問題，請進入 BIOS，瀏覽到“儲存並退出”選項卡，選擇“恢復到最佳化預設值”，接受並儲存設置，然後重新啟動。
+
+====
+. 顯示所選 USB 裝置上的影像清單。選擇所需版本，然後按下回車鍵開始 RTFI 程序。
++
+RTFI 影像元素軟體名稱和版本號顯示出來。
+
+. 在初始提示時，系統會通知您，該過程將從節點中刪除所有數據，並且該過程開始後數據將無法恢復。輸入“是”開始。
++
+
+WARNING: 進程啟動後，節點上的所有資料和配置詳情將永久刪除。如果您選擇不繼續，您將被引導至…xref:task_rtfi_options_menu.html[RTFI選項選單] 。
+
++
+
+NOTE: 如果您想在 RTFI 流程中查看控制台，可以按 *ALT+F8* 鍵切換到詳細模式控制台。按 *ALT+F7* 返回主介面。
+
+. 除非您有理由懷疑硬體故障或NetApp支援人員指示您執行測試，否則當系統提示您執行廣泛的硬體測試時，請輸入 *否*。
++
+一則訊息表示 RTFI 過程已完成，系統將關閉電源。
+
+. 如有必要，請在節點斷電後移除所有可啟動安裝媒體。
++
+節點現在可以通電並進行配置了。參見 https://docs.netapp.com/us-en/element-software/setup/concept_setup_overview.html["Element軟體設定儲存文檔"^]配置儲存節點。
+
++
+如果在 RTFI 過程中遇到錯誤訊息，請參閱xref:task_rtfi_options_menu.html[RTFI選項選單]。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
+

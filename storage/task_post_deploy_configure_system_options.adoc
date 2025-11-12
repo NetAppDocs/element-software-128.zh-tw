@@ -1,0 +1,30 @@
+---
+permalink: storage/task_post_deploy_configure_system_options.html 
+sidebar: sidebar 
+keywords: deployment, post deployment options, credentials, components, FIPS security, passwords, MFA, multifactor authentication, mutli-factor authentication, security, EKM, key management, external key management, FIPS 
+summary: '設定好SolidFire系統後，您可能需要執行一些可選任務。此外，您還可以設定多因素身份驗證、外部金鑰管理和聯邦資訊處理標準 (FIPS) 安全性的設定。' 
+---
+= 部署後配置SolidFire系統選項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+設定好SolidFire系統後，您可能需要執行一些可選任務。
+
+如果您變更了系統中的憑證，您可能需要了解這對其他元件的影響。
+
+此外，您還可以設定多因素身份驗證、外部金鑰管理和聯邦資訊處理標準 (FIPS) 安全性的設定。您還應該在必要時更新密碼。
+
+
+
+== 查找更多信息
+
+* link:task_post_deploy_credentials.html["更改NetApp HCI和NetApp SolidFire中的憑證"]
+* link:reference_post_deploy_change_default_ssl_certificate.html["更改 Element 軟體的預設 SSL 憑證"]
+* link:task_post_deploy_credential_change_ipmi_password.html["更改節點的 IPMI 密碼"]
+* link:task_system_manage_mfa_set_up_multi_factor_authentication.html["啟用多重身份驗證"]
+* link:concept_system_manage_key_get_started_with_external_key_management.html["開始使用外部密鑰管理"]
+* link:task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["建立支援 FIPS 驅動器的集群"]
+

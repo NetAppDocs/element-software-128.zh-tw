@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-vol-access-groups.html 
+summary: 了解如何新增的磁碟區存取群組以與SolidFire全快閃儲存磁碟區一起使用，如何從系統中刪除磁碟區存取群組，如何編輯現有磁碟區存取群組，以及如何檢視磁碟區存取群組的詳細資訊。 
+keywords: netapp, element, cluster, volume, access 
+---
+= 建立和管理磁碟區存取群組
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Hybrid Cloud Control 建立新的捲存取群組、變更存取群組的名稱、關聯的發起程式或關聯的捲，或刪除現有的磁碟區存取群組。
+
+.你需要什麼
+* 您擁有此SolidFire全快閃儲存系統的管理員憑證。
+* 您的管理服務已升級至至少 2.15.28 版本。  NetApp Hybrid Cloud Control 儲存管理功能在早期服務套件版本中無法使用。
+* 確保磁碟區存取群組採用邏輯命名方案。
+
+
+
+
+== 新增卷宗訪問群組
+
+您可以使用NetApp Hybrid Cloud Control 將磁碟區存取群組新增至儲存叢集。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制面板中，展開左側導覽選單中的儲存叢集名稱。
+. 選擇*卷*。
+. 選擇“訪問群組”標籤。
+. 選擇“建立訪問群組”按鈕。
+. 在彈出的對話方塊中，輸入新磁碟區存取群組的名稱。
+. （可選）在「啟動器」部分，選擇一個或多個啟動器與新的磁碟區存取群組關聯。
++
+如果將啟動器與磁碟區存取群組關聯，則該啟動器無需驗證即可存取群組中的每個磁碟區。
+
+. （可選）在「磁碟區」部分，選擇一個或多個磁碟區以包含在此磁碟區存取群組中。
+. 選擇“建立訪問組”。
+
+
+
+
+== 編輯卷訪問群組
+
+您可以使用NetApp Hybrid Cloud Control 編輯現有磁碟區存取群組的屬性。您可以變更存取群組的名稱、關聯的發起程序或關聯的磁碟區。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制面板中，展開左側導覽選單中的儲存叢集名稱。
+. 選擇*卷*。
+. 選擇“訪問群組”標籤。
+. 在存取群組表格的「操作」欄位中，展開需要編輯的存取群組的選項功能表。
+. 在選項選單中，選擇“編輯”。
+. 對名稱、相關發起者或相關磁碟區進行任何必要的變更。
+. 請點選「儲存」以確認變更。
+. 在「訪問組」表中，驗證訪問組是否反映了您的變更。
+
+
+
+
+== 刪除卷宗存取群組
+
+您可以使用NetApp Hybrid Cloud Control 刪除磁碟區存取群組，同時從系統中移除與此存取群組關聯的啟動器。
+
+.步驟
+. 使用 Element 儲存叢集管理員憑證登入NetApp Hybrid Cloud Control。
+. 在控制面板中，展開左側導覽選單中的儲存叢集名稱。
+. 選擇*卷*。
+. 選擇“訪問群組”標籤。
+. 在存取群組表格的「操作」欄位中，展開要刪除的存取群組的選項功能表。
+. 在選項選單中，選擇“刪除”。
+. 如果您不想刪除與存取群組關聯的發起程序，請取消勾選「刪除此存取群組中的發起程序」複選框。
+. 選擇“是”確認刪除操作。
+
+
+[discrete]
+== 查找更多信息
+
+* link:../concepts/concept_solidfire_concepts_volume_access_groups.html["了解卷訪問群組"]
+* link:task-hcc-manage-initiators.html#add-initiators-to-a-volume-access-group["將發起程序新增至磁碟區存取群組"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
+
