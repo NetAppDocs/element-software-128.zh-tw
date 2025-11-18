@@ -755,8 +755,6 @@
   <block id="00ae1f75b0c9cec52e9827d766f2a9f0" category="paragraph"><block ref="00ae1f75b0c9cec52e9827d766f2a9f0" category="inline-link-macro-rx"></block></block>
   <block id="a0ccd69fa0bf592109e0896c3f9257e9" category="section-title">叢集建立 API 方法</block>
   <block id="df40a0d48604ceb446509f54dd53d965" category="paragraph">您可以使用這些 API 方法建立儲存叢集。所有這些方法都需要在單一節點上針對 API 端點使用。</block>
-  <block id="0308f0d51b4ba54593f1e96114c69c11" category="inline-link-macro">了解叢集建立 API 方法</block>
-  <block id="1bed70a38ca13f48bede345dc001e2c9" category="paragraph"><block ref="1bed70a38ca13f48bede345dc001e2c9" category="inline-link-macro-rx"></block></block>
   <block id="6a67229ead1343c9647798cef324176a" category="section-title">驅動 API 方法</block>
   <block id="81edb4223e14439aae2b852f3ff5fa9b" category="paragraph">您可以使用磁碟機 API 方法新增和管理儲存叢集中可用的磁碟機。當您為儲存叢集新增儲存節點或在現有儲存節點中安裝新磁碟機時，這些磁碟機即可新增至儲存叢集。</block>
   <block id="d9d1e170360eff3d6edce6bc5ac15a96" category="inline-link-macro">了解驅動 API 方法</block>
@@ -12429,6 +12427,9 @@
   <block id="5a4bef238f8c68aedf2579a9018edb5a" category="sidebar">學習如何使用每個節點的實用程序</block>
   <block id="909a1c829d29d09da00949e5c8b87a0e" category="sidebar">升級您的NetApp SolidFire全快閃儲存系統</block>
   <block id="b837bae0f441ebacd86887d737939282" category="sidebar">系統升級流程</block>
-  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> 。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
   <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
+  <block id="57a0b277e5bc33fa133ed50fee2e39c7" category="section-title">叢集建立 API 方法</block>
+  <block id="ed23ae983fdf44661032ebde203dc482" category="inline-link-macro">了解叢集建立 API 方法</block>
+  <block id="124da988a52d4207ceb89c16326011cd" category="paragraph"><block ref="124da988a52d4207ceb89c16326011cd" category="inline-link-macro-rx"></block></block>
+  <block id="e7d0e70ab185af3096a889f5850e7526" category="list-text">若要查看叢集上靜態加密、靜態軟體加密或兩者的目前狀態，請使用下列方法： <block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block>。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
 </blocks>

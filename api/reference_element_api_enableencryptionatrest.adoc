@@ -13,12 +13,13 @@ summary: '您可以使用 EnableEncryptionAtRest 方法在叢集上啟用高級�
 [role="lead"]
 你可以使用 `EnableEncryptionAtRest`啟用叢集上靜態進階加密標準 (AES) 256 位元加密的方法，以便叢集可以管理每個節點上磁碟機使用的加密金鑰。此功能預設未啟用。
 
+[NOTE]
+====
+* 若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：link:../api/reference_element_api_getclusterinfo["取得集群資訊方法"^] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["獲取集群用於加密靜態資料的資訊的方法"^]。
+* 此方法無法實作靜態軟體加密。這只能透過使用以下方式完成：link:../api/reference_element_api_createcluster.html["建立集群方法"^]和 `enableSoftwareEncryptionAtRest`設定為 `true`。
 
-TIP: 若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：link:../api/reference_element_api_getclusterinfo["取得集群資訊方法"^] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["獲取集群用於加密靜態資料的資訊的方法"^]。
 
-
-NOTE: 此方法無法實作靜態軟體加密。這只能透過使用以下方式完成：link:../api/reference_element_api_createcluster.html["建立集群方法"^]和 `enableSoftwareEncryptionAtRest`設定為 `true`。
-
+====
 啟用靜態加密後，叢集會自動在內部管理叢集中每個節點上磁碟機的加密金鑰。
 
 如果指定了 keyProviderID，則會根據金鑰提供者的類型產生和檢索密碼。對於 KMIP 金鑰提供程序，這通常是透過金鑰管理互通協定 (KMIP) 金鑰伺服器來實現的。此操作完成後，指定的提供者將被視為處於活動狀態，並且只有在使用以下命令停用靜態加密後才能刪除。 `DisableEncryptionAtRest`方法。

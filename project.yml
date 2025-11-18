@@ -1,6 +1,7 @@
 ---
 settings:
   name: Element Software
+  downlevel: true
   internal:
     pdf_enabled: true
   prod:
@@ -8,6 +9,8 @@ settings:
     harmony_enabled: false
   versions:
   - version-number: '12.8'
+    url: "/element-software-128"
+  - version-number: '12.9'
     url: "/element-software"
   - version-number: '12.7'
     url: "/element-software-127"
