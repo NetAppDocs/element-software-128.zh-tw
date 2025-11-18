@@ -14,7 +14,7 @@ summary: 您可以使用 DisableEncryptionAtRest 方法移除先前使用 Enable
 你可以使用 `DisableEncryptionAtRest`使用以下方法移除先前應用於叢集的加密： `EnableEncryptionAtRest`方法。此停用方法是異步的，會在加密停用之前回傳回應。你可以使用 `GetClusterInfo`用於輪詢系統以查看進程何時完成的方法。
 
 
-TIP: 若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：link:api/reference_element_api_getclusterinfo.html["取得集群資訊方法"] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["獲取集群用於加密靜態資料的資訊的方法"]。
+TIP: 若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：link:../api/reference_element_api_getclusterinfo.html["取得集群資訊方法"] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["獲取集群用於加密靜態資料的資訊的方法"]。
 
 
 NOTE: 您不能使用此方法停用靜態軟體加密。要停用靜態軟體加密，您需要…link:reference_element_api_createcluster.html["建立一個新集群"]已禁用靜態軟體加密。
@@ -67,7 +67,7 @@ NOTE: 您不能使用此方法停用靜態軟體加密。要停用靜態軟體�
 [discrete]
 == 查找更多信息
 
-* link:api/reference_element_api_getclusterinfo.html["獲取集群資訊"]
+* link:../api/reference_element_api_getclusterinfo.html["獲取集群資訊"]
 * https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 軟體文檔"]
 * https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 產品早期版本的文檔"^]
 

@@ -2834,10 +2834,8 @@
   <block id="56bb1086d311276932b932008551faad" category="paragraph">你可以使用<block ref="7f3b1babd1f170f73cb0ff4719c65294" prefix=" " category="inline-code"></block>使用以下方法移除先前應用於叢集的加密：<block ref="b0a869229fda0716942c6afbaa26ba2a" prefix=" " category="inline-code"></block>方法。此停用方法是異步的，會在加密停用之前回傳回應。你可以使用<block ref="8edcd7780c99fc7a69b6f53d8748b0af" prefix=" " category="inline-code"></block>用於輪詢系統以查看進程何時完成的方法。</block>
   <block id="b6da302462725db65b08725e21534c35" category="inline-link-macro">取得集群資訊方法</block>
   <block id="df55ce8d5994202037ca7f6b8add22fc" category="inline-link-macro">獲取集群用於加密靜態資料的資訊的方法</block>
-  <block id="86a3fd1d57afd97d844a89fbf1e29622" category="admonition">若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：<block ref="2bef0ec70d57052e77ae0a5c3f56c732" category="inline-link-macro-rx"></block> 。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
   <block id="f706c2c9f764a1928af56503f593ce7c" category="inline-link-macro">建立一個新集群</block>
   <block id="03c723d3c658548008f592aa302e8409" category="admonition">您不能使用此方法停用靜態軟體加密。要停用靜態軟體加密，您需要…<block ref="dd0348ec8bd8a2d5cdfad96177d0413b" category="inline-link-macro-rx"></block>已禁用靜態軟體加密。</block>
-  <block id="ed098de7c85d42c63667264da460dda3" category="list-text"><block ref="ed098de7c85d42c63667264da460dda3" category="inline-link-macro-rx"></block></block>
   <block id="41f5226364942217920c4da7dac4fdef" category="summary">您可以使用 DisableIdpAuthentication 方法來停用叢集使用第三方 IdP 進行驗證的支援。一旦停用，透過第三方身分提供者 (IdP) 進行身份驗證的使用者將無法再存取集群，並且任何活動的已驗證會話都將失效/斷開連接。  LDAP 和叢集管理員可以透過支援的使用者介面存取叢集。</block>
   <block id="f7782cee0150831210cb8b1d663487e5" category="paragraph">你可以使用<block ref="19212cd9e0ef02383305a27bb4236251" prefix=" " category="inline-code"></block>停用叢集使用第三方身分提供者進行身分驗證支援的方法。一旦停用，透過第三方身分提供者 (IdP) 進行身份驗證的使用者將無法再存取集群，並且任何活動的已驗證會話都將失效/斷開連接。  LDAP 和叢集管理員可以透過支援的使用者介面存取叢集。</block>
   <block id="bfd29fa5d21f9a9583846d6e7975aa03" category="summary">您可以使用 DisableLdapAuthentication 方法來停用 LDAP 驗證並刪除所有 LDAP 設定設定。此方法不會刪除任何已設定的使用者或群組群集管理員帳戶。  LDAP 驗證停用後，設定為使用 LDAP 驗證的叢集管理員將無法再存取叢集。</block>
@@ -8443,12 +8441,6 @@
   <block id="b192e422c8f0ec986ad4daabba6ad856" category="list-text"><block ref="b192e422c8f0ec986ad4daabba6ad856" category="inline-link-macro-rx"></block></block>
   <block id="94d480649ef42bd92d3854f04aa2aab9" category="list-text"><block ref="94d480649ef42bd92d3854f04aa2aab9" category="inline-link-macro-rx"></block></block>
   <block id="469eaba8a7048afa0ba6f8eb91801de9" category="doc">使用SolidFire Active IQ監控存儲</block>
-  <block id="b56253bf92505bda20b38657c778bccf" category="doc">此處顯示頁面標題</block>
-  <block id="5d9328ee3f628e51f1a4f871ccff7313" category="paragraph">將此模板用於文章、主題，無論您如何稱呼它們。index.adoc 檔案沒有文章頁面的正確關鍵字，將其用作範本可能會導致以後的發布問題。</block>
-  <block id="26739de98ff2a207a5c145caf27c2508" category="admonition">首次發布之前刪除此文件，因為即使該文件未連結到側邊欄，它也會發布。創建幾篇文章後，您可以將它們用作入門文章。</block>
-  <block id="38b255c5af258b1f086fb7c9aa4f252c" category="paragraph">如果您的文章位於內容子資料夾中，則需要對上面顯示的符號進行兩處調整：</block>
-  <block id="df25e29acec650a07b41041946158355" category="list-text"><block ref="abc9d0bfc8d5688ddd4babf6a5402ee4" prefix="" category="inline-code"></block></block>
-  <block id="97df5ffadc97296dc727ffddf2d2e1fe" category="list-text"><block ref="ff695bd1637208b4929c7ae2085cd551" prefix="" category="inline-code"></block></block>
   <block id="8db92719c4d9f37b39025b1a2a231511" category="summary">在開始之前，您應該先查看先決條件。</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="doc">要求</block>
   <block id="0d4f5f9dd0b25c466de7756fec34503e" category="paragraph">在開始之前，您應該查看部署NetApp Element軟體的先決條件，包括網路和連接埠要求。</block>
@@ -9488,7 +9480,6 @@
   <block id="be4ce5f5b863230b071a1e9bbc6b526f" category="paragraph">SVM DR 配置中的ONTAP磁碟區不受支援。</block>
   <block id="1749d12df3df2319d3eee218a277ff83" category="paragraph">MetroCluster</block>
   <block id="a3bcdc002e42a770c83a4edb29da0f53" category="paragraph">MetroCluster配置中的ONTAP磁碟區不受支援。</block>
-  <block id="b4de17ead867a3cf0b9d11e57e562672" category="doc">機器翻譯</block>
   <block id="bfe7c7a765c1b0371de30f5fd4765eaf" category="paragraph">使用 Element 軟體設定SolidFire存儲，監控叢集容量和效能，並管理跨多租戶基礎架構的儲存活動。</block>
   <block id="d54074f88b0164ba9c4afe3077e869dc" category="paragraph">Element 是SolidFire叢集的核心儲存作業系統。  Element 軟體在叢集中的所有節點上獨立運行，使叢集中的節點能夠組合資源，並作為單一儲存系統呈現給外部用戶端。  Element 軟體負責整個系統的叢集協調、擴展和管理。</block>
   <block id="250f00e8767222db89298f946f97e517" category="paragraph">該軟體介面基於 Element API 建置。</block>
@@ -9502,14 +9493,6 @@
   <block id="b1d9f91038721e8f8e298ac364db6778" category="list-text"><block ref="b1d9f91038721e8f8e298ac364db6778" category="inline-link-macro-rx"></block></block>
   <block id="58a3460b6f080dc34224f11288e2e013" category="list-text"><block ref="58a3460b6f080dc34224f11288e2e013" category="inline-link-macro-rx"></block></block>
   <block id="a2d14fa572c5c0a4fbc8457f2a28d53a" category="list-text"><block ref="a2d14fa572c5c0a4fbc8457f2a28d53a" category="inline-link-macro-rx"></block></block>
-  <block id="e10b5b38785c3a24ec75723ab75b4360" category="paragraph">版權所有 © 2021 NetApp, Inc. 保留所有權利。台灣印製。</block>
-  <block id="2275e007ee598cef266c877f9c52ee25" category="paragraph">未經版權所有者事先書面許可，不得以任何形式或任何方式（包括圖形、電子或機械方式，例如影印、錄音、錄影或儲存在電子檢索系統中）複製本文檔中受版權保護的任何部分。</block>
-  <block id="ce4ad2236c56cc11a838f29c8c261bf7" category="paragraph">由 NetApp 版權資料衍伸之軟體必須遵守下列授權和免責聲明：</block>
-  <block id="b110bc9db113b3149cb9e2ed905d4c6c" category="paragraph">此軟體以 NETAPP「原樣」提供，不含任何明示或暗示的擔保，包括但不限於有關適售性或特定目的適用性之擔保，特此聲明。於任何情況下，就任何已造成或基於任何理論上責任之直接性、間接性、附隨性、特殊性、懲罰性或衍生性損害（包括但不限於替代商品或服務之採購；使用、資料或利潤上的損失；或企業營運中斷），無論是在使用此軟體時以任何方式所產生的契約、嚴格責任或侵權行為（包括疏忽或其他）等方面，NetApp 概不負責，即使已被告知有前述損害存在之可能性亦然。</block>
-  <block id="4fc9b260d15698bbd988f76ca839c5b6" category="paragraph">NetApp 保留隨時變更本文所述之任何產品的權利，恕不另行通知。NetApp 不承擔因使用本文所述之產品而產生的責任或義務，除非明確經過 NetApp 書面同意。使用或購買此產品並不會在依據任何專利權、商標權或任何其他 NetApp 智慧財產權的情況下轉讓授權。</block>
-  <block id="87bfcb691f34a9e3fdda83480f0acf78" category="paragraph">本手冊中所述的產品可能受一項或多項美國專利、外國專利或正在申請的專利保護。</block>
-  <block id="464821ce353b86f770de0d09b5f5aabe" category="paragraph">本文所含資料屬於商業專案（如 FAR 2.101 所定義），且為NetApp, Inc. 的專有資料。美國政府擁有非獨佔、不可轉讓、不可再許可的全球性、有限的、不可撤銷的許可，僅可將資料用於與交付該資料的美國政府合約相關的用途，並支持該合約的履行。除本協議另有規定外，未經NetApp, Inc. 事先書面批准，不得使用、揭露、複製、修改、執行或展示資料。美國政府國防部的授權權利僅限於 DFARS 條款 252.227-7015(b) 中規定的權利。</block>
-  <block id="e9f56eb126455869bdb213c6b8827217" category="doc">版權、商標和機器翻譯</block>
   <block id="b2bbf180648d021cfbf74f62ccf04949" category="summary">管理標籤上的「帳戶」頁面提供了系統中每個帳戶的信息，例如 ID、使用者名稱以及分配給每個帳戶的磁碟區的效率詳細資訊。</block>
   <block id="8bc212f48680748479bbd322d4d73d3f" category="doc">帳戶詳情</block>
   <block id="5bf592d3c6ab0296f3e1392898bf6db8" category="list-text">*ID*</block>
@@ -12446,4 +12429,6 @@
   <block id="5a4bef238f8c68aedf2579a9018edb5a" category="sidebar">學習如何使用每個節點的實用程序</block>
   <block id="909a1c829d29d09da00949e5c8b87a0e" category="sidebar">升級您的NetApp SolidFire全快閃儲存系統</block>
   <block id="b837bae0f441ebacd86887d737939282" category="sidebar">系統升級流程</block>
+  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">若要查看叢集上靜態加密和/或靜態軟體加密的目前狀態，請使用下列方法：<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> 。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
+  <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
 </blocks>
